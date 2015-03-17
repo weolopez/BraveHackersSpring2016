@@ -1,0 +1,33 @@
+<!-- index.html -->
+<html>
+		<head>
+				<title>Weo Angular2 with polymer 5.5</title>
+				<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+				<script src="/quickstart/dist/es6-shim.js"></script>
+		</head>
+		<body> 
+				<!--topheader></topheader-->
+		<main-content></main-content>
+		<script>
+				// Rewrite the paths to load the files
+				System.paths = {
+						'router': '/quickstart/router/router.js',
+						'angular2/*': '/quickstart/es5/angular2/*.js', // Angular
+						'rtts_assert/*': '/quickstart/es5/rtts_assert/*.js', //Runtime assertions
+						'body': 'body.es6', 
+						'header': 'header.es6', 
+						'app': 'app.es6' 
+				};
+
+				// Kick off the application
+				System.import('app')
+						.then(function (module) {
+								// uncomment for debugging.
+								// zone = zone.fork(Zone.longStackTraceZone);
+								return module.main();
+						});
+				//	System.import('router');
+		</script>    
+</body>
+</html>
