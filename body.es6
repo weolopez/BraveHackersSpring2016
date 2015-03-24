@@ -15,7 +15,7 @@ export class MainContentComponent {
     this.name = 'weo';
 
  this.test = function($event, username) {
-	//console.dir(username.value);
+	console.dir(username.value);
 	this.name = username.value;
   };
   }
