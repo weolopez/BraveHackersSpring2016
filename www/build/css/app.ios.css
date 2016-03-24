@@ -7509,7 +7509,7 @@ body {
   height: 100%; }
 
 video-window {
-  background: green;
+  background: #333;
   height: 66%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -7524,6 +7524,54 @@ video-text {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
+
+.stage {
+  width: 47%;
+  height: 100px;
+  background: #efefef;
+  margin: 0 1%;
+  border: 1px solid #111;
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden; }
+  .stage div {
+    width: 50px;
+    height: 100px;
+    background: #7a3;
+    position: absolute; }
+    .stage div.obj01 {
+      left: 50%;
+      margin-left: -25px;
+      -webkit-animation: fade-in 5s 2s infinite;
+      animation: fade-in 5s 2s infinite; }
+    .stage div.obj02 {
+      -webkit-animation: walk-in ease-in-out 5s infinite;
+      animation: walk-in ease-in-out 5s infinite; }
+
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@-webkit-keyframes walk-in {
+  from {
+    left: -100px; }
+  to {
+    left: calc(100%); } }
+
+@keyframes walk-in {
+  from {
+    left: -100px; }
+  to {
+    left: calc(100%); } }
 
 ion-content {
   background: black; }
