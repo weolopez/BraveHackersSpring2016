@@ -1,0 +1,27 @@
+#game {
+    background: yellow;
+    height: 100%;
+}
+#main {
+    background: red;
+    padding: 0;
+    height: 100%;
+}
+#menu {
+    background: blue;
+    right: 0;
+    position: absolute;
+    top: 44px;
+    height: 100%;
+}
+video-window {
+    background: green;
+    height: 66%;
+    display: flex;
+}
+video-text {
+    background: white;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}

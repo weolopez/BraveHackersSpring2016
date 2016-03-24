@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs",
+        "experimentalDecorators" : true
+    },
+    "filesGlob": [
+        "./core/**/*.es6",
+        "./utils/**/*.es6"
+    ]
+}

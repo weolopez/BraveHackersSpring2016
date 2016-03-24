@@ -1,0 +1,35 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Shared Imports
+// --------------------------------------------------
+// These are the imports which make up the design of this app.
+// By default each design mode includes these shared imports.
+// App Shared Sass variables belong in app.variables.scss.
+
+@import "../pages/hello-ionic/hello-ionic";
+@import "../pages/game/game";
+ion-content {
+    background: black;
+}
+@media (min-width : 450px) {
+/* Styles */
+    scroll-content {
+        padding: 10px;
+    }
+}
+
+h1[score] {
+    margin-right: -10%;font-size: 14vw; text-align: center;
+}
+
+[save] {
+    float: right;
+    right: 10px;
+    position: absolute;
+    top: 10px;
+}
+
+ion-card {
+    max-width: 800px;
+}
