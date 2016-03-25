@@ -3195,7 +3195,7 @@
 	var ionic_1 = __webpack_require__(5);
 	var hello_ionic_1 = __webpack_require__(360);
 	var game_1 = __webpack_require__(379);
-	var wiki_1 = __webpack_require__(381);
+	var sensors_1 = __webpack_require__(382);
 	var angularfire2_1 = __webpack_require__(366);
 	var MyApp = (function () {
 	    function MyApp(app, platform) {
@@ -3207,7 +3207,7 @@
 	        this.pages = [
 	            { title: 'Welcome', component: hello_ionic_1.HelloIonicPage },
 	            { title: 'Game', component: game_1.Game },
-	            { title: 'Wiki', component: wiki_1.Wiki }
+	            { title: 'Sensors', component: sensors_1.Sensors }
 	        ];
 	        this.rootPage = game_1.Game;
 	    }
@@ -63545,19 +63545,20 @@
 	var Game = (function () {
 	    function Game(story) {
 	        this.story = story;
-	        this.currentScene = 0;
-	        this.currentAct = 0;
 	    }
 	    Game.prototype.stringify = function (o) {
 	        return JSON.stringify(o);
 	    };
-	    Game.prototype.advance = function () {
-	        this.currentScene++;
+	    Game.prototype.getAct = function () {
+	        return this.story.getAct();
+	    };
+	    Game.prototype.getScene = function () {
+	        return this.story.getScene();
 	    };
 	    Game = __decorate([
 	        ionic_1.Page({
 	            templateUrl: 'build/pages/game/game.html',
-	            providers: [story_1.Story],
+	            providers: [story_1.Story]
 	        }), 
 	        __metadata('design:paramtypes', [(typeof (_a = typeof story_1.Story !== 'undefined' && story_1.Story) === 'function' && _a) || Object])
 	    ], Game);
@@ -63591,26 +63592,56 @@
 	    function Story(af, ref) {
 	        this.ref = ref;
 	        this.user = user_1.User.getInstance();
+	        this.currentScene = 0;
+	        this.currentAct = 0;
 	        this.outline = {
 	            name: "coral",
 	            acts: [
 	                {
 	                    name: "introduction",
-	                    scene: [
+	                    scenes: [
 	                        {
 	                            name: "welcome",
+	                            avatar: "img/female.jpg",
 	                            text: "Welcome Maggie!  We have been trying to find you! We know about your super skills and tech that you have developed!  We want to enlist you into our Elite Detective squad."
 	                        },
 	                        {
 	                            name: "next",
+	                            avatar: "img/female.jpg",
 	                            text: "We are a mystery solving unit and desperately need your help! Please meet us at the Dolphin Exibit so we can get our first case underway."
 	                        }
-	                    ]
+	                    ],
+	                    apps: {
+	                        phmeter: {
+	                            ph: 4,
+	                            scenes: [
+	                                {
+	                                    name: "introduction",
+	                                    text: "A pH Meter is a scientific instrument that measures the hydrogen-ion concentration (or pH) in a solution, indicating its acidity or alkalinity. The pH meter measures the difference in electrical potential between a pH electrode and a reference electrode."
+	                                },
+	                                {
+	                                    name: "next",
+	                                    text: "What could cause a low pH."
+	                                }
+	                            ]
+	                        }
+	                    }
 	                }
 	            ]
 	        };
 	    }
-	    // 
+	    Story.prototype.advanceScene = function () {
+	        this.currentScene++;
+	    };
+	    Story.prototype.getApp = function (app) {
+	        return this.outline.acts[this.currentAct][app];
+	    };
+	    Story.prototype.getAct = function () {
+	        return this.outline.acts[this.currentAct];
+	    };
+	    Story.prototype.getScene = function () {
+	        return this.outline.acts[this.currentAct].scenes[this.currentScene];
+	    };
 	    Story.prototype.get = function (list, name, attribute) {
 	        if (!Storage[list])
 	            return;
@@ -63658,7 +63689,8 @@
 
 
 /***/ },
-/* 381 */
+/* 381 */,
+/* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -63671,44 +63703,28 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var ionic_1 = __webpack_require__(5);
-	var hello_ionic_1 = __webpack_require__(360);
-	var login_1 = __webpack_require__(361);
-	var Wiki = (function () {
-	    function Wiki(nav, navParams) {
+	var Sensors = (function () {
+	    function Sensors(nav, navParams) {
 	        this.nav = nav;
+	        // set our app's pages
+	        this.apps = [
+	            { icon: 'ios-flask', title: 'pH Meter', component: Sensors },
+	            { icon: 'ios-flask', title: 'CO2 Meter', component: Sensors }
+	        ];
 	    }
-	    Wiki.prototype.itemTapped = function (event, item) {
+	    Sensors.prototype.open = function (app) {
+	        this.nav.setRoot(HelloIonicPage);
 	    };
-	    Wiki.prototype.getTypeList = function () {
-	        var t = this;
-	        for (var _i = 0, _a = Object.keys(t.types); _i < _a.length; _i++) {
-	            var key = _a[_i];
-	            var ref = new Firebase('https://yourpicks.firebaseio.com/' + key);
-	            t.types[key].ref = ref;
-	            ref.once('value').then(function (value) {
-	                var name = value.key();
-	                t.types[name].list = value.val();
-	            });
-	        }
-	    };
-	    Wiki.prototype.openPage = function () {
-	        // close the menu when clicking a link from the menu
-	        //this.app.getComponent('leftMenu').close();
-	        // navigate to the new page if it is not the current page
-	        //let nav = this.app.getComponent('nav');
-	        this.nav.setRoot(hello_ionic_1.HelloIonicPage);
-	    };
-	    Wiki = __decorate([
+	    Sensors = __decorate([
 	        ionic_1.Page({
-	            templateUrl: 'build/wiki/wiki.html',
-	            directives: [login_1.Login]
+	            templateUrl: 'build/pages/sensors/sensors.html'
 	        }), 
 	        __metadata('design:paramtypes', [(typeof (_a = typeof ionic_1.NavController !== 'undefined' && ionic_1.NavController) === 'function' && _a) || Object, (typeof (_b = typeof ionic_1.NavParams !== 'undefined' && ionic_1.NavParams) === 'function' && _b) || Object])
-	    ], Wiki);
-	    return Wiki;
+	    ], Sensors);
+	    return Sensors;
 	    var _a, _b;
 	})();
-	exports.Wiki = Wiki;
+	exports.Sensors = Sensors;
 
 
 /***/ }

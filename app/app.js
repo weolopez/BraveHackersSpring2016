@@ -1,6 +1,7 @@
 import {App, IonicApp, Platform} from 'ionic/ionic';
 import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
 import {Game} from './pages/game/game';
+import {Sensors} from './pages/sensors/sensors';
 import {Wiki} from './wiki/wiki';
 import {FirebaseUrl, FIREBASE_PROVIDERS, defaultFirebase} from 'angularfire2';
 
@@ -24,7 +25,7 @@ class MyApp {
         this.pages = [
             { title: 'Welcome', component: HelloIonicPage },
             { title: 'Game', component: Game },
-            { title: 'Wiki', component: Wiki }
+            { title: 'Sensors', component: Sensors }
         ];
 
         this.rootPage = Game;

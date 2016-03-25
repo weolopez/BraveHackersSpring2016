@@ -10,27 +10,57 @@ export class Story {
         this.ref = ref;
         this.user = User.getInstance();
 
+        this.currentScene=0;
+        this.currentAct=0;
         this.outline = {
             name: "coral",
             acts: [
                 {
                     name: "introduction",
-                    scene: [
+                    scenes: [
                         {
-                        name: "welcome",    
-                        text: "Welcome Maggie!  We have been trying to find you! We know about your super skills and tech that you have developed!  We want to enlist you into our Elite Detective squad."
+                            name: "welcome",
+                            avatar: "img/female.jpg",
+                            text: "Welcome Maggie!  We have been trying to find you! We know about your super skills and tech that you have developed!  We want to enlist you into our Elite Detective squad."
                         },
-                        
                         {
-                        name: "next",    
-                        text: "We are a mystery solving unit and desperately need your help! Please meet us at the Dolphin Exibit so we can get our first case underway."
+                            name: "next",
+                            avatar: "img/female.jpg",
+                            text: "We are a mystery solving unit and desperately need your help! Please meet us at the Dolphin Exibit so we can get our first case underway."
                         }
-                    ]
+                    ],
+                    apps: {
+                        phmeter: {
+                            ph: 4,
+                            scenes: [
+                                {
+                                    name: "introduction",
+                                    text: "A pH Meter is a scientific instrument that measures the hydrogen-ion concentration (or pH) in a solution, indicating its acidity or alkalinity. The pH meter measures the difference in electrical potential between a pH electrode and a reference electrode."
+                                },
+                                {
+                                    name: "next",
+                                    text: "What could cause a low pH."
+                                }
+                            ]
+                        }
+                    }
                 }
             ]
         }
     }
-    // 
+    
+    advanceScene() {
+        this.currentScene++;
+    }
+    getApp(app) {
+        return this.outline.acts[this.currentAct][app];
+    }
+    getAct() {
+        return this.outline.acts[this.currentAct];
+    }
+    getScene() {
+        return this.outline.acts[this.currentAct].scenes[this.currentScene];
+    }
     get(list, name, attribute) {
         if (!Storage[list]) return;
         var game = Storage[list].find(value => value['name'] === name);

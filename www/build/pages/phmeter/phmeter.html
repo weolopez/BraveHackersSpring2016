@@ -1,0 +1,26 @@
+<ion-navbar *navbar>
+
+    <ion-title>
+        Sensors
+    </ion-title>
+
+    <ion-buttons end>
+        <button menuToggle style="float: right">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+</ion-navbar>
+
+<section id="game">
+    <ion-col id="main">
+        <video-window>
+            User Interaction and general sensor info value of: {{app.ph}}
+        </video-window>
+        <video-text>
+            {{app.scenes[currentscene].text}}
+        </video-text>
+        <toolbar>
+            <button (click)="advanceScene()">Next</button>
+        </toolbar>
+    </ion-col>
+</section>

@@ -4,18 +4,19 @@ import {Story} from '../../models/story/story';
 
 @Page({
     templateUrl: 'build/pages/game/game.html',
-    providers: [ Story ], 
+    providers: [ Story ]
 })
 export class Game {
     constructor(story: Story) {
         this.story=story;
-        this.currentScene=0;
-        this.currentAct=0;
     }
     stringify(o) {
         return JSON.stringify(o);
     }
-    advance() {
-        this.currentScene++;
+    getAct() {
+        return this.story.getAct();
+    }
+    getScene() {
+        return this.story.getScene();
     }
 }
