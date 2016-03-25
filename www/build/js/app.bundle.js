@@ -3195,7 +3195,7 @@
 	var ionic_1 = __webpack_require__(5);
 	var hello_ionic_1 = __webpack_require__(360);
 	var game_1 = __webpack_require__(379);
-	var wiki_1 = __webpack_require__(380);
+	var wiki_1 = __webpack_require__(381);
 	var angularfire2_1 = __webpack_require__(366);
 	var MyApp = (function () {
 	    function MyApp(app, platform) {
@@ -63541,22 +63541,124 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var ionic_1 = __webpack_require__(5);
+	var story_1 = __webpack_require__(380);
 	var Game = (function () {
-	    function Game() {
+	    function Game(story) {
+	        this.story = story;
+	        this.currentScene = 0;
+	        this.currentAct = 0;
 	    }
+	    Game.prototype.stringify = function (o) {
+	        return JSON.stringify(o);
+	    };
+	    Game.prototype.advance = function () {
+	        this.currentScene++;
+	    };
 	    Game = __decorate([
 	        ionic_1.Page({
-	            templateUrl: 'build/pages/game/game.html'
+	            templateUrl: 'build/pages/game/game.html',
+	            providers: [story_1.Story],
 	        }), 
-	        __metadata('design:paramtypes', [])
+	        __metadata('design:paramtypes', [(typeof (_a = typeof story_1.Story !== 'undefined' && story_1.Story) === 'function' && _a) || Object])
 	    ], Game);
 	    return Game;
+	    var _a;
 	})();
 	exports.Game = Game;
 
 
 /***/ },
 /* 380 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var __param = (this && this.__param) || function (paramIndex, decorator) {
+	    return function (target, key) { decorator(target, key, paramIndex); }
+	};
+	var core_1 = __webpack_require__(7);
+	var angularfire2_1 = __webpack_require__(366);
+	var user_1 = __webpack_require__(362);
+	//var instance;
+	var Story = (function () {
+	    function Story(af, ref) {
+	        this.ref = ref;
+	        this.user = user_1.User.getInstance();
+	        this.outline = {
+	            name: "coral",
+	            acts: [
+	                {
+	                    name: "introduction",
+	                    scene: [
+	                        {
+	                            name: "welcome",
+	                            text: "Welcome Maggie!  We have been trying to find you! We know about your super skills and tech that you have developed!  We want to enlist you into our Elite Detective squad."
+	                        },
+	                        {
+	                            name: "next",
+	                            text: "We are a mystery solving unit and desperately need your help! Please meet us at the Dolphin Exibit so we can get our first case underway."
+	                        }
+	                    ]
+	                }
+	            ]
+	        };
+	    }
+	    // 
+	    Story.prototype.get = function (list, name, attribute) {
+	        if (!Storage[list])
+	            return;
+	        var game = Storage[list].find(function (value) { return value['name'] === name; });
+	        return game[attribute];
+	    };
+	    Story.prototype.add = function (value, list, name, attribute) {
+	        var user = this.user.user.id;
+	        var timestamp = new Date().getTime();
+	        if (!name) {
+	            value.user = user;
+	            value.create = timestamp;
+	            this.ref.child(list).push(value);
+	        }
+	        else {
+	            var children = this.ref.child(list).orderByChild('name');
+	            var childrenKeys = children.key();
+	            if (childrenKeys !== null) {
+	                children.equalTo(name).once('child_added')
+	                    .then(function (v) {
+	                    var foundkey = v.key();
+	                    var key = v.ref().child(attribute).push(value).key();
+	                    var auditRecord = {
+	                        collection: list,
+	                        name: name,
+	                        user: user,
+	                        create: timestamp,
+	                        key: key,
+	                        value: value
+	                    };
+	                    v.ref().child('audit').push(auditRecord);
+	                });
+	            }
+	        }
+	    };
+	    Story = __decorate([
+	        core_1.Injectable(),
+	        __param(1, core_1.Inject(angularfire2_1.FirebaseRef)), 
+	        __metadata('design:paramtypes', [angularfire2_1.AngularFire, (typeof (_a = typeof angularfire2_1.Firebase !== 'undefined' && angularfire2_1.Firebase) === 'function' && _a) || Object])
+	    ], Story);
+	    return Story;
+	    var _a;
+	})();
+	exports.Story = Story;
+
+
+/***/ },
+/* 381 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {

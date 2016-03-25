@@ -1,17 +1,17 @@
 <ion-navbar *navbar>
 
     <ion-title>
-        Game Name
+        {{story.outline.name}} : {{story.outline.acts[currentAct].name}} :{{story.outline.acts[currentAct].scene[currentScene].name}}
     </ion-title>
 
-    <!--ion-buttons end>
+    <ion-buttons end>
         <button menuToggle style="float: right">
             <ion-icon name="menu"></ion-icon>
         </button>
-    </ion-buttons-->
+    </ion-buttons>
 </ion-navbar>
 <section id="game">
-    <ion-col width-67 id="main">
+    <ion-col id="main">
         <video-window>
             <div id="stage01" class="stage">
                 <div class="obj01"></div>
@@ -21,42 +21,10 @@
             </div>
         </video-window>
         <video-text>
-            text
+            {{story.outline.acts[currentAct].scene[currentScene].text}}
         </video-text>
-    </ion-col>
-
-    <ion-col width-33 id="menu">
-        <ion-list>
-            <ion-item>
-                <ion-icon name="leaf" item-left></ion-icon>
-                Herbology
-                <ion-icon name="rose" item-right></ion-icon>
-            </ion-item>
-            <ion-item>
-                <ion-icon name="leaf" item-left></ion-icon>
-                Herbology
-                <ion-icon name="rose" item-right></ion-icon>
-            </ion-item>
-            <ion-item>
-                <ion-icon name="leaf" item-left></ion-icon>
-                Herbology
-                <ion-icon name="rose" item-right></ion-icon>
-            </ion-item>
-            <ion-item>
-                <ion-icon name="leaf" item-left></ion-icon>
-                Herbology
-                <ion-icon name="rose" item-right></ion-icon>
-            </ion-item>
-            <ion-item>
-                <ion-icon name="leaf" item-left></ion-icon>
-                Herbology
-                <ion-icon name="rose" item-right></ion-icon>
-            </ion-item>
-            <ion-item>
-                <ion-icon name="leaf" item-left></ion-icon>
-                Herbology
-                <ion-icon name="rose" item-right></ion-icon>
-            </ion-item>
-        </ion-list>
+        <toolbar>
+            <button (click)="advance()">Next</button>
+        </toolbar>
     </ion-col>
 </section>
