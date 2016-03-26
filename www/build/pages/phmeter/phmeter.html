@@ -1,7 +1,7 @@
 <ion-navbar *navbar>
 
     <ion-title>
-        Sensors
+        pH Meter
     </ion-title>
 
     <ion-buttons end>
@@ -14,12 +14,15 @@
 <section id="game">
     <ion-col id="main">
         <video-window>
-            User Interaction and general sensor info value of: {{app.ph}}
+            <img src="{{app.avatar}}">
+        User Interaction and general sensor info value of: {{app.ph}}
         </video-window>
         <video-text>
-            {{app.scenes[currentscene].text}}
+            {{app.scenes[currentScene].text}}
         </video-text>
         <toolbar>
+            <button *ngFor="#q of app.scenes[currentScene].question" *ngIf=app.scenes[currentScene].question>{{q}}</button>
+           
             <button (click)="advanceScene()">Next</button>
         </toolbar>
     </ion-col>

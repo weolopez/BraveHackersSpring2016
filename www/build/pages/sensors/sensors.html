@@ -12,7 +12,7 @@
 </ion-navbar>
 <ion-content>
     <ion-list>
-        <ion-item  ion-item *ngFor="#p of apps" (click)="openPage(p)" (click)="openPage(p)">
+        <ion-item  ion-item *ngFor="#p of apps" (click)="openPage(p)">
             <ion-icon name="{{p.icon}}" item-left></ion-icon>
             {{p.title}}
             <!--ion-icon name="ios-help-circle" item-right></ion-icon-->

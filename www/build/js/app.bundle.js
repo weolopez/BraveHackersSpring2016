@@ -3195,7 +3195,9 @@
 	var ionic_1 = __webpack_require__(5);
 	var hello_ionic_1 = __webpack_require__(360);
 	var game_1 = __webpack_require__(379);
-	var sensors_1 = __webpack_require__(382);
+	var sensors_1 = __webpack_require__(381);
+	var video_1 = __webpack_require__(383);
+	var wikipedia_1 = __webpack_require__(384);
 	var angularfire2_1 = __webpack_require__(366);
 	var MyApp = (function () {
 	    function MyApp(app, platform) {
@@ -3207,6 +3209,8 @@
 	        this.pages = [
 	            { title: 'Welcome', component: hello_ionic_1.HelloIonicPage },
 	            { title: 'Game', component: game_1.Game },
+	            { title: 'Wikipedia', component: wikipedia_1.Wikipedia },
+	            { title: 'Video', component: video_1.Video },
 	            { title: 'Sensors', component: sensors_1.Sensors }
 	        ];
 	        this.rootPage = game_1.Game;
@@ -63612,16 +63616,60 @@
 	                        }
 	                    ],
 	                    apps: {
+	                        wikipedia: {
+	                            articles: [
+	                                {
+	                                    title: "pH",
+	                                    wikipedia: "PH",
+	                                    icon: "ios-bookmarks"
+	                                },
+	                                {
+	                                    title: "Litmus test",
+	                                    wikipedia: "Litmus#Uses",
+	                                    icon: "ios-bookmarks"
+	                                }
+	                            ]
+	                        },
+	                        video: {
+	                            videos: [
+	                                {
+	                                    title: "pH and pOH: Crash Course Chemistry #30",
+	                                    youtube: "LS67vS10O5Y",
+	                                    icon: "logo-youtube"
+	                                },
+	                                {
+	                                    title: "Testing Acids & Bases on Litmus Paper",
+	                                    youtube: "6DCBWK_Hg5w",
+	                                    icon: "logo-youtube"
+	                                }
+	                            ]
+	                        },
 	                        phmeter: {
-	                            ph: 4,
+	                            ph: 7.75,
 	                            scenes: [
 	                                {
-	                                    name: "introduction",
+	                                    name: "what is pH",
+	                                    avatar: "img/pHlitmusPaper.jpg",
 	                                    text: "A pH Meter is a scientific instrument that measures the hydrogen-ion concentration (or pH) in a solution, indicating its acidity or alkalinity. The pH meter measures the difference in electrical potential between a pH electrode and a reference electrode."
 	                                },
 	                                {
+	                                    name: "what is the pH in the ocian",
+	                                    avatar: "img/pHlitmusPaper.jpg",
+	                                    text: "The ocian ph is greater than 7.5"
+	                                },
+	                                {
+	                                    name: "what is river pH",
+	                                    avatar: "img/pHlitmusPaper.jpg",
+	                                    text: "Rivers ph is less than 7"
+	                                },
+	                                {
 	                                    name: "next",
-	                                    text: "What could cause a low pH."
+	                                    text: "Since coral live in the ocian. How can we prevent the coral from dieing?",
+	                                    question: [
+	                                        "Increase the pH",
+	                                        "Decrease the pH"
+	                                    ],
+	                                    answer: "0"
 	                                }
 	                            ]
 	                        }
@@ -63634,7 +63682,7 @@
 	        this.currentScene++;
 	    };
 	    Story.prototype.getApp = function (app) {
-	        return this.outline.acts[this.currentAct][app];
+	        return this.outline.acts[this.currentAct].apps[app];
 	    };
 	    Story.prototype.getAct = function () {
 	        return this.outline.acts[this.currentAct];
@@ -63689,7 +63737,45 @@
 
 
 /***/ },
-/* 381 */,
+/* 381 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var ionic_1 = __webpack_require__(5);
+	var phmeter_1 = __webpack_require__(382);
+	var Sensors = (function () {
+	    function Sensors(nav, navParams) {
+	        this.nav = nav;
+	        // set our app's pages
+	        this.apps = [
+	            { icon: 'ios-flask', title: 'pH Meter', component: phmeter_1.PHMeter },
+	            { icon: 'ios-flask', title: 'CO2 Meter', component: phmeter_1.PHMeter }
+	        ];
+	    }
+	    Sensors.prototype.openPage = function (app) {
+	        this.nav.setRoot(app.component);
+	    };
+	    Sensors = __decorate([
+	        ionic_1.Page({
+	            templateUrl: 'build/pages/sensors/sensors.html'
+	        }), 
+	        __metadata('design:paramtypes', [(typeof (_a = typeof ionic_1.NavController !== 'undefined' && ionic_1.NavController) === 'function' && _a) || Object, (typeof (_b = typeof ionic_1.NavParams !== 'undefined' && ionic_1.NavParams) === 'function' && _b) || Object])
+	    ], Sensors);
+	    return Sensors;
+	    var _a, _b;
+	})();
+	exports.Sensors = Sensors;
+
+
+/***/ },
 /* 382 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -63703,28 +63789,129 @@
 	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 	};
 	var ionic_1 = __webpack_require__(5);
-	var Sensors = (function () {
-	    function Sensors(nav, navParams) {
+	var story_1 = __webpack_require__(380);
+	var PHMeter = (function () {
+	    function PHMeter(nav, navParams, story) {
 	        this.nav = nav;
-	        // set our app's pages
-	        this.apps = [
-	            { icon: 'ios-flask', title: 'pH Meter', component: Sensors },
-	            { icon: 'ios-flask', title: 'CO2 Meter', component: Sensors }
-	        ];
+	        this.story = story;
+	        this.app = story.getApp('phmeter');
+	        this.currentScene = 0;
+	        /*
+	        0	10 000 000	battery acid
+	1	1 000 000	gastric acid
+	2	100 000	lemon juice, vinegar
+	3	10 000	orange juice, soda
+	4	1 000	tomato juice, acid rain
+	5	100	black coffee, bananas
+	6	10	urine, milk
+	7	1	pure water
+	8	0.1	sea water, eggs
+	9	0.01	baking soda
+	10	0.001	Great Salt Lake, milk of magnesia
+	11	0.000 1	ammonia solution
+	12	0.000 01	soapy water
+	13	0.000 001	bleach, oven cleaner
+	14	0.000 000 1	liquid drain cleaner
+	*/
 	    }
-	    Sensors.prototype.open = function (app) {
-	        this.nav.setRoot(HelloIonicPage);
+	    PHMeter.prototype.advanceScene = function () {
+	        this.currentScene++;
 	    };
-	    Sensors = __decorate([
+	    PHMeter = __decorate([
 	        ionic_1.Page({
-	            templateUrl: 'build/pages/sensors/sensors.html'
+	            templateUrl: 'build/pages/phmeter/phmeter.html',
+	            providers: [story_1.Story]
 	        }), 
-	        __metadata('design:paramtypes', [(typeof (_a = typeof ionic_1.NavController !== 'undefined' && ionic_1.NavController) === 'function' && _a) || Object, (typeof (_b = typeof ionic_1.NavParams !== 'undefined' && ionic_1.NavParams) === 'function' && _b) || Object])
-	    ], Sensors);
-	    return Sensors;
-	    var _a, _b;
+	        __metadata('design:paramtypes', [(typeof (_a = typeof ionic_1.NavController !== 'undefined' && ionic_1.NavController) === 'function' && _a) || Object, (typeof (_b = typeof ionic_1.NavParams !== 'undefined' && ionic_1.NavParams) === 'function' && _b) || Object, (typeof (_c = typeof story_1.Story !== 'undefined' && story_1.Story) === 'function' && _c) || Object])
+	    ], PHMeter);
+	    return PHMeter;
+	    var _a, _b, _c;
 	})();
-	exports.Sensors = Sensors;
+	exports.PHMeter = PHMeter;
+
+
+/***/ },
+/* 383 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var ionic_1 = __webpack_require__(5);
+	var story_1 = __webpack_require__(380);
+	var Video = (function () {
+	    function Video(nav, navParams, story) {
+	        this.nav = nav;
+	        this.story = story;
+	        this.app = story.getApp('video');
+	        this.currentScene = 0;
+	        this.selectedVideo = this.app.videos[0].youtube;
+	    }
+	    Video.prototype.advanceScene = function () {
+	        this.currentScene++;
+	    };
+	    Video.prototype.openVideo = function (v) {
+	        this.selectedVideo = v.youtube;
+	    };
+	    Video = __decorate([
+	        ionic_1.Page({
+	            templateUrl: 'build/pages/video/video.html',
+	            providers: [story_1.Story]
+	        }), 
+	        __metadata('design:paramtypes', [(typeof (_a = typeof ionic_1.NavController !== 'undefined' && ionic_1.NavController) === 'function' && _a) || Object, (typeof (_b = typeof ionic_1.NavParams !== 'undefined' && ionic_1.NavParams) === 'function' && _b) || Object, (typeof (_c = typeof story_1.Story !== 'undefined' && story_1.Story) === 'function' && _c) || Object])
+	    ], Video);
+	    return Video;
+	    var _a, _b, _c;
+	})();
+	exports.Video = Video;
+
+
+/***/ },
+/* 384 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+	    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+	    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+	    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+	    return c > 3 && r && Object.defineProperty(target, key, r), r;
+	};
+	var __metadata = (this && this.__metadata) || function (k, v) {
+	    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+	};
+	var ionic_1 = __webpack_require__(5);
+	var story_1 = __webpack_require__(380);
+	var Wikipedia = (function () {
+	    function Wikipedia(nav, navParams, story) {
+	        this.nav = nav;
+	        this.story = story;
+	        this.app = story.getApp('wikipedia');
+	        this.currentScene = 0;
+	        this.selectedArticle = this.app.articles[0].wikipedia;
+	    }
+	    Wikipedia.prototype.advanceScene = function () {
+	        this.currentScene++;
+	    };
+	    Wikipedia.prototype.openArticle = function (v) {
+	        this.selectedArticle = v.wikipedia;
+	    };
+	    Wikipedia = __decorate([
+	        ionic_1.Page({
+	            templateUrl: 'build/pages/wikipedia/wikipedia.html',
+	            providers: [story_1.Story]
+	        }), 
+	        __metadata('design:paramtypes', [(typeof (_a = typeof ionic_1.NavController !== 'undefined' && ionic_1.NavController) === 'function' && _a) || Object, (typeof (_b = typeof ionic_1.NavParams !== 'undefined' && ionic_1.NavParams) === 'function' && _b) || Object, (typeof (_c = typeof story_1.Story !== 'undefined' && story_1.Story) === 'function' && _c) || Object])
+	    ], Wikipedia);
+	    return Wikipedia;
+	    var _a, _b, _c;
+	})();
+	exports.Wikipedia = Wikipedia;
 
 
 /***/ }

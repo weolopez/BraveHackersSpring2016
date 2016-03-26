@@ -10,8 +10,8 @@ export class Story {
         this.ref = ref;
         this.user = User.getInstance();
 
-        this.currentScene=0;
-        this.currentAct=0;
+        this.currentScene = 0;
+        this.currentAct = 0;
         this.outline = {
             name: "coral",
             acts: [
@@ -30,16 +30,61 @@ export class Story {
                         }
                     ],
                     apps: {
+                        wikipedia: {
+                            articles: [
+                                {
+                                    title: "pH",
+                                    wikipedia: "PH",
+                                    icon: "ios-bookmarks"
+                                },
+                                {
+                                    title: "Litmus test",
+                                    wikipedia: "Litmus#Uses",
+                                    icon: "ios-bookmarks"
+                                }
+                            ]
+                        },
+                        video: {
+                            videos: [
+                                {
+                                    title: "pH and pOH: Crash Course Chemistry #30",
+                                    youtube: "LS67vS10O5Y",
+                                    icon: "logo-youtube"
+                                },
+                                {
+                                    title: "Testing Acids & Bases on Litmus Paper",
+                                    youtube: "6DCBWK_Hg5w",
+                                    icon: "logo-youtube"
+                                }
+                            ]
+                        },
                         phmeter: {
-                            ph: 4,
+                            ph: 7.75,
                             scenes: [
                                 {
-                                    name: "introduction",
+                                    name: "what is pH",
+                                    avatar: "img/pHlitmusPaper.jpg",
                                     text: "A pH Meter is a scientific instrument that measures the hydrogen-ion concentration (or pH) in a solution, indicating its acidity or alkalinity. The pH meter measures the difference in electrical potential between a pH electrode and a reference electrode."
                                 },
                                 {
+                                    name: "what is the pH in the ocian",
+                                    avatar: "img/pHlitmusPaper.jpg",
+                                    text: "The ocian ph is greater than 7.5"
+                                },
+                                {
+                                    name: "what is river pH",
+                                    avatar: "img/pHlitmusPaper.jpg",
+                                    text: "Rivers ph is less than 7"
+                                },
+                                {
                                     name: "next",
-                                    text: "What could cause a low pH."
+                                    text: "Since coral live in the ocian. How can we prevent the coral from dieing?",
+                                    question:
+                                    [
+                                        "Increase the pH",
+                                        "Decrease the pH"
+                                    ],
+                                    answer: "0"
                                 }
                             ]
                         }
@@ -48,12 +93,12 @@ export class Story {
             ]
         }
     }
-    
+
     advanceScene() {
         this.currentScene++;
     }
     getApp(app) {
-        return this.outline.acts[this.currentAct][app];
+        return this.outline.acts[this.currentAct].apps[app];
     }
     getAct() {
         return this.outline.acts[this.currentAct];
@@ -79,7 +124,7 @@ export class Story {
             var childrenKeys = children.key();
             if (childrenKeys !== null) {
                 children.equalTo(name).once('child_added')
-                    .then(function(v) {
+                    .then(function (v) {
                         var foundkey = v.key();
                         var key = v.ref().child(attribute).push(value).key();
                         var auditRecord = {

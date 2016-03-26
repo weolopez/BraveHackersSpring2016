@@ -8849,6 +8849,91 @@ video-text {
   to {
     left: calc(100%); } }
 
+#game {
+  background: yellow;
+  height: 100%; }
+
+#main {
+  background: red;
+  padding: 0;
+  height: 100%; }
+
+#menu {
+  background: blue;
+  right: 0;
+  position: absolute;
+  top: 44px;
+  height: 100%; }
+
+video-window {
+  background: #333;
+  height: 66%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+video-text {
+  background: white;
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+.stage {
+  width: 47%;
+  height: 100px;
+  background: #efefef;
+  margin: 0 1%;
+  border: 1px solid #111;
+  float: left;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden; }
+  .stage div {
+    width: 50px;
+    height: 100px;
+    background: #7a3;
+    position: absolute; }
+    .stage div.obj01 {
+      left: 50%;
+      margin-left: -25px;
+      -webkit-animation: fade-in 5s 2s infinite;
+      animation: fade-in 5s 2s infinite; }
+    .stage div.obj02 {
+      -webkit-animation: walk-in ease-in-out 5s infinite;
+      animation: walk-in ease-in-out 5s infinite; }
+
+@keyframes fade-in {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes walk-in {
+  from {
+    left: -100px; }
+  to {
+    left: calc(100%); } }
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 3 0px;
+  height: 0;
+  overflow: hidden; }
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
 ion-content {
   background: black; }
 

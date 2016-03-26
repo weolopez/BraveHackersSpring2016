@@ -1,5 +1,5 @@
 import {Page, NavController, NavParams} from 'ionic/ionic';
-
+import {PHMeter} from '../phmeter/phmeter'
 
 @Page({
     templateUrl: 'build/pages/sensors/sensors.html'
@@ -9,11 +9,11 @@ export class Sensors {
         this.nav = nav;        
         // set our app's pages
         this.apps = [
-            { icon: 'ios-flask', title: 'pH Meter', component: Sensors },
-            { icon: 'ios-flask', title: 'CO2 Meter', component: Sensors }
+            { icon: 'ios-flask', title: 'pH Meter', component: PHMeter },
+            { icon: 'ios-flask', title: 'CO2 Meter', component: PHMeter }
         ];
     }
-    open(app) {
-        this.nav.setRoot(HelloIonicPage);
+    openPage(app) {
+        this.nav.setRoot(app.component);
     }
 }
