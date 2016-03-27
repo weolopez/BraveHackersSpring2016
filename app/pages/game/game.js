@@ -1,4 +1,4 @@
-import {Page} from 'ionic/ionic';
+import {Page} from 'ionic-angular';
 import {Story} from '../../models/story/story';
 
 
@@ -7,7 +7,7 @@ import {Story} from '../../models/story/story';
     providers: [ Story ]
 })
 export class Game {
-    constructor(story: Story) {
+    constructor(story) {
         this.story=story;
     }
     stringify(o) {
@@ -20,3 +20,4 @@ export class Game {
         return this.story.getScene();
     }
 }
+ 

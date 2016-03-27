@@ -1,4 +1,4 @@
-import {Page, NavController, NavParams} from 'ionic/ionic';
+import {Page, NavController} from 'ionic-angular';
 import {Story} from '../../models/story/story';
 
 
@@ -7,7 +7,10 @@ import {Story} from '../../models/story/story';
     providers: [ Story ]
 })
 export class PHMeter {
-    constructor(nav: NavController, navParams: NavParams, story: Story) {
+  static get parameters() {
+    return [[NavController],[Story]];
+  }
+    constructor(nav, story) {
         this.nav = nav;        
         this.story=story;
         this.app=story.getApp('phmeter');
