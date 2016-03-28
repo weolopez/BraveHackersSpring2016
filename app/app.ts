@@ -1,6 +1,7 @@
 import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {Video} from './pages/video/video';
+import {Start} from './pages/start/start';
 import {Wikipedia} from './pages/wikipedia/wikipedia';
 import {FirebaseUrl, FIREBASE_PROVIDERS, defaultFirebase} from 'angularfire2';
 
@@ -27,7 +28,8 @@ class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Video', component: Video },
-      { title: 'Wikipedia', component: Wikipedia }
+      { title: 'Wikipedia', component: Wikipedia },
+      { title: 'Start', component: Start }
     ];
   }
 
