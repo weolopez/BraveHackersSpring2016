@@ -3,6 +3,7 @@ import {StatusBar} from 'ionic-native';
 import {Video} from './pages/video/video';
 import {Start} from './pages/start/start';
 import {Wikipedia} from './pages/wikipedia/wikipedia';
+import {Map} from './pages/map/map';
 import {FirebaseUrl, FIREBASE_PROVIDERS, defaultFirebase} from 'angularfire2';
 
 @App({
@@ -15,7 +16,7 @@ import {FirebaseUrl, FIREBASE_PROVIDERS, defaultFirebase} from 'angularfire2';
 })
 class MyApp {
   // make HelloIonicPage the root (or first) page
-  rootPage: any = Wikipedia;
+  rootPage: any = Map;
   pages: Array<{title: string, component: any}>;
 
   constructor(
