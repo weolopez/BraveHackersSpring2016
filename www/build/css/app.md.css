@@ -8983,6 +8983,12 @@ video-text {
   background: green;
   color: white; }
 
+ion-navbar#game-nav {
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  top: initial; }
+
 .background {
   fill: none;
   pointer-events: all; }
