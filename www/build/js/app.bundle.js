@@ -378,6 +378,80 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ionic_angular_1 = require('ionic-angular');
 var Notes = (function () {
     function Notes() {
+        this.clues = [
+            {
+                text: "The majority of fish",
+                question: "why",
+                answers: [
+                    {
+                        name: "Answer 1",
+                        text: "fish lack energy"
+                    },
+                    {
+                        name: "Answer 1",
+                        text: "fish lack energy"
+                    },
+                    {
+                        name: "Answer 1",
+                        text: "fish lack energy"
+                    }
+                ]
+            },
+            {
+                text: "The majority of fish",
+                question: "why",
+                answers: [
+                    {
+                        name: "Answer 1",
+                        text: "fish lack energy"
+                    },
+                    {
+                        name: "Answer 1",
+                        text: "fish lack energy"
+                    },
+                    {
+                        name: "Answer 1",
+                        text: "fish lack energy"
+                    }
+                ]
+            },
+            {
+                text: "The majority of fish",
+                question: "why",
+                answers: [
+                    {
+                        name: "Answer 1",
+                        text: "fish lack energy"
+                    },
+                    {
+                        name: "Answer 1",
+                        text: "fish lack energy"
+                    },
+                    {
+                        name: "Answer 1",
+                        text: "fish lack energy"
+                    }
+                ]
+            },
+            {
+                text: "The majority of fish",
+                question: "why",
+                answers: [
+                    {
+                        name: "Answer 1",
+                        text: "fish lack energy"
+                    },
+                    {
+                        name: "Answer 1",
+                        text: "fish lack energy"
+                    },
+                    {
+                        name: "Answer 1",
+                        text: "fish lack energy"
+                    }
+                ]
+            }
+        ];
     }
     Notes = __decorate([
         ionic_angular_1.Page({

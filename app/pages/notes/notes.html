@@ -32,23 +32,31 @@
         </button>
     </ion-buttons>
 
-    <ion-card>
-        <ion-card-header>
-            Clue 1
+    <ion-card *ngFor="#c of clues">
+        <ion-card-header (click)="selected=c">
+            {{c.text}}
         </ion-card-header>
 
-        <ion-card-content>
-            Question 1 Answer 1 Answer 1 Answer 1
-        </ion-card-content>
-    </ion-card>
-    
-    <ion-card>
-        <ion-card-header>
-            Clue 1
-        </ion-card-header>
+        <ion-card-content *ngIf="selected===c">
+            <ion-list radio-group>
+                <ion-list-header>
+                    {{c.question}}
+                </ion-list-header>
 
-        <ion-card-content>
-            Question 2 Answer 1 Answer 1 Answer 1
+                <ion-item *ngFor="#a of c.answers">
+                    <ion-label>{{a.text}}</ion-label>
+                    <ion-radio value="a.name"></ion-radio>
+                </ion-item>
+            </ion-list>
+
+    <ion-buttons id="clue-buttons">
+        <button>
+            Hint
+        </button>
+        <button>
+            Submit
+        </button>
+    </ion-buttons>
         </ion-card-content>
     </ion-card>
 </section>
