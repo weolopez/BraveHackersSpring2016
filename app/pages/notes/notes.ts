@@ -1,85 +1,15 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
+import {Status} from '../../components/status/status';
+import {Analysis} from '../../components/analysis/analysis';
+import {Hypothesis} from '../../components/hypothesis/hypothesis';
 
 @Page({
-    templateUrl: 'build/pages/notes/notes.html'
+    templateUrl: 'build/pages/notes/notes.html',
+    directives: [Status, Analysis, Hypothesis]
 })
 export class Notes {
-    clues: any;
+    tab: any='hypothesis';
     constructor() {
-        this.clues=[
-            {
-                text: "The majority of fish",
-                question: "why",
-                answers: [
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    }
-                ]
-            },
-            {
-                text: "The majority of fish",
-                question: "why",
-                answers: [
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    }
-                ]
-            },
-            {
-                text: "The majority of fish",
-                question: "why",
-                answers: [
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    }
-                ]
-            },
-            {
-                text: "The majority of fish",
-                question: "why",
-                answers: [
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    }
-                ]
-            }
-        ]
     }
 }
  

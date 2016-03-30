@@ -19,44 +19,21 @@
 </ion-navbar>
 
 <section>
-
+    <status></status>
+    
     <ion-buttons id="start">
-        <button>
+        <button (click)="tab='hypothesis'">
             Clues
         </button>
-        <button>
+        <button (click)="tab='analysis'">
             Data Table
         </button>
-        <button>
+        <button (click)="tab='test'">
             Testing
         </button>
     </ion-buttons>
 
-    <ion-card *ngFor="#c of clues">
-        <ion-card-header (click)="selected=c">
-            {{c.text}}
-        </ion-card-header>
-
-        <ion-card-content *ngIf="selected===c">
-            <ion-list radio-group>
-                <ion-list-header>
-                    {{c.question}}
-                </ion-list-header>
-
-                <ion-item *ngFor="#a of c.answers">
-                    <ion-label>{{a.text}}</ion-label>
-                    <ion-radio value="a.name"></ion-radio>
-                </ion-item>
-            </ion-list>
-
-    <ion-buttons id="clue-buttons">
-        <button>
-            Hint
-        </button>
-        <button>
-            Submit
-        </button>
-    </ion-buttons>
-        </ion-card-content>
-    </ion-card>
+    <hypothesis *ngIf="tab==='hypothesis'"></hypothesis>
+    <analysis *ngIf="tab==='analysis'"></analysis>
+    <test *ngIf="tab==='test'"></test>
 </section>

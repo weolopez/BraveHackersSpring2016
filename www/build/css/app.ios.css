@@ -7747,3 +7747,56 @@ ion-navbar#game-nav {
   stroke-linejoin: round;
   stroke-linecap: round;
   pointer-events: none; }
+
+#status-bar {
+  margin: 0 15px 15px 15px;
+  background: darkblue;
+  height: 35px; }
+
+.tg {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-color: #aaa;
+  margin: 0px auto; }
+
+.tg td {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: #aaa;
+  color: #333;
+  background-color: #fff; }
+
+.tg th {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 10px 20px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: #aaa;
+  color: #fff;
+  background-color: #f38630; }
+
+.tg .tg-j2zy {
+  background-color: #FCFBE3;
+  vertical-align: top; }
+
+.tg .tg-yw4l {
+  vertical-align: top; }
+
+@media screen and (max-width: 767px) {
+  .tg {
+    width: auto !important; }
+  .tg col {
+    width: auto !important; }
+  .tg-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: auto 0px; } }

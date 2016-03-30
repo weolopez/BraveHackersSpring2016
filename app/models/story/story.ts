@@ -10,6 +10,81 @@ export class Story {
     currentScene: any = 0;
     currentAct: any = 0;
     outline: any = 0;
+    clues: any =
+ [
+            {
+                text: "The majority of fish",
+                question: "why",
+                answers: [
+                    {
+                        name: "Answer 1",
+                        text: "fish lack energy"
+                    },
+                    {
+                        name: "Answer 2",
+                        text: "fish lack energy"
+                    },
+                    {
+                        name: "Answer 3",
+                        text: "fish lack energy"
+                    }
+                ]
+            },
+            {
+                text: "The majority of fish smell",
+                question: "why",
+                answers: [
+                    {
+                        name: "Answer 1",
+                        text: "fish lack energy"
+                    },
+                    {
+                        name: "Answer 2",
+                        text: "fish lack energy"
+                    },
+                    {
+                        name: "Answer 3",
+                        text: "fish lack energy"
+                    }
+                ]
+            },
+            {
+                text: "The majority of fish",
+                question: "why",
+                answers: [
+                    {
+                        name: "Answer 1",
+                        text: "fish lack energy"
+                    },
+                    {
+                        name: "Answer 2",
+                        text: "fish lack energy"
+                    },
+                    {
+                        name: "Answer 3",
+                        text: "fish lack energy"
+                    }
+                ]
+            },
+            {
+                text: "The majority of fish",
+                question: "why",
+                answers: [
+                    {
+                        name: "Answer 1",
+                        text: "fish lack energy"
+                    },
+                    {
+                        name: "Answer 2",
+                        text: "fish lack energy"
+                    },
+                    {
+                        name: "Answer 3",
+                        text: "fish lack energy"
+                    }
+                ]
+            }
+        ];
     constructor(
       //  private af: AngularFire, 
        // private ref: FirebaseRef
@@ -113,6 +188,9 @@ export class Story {
     }
     getScene() {
         return this.outline.acts[this.currentAct].scenes[this.currentScene];
+    }
+    getClues() {
+        return this.clues;
     }
     /*
     get(list, name, attribute) {
