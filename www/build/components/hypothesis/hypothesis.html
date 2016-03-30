@@ -1,0 +1,27 @@
+<ion-card *ngFor="#c of story.getClues()">
+    <ion-card-header (click)="selected=c">
+        {{c.text}} {{c.selectedClue}} {{c.selectedAnswer}}
+    </ion-card-header>
+
+    <ion-card-content *ngIf="selected===c">
+            <ion-list radio-group [(ngModel)]="c.selectedClue">
+                <ion-list-header>
+                    {{c.question}}
+                </ion-list-header>
+
+                <ion-item *ngFor="#a of c.answers">
+                    <ion-label>{{a.text}}</ion-label>
+                    <ion-radio (click)="c.selectedAnswer=a.name" [value]="a.name"></ion-radio>
+                </ion-item>
+            </ion-list>
+
+            <ion-buttons id="clue-buttons">
+                <button>
+                    Hint
+                </button>
+                <button>
+                    Submit
+                </button>
+            </ion-buttons>
+    </ion-card-content>
+</ion-card>
