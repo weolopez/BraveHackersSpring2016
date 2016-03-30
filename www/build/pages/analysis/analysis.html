@@ -1,0 +1,64 @@
+<ion-navbar id="game-nav" *navbar>
+    <ion-buttons>
+        <button>
+            Message
+        </button>
+        <button>
+            Backpack
+        </button>
+        <button>
+            Notes
+        </button>
+        <button>
+            Help
+        </button>
+        <button menuToggle style="float: right">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+</ion-navbar>
+
+<section>
+    <status></status>
+    
+    
+    <ion-buttons id="start">
+        <button>
+            Clues
+        </button>
+        <button>
+            Data Table
+        </button>
+        <button>
+            Testing
+        </button>
+    </ion-buttons>
+
+    <ion-card *ngFor="#c of clues">
+        <ion-card-header (click)="selected=c">
+            {{c.text}}
+        </ion-card-header>
+
+        <ion-card-content *ngIf="selected===c">
+            <ion-list radio-group>
+                <ion-list-header>
+                    {{c.question}}
+                </ion-list-header>
+
+                <ion-item *ngFor="#a of c.answers">
+                    <ion-label>{{a.text}}</ion-label>
+                    <ion-radio value="a.name"></ion-radio>
+                </ion-item>
+            </ion-list>
+
+    <ion-buttons id="clue-buttons">
+        <button>
+            Hint
+        </button>
+        <button>
+            Submit
+        </button>
+    </ion-buttons>
+        </ion-card-content>
+    </ion-card>
+</section>
