@@ -3,8 +3,8 @@ import {StatusBar} from 'ionic-native';
 import {Video} from './pages/video/video';
 import {Start} from './pages/start/start';
 import {Notes} from './pages/notes/notes';
+import {Secretmissions} from './pages/secretmissions/secretmissions';
 import {Wikipedia} from './pages/wikipedia/wikipedia';
-import {Map} from './pages/map/map';
 //import {FirebaseUrl, FIREBASE_PROVIDERS, defaultFirebase} from 'angularfire2';
 
 @App({
@@ -31,7 +31,7 @@ class MyApp {
     this.pages = [
       { title: 'Video', component: Video },
       { title: 'Wikipedia', component: Wikipedia },
-      { title: 'Map', component: Map },
+      { title: 'Secretmissions', component: Secretmissions },
       { title: 'Start', component: Start },
       { title: 'Notes', component: Notes }
     ];

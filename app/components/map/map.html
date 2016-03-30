@@ -1,0 +1,8 @@
+    <h1>Map of Secret Missions</h1>
+    <svg></svg>
+    <ion-list *ngFor="#c of beacons.getMissions()">
+    <ion-item>
+        <h2>{{c.name}}- {{c.location}}</h2>
+    <p>{{c.description}}</p>
+    </ion-item>
+    </ion-list>

@@ -1,25 +1,37 @@
-import {Page, NavController, NavParams} from 'ionic-angular';
-import {Story} from '../../models/story/story';
+import {Component, View, Inject} from 'angular2/core';
+import {IONIC_DIRECTIVES} from 'ionic-angular';
+import {Beacons} from '../../models/beacons/beacons';
+import {
+  Control,
+  ControlGroup,
+  NgForm,
+  Validators,
+  NgControl,
+  ControlValueAccessor,
+  NgControlName,
+  NgFormModel,
+  FormBuilder
+} from 'angular2/common';
+//import {User} from '../../models/user/user';
 
-@Page({
-    templateUrl: 'build/pages/map/map.html',
-    providers: [ Story ]
+@Component({
+    selector: 'map',
+    providers: [Beacons]
+})
+@View({
+    templateUrl: 'build/components/map/map.html',
+    directives: [IONIC_DIRECTIVES]
 })
 export class Map {
-     app: any;
-     currentScene: any = 0;
-     constructor(
-        private nav: NavController, 
-        private navParams: NavParams, 
-        private story: Story
-        ) {
-        this.app=story.getApp('map');
-        this.currentScene=0;
+    beacons: Beacons;
+
+    langs;
+    constructor( @Inject(Beacons) beacons: Beacons) {
+        this.beacons = beacons;
         this.displayMap();
     }
-    displayMap() {
-      
-                   
+     displayMap() {
+       
         queue().defer(d3.json, "appdata/us-states.json")
                .defer(d3.csv, "appdata/att_poi.csv")
                .await(ready);
@@ -27,8 +39,8 @@ export class Map {
         function ready(error, us, pois) {
            if (error) throw error;
            
-           var width = window.innerWidth;
-           var height = window.innerHeight;
+           var width = Math.floor(window.innerWidth);
+           var height = Math.floor(window.innerHeight * .5);
            var centered;
            var projection = d3.geo.albersUsa()
                            .scale(width)
@@ -157,4 +169,6 @@ export class Map {
         } // end ready                
                       
     }
-}
+} 
+
+
