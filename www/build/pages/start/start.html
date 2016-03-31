@@ -64,40 +64,36 @@
         </ion-item>
     </ion-card>
 
-    <ion-card  *ngIf="tab==='inprogress'">
+    <ion-card *ngIf="tab==='inprogress'">
         <ion-card-header>
-            Leader Board
+            Missions in progress
         </ion-card-header>
         <ion-card-content>
             <ion-list>
-                <ion-item (click)="openPage()">
-                    <ion-thumbnail item-left>
-                        <img src="img/appicon.png">
-                    </ion-thumbnail>
-                    <h2>A fishy situation.</h2>
-                    <p>AT&T • 2016</p>
-                    <button clear item-right>View</button>
-                </ion-item>
-                <ion-item>
-                    <ion-thumbnail item-left>
-                        <img src="img/appicon.png">
-                    </ion-thumbnail>
-                    <h2>A fishy situation.</h2>
-                    <p>AT&T • 2016</p>
-                    <button clear item-right>View</button>
-                </ion-item>
-                <ion-item>
-                    <ion-thumbnail item-left>
-                        <img src="img/appicon.png">
-                    </ion-thumbnail>
-                    <h2>A fishy situation.</h2>
-                    <p>AT&T • 2016</p>
-                    <button clear item-right>View</button>
-                </ion-item>
+                <ion-card *ngFor="#m of story.getStories().missions">
+                    <ion-card-header (click)="selected=m;story.getStoryFile(m)">
+                        <ion-item>
+                            <ion-thumbnail item-left>
+                                <img src="img/appicon.png">
+                            </ion-thumbnail>
+                            <h2>{{m.name}}</h2>
+                            <p>{{m.info}}</p>
+                            <button clear item-right>View</button>
+                        </ion-item>
+                    </ion-card-header>
+                    <ion-card-content *ngIf="selected===m">
+                        <ion-buttons>
+                            <button (click)=openPage(story.story)>
+                                <ion-icon></ion-icon>Play {{story.getStory().name}}
+                            </button>
+                        </ion-buttons>
+                    </ion-card-content>
+                </ion-card>
+
             </ion-list>
         </ion-card-content>
     </ion-card>
-    <ion-card  *ngIf="tab===''">
+    <ion-card *ngIf="tab===''">
         <ion-card-header>
             Leader Board
         </ion-card-header>

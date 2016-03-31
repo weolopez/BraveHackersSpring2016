@@ -7,8 +7,15 @@ import {Story} from '../../models/story/story';
     providers: [ Story ]
 })
 export class Game {
-    constructor(story) {
+    story: any;
+    dialog: any;
+    dialogIndex: any=0;
+    background: any;
+    constructor(story: Story) {
         this.story=story;
+        this.dialog = this.story.getNextApp().dialog;
+        this.background = this.story.getNextApp().background;
+        
     }
     stringify(o) {
         return JSON.stringify(o);
