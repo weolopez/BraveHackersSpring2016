@@ -1,3 +1,4 @@
+import 'es6-shim';
 import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {Video} from './pages/video/video';
@@ -19,7 +20,7 @@ import {Wikipedia} from './pages/wikipedia/wikipedia';
 })
 class MyApp {
   // make HelloIonicPage the root (or first) page 
-  rootPage: any = Start;
+  rootPage: any = Secretmissions;
   pages: Array<{title: string, component: any}>;
 
   constructor(
