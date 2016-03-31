@@ -686,21 +686,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var ionic_angular_1 = require('ionic-angular');
 var status_1 = require('../../components/status/status');
+var backpack_1 = require('../../pages/backpack/backpack');
 var Start = (function () {
-    function Start() {
+    function Start(nav) {
         this.tab = '';
+        this.nav = nav;
     }
+    Start.prototype.openPage = function () {
+        this.nav.setRoot(backpack_1.Backpack);
+    };
     Start = __decorate([
         ionic_angular_1.Page({
             templateUrl: 'build/pages/start/start.html',
             directives: [status_1.Status]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [ionic_angular_1.NavController])
     ], Start);
     return Start;
 }());
 exports.Start = Start;
-},{"../../components/status/status":5,"ionic-angular":332}],12:[function(require,module,exports){
+},{"../../components/status/status":5,"../../pages/backpack/backpack":7,"ionic-angular":332}],12:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;

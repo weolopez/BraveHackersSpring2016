@@ -33,12 +33,12 @@
                 Whoa. This is heavy.</p>
         </ion-card-content>
 
-        <ion-item *ngIf="tab==='' || tab === undefined">
+        <ion-item *ngIf="tab===''">
             <button primary clear item-left>
                 <ion-icon name="trophy"></ion-icon>
                 <div>Trophies</div>
             </button>
-            <button primary clear item-left (click)="tab='missions'">
+            <button primary clear item-left (click)="tab='inprogress'">
                 <ion-icon name="ios-map"></ion-icon>
                 <div>Missions</div>
             </button>
@@ -48,7 +48,7 @@
             </button>
         </ion-item>
 
-        <ion-item *ngIf="tab==='missions'">
+        <ion-item *ngIf="tab!==''">
             <button primary clear item-left>
                 <ion-icon name="trophy"></ion-icon>
                 <div>Inprogress</div>
@@ -64,7 +64,40 @@
         </ion-item>
     </ion-card>
 
-    <ion-card>
+    <ion-card  *ngIf="tab==='inprogress'">
+        <ion-card-header>
+            Leader Board
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-item (click)="openPage()">
+                    <ion-thumbnail item-left>
+                        <img src="img/appicon.png">
+                    </ion-thumbnail>
+                    <h2>A fishy situation.</h2>
+                    <p>AT&T • 2016</p>
+                    <button clear item-right>View</button>
+                </ion-item>
+                <ion-item>
+                    <ion-thumbnail item-left>
+                        <img src="img/appicon.png">
+                    </ion-thumbnail>
+                    <h2>A fishy situation.</h2>
+                    <p>AT&T • 2016</p>
+                    <button clear item-right>View</button>
+                </ion-item>
+                <ion-item>
+                    <ion-thumbnail item-left>
+                        <img src="img/appicon.png">
+                    </ion-thumbnail>
+                    <h2>A fishy situation.</h2>
+                    <p>AT&T • 2016</p>
+                    <button clear item-right>View</button>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <ion-card  *ngIf="tab===''">
         <ion-card-header>
             Leader Board
         </ion-card-header>

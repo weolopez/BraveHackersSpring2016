@@ -1,5 +1,7 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
 import {Status} from '../../components/status/status';
+import {Backpack} from '../../pages/backpack/backpack';
+import {Inject} from 'angular2/core';
 
 @Page({
     templateUrl: 'build/pages/start/start.html',
@@ -7,8 +9,13 @@ import {Status} from '../../components/status/status';
 })
 export class Start {
     tab: any = '';
-    constructor(
-        ) {
+    nav: any;
+    constructor(nav: NavController) {
+        this.nav = nav;
+    }
+    
+    openPage() {
+        this.nav.setRoot(Backpack);
     }
 }
  
