@@ -135,10 +135,10 @@ export class Story {
         this.currentScene++;
     }
     getApp(app) {
-        return this.outline.acts[this.currentAct].apps[app];
+        return undefined;
     }
     getAct() {
-        return this.outline.acts[this.currentAct];
+        return undefined;
     }
     getScene() {
         return this.story

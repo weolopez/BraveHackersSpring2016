@@ -11,7 +11,7 @@
     </ion-buttons>
 </ion-navbar-->
 
-<section id="start">
+<ion-content id="start">
     <header>
         <h1 id="game-title">The Elite Detective Squad</h1>
     </header>
@@ -49,11 +49,11 @@
         </ion-item>
 
         <ion-item *ngIf="tab!==''">
-            <button primary clear item-left>
+            <button primary clear item-left (click)="tab='inprogress'">
                 <ion-icon name="trophy"></ion-icon>
                 <div>Inprogress</div>
             </button>
-            <button primary clear item-left>
+            <button primary clear item-left (click)="tab='find'">
                 <ion-icon name="ios-map"></ion-icon>
                 <div>Find</div>
             </button>
@@ -63,7 +63,7 @@
             </button>
         </ion-item>
     </ion-card>
-
+    <map *ngIf="tab==='find'"></map>
     <ion-card *ngIf="tab==='inprogress'">
         <ion-card-header>
             Missions in progress
@@ -129,4 +129,4 @@
             </div>
         </ion-card-content>
     </ion-card>
-</section>
+</ion-content>

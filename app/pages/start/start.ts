@@ -4,10 +4,11 @@ import {Backpack} from '../../pages/backpack/backpack';
 import {Game} from '../../pages/game/game';
 import {Inject} from 'angular2/core';
 import {Story} from '../../models/story/story';
+import {Map} from '../../components/map/map';
 
 @Page({
     templateUrl: 'build/pages/start/start.html',
-    directives: [ Status ],
+    directives: [ Status, Map ],
     providers: [ Story ]
 })
 export class Start {
