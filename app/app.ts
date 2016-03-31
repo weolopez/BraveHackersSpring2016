@@ -2,8 +2,10 @@ import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {Video} from './pages/video/video';
 import {Start} from './pages/start/start';
+import {Messages} from './pages/messages/messages';
 import {Notes} from './pages/notes/notes';
 import {Secretmissions} from './pages/secretmissions/secretmissions';
+import {Backpack} from './pages/backpack/backpack';
 import {Wikipedia} from './pages/wikipedia/wikipedia';
 //import {FirebaseUrl, FIREBASE_PROVIDERS, defaultFirebase} from 'angularfire2';
 
@@ -16,8 +18,8 @@ import {Wikipedia} from './pages/wikipedia/wikipedia';
   //  ]
 })
 class MyApp {
-  // make HelloIonicPage the root (or first) page
-  rootPage: any = Notes;
+  // make HelloIonicPage the root (or first) page 
+  rootPage: any = Start;
   pages: Array<{title: string, component: any}>;
 
   constructor(
@@ -33,8 +35,10 @@ class MyApp {
       { title: 'Wikipedia', component: Wikipedia },
       { title: 'Secretmissions', component: Secretmissions },
       { title: 'Start', component: Start },
-      { title: 'Notes', component: Notes }
-    ];
+      { title: 'Notes', component: Notes },
+      { title: 'Messages', component: Messages },
+      { title: 'Backpack', component: Backpack }
+    ]
   }
 
   initializeApp() {

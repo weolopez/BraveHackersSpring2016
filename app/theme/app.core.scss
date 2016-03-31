@@ -7,6 +7,8 @@
 // By default each design mode includes these shared imports.
 // App Shared Sass variables belong in app.variables.scss.
 
+@import url(https://fonts.googleapis.com/css?family=Handlee);
+
 @import "../pages/sensors/sensors";
 @import "../pages/video/video";
 @import "../pages/wikipedia/wikipedia";
@@ -16,3 +18,6 @@
 @import "../components/status/status";
 @import "../components/analysis/analysis";
 @import "../components/map/map";
+@import "../pages/backpack/backpack";
+@import "../pages/messages/messages";
+

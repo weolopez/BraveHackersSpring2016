@@ -21,23 +21,17 @@
 <section>
     <status></status>
     
-    <ion-buttons id="start">
-        <button (click)="tab='hypothesis'">
-            Clues
-        </button>
-        <button (click)="tab='analysis'">
-            Data Table
-        </button>
-        <button (click)="tab='test'">
-            Testing
-        </button>
-    </ion-buttons>
+<div class="chat">
+<div class="bubble me">Hello there!</div>
+<div class="bubble you">Hi. I'm an expandeable chat box with box shadow. How are you? I expand horizontally and vertically, as you can see here.</div>
+<div class="bubble me">Awesome.</div>
+</div>
 
-    <hypothesis *ngIf="tab==='hypothesis'"></hypothesis>
-    <analysis *ngIf="tab==='analysis'"></analysis>
-    <test *ngIf="tab==='test'"></test>
-    
-<ion-buttons id="tool-bar">
+            
+
+
+
+    <ion-buttons id="tool-bar">
     <bar>
         <button (click)="openMessages()">
             M
