@@ -1,0 +1,31 @@
+<ion-navbar *navbar>
+
+    <ion-title>
+        {{story.outline.name}} : {{getAct.name}} :{{getScene().name}}
+    </ion-title>
+
+    <ion-buttons end>
+        <button menuToggle style="float: right">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+</ion-navbar>
+<section id="game">
+    <ion-col id="main">
+        <video-window>
+            <!--div id="stage01" class="stage">
+                <div class="obj01"></div>
+            </div>
+            <div id="stage01" class="stage">
+                <div class="obj02"></div>
+            </div-->
+            <img src="{{story.getScene().avatar}}">
+        </video-window>
+        <video-text>
+            {{story.getScene().text}}
+        </video-text>
+        <toolbar>
+            <button (click)="story.advanceScene()">Next</button>
+        </toolbar>
+    </ion-col>
+</section>
