@@ -1,15 +1,17 @@
-#status-bar {
-    margin: 0 15px 0 0;
+#tool-bar {
+    position: absolute;
+    bottom: 0;
+    margin: 15px 0 0 0;
     background: darkblue;
     height: 55px;
     width: 100%;
     padding: 10px;
 }
 
-#status-bar > bar > button {
+bar > button {
     background-color: tomato;
     padding: 5px;
-    width: 150px;
+    width: 50px;
     height: 50px;
     margin: 10px;
     line-height: 20px;

@@ -1,9 +1,9 @@
-<!--ion-navbar id="game-nav" *navbar>
+<ion-navbar id="game-nav" *navbar>
     <ion-buttons>
         <button>
             Message
         </button>
-        <button (click)="openBackpack()">
+        <button>
             Backpack
         </button>
         <button>
@@ -16,7 +16,7 @@
             <ion-icon name="menu"></ion-icon>
         </button>
     </ion-buttons>
-</ion-navbar-->
+</ion-navbar>
 
 <section>
     <status></status>
@@ -36,6 +36,4 @@
     <hypothesis *ngIf="tab==='hypothesis'"></hypothesis>
     <analysis *ngIf="tab==='analysis'"></analysis>
     <test *ngIf="tab==='test'"></test>
-    
-    <toolbar></toolbar>
 </section>

@@ -1,18 +1,16 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
-import {Inject} from 'angular2/core';
-import {Analysis} from '../../components/analysis/analysis';
-import {Hypothesis} from '../../components/hypothesis/hypothesis';
+import {Inject, Injectable} from 'angular2/core';
+import {Backpack} from '../../pages/backpack/backpack';
+import {Notes} from '../../pages/notes/notes';
+
 import {Status} from '../../components/status/status';
 
-import {Messages} from '../../pages/messages/messages';
-import {Backpack} from '../../pages/backpack/backpack';
-
-
 @Page({
-    templateUrl: 'build/pages/notes/notes.html',
-    directives: [Status, Analysis, Hypothesis]
+    templateUrl: 'build/pages/messages/messages.html',
+    directives: [Status]
 })
-export class Notes {
+
+export class Messages {
     tab: any = 'hypothesis';
     nav: any;
     constructor( @Inject(NavController) nav: NavController) {
@@ -32,4 +30,3 @@ export class Notes {
        this.nav.setRoot(Messages);
     }
 }
-

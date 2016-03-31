@@ -1,20 +1,15 @@
+import {Component, View, Inject} from 'angular2/core';
 import {Page, NavController, NavParams} from 'ionic-angular';
-import {Inject} from 'angular2/core';
-import {Analysis} from '../../components/analysis/analysis';
-import {Hypothesis} from '../../components/hypothesis/hypothesis';
-import {Status} from '../../components/status/status';
-
 import {Messages} from '../../pages/messages/messages';
 import {Backpack} from '../../pages/backpack/backpack';
+import {Notes} from '../../pages/notes/notes';
+//import {User} from '../../models/user/user';
 
-
-@Page({
-    templateUrl: 'build/pages/notes/notes.html',
-    directives: [Status, Analysis, Hypothesis]
-})
-export class Notes {
-    tab: any = 'hypothesis';
+@Component({ selector: 'toolbar' })
+@View({ templateUrl: 'build/components/toolbar/toolbar.html' })
+export class Toolbar {
     nav: any;
+    messages: Messages;
     constructor( @Inject(NavController) nav: NavController) {
         this.nav = nav;
     }
@@ -29,7 +24,6 @@ export class Notes {
         this.nav.setRoot(Backpack);
     }
     openMessages() {
-       this.nav.setRoot(Messages);
+       this.nav.setRoot(this.messages);
     }
 }
-

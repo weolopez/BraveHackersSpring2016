@@ -1,9 +1,9 @@
 <ion-navbar id="game-nav" *navbar>
-    <ion-buttons>
+    <!--ion-buttons>
         <button>
             Message
         </button>
-        <button>
+        <button (click)="openBackpack()">
             Backpack
         </button>
         <button>
@@ -15,7 +15,7 @@
         <button menuToggle style="float: right">
             <ion-icon name="menu"></ion-icon>
         </button>
-    </ion-buttons>
+    </ion-buttons-->
 </ion-navbar>
 
 <section>
@@ -36,4 +36,21 @@
     <hypothesis *ngIf="tab==='hypothesis'"></hypothesis>
     <analysis *ngIf="tab==='analysis'"></analysis>
     <test *ngIf="tab==='test'"></test>
+    
+<ion-buttons id="tool-bar">
+    <bar>
+        <button (click)="openMessages()">
+            M
+        </button>
+        <button (click)="openBackpack()">
+            B
+        </button>
+        <button (click)="openNotes()">
+            N
+        </button>
+        <button (click)="openHelp()">
+            H
+        </button>
+    </bar>
+</ion-buttons>
 </section>
