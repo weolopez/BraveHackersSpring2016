@@ -1,5 +1,6 @@
 /*! Ionic: iOS */
 /*! normalize.css v3.0.2 | MIT License | github.com/necolas/normalize.css */
+@import url(https://fonts.googleapis.com/css?family=Handlee);
 audio,
 canvas,
 progress,
@@ -7749,40 +7750,22 @@ ion-navbar#game-nav {
   pointer-events: none; }
 
 #status-bar {
-  margin: 0 15px 0 0;
-  background: darkblue;
-  height: 55px;
-  width: 100%;
-  padding: 10px; }
-
-#status-bar > bar > button {
-  background-color: tomato;
-  padding: 5px;
-  width: 150px;
+  margin: 0 auto;
+  background: #903f98;
   height: 50px;
-  margin: 10px;
-  line-height: 20px;
-  color: white;
-  font-weight: bold;
-  font-size: 2em;
-  text-align: center; }
-
-bar {
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center; }
+  width: 95%;
+  padding-top: 10px;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2); }
+  #status-bar section {
+    float: left;
+    width: 50%;
+    height: 80%;
+    padding: 0 10px;
+    color: rgba(255, 255, 255, 0.8);
+    border-right: 1px solid rgba(255, 255, 255, 0.25); }
+    #status-bar section:last-child {
+      border: 0; }
 
 .tg {
   border-collapse: collapse;
@@ -7833,41 +7816,30 @@ bar {
     margin: auto 0px; } }
 
 #backpack {
-  background: green;
+  background: url(../../img/tile.png) repeat;
   height: 100%; }
-
-#backpack > ion-row {
-  padding: 0;
-  margin: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center; }
-
-#backpack > ion-row > ion-col > ion-icon {
-  background-color: tomato;
-  padding: 5px;
-  width: 100px;
-  height: 100px;
-  margin: 10px;
-  line-height: 20px;
-  color: white;
-  font-weight: bold;
-  font-size: 2em;
-  text-align: center; }
+  #backpack ion-row {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center; }
+    #backpack ion-row ion-col > ion-icon {
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      background: #fff5b3;
+      padding: 5px;
+      width: 100px;
+      height: 100px;
+      margin: 5px;
+      text-align: center; }
 
 #tool-bar {
   position: absolute;
   bottom: 0;
   width: 100%;
+  height: 100px;
+  font-family: 'Handlee', cursive;
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;

@@ -1,33 +1,22 @@
 #status-bar {
-    margin: 0 15px 0 0;
-    background: darkblue;
-    height: 55px;
-    width: 100%;
-    padding: 10px;
-}
+  margin: 0 auto;
+  background: #903f98;
+  height: 50px;
+  width: 95%;
+  padding-top: 10px;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 
-#status-bar > bar > button {
-    background-color: tomato;
-    padding: 5px;
-    width: 150px;
-    height: 50px;
-    margin: 10px;
-    line-height: 20px;
-    color: white;
-    font-weight: bold;
-    font-size: 2em;
-    text-align: center;
-}
+  section {
+    float: left;
+    width: 50%;
+    height: 80%;
+    padding: 0 10px;
+    color: rgba(255, 255, 255, 0.8);
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
 
-bar {
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    &:last-child {
+      border: 0;
+    }
+  }
 }
