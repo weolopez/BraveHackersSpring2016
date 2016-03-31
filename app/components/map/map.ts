@@ -31,6 +31,7 @@ export class Map {
         this.displayMap();
     }
      displayMap() {
+          
        
         queue().defer(d3.json, "appdata/us-states.json")
                .defer(d3.csv, "appdata/att_poi.csv")

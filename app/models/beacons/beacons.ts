@@ -55,10 +55,10 @@ export class Beacons {
       //       }
       //    });
           return  {
-                name: "Secret Mission 2",
-                location: "Fernbank Science Center",
-                description: "The Cute Littler T-REX",
-                beacon: "ice"
+                name: "Secret Mission-  We need your feeding the Sea Lions!",
+                location: "Georgia Aquarium",
+                description: "What do Sea Lions like to eat?",
+                beacon: "mint"
             }
        }
        
