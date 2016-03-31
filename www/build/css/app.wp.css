@@ -8959,25 +8959,6 @@ ion-avatar img {
       margin: 5px;
       text-align: center; }
 
-#tool-bar {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 100px;
-  font-family: 'Handlee', cursive;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center; }
-
 .chat {
   width: 400px; }
 
@@ -9019,3 +9000,36 @@ ion-avatar img {
 .you::before {
   box-shadow: 2px -2px 2px 0 rgba(178, 178, 178, 0.4);
   right: -9px; }
+
+#tool-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 110px;
+  font-family: 'Handlee', cursive;
+  display: block;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+  #tool-bar bar {
+    display: block; }
+  #tool-bar button {
+    padding-top: 80px;
+    height: 100px;
+    width: 23%;
+    background: url(../../img/footerSprite.png) no-repeat;
+    color: #333; }
+    #tool-bar button.messages {
+      background-position: center 10px; }
+    #tool-bar button.backpack {
+      background-position: center -100px; }
+    #tool-bar button.notes {
+      background-position: center -215px; }
+    #tool-bar button.help {
+      background-position: center -330px; }
