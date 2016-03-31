@@ -25,7 +25,7 @@ var MyApp = (function () {
         this.platform = platform;
         this.menu = menu;
         // make HelloIonicPage the root (or first) page 
-        this.rootPage = backpack_1.Backpack;
+        this.rootPage = start_1.Start;
         this.initializeApp();
         // set our app's pages
         this.pages = [
@@ -685,19 +685,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var ionic_angular_1 = require('ionic-angular');
+var status_1 = require('../../components/status/status');
 var Start = (function () {
     function Start() {
+        this.tab = '';
     }
     Start = __decorate([
         ionic_angular_1.Page({
-            templateUrl: 'build/pages/start/start.html'
+            templateUrl: 'build/pages/start/start.html',
+            directives: [status_1.Status]
         }), 
         __metadata('design:paramtypes', [])
     ], Start);
     return Start;
 }());
 exports.Start = Start;
-},{"ionic-angular":332}],12:[function(require,module,exports){
+},{"../../components/status/status":5,"ionic-angular":332}],12:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;

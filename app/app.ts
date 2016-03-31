@@ -19,7 +19,7 @@ import {Map} from './pages/map/map';
 })
 class MyApp {
   // make HelloIonicPage the root (or first) page 
-  rootPage: any = Backpack;
+  rootPage: any = Start;
   pages: Array<{title: string, component: any}>;
 
   constructor(
