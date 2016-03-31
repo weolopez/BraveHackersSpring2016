@@ -1,4 +1,6 @@
 import {Injectable, Inject} from 'angular2/core';
+import {Http, Response} from 'angular2/http';
+import {Observable}     from 'rxjs/Observable';
 //import {Observable} from 'rxjs/Observable';
 //import {Firebase, FirebaseRef, AngularFire} from 'angularfire2';
 //import {User} from '../user/user';
@@ -6,188 +8,140 @@ import {Injectable, Inject} from 'angular2/core';
 //var instance;
 @Injectable()
 export class Story {
-    
+
     currentScene: any = 0;
     currentAct: any = 0;
-    outline: any = 0;
     clues: any =
- [
-            {
-                text: "The majority of fish",
-                question: "why",
-                answers: [
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 2",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 3",
-                        text: "fish lack energy"
-                    }
-                ]
-            },
-            {
-                text: "The majority of fish smell",
-                question: "why",
-                answers: [
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 2",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 3",
-                        text: "fish lack energy"
-                    }
-                ]
-            },
-            {
-                text: "The majority of fish",
-                question: "why",
-                answers: [
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 2",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 3",
-                        text: "fish lack energy"
-                    }
-                ]
-            },
-            {
-                text: "The majority of fish",
-                question: "why",
-                answers: [
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 2",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 3",
-                        text: "fish lack energy"
-                    }
-                ]
-            }
-        ];
-    constructor(
-      //  private af: AngularFire, 
-       // private ref: FirebaseRef
-        ) {
-     //   this.ref = ref;
-       // this.user = User.getInstance();
-
-        this.currentScene=0;
-        this.currentAct=0;
-        this.outline = {
-            name: "coral",
-            acts: [
+    [
+        {
+            text: "The majority of fish",
+            question: "why",
+            answers: [
                 {
-                    name: "introduction",
-                    scenes: [
-                        {
-                            name: "welcome",
-                            avatar: "img/female.jpg",
-                            text: "Welcome Maggie!  We have been trying to find you! We know about your super skills and tech that you have developed!  We want to enlist you into our Elite Detective squad."
-                        },
-                        {
-                            name: "next",
-                            avatar: "img/female.jpg",
-                            text: "We are a mystery solving unit and desperately need your help! Please meet us at the Dolphin Exibit so we can get our first case underway."
-                        }
-                    ],
-                    apps: {
-                        wikipedia: {
-                            articles: [
-                                {
-                                    title: "pH",
-                                    wikipedia: "PH",
-                                    icon: "ios-bookmarks"
-                                },
-                                {
-                                    title: "Litmus test",
-                                    wikipedia: "Litmus#Uses",
-                                    icon: "ios-bookmarks"
-                                }
-                            ]
-                        },
-                        video: {
-                            videos: [
-                                {
-                                    title: "pH and pOH: Crash Course Chemistry #30",
-                                    youtube: "LS67vS10O5Y",
-                                    icon: "logo-youtube"
-                                },
-                                {
-                                    title: "Testing Acids & Bases on Litmus Paper",
-                                    youtube: "6DCBWK_Hg5w",
-                                    icon: "logo-youtube"
-                                }
-                            ]
-                        },
-                        phmeter: {
-                            ph: 7.75,
-                            scenes: [
-                                {
-                                    name: "what is pH",
-                                    avatar: "img/pHlitmusPaper.jpg",
-                                    text: "A pH Meter is a scientific instrument that measures the hydrogen-ion concentration (or pH) in a solution, indicating its acidity or alkalinity. The pH meter measures the difference in electrical potential between a pH electrode and a reference electrode."
-                                },
-                                {
-                                    name: "what is the pH in the ocian",
-                                    avatar: "img/pHlitmusPaper.jpg",
-                                    text: "The ocian ph is greater than 7.5"
-                                },
-                                {
-                                    name: "what is river pH",
-                                    avatar: "img/pHlitmusPaper.jpg",
-                                    text: "Rivers ph is less than 7"
-                                },
-                                {
-                                    name: "next",
-                                    text: "Since coral live in the ocian. How can we prevent the coral from dieing?",
-                                    question:
-                                    [
-                                        "Increase the pH",
-                                        "Decrease the pH"
-                                    ],
-                                    answer: "0"
-                                }
-                            ]
-                        }
-                    }
+                    name: "Answer 1",
+                    text: "fish lack energy"
+                },
+                {
+                    name: "Answer 2",
+                    text: "fish lack energy"
+                },
+                {
+                    name: "Answer 3",
+                    text: "fish lack energy"
+                }
+            ]
+        },
+        {
+            text: "The majority of fish smell",
+            question: "why",
+            answers: [
+                {
+                    name: "Answer 1",
+                    text: "fish lack energy"
+                },
+                {
+                    name: "Answer 2",
+                    text: "fish lack energy"
+                },
+                {
+                    name: "Answer 3",
+                    text: "fish lack energy"
+                }
+            ]
+        },
+        {
+            text: "The majority of fish",
+            question: "why",
+            answers: [
+                {
+                    name: "Answer 1",
+                    text: "fish lack energy"
+                },
+                {
+                    name: "Answer 2",
+                    text: "fish lack energy"
+                },
+                {
+                    name: "Answer 3",
+                    text: "fish lack energy"
+                }
+            ]
+        },
+        {
+            text: "The majority of fish",
+            question: "why",
+            answers: [
+                {
+                    name: "Answer 1",
+                    text: "fish lack energy"
+                },
+                {
+                    name: "Answer 2",
+                    text: "fish lack energy"
+                },
+                {
+                    name: "Answer 3",
+                    text: "fish lack energy"
                 }
             ]
         }
+    ];
+    story: any = {};
+    stories: any = {};
+    currentStory: any;
+    constructor(private http: Http) {
+        var story = this;
+        this.http = http;
+        
+        this.http.get("missions/missions.json")
+            .subscribe(data => {
+                story.stories = data.json();
+            }, error=> {
+                console.log(error);
+            });            
     }
-
+    getStoryFile(m) {
+        var story = this;
+        this.http.get(m.file)
+            .subscribe(data => {
+                story.story = data.json();
+                story.story.next = this.story.start;
+            }, error=> {
+                console.log(error);
+            });
+    }
+    getStories() {
+        return this.stories;
+    }
+    getStory() {
+        return this.story;
+    }
+    setCurrentStory(m) {
+        this.currentStory = m.name;
+        this.getStoryFile(m);
+    }
+    private handleError(error: Response) {
+        // in a real world app, we may send the error to some remote logging infrastructure
+        // instead of just logging it to the console
+        console.error(error);
+        return Observable.throw(error.json().error || 'Server error');
+    }
+    getNextApp() {
+        return this.story[this.story.next];
+    }
     
-    advanceScene() {
+    
+    advanceScene() { 
         this.currentScene++;
     }
     getApp(app) {
-        return this.outline.acts[this.currentAct].apps[app];
+        return undefined;
     }
     getAct() {
-        return this.outline.acts[this.currentAct];
+        return undefined;
     }
     getScene() {
-        return this.outline.acts[this.currentAct].scenes[this.currentScene];
+        return this.story
     }
     getClues() {
         return this.clues;
