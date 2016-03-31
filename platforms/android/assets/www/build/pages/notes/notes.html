@@ -1,0 +1,39 @@
+<ion-navbar id="game-nav" *navbar>
+    <ion-buttons>
+        <button>
+            Message
+        </button>
+        <button>
+            Backpack
+        </button>
+        <button>
+            Notes
+        </button>
+        <button>
+            Help
+        </button>
+        <button menuToggle style="float: right">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+</ion-navbar>
+
+<section>
+    <status></status>
+    
+    <ion-buttons id="start">
+        <button (click)="tab='hypothesis'">
+            Clues
+        </button>
+        <button (click)="tab='analysis'">
+            Data Table
+        </button>
+        <button (click)="tab='test'">
+            Testing
+        </button>
+    </ion-buttons>
+
+    <hypothesis *ngIf="tab==='hypothesis'"></hypothesis>
+    <analysis *ngIf="tab==='analysis'"></analysis>
+    <test *ngIf="tab==='test'"></test>
+</section>

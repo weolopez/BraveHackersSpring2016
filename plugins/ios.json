@@ -24,7 +24,17 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "com.unarin.cordova.beacon": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-local-notifications-mm": {
+            "PACKAGE_NAME": "io.ionic.starter"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-common-registerusernotificationsettings-mm": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        }
+    }
 }
