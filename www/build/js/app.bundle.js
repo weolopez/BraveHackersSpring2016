@@ -61,6 +61,7 @@ var MyApp = (function () {
     ], MyApp);
     return MyApp;
 }());
+
 },{"./pages/backpack/backpack":7,"./pages/map/map":8,"./pages/messages/messages":9,"./pages/notes/notes":10,"./pages/start/start":11,"./pages/video/video":12,"./pages/wikipedia/wikipedia":13,"ionic-angular":332,"ionic-native":353}],2:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -94,6 +95,7 @@ var Analysis = (function () {
     return Analysis;
 }());
 exports.Analysis = Analysis;
+
 },{"../../models/story/story":6,"angular2/core":16}],3:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -131,6 +133,7 @@ var Hypothesis = (function () {
     return Hypothesis;
 }());
 exports.Hypothesis = Hypothesis;
+
 },{"../../models/story/story":6,"angular2/core":16,"ionic-angular":332}],4:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -175,6 +178,7 @@ var Login = (function () {
     return Login;
 }());
 exports.Login = Login;
+
 },{"angular2/core":16}],5:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -198,6 +202,7 @@ var Status = (function () {
     return Status;
 }());
 exports.Status = Status;
+
 },{"angular2/core":16}],6:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -399,6 +404,7 @@ var Story = (function () {
     return Story;
 }());
 exports.Story = Story;
+
 },{"angular2/core":16}],7:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -440,6 +446,7 @@ var Backpack = (function () {
     return Backpack;
 }());
 exports.Backpack = Backpack;
+
 },{"../../components/status/status":5,"../../pages/messages/messages":9,"../../pages/notes/notes":10,"ionic-angular":332}],8:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -579,6 +586,7 @@ var Map = (function () {
     return Map;
 }());
 exports.Map = Map;
+
 },{"../../models/story/story":6,"ionic-angular":332}],9:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -625,6 +633,7 @@ var Messages = (function () {
     return Messages;
 }());
 exports.Messages = Messages;
+
 },{"../../components/status/status":5,"../../pages/backpack/backpack":7,"../../pages/notes/notes":10,"angular2/core":16,"ionic-angular":332}],10:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -673,6 +682,7 @@ var Notes = (function () {
     return Notes;
 }());
 exports.Notes = Notes;
+
 },{"../../components/analysis/analysis":2,"../../components/hypothesis/hypothesis":3,"../../components/status/status":5,"../../pages/backpack/backpack":7,"../../pages/messages/messages":9,"angular2/core":16,"ionic-angular":332}],11:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -705,6 +715,7 @@ var Start = (function () {
     return Start;
 }());
 exports.Start = Start;
+
 },{"../../components/status/status":5,"../../pages/backpack/backpack":7,"ionic-angular":332}],12:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -744,6 +755,7 @@ var Video = (function () {
     return Video;
 }());
 exports.Video = Video;
+
 },{"../../models/story/story":6,"ionic-angular":332}],13:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -782,6 +794,7 @@ var Wikipedia = (function () {
     return Wikipedia;
 }());
 exports.Wikipedia = Wikipedia;
+
 },{"../../components/login/login":4,"../../models/story/story":6,"ionic-angular":332}],14:[function(require,module,exports){
 'use strict';function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
