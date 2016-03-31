@@ -1,0 +1,33 @@
+{
+  "name": "cordova-common-registerusernotificationsettings-mm",
+  "version": "1.0.1",
+  "description": "Implements didRegisterUserNotificationSettings and broadcasts the event.",
+  "cordova": {
+    "id": "cordova-common-registerusernotificationsettings-mm",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dpalou/cordova-common-registerusernotificationsettings.git"
+  },
+  "keywords": [
+    "appplant",
+    "didRegisterUserNotificationSettings",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "Sebastián Katzer",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/dpalou/cordova-common-registerusernotificationsettings/issues"
+  },
+  "homepage": "https://github.com/dpalou/cordova-common-registerusernotificationsettings#readme"
+}

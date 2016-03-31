@@ -1,0 +1,14 @@
+  <ion-card>
+    <ion-card-header>
+       Map of Secret Missions
+    </ion-card-header>
+    <svg></svg>
+    <ion-card-content *ngIf="selected===c">
+        <ion-list *ngFor="#c of beacons.getMission()">
+        <ion-item>
+        <h2>{{c.name}}- {{c.location}}</h2>
+         <p>{{c.description}}</p>
+        </ion-item>
+        </ion-list>
+    </ion-card-content>
+</ion-card>
