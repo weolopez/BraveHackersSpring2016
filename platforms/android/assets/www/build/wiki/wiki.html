@@ -1,0 +1,48 @@
+<ion-navbar *navbar>
+    <login></login>
+
+    <ion-title>
+        Wiki Pages
+    </ion-title>
+
+    <ion-buttons end>
+        <button menuToggle style="float: right">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+</ion-navbar>
+
+<ion-content class="getting-started">
+    <ion-list>
+        <ion-card>
+            <ion-card-header>
+                <ion-item ion-item>
+                    <ion-label>Hello</ion-label>
+                    <ion-toggle></ion-toggle>
+                    <button outline item-right>
+                        <ion-icon name="ios-add-circle"></ion-icon>
+                    </button>
+                </ion-item>
+            </ion-card-header>
+
+            <ion-card-content>
+                <ion-list>
+                    <ion-item>
+                        <ion-label stacked>Test</ion-label>
+                        <ion-input type="text" value="obj"></ion-input>
+                    </ion-item>
+                </ion-list>
+            </ion-card-content>
+        </ion-card>
+        
+        <ion-item-sliding>
+
+            <button ion-item (click)="openPage()">Goto Picks</button>
+
+            <ion-item-options>
+                <button (click)="favorite(item)">Favorite</button>
+                <button (click)="share(item)">Share</button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+</ion-content>

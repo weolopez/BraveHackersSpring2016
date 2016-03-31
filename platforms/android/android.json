@@ -1,0 +1,259 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "res/xml/config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Keyboard\"><param name=\"android-package\" value=\"io.ionic.keyboard.IonicKeyboard\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"LocationManager\"><param name=\"android-package\" value=\"com.unarin.cordova.beacon.LocationManager\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"LocalNotification\"><param name=\"android-package\" value=\"de.appplant.cordova.plugin.localnotification.LocalNotification\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            },
+            "AndroidManifest.xml": {
+                "parents": {
+                    "/manifest": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH_ADMIN\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.RECEIVE_BOOT_COMPLETED\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest/application": [
+                        {
+                            "xml": "<receiver android:name=\"org.altbeacon.beacon.startup.StartupBroadcastReceiver\"><intent-filter><action android:name=\"android.intent.action.BOOT_COMPLETED\" /><action android:name=\"android.intent.action.ACTION_POWER_CONNECTED\" /><action android:name=\"android.intent.action.ACTION_POWER_DISCONNECTED\" /></intent-filter></receiver>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<service android:enabled=\"true\" android:exported=\"true\" android:isolatedProcess=\"false\" android:label=\"iBeacon\" android:name=\"org.altbeacon.beacon.service.BeaconService\"></service>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<service android:enabled=\"true\" android:name=\"org.altbeacon.beacon.BeaconIntentProcessor\"><meta-data android:name=\"background\" android:value=\"true\" /><intent-filter android:priority=\"1\"><action android:name=\"com.unarin.cordova.beacon.IBeaconPlugin.DID_RANGING\" /><action android:name=\"com.unarin.cordova.beacon.IBeaconPlugin.DID_MONITORING\" /></intent-filter></service>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:exported=\"false\" android:name=\"de.appplant.cordova.plugin.localnotification.TriggerReceiver\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:exported=\"false\" android:name=\"de.appplant.cordova.plugin.localnotification.ClearReceiver\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:exported=\"false\" android:launchMode=\"singleInstance\" android:name=\"de.appplant.cordova.plugin.localnotification.ClickActivity\" android:theme=\"@android:style/Theme.NoDisplay\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:exported=\"false\" android:name=\"de.appplant.cordova.plugin.notification.TriggerReceiver\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:exported=\"false\" android:name=\"de.appplant.cordova.plugin.notification.ClearReceiver\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:exported=\"false\" android:name=\"de.appplant.cordova.plugin.localnotification.RestoreReceiver\"><intent-filter><action android:name=\"android.intent.action.BOOT_COMPLETED\" /></intent-filter></receiver>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:exported=\"false\" android:launchMode=\"singleInstance\" android:name=\"de.appplant.cordova.plugin.notification.ClickActivity\" android:theme=\"@android:style/Theme.NoDisplay\" />",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "com.unarin.cordova.beacon": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-android-support-v4": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        },
+        "cordova-plugin-local-notifications-mm": {
+            "PACKAGE_NAME": "io.ionic.starter"
+        }
+    },
+    "dependent_plugins": {},
+    "modules": [
+        {
+            "file": "plugins/cordova-plugin-device/www/device.js",
+            "id": "cordova-plugin-device.device",
+            "clobbers": [
+                "device"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+            "id": "cordova-plugin-splashscreen.SplashScreen",
+            "clobbers": [
+                "navigator.splashscreen"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+            "id": "cordova-plugin-statusbar.statusbar",
+            "clobbers": [
+                "window.StatusBar"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-whitelist/whitelist.js",
+            "id": "cordova-plugin-whitelist.whitelist",
+            "runs": true
+        },
+        {
+            "file": "plugins/ionic-plugin-keyboard/www/android/keyboard.js",
+            "id": "ionic-plugin-keyboard.keyboard",
+            "clobbers": [
+                "cordova.plugins.Keyboard"
+            ],
+            "runs": true
+        },
+        {
+            "file": "plugins/com.unarin.cordova.beacon/www/lib/underscore-min-1.6.js",
+            "id": "com.unarin.cordova.beacon.underscorejs",
+            "runs": true
+        },
+        {
+            "file": "plugins/com.unarin.cordova.beacon/www/lib/q.min.js",
+            "id": "com.unarin.cordova.beacon.Q",
+            "runs": true
+        },
+        {
+            "file": "plugins/com.unarin.cordova.beacon/www/LocationManager.js",
+            "id": "com.unarin.cordova.beacon.LocationManager",
+            "merges": [
+                "cordova.plugins"
+            ]
+        },
+        {
+            "file": "plugins/com.unarin.cordova.beacon/www/Delegate.js",
+            "id": "com.unarin.cordova.beacon.Delegate",
+            "runs": true
+        },
+        {
+            "file": "plugins/com.unarin.cordova.beacon/www/model/Region.js",
+            "id": "com.unarin.cordova.beacon.Region",
+            "runs": true
+        },
+        {
+            "file": "plugins/com.unarin.cordova.beacon/www/Regions.js",
+            "id": "com.unarin.cordova.beacon.Regions",
+            "runs": true
+        },
+        {
+            "file": "plugins/com.unarin.cordova.beacon/www/model/CircularRegion.js",
+            "id": "com.unarin.cordova.beacon.CircularRegion",
+            "runs": true
+        },
+        {
+            "file": "plugins/com.unarin.cordova.beacon/www/model/BeaconRegion.js",
+            "id": "com.unarin.cordova.beacon.BeaconRegion",
+            "runs": true
+        },
+        {
+            "file": "plugins/cordova-plugin-local-notifications-mm/www/local-notification.js",
+            "id": "cordova-plugin-local-notifications-mm.LocalNotification",
+            "clobbers": [
+                "cordova.plugins.notification.local",
+                "plugin.notification.local"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-local-notifications-mm/www/local-notification-core.js",
+            "id": "cordova-plugin-local-notifications-mm.LocalNotification.Core",
+            "clobbers": [
+                "cordova.plugins.notification.local.core",
+                "plugin.notification.local.core"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-local-notifications-mm/www/local-notification-util.js",
+            "id": "cordova-plugin-local-notifications-mm.LocalNotification.Util",
+            "merges": [
+                "cordova.plugins.notification.local.core",
+                "plugin.notification.local.core"
+            ]
+        }
+    ],
+    "plugin_metadata": {
+        "cordova-plugin-console": "1.0.2",
+        "cordova-plugin-device": "1.1.1",
+        "cordova-plugin-splashscreen": "3.2.1",
+        "cordova-plugin-statusbar": "2.1.2",
+        "cordova-plugin-whitelist": "1.2.1",
+        "ionic-plugin-keyboard": "2.0.1",
+        "com.unarin.cordova.beacon": "3.4.1",
+        "cordova-plugin-android-support-v4": "21.0.1",
+        "cordova-plugin-local-notifications-mm": "1.0.1"
+    }
+}
