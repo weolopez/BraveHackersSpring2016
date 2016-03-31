@@ -20,7 +20,7 @@ import {Wikipedia} from './pages/wikipedia/wikipedia';
 })
 class MyApp {
   // make HelloIonicPage the root (or first) page 
-  rootPage: any = Secretmissions;
+  rootPage: any = Start;
   pages: Array<{title: string, component: any}>;
 
   constructor(
