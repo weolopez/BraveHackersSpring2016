@@ -9063,13 +9063,21 @@ ion-avatar img {
 
 @media screen and (max-width: 767px) {
   .tg {
-    width: auto !important; }
+    width: 100%;
+    margin: 0px; }
   .tg col {
     width: auto !important; }
   .tg-wrap {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    margin: auto 0px; } }
+    margin: auto 0px;
+    margin: 15px; } }
+
+.wrap {
+  white-space: normal; }
+
+p {
+  white-space: normal; }
 
 .background {
   fill: none;
@@ -9088,6 +9096,39 @@ ion-avatar img {
   stroke-linejoin: round;
   stroke-linecap: round;
   pointer-events: none; }
+
+#tool-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 110px;
+  font-family: 'Handlee', cursive;
+  display: block;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+  #tool-bar bar {
+    display: block; }
+  #tool-bar button {
+    padding-top: 80px;
+    height: 100px;
+    width: 23%;
+    background: url(../../img/footerSprite.png) no-repeat;
+    color: #333; }
+    #tool-bar button.messages {
+      background-position: center 10px; }
+    #tool-bar button.backpack {
+      background-position: center -100px; }
+    #tool-bar button.notes {
+      background-position: center -215px; }
+    #tool-bar button.help {
+      background-position: center -330px; }
 
 #backpack {
   background: url(../../img/tile.png) repeat;

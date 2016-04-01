@@ -3,6 +3,7 @@ import {Inject} from 'angular2/core';
 import {Analysis} from '../../components/analysis/analysis';
 import {Hypothesis} from '../../components/hypothesis/hypothesis';
 import {Status} from '../../components/status/status';
+import {Story} from '../../models/story/story';
 
 import {Messages} from '../../pages/messages/messages';
 import {Backpack} from '../../pages/backpack/backpack';
@@ -15,8 +16,16 @@ import {Backpack} from '../../pages/backpack/backpack';
 export class Notes {
     tab: any = 'hypothesis';
     nav: any;
-    constructor( @Inject(NavController) nav: NavController) {
+    story: Story;
+    clues: any;
+    clueTool: any;
+    analysisComplete: any;
+    constructor(story: Story, @Inject(NavController) nav: NavController) {
         this.nav = nav;
+        this.story = story;
+        this.clues = story.story.clueTool.clues;
+        this.clueTool = story.story.clueTool;
+        this.analysisComplete='grey;'
     }
     
     openNotes() {
@@ -30,6 +39,10 @@ export class Notes {
     }
     openMessages() {
        this.nav.setRoot(Messages);
+    }
+    isAnalysisComplete() {
+        
+        return true;
     }
 }
 

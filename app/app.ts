@@ -59,5 +59,6 @@ class MyApp {
     // navigate to the new page if it is not the current page
     let nav = this.app.getComponent('nav');
     nav.setRoot(page.component);
+    nav.pages=this.pages;
   }
 }

@@ -54,6 +54,7 @@ var MyApp = (function () {
         // navigate to the new page if it is not the current page
         var nav = this.app.getComponent('nav');
         nav.setRoot(page.component);
+        nav.pages = this.pages;
     };
     MyApp = __decorate([
         ionic_angular_1.App({
@@ -119,7 +120,25 @@ var story_1 = require('../../models/story/story');
 var Hypothesis = (function () {
     function Hypothesis(story) {
         this.story = story;
+        this.clues = story.story.clueTool.clues;
+        this.clueTool = story.story.clueTool;
+        this.clueTool.completedHypothesis = false;
     }
+    Hypothesis.prototype.validateClue = function (c) {
+        c.showHint = false;
+        c.validate = true;
+        c.isCorrect = (c.selectedClue === c.answer.toString());
+        this.clueTool.completedHypothesis = this.isCompleted();
+    };
+    Hypothesis.prototype.isCompleted = function () {
+        var count = this.clues.reduce(function (n, val) {
+            return n + (val.isCorrect === true);
+        }, 0);
+        if (count >= this.clues.length)
+            return true;
+        else
+            return false;
+    };
     Hypothesis = __decorate([
         core_1.Component({
             selector: 'hypothesis'
@@ -760,12 +779,17 @@ var core_1 = require('angular2/core');
 var analysis_1 = require('../../components/analysis/analysis');
 var hypothesis_1 = require('../../components/hypothesis/hypothesis');
 var status_1 = require('../../components/status/status');
+var story_1 = require('../../models/story/story');
 var messages_1 = require('../../pages/messages/messages');
 var backpack_1 = require('../../pages/backpack/backpack');
 var Notes = (function () {
-    function Notes(nav) {
+    function Notes(story, nav) {
         this.tab = 'hypothesis';
         this.nav = nav;
+        this.story = story;
+        this.clues = story.story.clueTool.clues;
+        this.clueTool = story.story.clueTool;
+        this.analysisComplete = 'grey;';
     }
     Notes.prototype.openNotes = function () {
         this.nav.setRoot(Notes);
@@ -778,18 +802,21 @@ var Notes = (function () {
     Notes.prototype.openMessages = function () {
         this.nav.setRoot(messages_1.Messages);
     };
+    Notes.prototype.isAnalysisComplete = function () {
+        return true;
+    };
     Notes = __decorate([
         ionic_angular_1.Page({
             templateUrl: 'build/pages/notes/notes.html',
             directives: [status_1.Status, analysis_1.Analysis, hypothesis_1.Hypothesis]
         }),
-        __param(0, core_1.Inject(ionic_angular_1.NavController)), 
-        __metadata('design:paramtypes', [ionic_angular_1.NavController])
+        __param(1, core_1.Inject(ionic_angular_1.NavController)), 
+        __metadata('design:paramtypes', [story_1.Story, ionic_angular_1.NavController])
     ], Notes);
     return Notes;
 }());
 exports.Notes = Notes;
-},{"../../components/analysis/analysis":2,"../../components/hypothesis/hypothesis":3,"../../components/status/status":6,"../../pages/backpack/backpack":9,"../../pages/messages/messages":12,"angular2/core":20,"ionic-angular":336}],14:[function(require,module,exports){
+},{"../../components/analysis/analysis":2,"../../components/hypothesis/hypothesis":3,"../../components/status/status":6,"../../models/story/story":8,"../../pages/backpack/backpack":9,"../../pages/messages/messages":12,"angular2/core":20,"ionic-angular":336}],14:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;

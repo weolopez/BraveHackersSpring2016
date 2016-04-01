@@ -5,16 +5,16 @@
     <button (click)="tab='hypothesis'">
       Clues
     </button>
-    <button (click)="tab='analysis'">
+    <button (click)="tab='analysis'"  [style.background]="clueTool.completedHypothesis===true ? 'green' : 'grey'">
       Data Table
     </button>
-    <button (click)="tab='test'">
+    <button (click)="tab='test'" *ngIf="isAnalysisComplete()" [style.background]="'grey'">
       Testing
     </button>
   </ion-buttons>
 
   <hypothesis *ngIf="tab==='hypothesis'"></hypothesis>
-  <analysis *ngIf="tab==='analysis'"></analysis>
+  <analysis *ngIf="tab==='analysis'" ></analysis>
   <test *ngIf="tab==='test'"></test>
 
   <ion-buttons id="tool-bar">
