@@ -1,4 +1,4 @@
-<ion-card *ngFor="#c of story.getClues()">
+<ion-card *ngFor="#c of story.getCollectedClues()">
     <ion-card-header (click)="selected=c">
         {{c.text}} {{c.selectedClue}} {{c.selectedAnswer}}
     </ion-card-header>

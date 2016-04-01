@@ -15,8 +15,7 @@ import {
 //import {User} from '../../models/user/user';
 
 @Component({
-    selector: 'hypothesis',
-    providers: [Story]
+    selector: 'hypothesis'
 })
 @View({
     templateUrl: 'build/components/hypothesis/hypothesis.html',

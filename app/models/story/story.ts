@@ -106,6 +106,9 @@ export class Story {
             .subscribe(data => {
                 story.story = data.json();
                 story.story.next = this.story.start;
+                if (story.story.hasBeacons) {
+         //           story.beacons = new Beacons(this);
+                }
             }, error=> {
                 console.log(error);
             });
@@ -130,9 +133,8 @@ export class Story {
         return this.story[this.story.next];
     }
     
-    
     advanceScene() { 
-        this.currentScene++;
+        this.story.next = this.story[this.story.next].next;
     }
     getApp(app) {
         return undefined;
@@ -144,7 +146,7 @@ export class Story {
         return this.story
     }
     getClues() {
-        return this.clues;
+        return this.story.clueTool.clues;
     }
     /*
     get(list, name, attribute) {
