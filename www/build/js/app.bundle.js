@@ -781,6 +781,7 @@ var ionic_angular_1 = require('ionic-angular');
 var core_1 = require('angular2/core');
 var backpack_1 = require('../../pages/backpack/backpack');
 var notes_1 = require('../../pages/notes/notes');
+var toolbar_1 = require('../../components/toolbar/toolbar');
 var status_1 = require('../../components/status/status');
 var Messages = (function () {
     function Messages(nav) {
@@ -801,7 +802,7 @@ var Messages = (function () {
     Messages = __decorate([
         ionic_angular_1.Page({
             templateUrl: 'build/pages/messages/messages.html',
-            directives: [status_1.Status]
+            directives: [status_1.Status, toolbar_1.Gamebar]
         }),
         __param(0, core_1.Inject(ionic_angular_1.NavController)), 
         __metadata('design:paramtypes', [ionic_angular_1.NavController])
@@ -809,7 +810,7 @@ var Messages = (function () {
     return Messages;
 }());
 exports.Messages = Messages;
-},{"../../components/status/status":6,"../../pages/backpack/backpack":10,"../../pages/notes/notes":14,"angular2/core":21,"ionic-angular":337}],14:[function(require,module,exports){
+},{"../../components/status/status":6,"../../components/toolbar/toolbar":7,"../../pages/backpack/backpack":10,"../../pages/notes/notes":14,"angular2/core":21,"ionic-angular":337}],14:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -830,7 +831,6 @@ var hypothesis_1 = require('../../components/hypothesis/hypothesis');
 var status_1 = require('../../components/status/status');
 var story_1 = require('../../models/story/story');
 var messages_1 = require('../../pages/messages/messages');
-var backpack_1 = require('../../pages/backpack/backpack');
 var toolbar_1 = require('../../components/toolbar/toolbar');
 var Notes = (function () {
     function Notes(story, nav) {
@@ -840,19 +840,10 @@ var Notes = (function () {
         this.clues = story.story.clueTool.clues;
         this.clueTool = story.story.clueTool;
     }
-    Notes.prototype.openNotes = function () {
-        //this.nav.setRoot(Notes);
-    };
-    Notes.prototype.openHelp = function () {
-    };
-    Notes.prototype.openBackpack = function () {
-        this.nav.setRoot(backpack_1.Backpack);
-    };
-    Notes.prototype.openMessages = function () {
-        this.nav.setRoot(messages_1.Messages);
-    };
     Notes.prototype.isAnalysisComplete = function () {
         return true;
+        //don't know why this is required but it will crash without the following line
+        this.nav.setRoot(messages_1.Messages);
     };
     Notes = __decorate([
         ionic_angular_1.Page({
@@ -865,7 +856,7 @@ var Notes = (function () {
     return Notes;
 }());
 exports.Notes = Notes;
-},{"../../components/analysis/analysis":2,"../../components/hypothesis/hypothesis":3,"../../components/status/status":6,"../../components/toolbar/toolbar":7,"../../models/story/story":9,"../../pages/backpack/backpack":10,"../../pages/messages/messages":13,"angular2/core":21,"ionic-angular":337}],15:[function(require,module,exports){
+},{"../../components/analysis/analysis":2,"../../components/hypothesis/hypothesis":3,"../../components/status/status":6,"../../components/toolbar/toolbar":7,"../../models/story/story":9,"../../pages/messages/messages":13,"angular2/core":21,"ionic-angular":337}],15:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;

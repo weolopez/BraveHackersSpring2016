@@ -2,12 +2,12 @@ import {Page, NavController, NavParams} from 'ionic-angular';
 import {Inject, Injectable} from 'angular2/core';
 import {Backpack} from '../../pages/backpack/backpack';
 import {Notes} from '../../pages/notes/notes';
-
+import {Gamebar} from '../../components/toolbar/toolbar';
 import {Status} from '../../components/status/status';
 
 @Page({
     templateUrl: 'build/pages/messages/messages.html',
-    directives: [Status]
+    directives: [Status, Gamebar]
 })
 
 export class Messages {
