@@ -31,4 +31,3 @@ export class Notes {
         this.nav.setRoot(Messages);
     }
 }
-

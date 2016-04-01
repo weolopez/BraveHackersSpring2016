@@ -381,6 +381,7 @@ var messages_1 = require('../../pages/messages/messages');
 var backpack_1 = require('../../pages/backpack/backpack');
 var notes_1 = require('../../pages/notes/notes');
 var game_1 = require('../../pages/game/game');
+var ionic_angular_2 = require('ionic-angular');
 //import {User} from '../../models/user/user';
 var Gamebar = (function () {
     function Gamebar(nav) {
@@ -400,7 +401,8 @@ var Gamebar = (function () {
     };
     Gamebar = __decorate([
         core_1.Component({ selector: 'gamebar' }),
-        core_1.View({ templateUrl: 'build/components/toolbar/toolbar.html' }), 
+        core_1.View({ templateUrl: 'build/components/toolbar/toolbar.html',
+            directives: [ionic_angular_2.IONIC_DIRECTIVES] }), 
         __metadata('design:paramtypes', [ionic_angular_1.NavController])
     ], Gamebar);
     return Gamebar;
@@ -590,12 +592,6 @@ var Story = (function () {
     };
     Story.prototype.advanceScene = function () {
         this.story.next = this.story[this.story.next].next;
-    };
-    Story.prototype.getApp = function (app) {
-        return undefined;
-    };
-    Story.prototype.getAct = function () {
-        return undefined;
     };
     Story.prototype.getScene = function () {
         return this.story;

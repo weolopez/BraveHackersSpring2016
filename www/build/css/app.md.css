@@ -9165,11 +9165,11 @@ p {
 .clue-text {
   white-space: normal; }
 
-body {
+ion-page {
   background: url(../../img/tile.png) repeat; }
 
 ion-content {
-  background: url(../../img/tile.png) repeat; }
+  background: transparent; }
 
 .toolbar-background {
   background: url(../../img/tile.png) repeat; }

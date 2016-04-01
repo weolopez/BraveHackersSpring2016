@@ -4,10 +4,12 @@ import {Messages} from '../../pages/messages/messages';
 import {Backpack} from '../../pages/backpack/backpack';
 import {Notes} from '../../pages/notes/notes';
 import {Game} from '../../pages/game/game';
+import {IONIC_DIRECTIVES} from 'ionic-angular';
 //import {User} from '../../models/user/user';
 
 @Component({ selector: 'gamebar' })
-@View({ templateUrl: 'build/components/toolbar/toolbar.html' })
+@View({ templateUrl: 'build/components/toolbar/toolbar.html',
+    directives: [IONIC_DIRECTIVES] })
 export class Gamebar {
     nav: any;
     constructor(nav: NavController) {

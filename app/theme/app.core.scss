@@ -24,11 +24,11 @@
 @import "../pages/messages/messages";
 @import "../pages/clues/clues";
 
-body {
+ion-page {
     background: url(../../img/tile.png) repeat;
 }
 ion-content {
-    background: url(../../img/tile.png) repeat;
+    background: transparent;
 }
 .toolbar-background {
     background: url(../../img/tile.png) repeat;
