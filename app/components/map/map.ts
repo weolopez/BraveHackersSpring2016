@@ -31,7 +31,7 @@ export class Map {
     constructor( beacons: Beacons) {
         this.beacons = beacons;
         //test setting story file here
-        //this.beacons.start();
+        this.beacons.start();
         this.displayMap();
        
     }

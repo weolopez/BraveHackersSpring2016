@@ -25,10 +25,10 @@
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "io.ionic.starter"
         },
-        "com.unarin.cordova.beacon": {
+        "cordova-plugin-local-notifications-mm": {
             "PACKAGE_NAME": "io.ionic.starter"
         },
-        "cordova-plugin-local-notifications-mm": {
+        "com.unarin.cordova.beacon": {
             "PACKAGE_NAME": "io.ionic.starter"
         }
     },
