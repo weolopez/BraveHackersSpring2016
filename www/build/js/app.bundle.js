@@ -484,82 +484,6 @@ var Observable_1 = require('rxjs/Observable');
 var Story = (function () {
     function Story(http) {
         this.http = http;
-        this.currentScene = 0;
-        this.currentAct = 0;
-        this.clues = [
-            {
-                text: "The majority of fish",
-                question: "why",
-                answers: [
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 2",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 3",
-                        text: "fish lack energy"
-                    }
-                ]
-            },
-            {
-                text: "The majority of fish smell",
-                question: "why",
-                answers: [
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 2",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 3",
-                        text: "fish lack energy"
-                    }
-                ]
-            },
-            {
-                text: "The majority of fish",
-                question: "why",
-                answers: [
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 2",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 3",
-                        text: "fish lack energy"
-                    }
-                ]
-            },
-            {
-                text: "The majority of fish",
-                question: "why",
-                answers: [
-                    {
-                        name: "Answer 1",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 2",
-                        text: "fish lack energy"
-                    },
-                    {
-                        name: "Answer 3",
-                        text: "fish lack energy"
-                    }
-                ]
-            }
-        ];
         this.story = {};
         this.stories = {};
         var story = this;
@@ -679,15 +603,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var ionic_angular_1 = require('ionic-angular');
 var story_1 = require('../../models/story/story');
-var backpack_1 = require('../../pages/backpack/backpack');
+var notes_1 = require('../../pages/notes/notes');
 var Clues = (function () {
     function Clues(nav, story) {
-        this.dialogIndex = 0;
         this.nav = nav;
         this.story = story;
         this.clues = this.story.story.clueTool.clues;
         this.clueTool = this.story.story.clueTool;
+        this.story.story.next = "clueTool";
     }
+    Clues.prototype.isCompleted = function () {
+        var count = this.clues.reduce(function (n, val) {
+            return n + (val.found === true);
+        }, 0);
+        if (count >= this.clues.length)
+            return true;
+        else
+            return false;
+    };
     Clues.prototype.stringify = function (o) {
         return JSON.stringify(o);
     };
@@ -699,7 +632,7 @@ var Clues = (function () {
             }
         }
         else {
-            this.nav.setRoot(backpack_1.Backpack);
+            this.nav.setRoot(notes_1.Notes);
         }
     };
     Clues = __decorate([
@@ -711,7 +644,7 @@ var Clues = (function () {
     return Clues;
 }());
 exports.Clues = Clues;
-},{"../../models/story/story":8,"../../pages/backpack/backpack":9,"ionic-angular":336}],11:[function(require,module,exports){
+},{"../../models/story/story":8,"../../pages/notes/notes":13,"ionic-angular":336}],11:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;

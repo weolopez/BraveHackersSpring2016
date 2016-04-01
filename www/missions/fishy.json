@@ -4,6 +4,7 @@
   "createdby" : "cg085b@att.com",
   "date" : "April 2016",
   "start" : "missionAccept",
+  "next" : "notes",
   "missionAccept" : {
       "type" : "scene",
       "background" : "img/female.jpg",
@@ -133,5 +134,8 @@
           "answer" : 2
         }
       ]
+  },
+  "notes" : {
+    "type" : "notes"   
   }
 }

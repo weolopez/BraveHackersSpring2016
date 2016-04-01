@@ -8,84 +8,6 @@ import {Observable}     from 'rxjs/Observable';
 //var instance;
 @Injectable()
 export class Story {
-
-    currentScene: any = 0;
-    currentAct: any = 0;
-    clues: any =
-    [
-        {
-            text: "The majority of fish",
-            question: "why",
-            answers: [
-                {
-                    name: "Answer 1",
-                    text: "fish lack energy"
-                },
-                {
-                    name: "Answer 2",
-                    text: "fish lack energy"
-                },
-                {
-                    name: "Answer 3",
-                    text: "fish lack energy"
-                }
-            ]
-        },
-        {
-            text: "The majority of fish smell",
-            question: "why",
-            answers: [
-                {
-                    name: "Answer 1",
-                    text: "fish lack energy"
-                },
-                {
-                    name: "Answer 2",
-                    text: "fish lack energy"
-                },
-                {
-                    name: "Answer 3",
-                    text: "fish lack energy"
-                }
-            ]
-        },
-        {
-            text: "The majority of fish",
-            question: "why",
-            answers: [
-                {
-                    name: "Answer 1",
-                    text: "fish lack energy"
-                },
-                {
-                    name: "Answer 2",
-                    text: "fish lack energy"
-                },
-                {
-                    name: "Answer 3",
-                    text: "fish lack energy"
-                }
-            ]
-        },
-        {
-            text: "The majority of fish",
-            question: "why",
-            answers: [
-                {
-                    name: "Answer 1",
-                    text: "fish lack energy"
-                },
-                {
-                    name: "Answer 2",
-                    text: "fish lack energy"
-                },
-                {
-                    name: "Answer 3",
-                    text: "fish lack energy"
-                }
-            ]
-        }
-    ];
     story: any = {};
     stories: any = {};
     currentStory: any;
@@ -107,7 +29,7 @@ export class Story {
                 story.story = data.json();
                 story.story.next = this.story.start;
                 if (story.story.hasBeacons) {
-         //           story.beacons = new Beacons(this);
+               //     this.beacons.start();
                 }
             }, error=> {
                 console.log(error);
