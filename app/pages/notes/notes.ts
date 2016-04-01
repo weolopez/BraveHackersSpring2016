@@ -25,11 +25,9 @@ export class Notes {
         this.story = story;
         this.clues = story.story.clueTool.clues;
         this.clueTool = story.story.clueTool;
-        this.analysisComplete='grey;'
     }
-    
     openNotes() {
-      this.nav.setRoot(Notes);
+     //this.nav.setRoot(Notes);
     }
     openHelp() {
         
@@ -41,7 +39,6 @@ export class Notes {
        this.nav.setRoot(Messages);
     }
     isAnalysisComplete() {
-        
         return true;
     }
 }

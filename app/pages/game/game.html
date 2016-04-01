@@ -1,4 +1,4 @@
-<ion-navbar *navbar>
+<!--ion-navbar *navbar>
 
     <ion-title>
         {{story.story.name}} : {{dialog[dialogIndex].name}}
@@ -9,8 +9,11 @@
             <ion-icon name="menu"></ion-icon>
         </button>
     </ion-buttons>
-</ion-navbar>
-<section id="game">
+</ion-navbar-->
+<ion-content id="game">
+    
+  <status></status>
+
     <ion-col id="main">
         <video-window>
             <img src="{{background}}">
@@ -26,4 +29,25 @@
             </ion-buttons>
         </video-text>
     </ion-col>
-</section>
+
+</ion-content>
+
+
+<ion-toolbar position="bottom">
+  <ion-buttons id="tool-bar">
+    <bar>
+      <button clear class="messages" (click)="openMessages()">
+        Messages
+      </button>
+      <button clear class="backpack" (click)="openBackpack()">
+        Backpack
+      </button>
+      <button clear class="notes" (click)="openNotes()">
+        Notes
+      </button>
+      <button clear class="help" (click)="openHelp()">
+        Help
+      </button>
+    </bar>
+  </ion-buttons>
+</ion-toolbar>

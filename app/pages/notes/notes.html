@@ -1,4 +1,4 @@
-<section>
+<ion-content>
   <status></status>
 
   <ion-buttons id="start">
@@ -17,6 +17,10 @@
   <analysis *ngIf="tab==='analysis'" ></analysis>
   <test *ngIf="tab==='test'"></test>
 
+</ion-content>
+
+
+<ion-toolbar position="bottom">
   <ion-buttons id="tool-bar">
     <bar>
       <button clear class="messages" (click)="openMessages()">
@@ -33,4 +37,4 @@
       </button>
     </bar>
   </ion-buttons>
-</section>
+</ion-toolbar>

@@ -8867,39 +8867,6 @@ body {
   font-size: 1.4rem;
   background-color: #fff; }
 
-#game {
-  background: yellow;
-  height: 100%; }
-
-#main {
-  background: red;
-  padding: 0;
-  height: 100%; }
-
-#menu {
-  background: blue;
-  right: 0;
-  position: absolute;
-  top: 44px;
-  height: 100%; }
-
-video-window {
-  background: #333;
-  height: 66%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex; }
-
-video-text {
-  background: white;
-  height: 100%;
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex; }
-
 .stage {
   width: 47%;
   height: 100px;
@@ -9097,11 +9064,15 @@ p {
   stroke-linecap: round;
   pointer-events: none; }
 
+.toolbar {
+  min-height: 120px; }
+
 #tool-bar {
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 110px;
+  min-height: 110px;
   font-family: 'Handlee', cursive;
   display: block;
   -webkit-box-align: center;
@@ -9193,3 +9164,15 @@ p {
 
 .clue-text {
   white-space: normal; }
+
+body {
+  background: url(../../img/tile.png) repeat; }
+
+ion-content {
+  background: url(../../img/tile.png) repeat; }
+
+.toolbar-background {
+  background: url(../../img/tile.png) repeat; }
+
+#start {
+  background: url(../../img/tile.png) repeat; }

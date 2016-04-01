@@ -2,10 +2,11 @@ import {Page, NavController} from 'ionic-angular';
 import {Story} from '../../models/story/story';
 import {Backpack} from '../../pages/backpack/backpack';
 import {Clues} from '../../pages/clues/clues';
-
+import {Status} from '../../components/status/status';
 
 @Page({
-    templateUrl: 'build/pages/game/game.html'
+    templateUrl: 'build/pages/game/game.html',
+    directives: [Status]
 })
 export class Game {
     nav: any;

@@ -23,3 +23,16 @@
 @import "../pages/backpack/backpack";
 @import "../pages/messages/messages";
 @import "../pages/clues/clues";
+
+body {
+    background: url(../../img/tile.png) repeat;
+}
+ion-content {
+    background: url(../../img/tile.png) repeat;
+}
+.toolbar-background {
+    background: url(../../img/tile.png) repeat;
+}
+#start {
+    background: url(../../img/tile.png) repeat;
+}

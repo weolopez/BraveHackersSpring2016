@@ -1,10 +1,11 @@
 import {Page, NavController} from 'ionic-angular';
 import {Story} from '../../models/story/story';
 import {Notes} from '../../pages/notes/notes';
-
+import {Status} from '../../components/status/status';
 
 @Page({
-    templateUrl: 'build/pages/clues/clues.html'
+    templateUrl: 'build/pages/clues/clues.html',
+    directives: [Status]
 })
 export class Clues {
     nav: any;

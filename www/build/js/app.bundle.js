@@ -623,6 +623,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ionic_angular_1 = require('ionic-angular');
 var story_1 = require('../../models/story/story');
 var notes_1 = require('../../pages/notes/notes');
+var status_1 = require('../../components/status/status');
 var Clues = (function () {
     function Clues(nav, story) {
         this.nav = nav;
@@ -656,14 +657,15 @@ var Clues = (function () {
     };
     Clues = __decorate([
         ionic_angular_1.Page({
-            templateUrl: 'build/pages/clues/clues.html'
+            templateUrl: 'build/pages/clues/clues.html',
+            directives: [status_1.Status]
         }), 
         __metadata('design:paramtypes', [ionic_angular_1.NavController, story_1.Story])
     ], Clues);
     return Clues;
 }());
 exports.Clues = Clues;
-},{"../../models/story/story":8,"../../pages/notes/notes":13,"ionic-angular":336}],11:[function(require,module,exports){
+},{"../../components/status/status":6,"../../models/story/story":8,"../../pages/notes/notes":13,"ionic-angular":336}],11:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -677,6 +679,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ionic_angular_1 = require('ionic-angular');
 var story_1 = require('../../models/story/story');
 var clues_1 = require('../../pages/clues/clues');
+var status_1 = require('../../components/status/status');
 var Game = (function () {
     function Game(nav, story) {
         this.dialogIndex = 0;
@@ -707,14 +710,15 @@ var Game = (function () {
     };
     Game = __decorate([
         ionic_angular_1.Page({
-            templateUrl: 'build/pages/game/game.html'
+            templateUrl: 'build/pages/game/game.html',
+            directives: [status_1.Status]
         }), 
         __metadata('design:paramtypes', [ionic_angular_1.NavController, story_1.Story])
     ], Game);
     return Game;
 }());
 exports.Game = Game;
-},{"../../models/story/story":8,"../../pages/clues/clues":10,"ionic-angular":336}],12:[function(require,module,exports){
+},{"../../components/status/status":6,"../../models/story/story":8,"../../pages/clues/clues":10,"ionic-angular":336}],12:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -789,10 +793,9 @@ var Notes = (function () {
         this.story = story;
         this.clues = story.story.clueTool.clues;
         this.clueTool = story.story.clueTool;
-        this.analysisComplete = 'grey;';
     }
     Notes.prototype.openNotes = function () {
-        this.nav.setRoot(Notes);
+        //this.nav.setRoot(Notes);
     };
     Notes.prototype.openHelp = function () {
     };
