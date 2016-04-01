@@ -198,8 +198,7 @@ var story_1 = require('../../models/story/story');
 var Map = (function () {
     function Map(beacons) {
         this.beacons = beacons;
-        //test setting story file here
-        this.beacons.start();
+        beacons.start();
         this.displayMap();
     }
     Map.prototype.displayMap = function () {
@@ -367,9 +366,7 @@ var Beacons = (function () {
         //   this.ref = ref;
         // this.user = User.getInstance();
         this.story = story;
-        this.nearest_beacon = "mint";
         this.platform = platform;
-        this.rangedbeacons = {};
     }
     Beacons.prototype.start = function () {
         var _this = this;
@@ -390,24 +387,29 @@ var Beacons = (function () {
             delegate.didRangeBeaconsInRegion = function (pluginResult) {
                 if (pluginResult.beacons.length > 0) {
                     console.log("******** didRangeBeaconsInRegion *********");
-                    var uniqueBeaconKey;
+                    var major;
+                    var color;
                     for (var i = 0; i < pluginResult.beacons.length; i++) {
-                        uniqueBeaconKey = pluginResult.beacons[i].uuid + ":" + pluginResult.beacons[i].major + ":" + pluginResult.beacons[i].minor;
-                        this.rangedbeacons[uniqueBeaconKey] = pluginResult.beacons[i];
+                        major = pluginResult.beacons[i].major;
+                        color = context[major];
+                        console.log("Found " + color + " Beacon!!!!");
+                        //ask Weo how to make sure that Story is defined in this event
+                        //   this.story.getClues().forEach(function(clue) {
+                        //     if (clue.beacon===color && clue.found == false) 
+                        //      {
+                        //         //send notification "Secret Clue"
+                        //         console.log("Found Clue" + clue.name);
+                        //        clue.found = true;
+                        //    }         
+                        //   }, this); 
+                        this.story.getStories().missions.forEach(function (mission) {
+                            if (mission.beacon === color && mission.found == false) {
+                                //send notification "Secret Mission "
+                                console.log("Found Mission" + mission.name);
+                                mission.found = true;
+                            }
+                        }, this);
                     }
-                    var nearest = this.rangedbeacons[uniqueBeaconKey];
-                    //Set nearest to the last beacon added. We will use this as the default to start checking against.
-                    for (var key in this.rangedbeacons) {
-                        if (nearest.rssi == 0) {
-                            nearest = this.rangedbeacons[key];
-                        }
-                        else if ((this.rangedbeacons[key].rssi != 0) && (this.rangedbeacons[key].rssi > nearest.rssi)) {
-                            nearest = this.rangedbeacons[key];
-                        }
-                    }
-                    this.nearest_beacon = context[nearest.major];
-                    console.log("nearest beacon is " + this.nearest_beacon);
-                    console.log("nearest beacon rssi is " + nearest.rssi);
                 }
             };
             cordova.plugins.locationManager.setDelegate(delegate);
@@ -467,13 +469,17 @@ var Story = (function () {
             .subscribe(function (data) {
             story.story = data.json();
             story.story.next = _this.story.start;
-            if (story.story.hasBeacons) {
-            }
+            //  if (story.story.hasBeacons) {
+            //ask Weo
+            //      let beacons = new Beacons(this.platform, this);
+            //        beacons.start();
+            // }
         }, function (error) {
             console.log(error);
         });
     };
     Story.prototype.getStories = function () {
+        // can we only display missions that are "found"?
         return this.stories;
     };
     Story.prototype.getStory = function () {

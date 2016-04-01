@@ -31,16 +31,17 @@ export class Story {
             .subscribe(data => {
                 story.story = data.json();
                 story.story.next = this.story.start;
-                if (story.story.hasBeacons) {
-                    //ask WEO
-                  //  let beacons = new Beacons(this.platform, this);
-                 //   beacons.start();
-                }
+              //  if (story.story.hasBeacons) {
+                    //ask Weo
+                //      let beacons = new Beacons(this.platform, this);
+              //        beacons.start();
+               // }
             }, error=> {
                 console.log(error);
             });
     }
     getStories() {
+        // can we only display missions that are "found"?
         return this.stories;
     }
     getStory() {
