@@ -3,14 +3,14 @@ import {Page, NavController, NavParams} from 'ionic-angular';
 import {Messages} from '../../pages/messages/messages';
 import {Backpack} from '../../pages/backpack/backpack';
 import {Notes} from '../../pages/notes/notes';
+import {Game} from '../../pages/game/game';
 //import {User} from '../../models/user/user';
 
-@Component({ selector: 'toolbar' })
+@Component({ selector: 'gamebar' })
 @View({ templateUrl: 'build/components/toolbar/toolbar.html' })
-export class Toolbar {
+export class Gamebar {
     nav: any;
-    messages: Messages;
-    constructor( @Inject(NavController) nav: NavController) {
+    constructor(nav: NavController) {
         this.nav = nav;
     }
     
@@ -18,12 +18,12 @@ export class Toolbar {
       this.nav.setRoot(Notes);
     }
     openHelp() {
-        
+       this.nav.setRoot(Messages);  
     }
     openBackpack() {
         this.nav.setRoot(Backpack);
     }
     openMessages() {
-       this.nav.setRoot(this.messages);
+       this.nav.setRoot(Game); 
     }
 }

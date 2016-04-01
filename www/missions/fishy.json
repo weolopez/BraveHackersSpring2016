@@ -133,6 +133,12 @@
           "hint" : "The environment affects the physical attributes of the fish.",
           "answer" : 2
         }
+      ],
+      "dialog" : [
+        {
+          "character" : "Chica",
+          "text" : "Ella, use the seach tool to find clues."
+        }
       ]
   },
   "notes" : {

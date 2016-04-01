@@ -4,18 +4,17 @@ import {Analysis} from '../../components/analysis/analysis';
 import {Hypothesis} from '../../components/hypothesis/hypothesis';
 import {Status} from '../../components/status/status';
 import {Story} from '../../models/story/story';
-
 import {Messages} from '../../pages/messages/messages';
 import {Backpack} from '../../pages/backpack/backpack';
-
+import {Gamebar} from '../../components/toolbar/toolbar';
 
 @Page({
     templateUrl: 'build/pages/notes/notes.html',
-    directives: [Status, Analysis, Hypothesis]
+    directives: [Status, Analysis, Hypothesis, Gamebar]
 })
 export class Notes {
     tab: any = 'hypothesis';
-    nav: any;
+    nav: any; 
     story: Story;
     clues: any;
     clueTool: any;
