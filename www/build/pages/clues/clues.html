@@ -1,16 +1,5 @@
-<ion-navbar *navbar>
-
-    <ion-title>
-        {{story.story.name}}
-    </ion-title>
-
-    <ion-buttons end>
-        <button menuToggle style="float: right">
-            <ion-icon name="menu"></ion-icon>
-        </button>
-    </ion-buttons>
-</ion-navbar>
-<section id="game">
+<status></status>
+<ion-content>
     <ion-col id="main">
         <video-window>
             <ion-list>
@@ -19,7 +8,7 @@
                     <ion-checkbox dark [(ngModel)]=c.found></ion-checkbox>
                 </ion-item>
             </ion-list>
-            
+
         </video-window>
         <video-text *ngIf="isCompleted()">
             <ion-buttons>
@@ -29,4 +18,7 @@
             </ion-buttons>
         </video-text>
     </ion-col>
-</section>
+
+</ion-content>
+
+<gamebar></gamebar>

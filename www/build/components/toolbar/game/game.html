@@ -1,4 +1,4 @@
-<!--ion-navbar *navbar>
+<ion-navbar *navbar>
 
     <ion-title>
         {{story.story.name}} : {{dialog[dialogIndex].name}}
@@ -9,15 +9,16 @@
             <ion-icon name="menu"></ion-icon>
         </button>
     </ion-buttons>
-</ion-navbar-->
-<status></status>
-<ion-content id="game">
+</ion-navbar>
+<section id="game">
     <ion-col id="main">
         <video-window>
             <img src="{{background}}">
         </video-window>
         <video-text>
             {{dialog[dialogIndex].text}}
+
+
             <ion-buttons>
                 <button (click)=next()>
                     <ion-icon></ion-icon>Next
@@ -25,5 +26,4 @@
             </ion-buttons>
         </video-text>
     </ion-col>
-</ion-content>
-<gamebar></gamebar>
+</section>

@@ -17,7 +17,22 @@
 @import "../pages/secretmissions/secretmissions";
 @import "../components/status/status";
 @import "../components/analysis/analysis";
+@import "../components/hypothesis/hypothesis";
 @import "../components/map/map";
+@import "../components/toolbar/toolbar";
 @import "../pages/backpack/backpack";
 @import "../pages/messages/messages";
 @import "../pages/clues/clues";
+
+ion-page {
+    background: url(../../img/tile.png) repeat;
+}
+ion-content {
+    background: transparent;
+}
+.toolbar-background {
+    background: url(../../img/tile.png) repeat;
+}
+#start {
+    background: url(../../img/tile.png) repeat;
+}

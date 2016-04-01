@@ -2,10 +2,12 @@ import {Page, NavController} from 'ionic-angular';
 import {Story} from '../../models/story/story';
 import {Backpack} from '../../pages/backpack/backpack';
 import {Clues} from '../../pages/clues/clues';
-
+import {Status} from '../../components/status/status';
+import {Gamebar} from '../../components/toolbar/toolbar';
 
 @Page({
-    templateUrl: 'build/pages/game/game.html'
+    templateUrl: 'build/pages/game/game.html',
+    directives: [Status, Gamebar]
 })
 export class Game {
     nav: any;
@@ -18,7 +20,6 @@ export class Game {
         this.story = story;
         this.dialog = this.story.getNextApp().dialog;
         this.background = this.story.getNextApp().background;
-
     }
     stringify(o) {
         return JSON.stringify(o);
@@ -27,7 +28,7 @@ export class Game {
         if (this.dialog[this.dialogIndex+1]) {
             this.dialogIndex++;
             return;
-        }
+        } 
         
         
         this.story.advanceScene();

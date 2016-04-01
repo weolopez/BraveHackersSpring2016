@@ -34,7 +34,7 @@
   "clueTool" : {
       "type" : "clueTool", 
       "clues" : [
-        {
+        { 
           "id" : "1",
           "text" : "The majority of the fish seem to be floating or swimming slowly.",
           "question" : "Why would fish float instead of swim?",
@@ -132,6 +132,12 @@
           ],
           "hint" : "The environment affects the physical attributes of the fish.",
           "answer" : 2
+        }
+      ],
+      "dialog" : [
+        {
+          "character" : "Chica",
+          "text" : "Ella, use the seach tool to find clues."
         }
       ]
   },
