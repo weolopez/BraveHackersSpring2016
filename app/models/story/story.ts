@@ -1,6 +1,8 @@
 import {Injectable, Inject} from 'angular2/core';
 import {Http, Response} from 'angular2/http';
 import {Observable}     from 'rxjs/Observable';
+import {Beacons} from '../../models/beacons/beacons';
+import {Platform} from 'ionic-angular';
 //import {Observable} from 'rxjs/Observable';
 //import {Firebase, FirebaseRef, AngularFire} from 'angularfire2';
 //import {User} from '../user/user';
@@ -10,11 +12,12 @@ import {Observable}     from 'rxjs/Observable';
 export class Story {
     story: any = {};
     stories: any = {};
+    platform: Platform;
     currentStory: any;
-    constructor(private http: Http) {
+    constructor(private http: Http, platform: Platform) {
         var story = this;
         this.http = http;
-        
+        this.platform = platform;
         this.http.get("missions/missions.json")
             .subscribe(data => {
                 story.stories = data.json();
@@ -29,7 +32,9 @@ export class Story {
                 story.story = data.json();
                 story.story.next = this.story.start;
                 if (story.story.hasBeacons) {
-               //     this.beacons.start();
+                    //ask WEO
+                  //  let beacons = new Beacons(this.platform, this);
+                 //   beacons.start();
                 }
             }, error=> {
                 console.log(error);
