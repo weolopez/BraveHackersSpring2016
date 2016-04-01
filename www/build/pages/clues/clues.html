@@ -1,7 +1,7 @@
 <ion-navbar *navbar>
 
     <ion-title>
-        {{story.story.name}} : {{dialog[dialogIndex].name}}
+        {{story.story.name}}
     </ion-title>
 
     <ion-buttons end>
@@ -13,12 +13,15 @@
 <section id="game">
     <ion-col id="main">
         <video-window>
-            <img src="{{background}}">
+            <ion-list>
+                <ion-item *ngFor="#c of story.getClues()">
+                    <ion-label class="clue-text">{{c.text}} {{c.found}}</ion-label>
+                    <ion-checkbox dark [(ngModel)]=c.found></ion-checkbox>
+                </ion-item>
+            </ion-list>
+            
         </video-window>
-        <video-text>
-            {{dialog[dialogIndex].text}}
-
-
+        <video-text *ngIf="isCompleted()">
             <ion-buttons>
                 <button (click)=next()>
                     <ion-icon></ion-icon>Next

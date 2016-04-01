@@ -1,6 +1,8 @@
 import {Component, View, Inject} from 'angular2/core';
 import {IONIC_DIRECTIVES} from 'ionic-angular';
 import {Beacons} from '../../models/beacons/beacons';
+import {Story} from '../../models/story/story';
+
 import {
   Control,
   ControlGroup,
@@ -16,7 +18,7 @@ import {
 
 @Component({
     selector: 'map',
-    providers: [Beacons]
+    providers: [Beacons, Story]
 })
 @View({
     templateUrl: 'build/components/map/map.html',
@@ -26,9 +28,12 @@ export class Map {
     beacons: Beacons;
 
     langs;
-    constructor( @Inject(Beacons) beacons: Beacons) {
+    constructor( beacons: Beacons) {
         this.beacons = beacons;
+        //test setting story file here
+        //this.beacons.start();
         this.displayMap();
+       
     }
      displayMap() {
           

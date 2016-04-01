@@ -3,11 +3,10 @@
        Map of Secret Missions
     </ion-card-header>
     <svg></svg>
-    <ion-card-content>
-        <ion-list>
+   <ion-card-content>
+       <ion-list ngFor="#c of beacons.story.getClues()">
         <ion-item>
-        <h2>{{beacons.mission.name}} - {{beacons.mission.location}}</h2>
-         <p>{{beacons.mission.description}}</p>
+         <h2>{{c.text}}</h2>
         </ion-item>
         </ion-list>
     </ion-card-content>

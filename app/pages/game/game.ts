@@ -1,30 +1,44 @@
-import {Page} from 'ionic-angular';
+import {Page, NavController} from 'ionic-angular';
 import {Story} from '../../models/story/story';
+import {Backpack} from '../../pages/backpack/backpack';
+import {Clues} from '../../pages/clues/clues';
 
 
 @Page({
-    templateUrl: 'build/pages/game/game.html',
-    providers: [ Story ]
+    templateUrl: 'build/pages/game/game.html'
 })
 export class Game {
+    nav: any;
     story: any;
     dialog: any;
-    dialogIndex: any=0;
+    dialogIndex: any = 0;
     background: any;
-    constructor(story: Story) {
-        this.story=story;
+    constructor(nav: NavController, story: Story) {
+        this.nav = nav;
+        this.story = story;
         this.dialog = this.story.getNextApp().dialog;
         this.background = this.story.getNextApp().background;
-        
+
     }
     stringify(o) {
         return JSON.stringify(o);
     }
-    getAct() {
-        return this.story.getAct();
-    }
-    getScene() {
-        return this.story.getScene();
+    next() {
+        if (this.dialog[this.dialogIndex+1]) {
+            this.dialogIndex++;
+            return;
+        }
+        
+        
+        this.story.advanceScene();
+        var app = this.story.getNextApp();
+        if (app) {
+            if (app.type === 'scene') {
+                this.dialog = app.dialog;
+                this.background = app.background;
+            }
+        } else {
+            this.nav.setRoot(Clues);
+        }
     }
 }
- 

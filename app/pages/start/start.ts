@@ -8,8 +8,7 @@ import {Map} from '../../components/map/map';
 
 @Page({
     templateUrl: 'build/pages/start/start.html',
-    directives: [ Status, Map ],
-    providers: [ Story ]
+    directives: [ Status, Map ]
 })
 export class Start {
     tab: any = '';
@@ -20,7 +19,7 @@ export class Start {
         this.story = s;
     }
     
-    openPage(m) {
+    openPage() {
         this.nav.setRoot(Game);
     }
 }
