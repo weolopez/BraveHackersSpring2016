@@ -4,13 +4,14 @@
   "createdby" : "cg085b@att.com",
   "date" : "April 2016",
   "start" : "missionAccept",
+  "next" : "notes",
   "missionAccept" : {
       "type" : "scene",
-      "background" : "urlToBackgroundImage",
+      "background" : "img/female.jpg",
       "dialog" : [
         {
           "character" : "Chica",
-          "text" : "Ella, we just recieved a request for help at the Georgia Aquarium. The majority of the fish in the saltwatyer aquarium are gathering towards the surface of the water. Grab your geer and meet Mr. Yhoshi at the saltwater exibit."
+          "text" : "Ella, we just recieved a request for help at the Georgia Aquarium. The majority of the fish in the salt water aquarium are gathering towards the surface of the water. Grab your geer and meet Mr. Yhoshi at the saltwater exibit."
         }
       ],
       "next" : "missionIntroScene"
@@ -28,19 +29,19 @@
           "text" : "Thank you for getting here so quickly. I noticed last night that the fish are gathering at the surface of the water."
         }
       ],
-      "backpack" : [
-          "clueTool"
-      ]
+      "next" : ["backpack","clueTool"]
   },
   "clueTool" : {
       "type" : "clueTool", 
       "clues" : [
-        {
+        { 
           "id" : "1",
           "text" : "The majority of the fish seem to be floating or swimming slowly.",
           "question" : "Why would fish float instead of swim?",
           "x" : "",
           "y" : "",
+          "beacon": "ice",
+          "found" : false,
           "answers" : [
             {
               "id" : "1",
@@ -64,6 +65,8 @@
           "question" : "What causes saltwater fish to float near the surface of the water?",
           "x" : "",
           "y" : "",
+          "beacon": "mint",
+          "found" : false,
           "answers" : [
             {
               "id" : "1",
@@ -87,6 +90,8 @@
           "question" : "Why are the majority of the fish brightly colored?",
           "x" : "",
           "y" : "",
+          "beacon": "blueberry",
+          "found" : false,
           "answers" : [
             {
               "id" : "1",
@@ -110,6 +115,7 @@
           "question" : "Why would the fish have jagged or torn fins?",
           "x" : "",
           "y" : "",
+          "found" : true,
           "answers" : [
             {
               "id" : "1",
@@ -127,6 +133,15 @@
           "hint" : "The environment affects the physical attributes of the fish.",
           "answer" : 2
         }
+      ],
+      "dialog" : [
+        {
+          "character" : "Chica",
+          "text" : "Ella, use the seach tool to find clues."
+        }
       ]
+  },
+  "notes" : {
+    "type" : "notes"   
   }
 }

@@ -15,18 +15,34 @@ import {
 //import {User} from '../../models/user/user';
 
 @Component({
-    selector: 'hypothesis',
-    providers: [Story]
+    selector: 'hypothesis'
 })
 @View({
     templateUrl: 'build/components/hypothesis/hypothesis.html',
     directives: [IONIC_DIRECTIVES]
-})
+}) 
 export class Hypothesis {
     story: Story;
-
-    langs;
+    showHint: any;
+    clues: any;
+    clueTool: any;
     constructor( @Inject(Story) story: Story) {
         this.story = story;
+        this.clues = story.story.clueTool.clues;
+        this.clueTool = story.story.clueTool;
+        this.clueTool.completedHypothesis=false;
+    }
+    validateClue(c) {
+       c.showHint=false;
+       c.validate=true
+       c.isCorrect=(c.selectedClue===c.answer.toString());    
+       this.clueTool.completedHypothesis = this.isCompleted();
+    }
+    isCompleted() {
+        var count = this.clues.reduce(function(n, val) {
+            return n + (val.isCorrect === true);
+        }, 0);
+        if (count >= this.clues.length) return true;
+        else return false;
     }
 } 

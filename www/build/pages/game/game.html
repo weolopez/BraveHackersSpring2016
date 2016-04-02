@@ -1,7 +1,7 @@
-<ion-navbar *navbar>
+<!--ion-navbar *navbar>
 
     <ion-title>
-        {{story.outline.name}} : {{getAct.name}} :{{getScene().name}}
+        {{story.story.name}} : {{dialog[dialogIndex].name}}
     </ion-title>
 
     <ion-buttons end>
@@ -9,20 +9,21 @@
             <ion-icon name="menu"></ion-icon>
         </button>
     </ion-buttons>
-</ion-navbar>
-<section id="game">
+</ion-navbar-->
+<status></status>
+<ion-content id="game">
     <ion-col id="main">
         <video-window>
-            <!--div id="stage01" class="stage">
-                <div class="obj01"></div>
-            </div>
-            <div id="stage01" class="stage">
-                <div class="obj02"></div>
-            </div-->
             <img src="{{background}}">
         </video-window>
         <video-text>
             {{dialog[dialogIndex].text}}
+            <ion-buttons>
+                <button (click)=next()>
+                    <ion-icon></ion-icon>Next
+                </button>
+            </ion-buttons>
         </video-text>
     </ion-col>
-</section>
+</ion-content>
+<gamebar></gamebar>

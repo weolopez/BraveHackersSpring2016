@@ -6,11 +6,14 @@ import {Messages} from './pages/messages/messages';
 import {Notes} from './pages/notes/notes';
 import {Secretmissions} from './pages/secretmissions/secretmissions';
 import {Backpack} from './pages/backpack/backpack';
-import {Wikipedia} from './pages/wikipedia/wikipedia';
+import {Clues} from './pages/clues/clues'
+import {Wikipedia} from './pages/wikipedia/wikipedia'
+import {Story} from './models/story/story';
 //import {FirebaseUrl, FIREBASE_PROVIDERS, defaultFirebase} from 'angularfire2';
 
 @App({
   templateUrl: 'build/app.html',
+    providers: [ Story ] ,
     config: {} //,  http://ionicframework.com/docs/v2/api/config/Config/ 
   //  providers: [ 
     //    FIREBASE_PROVIDERS,
@@ -36,6 +39,7 @@ class MyApp {
       { title: 'Secretmissions', component: Secretmissions },
       { title: 'Start', component: Start },
       { title: 'Notes', component: Notes },
+      { title: 'Clues', component: Clues },
       { title: 'Messages', component: Messages },
       { title: 'Backpack', component: Backpack }
     ]
@@ -55,5 +59,6 @@ class MyApp {
     // navigate to the new page if it is not the current page
     let nav = this.app.getComponent('nav');
     nav.setRoot(page.component);
+    nav.pages=this.pages;
   }
 }

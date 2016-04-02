@@ -1,45 +1,44 @@
 import {Page, NavController} from 'ionic-angular';
 import {Story} from '../../models/story/story';
-import {Backpack} from '../../pages/backpack/backpack';
-import {Clues} from '../../pages/clues/clues';
+import {Notes} from '../../pages/notes/notes';
 import {Status} from '../../components/status/status';
 import {Gamebar} from '../../components/toolbar/toolbar';
 
 @Page({
-    templateUrl: 'build/pages/game/game.html',
+    templateUrl: 'build/pages/clues/clues.html',
     directives: [Status, Gamebar]
 })
-export class Game {
+export class Clues {
     nav: any;
     story: any;
-    dialog: any;
-    dialogIndex: any = 0;
-    background: any;
+    clues: any;
+    clueTool: any;
     constructor(nav: NavController, story: Story) {
         this.nav = nav;
         this.story = story;
-        this.dialog = this.story.getNextApp().dialog;
-        this.background = this.story.getNextApp().background;
+        this.clues = this.story.story.clueTool.clues;
+        this.clueTool = this.story.story.clueTool;
+        this.story.story.next="clueTool"
+    }
+    isCompleted() {
+        var count = this.clues.reduce(function(n, val) {
+            return n + (val.found === true);
+        }, 0);
+        if (count >= this.clues.length) return true;
+        else return false;
     }
     stringify(o) {
         return JSON.stringify(o);
     }
     next() {
-        if (this.dialog[this.dialogIndex+1]) {
-            this.dialogIndex++;
-            return;
-        } 
-        
-        
         this.story.advanceScene();
         var app = this.story.getNextApp();
         if (app) {
             if (app.type === 'scene') {
-                this.dialog = app.dialog;
-                this.background = app.background;
             }
         } else {
-            this.nav.setRoot(Clues);
+            this.nav.setRoot(Notes);
         }
     }
 }
+ 

@@ -8,84 +8,6 @@ import {Observable}     from 'rxjs/Observable';
 //var instance;
 @Injectable()
 export class Story {
-
-    currentScene: any = 0;
-    currentAct: any = 0;
-    clues: any =
-    [
-        {
-            text: "The majority of fish",
-            question: "why",
-            answers: [
-                {
-                    name: "Answer 1",
-                    text: "fish lack energy"
-                },
-                {
-                    name: "Answer 2",
-                    text: "fish lack energy"
-                },
-                {
-                    name: "Answer 3",
-                    text: "fish lack energy"
-                }
-            ]
-        },
-        {
-            text: "The majority of fish smell",
-            question: "why",
-            answers: [
-                {
-                    name: "Answer 1",
-                    text: "fish lack energy"
-                },
-                {
-                    name: "Answer 2",
-                    text: "fish lack energy"
-                },
-                {
-                    name: "Answer 3",
-                    text: "fish lack energy"
-                }
-            ]
-        },
-        {
-            text: "The majority of fish",
-            question: "why",
-            answers: [
-                {
-                    name: "Answer 1",
-                    text: "fish lack energy"
-                },
-                {
-                    name: "Answer 2",
-                    text: "fish lack energy"
-                },
-                {
-                    name: "Answer 3",
-                    text: "fish lack energy"
-                }
-            ]
-        },
-        {
-            text: "The majority of fish",
-            question: "why",
-            answers: [
-                {
-                    name: "Answer 1",
-                    text: "fish lack energy"
-                },
-                {
-                    name: "Answer 2",
-                    text: "fish lack energy"
-                },
-                {
-                    name: "Answer 3",
-                    text: "fish lack energy"
-                }
-            ]
-        }
-    ];
     story: any = {};
     stories: any = {};
     currentStory: any;
@@ -106,6 +28,9 @@ export class Story {
             .subscribe(data => {
                 story.story = data.json();
                 story.story.next = this.story.start;
+                if (story.story.hasBeacons) {
+               //     this.beacons.start();
+                }
             }, error=> {
                 console.log(error);
             });
@@ -129,58 +54,13 @@ export class Story {
     getNextApp() {
         return this.story[this.story.next];
     }
-    
-    
     advanceScene() { 
-        this.currentScene++;
-    }
-    getApp(app) {
-        return undefined;
-    }
-    getAct() {
-        return undefined;
+        this.story.next = this.story[this.story.next].next;
     }
     getScene() {
         return this.story
     }
     getClues() {
-        return this.clues;
+        return this.story.clueTool.clues;
     }
-    /*
-    get(list, name, attribute) {
-        if (!Storage[list]) return;
-        var game = Storage[list].find(value => value['name'] === name);
-        return game[attribute];
-    }
-    add(value, list, name, attribute) {
-        var user = this.user.user.id;
-        var timestamp = new Date().getTime();
-        if (!name) {
-            value.user = user;
-            value.create = timestamp;
-            this.ref.child(list).push(value);
-        }
-        else {
-            var children = this.ref.child(list).orderByChild('name');
-            var childrenKeys = children.key();
-            if (childrenKeys !== null) {
-                children.equalTo(name).once('child_added')
-                    .then(function(v) {
-                        var foundkey = v.key();
-                        var key = v.ref().child(attribute).push(value).key();
-                        var auditRecord = {
-                            collection: list,
-                            name: name,
-                            user: user,
-                            create: timestamp,
-                            key: key,
-                            value: value
-                        };
-                        v.ref().child('audit').push(auditRecord);
-                    });
-
-            }
-        }
-    }
-    */
 }
