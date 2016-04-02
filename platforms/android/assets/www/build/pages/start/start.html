@@ -1,19 +1,119 @@
+<ion-content id="start">
+    <header>
+        <h1 id="game-title">The Elite Detective Squad</h1>
+    </header>
 
-<ion-navbar id="game-nav" *navbar>
+    <ion-card>
 
-    <ion-title>
-        Start
-    </ion-title>
+        <ion-item>
+            <ion-avatar item-left>
+                <img src="img/female.jpg">
+            </ion-avatar>
+            <h2>Ella</h2>
+            <p>November 5, 2004</p>
+        </ion-item>
 
-    <ion-buttons end>
-        <button menuToggle style="float: right">
-            <ion-icon name="menu"></ion-icon>
-        </button>
-    </ion-buttons>
-</ion-navbar>
+        <status></status>
 
-<section id="start">
-    <header>headerTEST</header>
-    Start
-    <footer>footerTEST</footer>
-</section>
+        <ion-card-content>
+            <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!
+                Whoa. This is heavy.</p>
+        </ion-card-content>
+
+        <ion-item *ngIf="tab===''">
+            <button primary clear item-left>
+                <ion-icon name="trophy"></ion-icon>
+                <div>Trophies</div>
+            </button>
+            <button primary clear item-left (click)="tab='inprogress'">
+                <ion-icon name="ios-map"></ion-icon>
+                <div>Missions</div>
+            </button>
+            <button primary clear item-left>
+                <ion-icon name="ios-archive"></ion-icon>
+                <div>Knocker Locker</div>
+            </button>
+        </ion-item>
+
+        <ion-item *ngIf="tab!==''">
+            <button primary clear item-left (click)="tab='inprogress'">
+                <ion-icon name="trophy"></ion-icon>
+                <div>Inprogress</div>
+            </button>
+            <button primary clear item-left (click)="tab='find'">
+                <ion-icon name="ios-map"></ion-icon>
+                <div>Find</div>
+            </button>
+            <button primary clear item-left>
+                <ion-icon name="ios-archive"></ion-icon>
+                <div>Completed</div>
+            </button>
+        </ion-item>
+    </ion-card>
+    <map *ngIf="tab==='find'"></map>
+    <ion-card *ngIf="tab==='inprogress'">
+        <ion-card-header>
+            Missions in progress
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-card *ngFor="#m of story.getStories().missions">
+                    <ion-card-header (click)="selected=m;story.getStoryFile(m)">
+                        <ion-item>
+                            <ion-thumbnail item-left>
+                                <img src="img/appicon.png">
+                            </ion-thumbnail>
+                            <h2>{{m.name}}</h2>
+                            <p>{{m.info}}</p>
+                            <button clear item-right *ngIf="m.found">View</button>
+                        </ion-item>
+                    </ion-card-header>
+                    <ion-card-content *ngIf="selected===m">
+                        <ion-buttons *ngIf="m.found">
+                            <button (click)=openPage()>
+                                <ion-icon></ion-icon>Play {{story.getStory().name}}
+                            </button>
+                        </ion-buttons>
+                    </ion-card-content>
+                </ion-card>
+
+            </ion-list>
+        </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="tab===''">
+        <ion-card-header>
+            Leader Board
+        </ion-card-header>
+        <ion-card-content>
+            <div class="tg-wrap">
+                <table class="tg">
+                    <tr>
+                        <th class="tg-yw4l">Place</th>
+                        <th class="tg-yw4l">Name</th>
+                        <th class="tg-yw4l">Score</th>
+                    </tr>
+                    <tr>
+                        <td class="tg-j2zy">1</td>
+                        <td class="tg-j2zy">Ella</td>
+                        <td class="tg-j2zy">5000</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-yw4l">2</td>
+                        <td class="tg-yw4l">Kelley</td>
+                        <td class="tg-yw4l">4800</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-j2zy">3</td>
+                        <td class="tg-j2zy">Zaniah</td>
+                        <td class="tg-j2zy">4700</td>
+                    </tr>
+                    <tr>
+                        <td class="tg-yw4l">4</td>
+                        <td class="tg-yw4l">Christina</td>
+                        <td class="tg-yw4l">4500</td>
+                    </tr>
+                </table>
+            </div>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

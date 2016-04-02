@@ -1,34 +1,15 @@
-<ion-navbar id="game-nav" *navbar>
-    <ion-buttons>
-        <button>
-            Message
-        </button>
-        <button>
-            Backpack
-        </button>
-        <button>
-            Notes
-        </button>
-        <button>
-            Help
-        </button>
-        <button menuToggle style="float: right">
-            <ion-icon name="menu"></ion-icon>
-        </button>
-    </ion-buttons>
-</ion-navbar>
+<status></status>
 
-<section>
-    <status></status>
-    
+<ion-content>
+
     <ion-buttons id="start">
         <button (click)="tab='hypothesis'">
             Clues
         </button>
-        <button (click)="tab='analysis'">
+        <button (click)="tab='analysis'" [style.background]="clueTool.completedHypothesis===true ? 'green' : 'grey'">
             Data Table
         </button>
-        <button (click)="tab='test'">
+        <button (click)="tab='test'" *ngIf="isAnalysisComplete()" [style.background]="'grey'">
             Testing
         </button>
     </ion-buttons>
@@ -36,4 +17,6 @@
     <hypothesis *ngIf="tab==='hypothesis'"></hypothesis>
     <analysis *ngIf="tab==='analysis'"></analysis>
     <test *ngIf="tab==='test'"></test>
-</section>
+
+</ion-content>
+<gamebar></gamebar>
