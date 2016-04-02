@@ -8950,9 +8950,10 @@ body {
 #start {
   background: black;
   color: white; }
-
-#start > header {
-  margin: 10px; }
+  #start header {
+    margin: 10px; }
+  #start #status-bar {
+    border-radius: 10px; }
 
 ion-navbar#game-nav {
   position: absolute;
@@ -8972,6 +8973,9 @@ ion-avatar img {
   max-height: 8.6rem;
   border-radius: 1.8rem; }
 
+ion-toolbar {
+  padding-bottom: 20px; }
+
 #status-bar {
   margin: 0 auto;
   background: #903f98;
@@ -8984,11 +8988,31 @@ ion-avatar img {
     float: left;
     width: 50%;
     height: 80%;
-    padding: 0 10px;
+    padding: 0 10px 0 85px;
     color: rgba(255, 255, 255, 0.8);
-    border-right: 1px solid rgba(255, 255, 255, 0.25); }
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+    position: relative;
+    font-size: 20px; }
     #status-bar section:last-child {
       border: 0; }
+    #status-bar section i {
+      background: url(../../img/footerSprite.png) no-repeat;
+      display: block;
+      width: 55px;
+      height: 70px;
+      position: absolute;
+      top: -5px;
+      left: 10px;
+      padding: 18px 20px;
+      font-size: 32px;
+      font-style: normal;
+      line-height: 1;
+      color: #fff;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.8); }
+      #status-bar section i.badge {
+        background-position: center -440px; }
+      #status-bar section i.coin {
+        background-position: center -550px; }
 
 .tg {
   border-collapse: collapse;
@@ -9104,11 +9128,16 @@ p {
 #backpack {
   background: url(../../img/tile.png) repeat;
   height: 100%; }
+  #backpack h1 {
+    width: 90%;
+    margin: 10px auto 0;
+    font: 38px 'Handlee'; }
   #backpack ion-row {
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
-    justify-content: center; }
+    justify-content: center;
+    padding: 0; }
     #backpack ion-row ion-col > ion-icon {
       border: 1px solid rgba(255, 255, 255, 0.8);
       box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.1);
@@ -9119,6 +9148,57 @@ p {
       height: 100px;
       margin: 5px;
       text-align: center; }
+      #backpack ion-row ion-col > ion-icon i {
+        display: block;
+        padding-top: 100px;
+        height: 0;
+        overflow: hidden;
+        position: relative;
+        color: #903f98; }
+        #backpack ion-row ion-col > ion-icon i:before {
+          position: absolute;
+          top: 10px;
+          left: 50%;
+          margin-left: -32px;
+          font: 70px 'icomoon'; }
+        #backpack ion-row ion-col > ion-icon i.icon-dice:before {
+          content: "\e902"; }
+        #backpack ion-row ion-col > ion-icon i.icon-magGlass:before {
+          content: "\e903"; }
+        #backpack ion-row ion-col > ion-icon i.icon-map:before {
+          content: "\e904"; }
+        #backpack ion-row ion-col > ion-icon i.icon-phTestingKit:before {
+          content: "\e905"; }
+        #backpack ion-row ion-col > ion-icon i.icon-rock:before {
+          content: "\e906"; }
+        #backpack ion-row ion-col > ion-icon i.icon-thermometer:before {
+          content: "\e907"; }
+        #backpack ion-row ion-col > ion-icon i.icon-vial:before {
+          content: "\e908"; }
+        #backpack ion-row ion-col > ion-icon i.icon-video:before {
+          content: "\e900"; }
+        #backpack ion-row ion-col > ion-icon i.icon-wikkepedia:before {
+          content: "\e901"; }
+
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon.eot?uxa217");
+  src: url("../fonts/icomoon.eot?uxa217#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?uxa217") format("truetype"), url("../fonts/icomoon.woff?uxa217") format("woff"), url("../fonts/icomoon.svg?uxa217#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
 
 .chat {
   width: 400px; }
