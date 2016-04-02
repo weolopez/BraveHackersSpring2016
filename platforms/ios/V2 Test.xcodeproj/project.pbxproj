@@ -21,9 +21,6 @@
 		4DEF1C1944784A3B9BD5F5EA /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = AD186FCCFA604EDE891A54EC /* CDVViewController+SplashScreen.m */; };
 		891D76A793FA4D09AB79BE58 /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C55C044E8ED24505B6B76C1B /* CDVStatusBar.m */; };
 		EDE354E8DED147A98DDBC8D4 /* IonicKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F528870706A46C8887EA23A /* IonicKeyboard.m */; };
-		373B22DB4FF1492ABF84FE14 /* CDVLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F374A10DAE454F54A81DFFFC /* CDVLocationManager.m */; };
-		85C672854180431D9A13E589 /* AppDelegate+CDVLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04681CF3DFE44426831FAF48 /* AppDelegate+CDVLocationManager.m */; };
-		79073B3C2E6B42B08DEE0470 /* LMLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CEFC72685B4002BB1CB6E6 /* LMLogger.m */; };
 		A6535A9DCD4E47CBA42B1B71 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17A48D13B5EE490D8D16F436 /* CoreBluetooth.framework */; };
 		7287014404594DFB924A80FA /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E88063B20F104D6A8799BA99 /* CoreLocation.framework */; };
 		BA005D997B3B455B808C6B41 /* AppDelegate+APPRegisterUserNotificationSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFB9F474BC44E9F8B428AF5 /* AppDelegate+APPRegisterUserNotificationSettings.m */; };
@@ -31,6 +28,12 @@
 		9265648B822B4EA0A6DCF3DE /* APPLocalNotificationOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 38E09E542501462D84E495BD /* APPLocalNotificationOptions.m */; };
 		5B42333B45724C0AA14CD1B2 /* UIApplication+APPLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = DF77C9DF6E0D444F96CD2F70 /* UIApplication+APPLocalNotification.m */; };
 		D13A057C8F814DEBABD4C49D /* UILocalNotification+APPLocalNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D9043779B1AA4EC99B8BB975 /* UILocalNotification+APPLocalNotification.m */; };
+		179683293A4B4B8D8B939E86 /* CDVLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5EA2DAAFBA47FC9C7583A7 /* CDVLocationManager.m */; };
+		64000F45ECDA41F4BFD487E5 /* AppDelegate+CDVLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA61D8916E314F238A5A1FEA /* AppDelegate+CDVLocationManager.m */; };
+		21641BDA5194416687C0A2C0 /* LMLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BCD0B9B8AF44668D049090 /* LMLogger.m */; };
+		E65A9F477AE1455EB9EA1E86 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91720E2B59F84C7A9CF863C2 /* CoreBluetooth.framework */; };
+		2CF8D44976CC4E7895927E8E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6EB3F631F464A2CA7D8CF2B /* CoreLocation.framework */; };
+		8F399C7E89FF4D049DACC0BC /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA8BD897AAA43B6BCBB8379 /* CDVInAppBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,12 +85,6 @@
 		75A563EF0D7B40A9ACA11829 /* CDVStatusBar.h */ = {isa = PBXFileReference; name = "CDVStatusBar.h"; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		0F528870706A46C8887EA23A /* IonicKeyboard.m */ = {isa = PBXFileReference; name = "IonicKeyboard.m"; path = "ionic-plugin-keyboard/IonicKeyboard.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 		089206A5943A427796F3F247 /* IonicKeyboard.h */ = {isa = PBXFileReference; name = "IonicKeyboard.h"; path = "ionic-plugin-keyboard/IonicKeyboard.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		F374A10DAE454F54A81DFFFC /* CDVLocationManager.m */ = {isa = PBXFileReference; name = "CDVLocationManager.m"; path = "com.unarin.cordova.beacon/CDVLocationManager.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		04681CF3DFE44426831FAF48 /* AppDelegate+CDVLocationManager.m */ = {isa = PBXFileReference; name = "AppDelegate+CDVLocationManager.m"; path = "com.unarin.cordova.beacon/AppDelegate+CDVLocationManager.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		B0CEFC72685B4002BB1CB6E6 /* LMLogger.m */ = {isa = PBXFileReference; name = "LMLogger.m"; path = "com.unarin.cordova.beacon/LMLogger.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
-		51E7E7E0F6AA4490BDE3D2B0 /* CDVLocationManager.h */ = {isa = PBXFileReference; name = "CDVLocationManager.h"; path = "com.unarin.cordova.beacon/CDVLocationManager.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		13C3BCD2008C44E082B08EF8 /* AppDelegate+CDVLocationManager.h */ = {isa = PBXFileReference; name = "AppDelegate+CDVLocationManager.h"; path = "com.unarin.cordova.beacon/AppDelegate+CDVLocationManager.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
-		1F0C96DF34AE4467B9BA5A84 /* LMLogger.h */ = {isa = PBXFileReference; name = "LMLogger.h"; path = "com.unarin.cordova.beacon/LMLogger.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		17A48D13B5EE490D8D16F436 /* CoreBluetooth.framework */ = {isa = PBXFileReference; name = "CoreBluetooth.framework"; path = "System/Library/Frameworks/CoreBluetooth.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		E88063B20F104D6A8799BA99 /* CoreLocation.framework */ = {isa = PBXFileReference; name = "CoreLocation.framework"; path = "System/Library/Frameworks/CoreLocation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		4BFB9F474BC44E9F8B428AF5 /* AppDelegate+APPRegisterUserNotificationSettings.m */ = {isa = PBXFileReference; name = "AppDelegate+APPRegisterUserNotificationSettings.m"; path = "cordova-common-registerusernotificationsettings-mm/AppDelegate+APPRegisterUserNotificationSettings.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
@@ -100,6 +97,16 @@
 		D5CEBC968ADA4F58ADEA044C /* APPLocalNotificationOptions.h */ = {isa = PBXFileReference; name = "APPLocalNotificationOptions.h"; path = "cordova-plugin-local-notifications-mm/APPLocalNotificationOptions.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		8141D84FEA1D4E8B8638CF6D /* UIApplication+APPLocalNotification.h */ = {isa = PBXFileReference; name = "UIApplication+APPLocalNotification.h"; path = "cordova-plugin-local-notifications-mm/UIApplication+APPLocalNotification.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		BE279DB4AD294387B3D291D6 /* UILocalNotification+APPLocalNotification.h */ = {isa = PBXFileReference; name = "UILocalNotification+APPLocalNotification.h"; path = "cordova-plugin-local-notifications-mm/UILocalNotification+APPLocalNotification.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		CF5EA2DAAFBA47FC9C7583A7 /* CDVLocationManager.m */ = {isa = PBXFileReference; name = "CDVLocationManager.m"; path = "com.unarin.cordova.beacon/CDVLocationManager.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		EA61D8916E314F238A5A1FEA /* AppDelegate+CDVLocationManager.m */ = {isa = PBXFileReference; name = "AppDelegate+CDVLocationManager.m"; path = "com.unarin.cordova.beacon/AppDelegate+CDVLocationManager.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		A8BCD0B9B8AF44668D049090 /* LMLogger.m */ = {isa = PBXFileReference; name = "LMLogger.m"; path = "com.unarin.cordova.beacon/LMLogger.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		8867800678C04BF38A796CC0 /* CDVLocationManager.h */ = {isa = PBXFileReference; name = "CDVLocationManager.h"; path = "com.unarin.cordova.beacon/CDVLocationManager.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		62ACFE57B40A4D12A45B74AF /* AppDelegate+CDVLocationManager.h */ = {isa = PBXFileReference; name = "AppDelegate+CDVLocationManager.h"; path = "com.unarin.cordova.beacon/AppDelegate+CDVLocationManager.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		E5AAB965229D4621B9FA79F6 /* LMLogger.h */ = {isa = PBXFileReference; name = "LMLogger.h"; path = "com.unarin.cordova.beacon/LMLogger.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		91720E2B59F84C7A9CF863C2 /* CoreBluetooth.framework */ = {isa = PBXFileReference; name = "CoreBluetooth.framework"; path = "System/Library/Frameworks/CoreBluetooth.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		E6EB3F631F464A2CA7D8CF2B /* CoreLocation.framework */ = {isa = PBXFileReference; name = "CoreLocation.framework"; path = "System/Library/Frameworks/CoreLocation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		EEA8BD897AAA43B6BCBB8379 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; name = "CDVInAppBrowser.m"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		8DFF617483ED409BAD4382D9 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; name = "CDVInAppBrowser.h"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +117,8 @@
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				A6535A9DCD4E47CBA42B1B71 /* CoreBluetooth.framework in Frameworks */,
 				7287014404594DFB924A80FA /* CoreLocation.framework in Frameworks */,
+				E65A9F477AE1455EB9EA1E86 /* CoreBluetooth.framework in Frameworks */,
+				2CF8D44976CC4E7895927E8E /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +190,8 @@
 			children = (
 				17A48D13B5EE490D8D16F436 /* CoreBluetooth.framework */,
 				E88063B20F104D6A8799BA99 /* CoreLocation.framework */,
+				91720E2B59F84C7A9CF863C2 /* CoreBluetooth.framework */,
+				E6EB3F631F464A2CA7D8CF2B /* CoreLocation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -218,12 +229,6 @@
 				75A563EF0D7B40A9ACA11829 /* CDVStatusBar.h */,
 				0F528870706A46C8887EA23A /* IonicKeyboard.m */,
 				089206A5943A427796F3F247 /* IonicKeyboard.h */,
-				F374A10DAE454F54A81DFFFC /* CDVLocationManager.m */,
-				04681CF3DFE44426831FAF48 /* AppDelegate+CDVLocationManager.m */,
-				B0CEFC72685B4002BB1CB6E6 /* LMLogger.m */,
-				51E7E7E0F6AA4490BDE3D2B0 /* CDVLocationManager.h */,
-				13C3BCD2008C44E082B08EF8 /* AppDelegate+CDVLocationManager.h */,
-				1F0C96DF34AE4467B9BA5A84 /* LMLogger.h */,
 				4BFB9F474BC44E9F8B428AF5 /* AppDelegate+APPRegisterUserNotificationSettings.m */,
 				A760CEE7FC30475393AB4ACC /* AppDelegate+APPRegisterUserNotificationSettings.h */,
 				539611FE31CB429C807DB232 /* APPLocalNotification.m */,
@@ -234,6 +239,14 @@
 				D5CEBC968ADA4F58ADEA044C /* APPLocalNotificationOptions.h */,
 				8141D84FEA1D4E8B8638CF6D /* UIApplication+APPLocalNotification.h */,
 				BE279DB4AD294387B3D291D6 /* UILocalNotification+APPLocalNotification.h */,
+				CF5EA2DAAFBA47FC9C7583A7 /* CDVLocationManager.m */,
+				EA61D8916E314F238A5A1FEA /* AppDelegate+CDVLocationManager.m */,
+				A8BCD0B9B8AF44668D049090 /* LMLogger.m */,
+				8867800678C04BF38A796CC0 /* CDVLocationManager.h */,
+				62ACFE57B40A4D12A45B74AF /* AppDelegate+CDVLocationManager.h */,
+				E5AAB965229D4621B9FA79F6 /* LMLogger.h */,
+				EEA8BD897AAA43B6BCBB8379 /* CDVInAppBrowser.m */,
+				8DFF617483ED409BAD4382D9 /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
 			path = "V2 Test/Plugins";
@@ -354,14 +367,15 @@
 				4DEF1C1944784A3B9BD5F5EA /* CDVViewController+SplashScreen.m in Sources */,
 				891D76A793FA4D09AB79BE58 /* CDVStatusBar.m in Sources */,
 				EDE354E8DED147A98DDBC8D4 /* IonicKeyboard.m in Sources */,
-				373B22DB4FF1492ABF84FE14 /* CDVLocationManager.m in Sources */,
-				85C672854180431D9A13E589 /* AppDelegate+CDVLocationManager.m in Sources */,
-				79073B3C2E6B42B08DEE0470 /* LMLogger.m in Sources */,
 				BA005D997B3B455B808C6B41 /* AppDelegate+APPRegisterUserNotificationSettings.m in Sources */,
 				5226D8D5B35E40D183802235 /* APPLocalNotification.m in Sources */,
 				9265648B822B4EA0A6DCF3DE /* APPLocalNotificationOptions.m in Sources */,
 				5B42333B45724C0AA14CD1B2 /* UIApplication+APPLocalNotification.m in Sources */,
 				D13A057C8F814DEBABD4C49D /* UILocalNotification+APPLocalNotification.m in Sources */,
+				179683293A4B4B8D8B939E86 /* CDVLocationManager.m in Sources */,
+				64000F45ECDA41F4BFD487E5 /* AppDelegate+CDVLocationManager.m in Sources */,
+				21641BDA5194416687C0A2C0 /* LMLogger.m in Sources */,
+				8F399C7E89FF4D049DACC0BC /* CDVInAppBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
