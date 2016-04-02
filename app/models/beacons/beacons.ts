@@ -1,16 +1,19 @@
 import {Injectable, Inject} from 'angular2/core';
 import {Platform} from 'ionic-angular';
 import {Story} from '../../models/story/story';
+import { ApplicationRef } from 'angular2/src/core/application_ref';
 
 
 @Injectable()
 export class Beacons {
     story: Story;
     platform: any;
+    ar: ApplicationRef;
    
-       constructor(platform: Platform, story: Story) {
+       constructor(platform: Platform, story: Story, ar: ApplicationRef ) {
           this.story = story;  
           this.platform = platform;   
+          this.ar = ar;
        }
        
        start() {
@@ -70,10 +73,11 @@ export class Beacons {
                                  
                                
                                  console.log("About to set timeout");
-                                 setTimeout(() => {
-                                    console.log("setting timeout, updating mission")
-                                    mission.found = true;
-                                 }, 500);
+                                 mission.found = true;
+                                 beacons.ar.tick();
+                            
+                                
+                                 
                             }         
                        }, this);    
                        

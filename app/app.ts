@@ -24,7 +24,7 @@ import {Story} from './models/story/story';
 })
 class MyApp {
   // make HelloIonicPage the root (or first) page 
-  rootPage: any = Start;
+  rootPage: any = Secretmissions;
   pages: Array<{title: string, component: any}>;
 
   constructor(

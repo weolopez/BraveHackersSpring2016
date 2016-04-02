@@ -29,7 +29,7 @@ var MyApp = (function () {
         this.platform = platform;
         this.menu = menu;
         // make HelloIonicPage the root (or first) page 
-        this.rootPage = start_1.Start;
+        this.rootPage = secretmissions_1.Secretmissions;
         this.initializeApp();
         // set our app's pages
         this.pages = [
@@ -214,7 +214,7 @@ var story_1 = require('../../models/story/story');
 var Map = (function () {
     function Map(story, beacons) {
         this.beacons = beacons;
-        // beacons.start()
+        beacons.start();
         this.displayMap();
         this.story = story;
     }
@@ -440,10 +440,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var ionic_angular_1 = require('ionic-angular');
 var story_1 = require('../../models/story/story');
+var application_ref_1 = require('angular2/src/core/application_ref');
 var Beacons = (function () {
-    function Beacons(platform, story) {
+    function Beacons(platform, story, ar) {
         this.story = story;
         this.platform = platform;
+        this.ar = ar;
     }
     Beacons.prototype.start = function () {
         var _this = this;
@@ -492,10 +494,8 @@ var Beacons = (function () {
                                     data: { name: mission.name }
                                 });
                                 console.log("About to set timeout");
-                                setTimeout(function () {
-                                    console.log("setting timeout, updating mission");
-                                    mission.found = true;
-                                }, 500);
+                                mission.found = true;
+                                beacons.ar.tick();
                             }
                         }, this);
                     }
@@ -511,12 +511,12 @@ var Beacons = (function () {
     }; //end start
     Beacons = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [ionic_angular_1.Platform, story_1.Story])
+        __metadata('design:paramtypes', [ionic_angular_1.Platform, story_1.Story, application_ref_1.ApplicationRef])
     ], Beacons);
     return Beacons;
 }());
 exports.Beacons = Beacons;
-},{"../../models/story/story":9,"angular2/core":21,"ionic-angular":338}],9:[function(require,module,exports){
+},{"../../models/story/story":9,"angular2/core":21,"angular2/src/core/application_ref":104,"ionic-angular":338}],9:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;

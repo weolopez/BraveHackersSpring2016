@@ -112,9 +112,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 var core_1 = require('angular2/core');
 var ionic_angular_1 = require('ionic-angular');
 var story_1 = require('../../models/story/story');
@@ -148,8 +145,7 @@ var Hypothesis = (function () {
         core_1.View({
             templateUrl: 'build/components/hypothesis/hypothesis.html',
             directives: [ionic_angular_1.IONIC_DIRECTIVES]
-        }),
-        __param(0, core_1.Inject(story_1.Story)), 
+        }), 
         __metadata('design:paramtypes', [story_1.Story])
     ], Hypothesis);
     return Hypothesis;
@@ -306,12 +302,11 @@ var Map = (function () {
                     .append("text")
                     .attr("class", "labels")
                     .attr("transform", function (d) {
-                    var coord;
-                    coord = projection([d.lon, d.lat]);
-                    return "translate(" + [(coord[0] + 5), coord[1]] + ")";
+                    return "translate(" + projection([d.lon, d.lat]) + ")";
                 })
-                    .attr("font-family", "sans-serif")
+                    .attr("font-family", "handlee")
                     .attr("font-size", "0.25em") // Old value was 2.5px
+                    .attr("font-weight", "bold")
                     .attr("fill", "black")
                     .text(function (e) {
                     if (e.name === d.name)
@@ -445,10 +440,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var ionic_angular_1 = require('ionic-angular');
 var story_1 = require('../../models/story/story');
+var application_ref_1 = require('angular2/src/core/application_ref');
 var Beacons = (function () {
-    function Beacons(platform, story) {
+    function Beacons(platform, story, ar) {
         this.story = story;
         this.platform = platform;
+        this.ar = ar;
     }
     Beacons.prototype.start = function () {
         var _this = this;
@@ -497,10 +494,8 @@ var Beacons = (function () {
                                     data: { name: mission.name }
                                 });
                                 console.log("About to set timeout");
-                                setTimeout(function () {
-                                    console.log("setting timeout, updating mission");
-                                    mission.found = true;
-                                }, 500);
+                                mission.found = true;
+                                beacons.ar.tick();
                             }
                         }, this);
                     }
@@ -516,12 +511,12 @@ var Beacons = (function () {
     }; //end start
     Beacons = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [ionic_angular_1.Platform, story_1.Story])
+        __metadata('design:paramtypes', [ionic_angular_1.Platform, story_1.Story, application_ref_1.ApplicationRef])
     ], Beacons);
     return Beacons;
 }());
 exports.Beacons = Beacons;
-},{"../../models/story/story":9,"angular2/core":21,"ionic-angular":338}],9:[function(require,module,exports){
+},{"../../models/story/story":9,"angular2/core":21,"angular2/src/core/application_ref":104,"ionic-angular":338}],9:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -837,7 +832,7 @@ var Notes = (function () {
         this.clues = story.story.clueTool.clues;
         this.clueTool = story.story.clueTool;
     }
-    Notes.prototype.isAnalysisComplete = function () {
+    Notes.prototype.magic = function () {
         return true;
         //don't know why this is required but it will crash without the following line
         this.nav.setRoot(messages_1.Messages);
