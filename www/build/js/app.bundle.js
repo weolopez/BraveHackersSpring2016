@@ -92,23 +92,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 var core_1 = require('angular2/core');
 var story_1 = require('../../models/story/story');
 //import {User} from '../../models/user/user';
 var Analysis = (function () {
     function Analysis(story) {
         this.story = story;
+        this.clues = story.story.clueTool.clues;
+        this.clueTool = story.story.clueTool;
+        this.clueTool.completedHypothesis = false;
     }
     Analysis = __decorate([
         core_1.Component({
             selector: 'analysis',
             providers: [story_1.Story]
         }),
-        core_1.View({ templateUrl: 'build/components/analysis/analysis.html' }),
-        __param(0, core_1.Inject(story_1.Story)), 
+        core_1.View({ templateUrl: 'build/components/analysis/analysis.html' }), 
         __metadata('design:paramtypes', [story_1.Story])
     ], Analysis);
     return Analysis;

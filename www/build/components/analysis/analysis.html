@@ -5,24 +5,9 @@
     <th class="tg-yw4l">Test to Run</th>
     <th class="tg-yw4l">Result</th>
   </tr>
-  <tr>
+  <tr *ngFor="#c of clues">
+    <td class="tg-j2zy">{{c.text}}</td>
+    <td class="tg-j2zy">{{c.answers[c.answer]}}</td>
     <td class="tg-j2zy"></td>
-    <td class="tg-j2zy"></td>
-    <td class="tg-j2zy"></td>
-  </tr>
-  <tr>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-  </tr>
-  <tr>
-    <td class="tg-j2zy"></td>
-    <td class="tg-j2zy"></td>
-    <td class="tg-j2zy"></td>
-  </tr>
-  <tr>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
-    <td class="tg-yw4l"></td>
   </tr>
 </table></div>
