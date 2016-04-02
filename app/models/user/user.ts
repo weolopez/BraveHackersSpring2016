@@ -11,6 +11,7 @@ export class User {
         var user = this;    
         this.auth.subscribe(
             function(x) {
+                if (!x) return;
                 console.log('Next: ' + x.toString());
                 user.profile = x[x.auth.provider].cachedUserProfile;
             },
@@ -30,6 +31,9 @@ export class User {
         }).then(function(value) {
             start.firebaseAuthState = value;
         });;
+    }
+    public doLogout() {
+        this.auth.logout();
     }
 }
     /*

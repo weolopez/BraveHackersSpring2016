@@ -7,12 +7,10 @@
 
         <ion-item>
             <ion-avatar item-left>
-                <img src="img/marty-avatar.png">
+                <img src="img/female.jpg">
             </ion-avatar>
             <button (click)="user.doLogin()"> LOGIN FACEBOOK </button>
         </ion-item>
-
-        <img src="img/advance-card-bttf.png">
 
         <ion-card-content>
             <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!
@@ -42,6 +40,7 @@
             </ion-avatar>
             <h2>{{user.profile.name}}</h2>
             <p>{{user.profile.email}}</p>
+            <button (click)="user.doLogout()">Logout of Facebook</button>
         </ion-item>
 
         <status></status>

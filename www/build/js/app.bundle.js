@@ -633,6 +633,8 @@ var User = (function () {
         this.auth = auth;
         var user = this;
         this.auth.subscribe(function (x) {
+            if (!x)
+                return;
             console.log('Next: ' + x.toString());
             user.profile = x[x.auth.provider].cachedUserProfile;
         }, function (err) {
@@ -651,6 +653,9 @@ var User = (function () {
             start.firebaseAuthState = value;
         });
         ;
+    };
+    User.prototype.doLogout = function () {
+        this.auth.logout();
     };
     User = __decorate([
         core_1.Injectable(),
