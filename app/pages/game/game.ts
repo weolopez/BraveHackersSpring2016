@@ -2,6 +2,7 @@ import {Page, NavController} from 'ionic-angular';
 import {Story} from '../../models/story/story';
 import {Backpack} from '../../pages/backpack/backpack';
 import {Clues} from '../../pages/clues/clues';
+import {Cluemap} from '../../pages/cluemap/cluemap';
 import {Status} from '../../components/status/status';
 import {Gamebar} from '../../components/toolbar/toolbar';
 
@@ -39,7 +40,7 @@ export class Game {
                 this.background = app.background;
             }
         } else {
-            this.nav.setRoot(Clues);
+            this.nav.setRoot(Cluemap);
         }
     }
 }

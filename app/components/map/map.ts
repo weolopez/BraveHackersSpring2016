@@ -30,7 +30,7 @@ export class Map {
     langs;
     constructor(story:Story, beacons: Beacons) {
         this.beacons = beacons;
-        beacons.start()
+        //beacons.start()
         this.displayMap();
         this.story = story;
     }
@@ -149,7 +149,7 @@ export class Map {
                   .attr("fill", "black")       
                   .text(function(e) {
                     if (e.name===d.name)
-                      return (d.name);  
+                      return (d.name + " in " + d.city + "," + d.state);  
                   });
 
               } // end of showPoi
