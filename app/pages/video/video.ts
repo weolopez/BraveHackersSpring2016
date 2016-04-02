@@ -15,7 +15,7 @@ export class Video {
         private navParams: NavParams, 
         private story: Story
         ) {
-        this.app=story.getApp('video');
+        this.app=this.story.getNextApp().video;
         this.currentScene=0;
         this.selectedVideo = this.app.videos[0].youtube;
     }

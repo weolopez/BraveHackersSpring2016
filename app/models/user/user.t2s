@@ -1,7 +1,5 @@
 import {Injectable} from 'angular2/core';
-import {Firebase, FirebaseRef, AngularFire} from 'angularfire2';
 
-let instance;
 
 @Injectable()
 export class User {
@@ -10,10 +8,6 @@ export class User {
     editRefString: String;
     userRef: Firebase;
     constructor() {
-        if (!instance) {
-            instance = this;
-        } else return instance;
-        
         var user=this;
         user.online = 0;
         user.ref = 'https://yourpicks.firebaseio.com';

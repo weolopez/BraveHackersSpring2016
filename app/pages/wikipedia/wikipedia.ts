@@ -14,7 +14,7 @@ export class Wikipedia {
     selectedArticle: any;
     
     constructor(nav: NavController, navParams: NavParams, story: Story) {
-        this.app=story.getApp('wikipedia');
+        this.app=story.getNextApp().wikipedia;
         this.currentScene=0;
         this.selectedArticle = this.app.articles[0].wikipedia;
     }
