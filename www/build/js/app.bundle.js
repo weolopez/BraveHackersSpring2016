@@ -29,7 +29,7 @@ var MyApp = (function () {
         this.platform = platform;
         this.menu = menu;
         // make HelloIonicPage the root (or first) page 
-        this.rootPage = secretmissions_1.Secretmissions;
+        this.rootPage = start_1.Start;
         this.initializeApp();
         // set our app's pages
         this.pages = [
@@ -112,9 +112,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 var core_1 = require('angular2/core');
 var ionic_angular_1 = require('ionic-angular');
 var story_1 = require('../../models/story/story');
@@ -148,8 +145,7 @@ var Hypothesis = (function () {
         core_1.View({
             templateUrl: 'build/components/hypothesis/hypothesis.html',
             directives: [ionic_angular_1.IONIC_DIRECTIVES]
-        }),
-        __param(0, core_1.Inject(story_1.Story)), 
+        }), 
         __metadata('design:paramtypes', [story_1.Story])
     ], Hypothesis);
     return Hypothesis;
@@ -836,7 +832,7 @@ var Notes = (function () {
         this.clues = story.story.clueTool.clues;
         this.clueTool = story.story.clueTool;
     }
-    Notes.prototype.isAnalysisComplete = function () {
+    Notes.prototype.magic = function () {
         return true;
         //don't know why this is required but it will crash without the following line
         this.nav.setRoot(messages_1.Messages);

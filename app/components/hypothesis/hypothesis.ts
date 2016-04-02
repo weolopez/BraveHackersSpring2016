@@ -26,7 +26,7 @@ export class Hypothesis {
     showHint: any;
     clues: any;
     clueTool: any;
-    constructor( @Inject(Story) story: Story) {
+    constructor(story: Story) {
         this.story = story;
         this.clues = story.story.clueTool.clues;
         this.clueTool = story.story.clueTool;
