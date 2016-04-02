@@ -35,6 +35,30 @@ module.exports = [
         "runs": true
     },
     {
+        "file": "plugins/cordova-plugin-local-notifications-mm/www/local-notification.js",
+        "id": "cordova-plugin-local-notifications-mm.LocalNotification",
+        "clobbers": [
+            "cordova.plugins.notification.local",
+            "plugin.notification.local"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-local-notifications-mm/www/local-notification-core.js",
+        "id": "cordova-plugin-local-notifications-mm.LocalNotification.Core",
+        "clobbers": [
+            "cordova.plugins.notification.local.core",
+            "plugin.notification.local.core"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-local-notifications-mm/www/local-notification-util.js",
+        "id": "cordova-plugin-local-notifications-mm.LocalNotification.Util",
+        "merges": [
+            "cordova.plugins.notification.local.core",
+            "plugin.notification.local.core"
+        ]
+    },
+    {
         "file": "plugins/com.unarin.cordova.beacon/www/lib/underscore-min-1.6.js",
         "id": "com.unarin.cordova.beacon.underscorejs",
         "runs": true
@@ -77,27 +101,11 @@ module.exports = [
         "runs": true
     },
     {
-        "file": "plugins/cordova-plugin-local-notifications-mm/www/local-notification.js",
-        "id": "cordova-plugin-local-notifications-mm.LocalNotification",
+        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+        "id": "cordova-plugin-inappbrowser.inappbrowser",
         "clobbers": [
-            "cordova.plugins.notification.local",
-            "plugin.notification.local"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-local-notifications-mm/www/local-notification-core.js",
-        "id": "cordova-plugin-local-notifications-mm.LocalNotification.Core",
-        "clobbers": [
-            "cordova.plugins.notification.local.core",
-            "plugin.notification.local.core"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-local-notifications-mm/www/local-notification-util.js",
-        "id": "cordova-plugin-local-notifications-mm.LocalNotification.Util",
-        "merges": [
-            "cordova.plugins.notification.local.core",
-            "plugin.notification.local.core"
+            "cordova.InAppBrowser.open",
+            "window.open"
         ]
     }
 ];
@@ -110,9 +118,10 @@ module.exports.metadata =
     "cordova-plugin-statusbar": "2.1.2",
     "cordova-plugin-whitelist": "1.2.1",
     "ionic-plugin-keyboard": "2.0.1",
-    "com.unarin.cordova.beacon": "3.4.1",
     "cordova-plugin-android-support-v4": "21.0.1",
-    "cordova-plugin-local-notifications-mm": "1.0.1"
+    "cordova-plugin-local-notifications-mm": "1.0.1",
+    "com.unarin.cordova.beacon": "3.4.0",
+    "cordova-plugin-inappbrowser": "1.3.0"
 };
 // BOTTOM OF METADATA
 });

@@ -34,49 +34,47 @@
         <div>Knowledge Locker</div>
       </button>
     </ion-item>
-
-    <ion-item *ngIf="tab!==''">
-      <button primary clear item-left (click)="tab='inprogress'">
-        <ion-icon name="trophy"></ion-icon>
-        <div>Inprogress</div>
-      </button>
-      <button primary clear item-left (click)="tab='find'">
-        <ion-icon name="ios-map"></ion-icon>
-        <div>Find</div>
-      </button>
-      <button primary clear item-left>
-        <ion-icon name="ios-archive"></ion-icon>
-        <div>Completed</div>
-      </button>
-    </ion-item>
-  </ion-card>
-  <map *ngIf="tab==='find'"></map>
-  <ion-card *ngIf="tab==='inprogress'">
-    <ion-card-header>
-      Missions in progress
-    </ion-card-header>
-    <ion-card-content>
-      <ion-list>
-        <ion-card *ngFor="#m of story.getStories().missions">
-          <ion-card-header (click)="selected=m;story.getStoryFile(m)">
-            <ion-item>
-              <ion-thumbnail item-left>
-                <img src="img/appicon.png">
-              </ion-thumbnail>
-              <h2>{{m.name}}</h2>
-              <p>{{m.info}}</p>
-              <button clear item-right>View</button>
-            </ion-item>
-          </ion-card-header>
-          <ion-card-content *ngIf="selected===m">
-            <ion-buttons>
-              <button (click)=openPage()>
-                <ion-icon></ion-icon>Play {{story.getStory().name}}
-              </button>
-            </ion-buttons>
-          </ion-card-content>
-        </ion-card>
-
+        <ion-item *ngIf="tab!==''">
+            <button primary clear item-left (click)="tab='inprogress'">
+                <ion-icon name="trophy"></ion-icon>
+                <div>Inprogress</div>
+            </button>
+            <button primary clear item-left (click)="tab='find'">
+                <ion-icon name="ios-map"></ion-icon>
+                <div>Find</div>
+            </button>
+            <button primary clear item-left>
+                <ion-icon name="ios-archive"></ion-icon>
+                <div>Completed</div>
+            </button>
+        </ion-item>
+    </ion-card>
+    <map *ngIf="tab==='find'"></map>
+    <ion-card *ngIf="tab==='inprogress'">
+        <ion-card-header>
+            Missions in progress
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list>
+                <ion-card *ngFor="#m of story.getStories().missions">
+                    <ion-card-header (click)="selected=m;story.getStoryFile(m)">
+                        <ion-item>
+                            <ion-thumbnail item-left>
+                                <img src="img/appicon.png">
+                            </ion-thumbnail>
+                            <h2>{{m.name}}</h2>
+                            <p>{{m.info}}</p>
+                            <button clear item-right *ngIf="m.found">View</button>
+                        </ion-item>
+                    </ion-card-header>
+                    <ion-card-content *ngIf="selected===m">
+                        <ion-buttons *ngIf="m.found">
+                            <button (click)=openPage()>
+                                <ion-icon></ion-icon>Play {{story.getStory().name}}
+                            </button>
+                        </ion-buttons>
+                    </ion-card-content>
+                </ion-card>
       </ion-list>
     </ion-card-content>
   </ion-card>
