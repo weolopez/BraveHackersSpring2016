@@ -48,19 +48,19 @@ export class Beacons {
                        major = pluginResult.beacons[i].major;
                        color = context[major];
                        beacons.story.story.clueTool.clues.forEach(function(clue) {
-                       if (clue.beacon===color && clue.found == false) 
-                       {
+                          if (clue.beacon===color && clue.found == false) 
+                          {
                              //send notification "Secret Clue"
-                          console.log("Found Clue, send notification" + clue.name);
-                          cordova.plugins.notification.local.schedule({
+                             console.log("Found Clue, send notification" + clue.name);
+                             cordova.plugins.notification.local.schedule({
                                     id: 2,
                                     title: "Congratulations!",
                                     text: "You Have Unlocked a Secret Clue!!!",
                                     data: { name: clue.name }
-                          });
-                          clue.found = true;
-                          beacons.ar.tick();
-                        }         
+                             });
+                             clue.found = true;
+                             beacons.ar.tick();
+                          }         
                        }, this); 
                         beacons.story.stories.missions.forEach(function(mission) {
                            //console.log("Mission Name: " + mission.name )

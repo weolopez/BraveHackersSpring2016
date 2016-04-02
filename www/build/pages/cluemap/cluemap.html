@@ -11,6 +11,11 @@
        <p *ngIf="c.found" >Clue Unlocked::{{c.text}}</p>
        <p *ngIf="!c.found">{{c.location}}</p>
     </ion-item>
+    <ion-buttons>
+       <button (click)=clearClues()>
+          <ion-icon></ion-icon>Clear Clues
+       </button>
+     </ion-buttons>
  </ion-list>
 
         <video-text *ngIf="isCompleted()">

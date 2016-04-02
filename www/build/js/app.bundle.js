@@ -671,7 +671,7 @@ var Cluemap = (function () {
         this.nav = nav;
         this.story = story;
         this.beacons = beacons;
-        //beacons.start()
+        beacons.start();
         this.clues = this.story.story.clueTool.clues;
         this.clueTool = this.story.story.clueTool;
         this.story.story.next = "clueTool";
@@ -684,6 +684,11 @@ var Cluemap = (function () {
             return true;
         else
             return false;
+    };
+    Cluemap.prototype.clearClues = function () {
+        this.clues.forEach(function (clue) {
+            clue.found = false;
+        });
     };
     Cluemap.prototype.stringify = function (o) {
         return JSON.stringify(o);

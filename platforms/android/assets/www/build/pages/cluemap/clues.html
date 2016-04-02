@@ -5,19 +5,16 @@
          <div class="item item-avatar">
          <img src="img/Aquarium.png">
         </div>
-<ion-list>
-    <h1>Try to Find the Secret Clues!</h1>
-    <ion-item *ngFor="#c of story.story.clueTool.clues">
-       <p *ngIf="c.found" >Clue Unlocked::{{c.text}}</p>
-       <p *ngIf="!c.found">{{c.location}}</p>
-    </ion-item>
-    <ion-buttons>
-       <button (click)=clearClues()>
-          <ion-icon></ion-icon>Clear Clues
-       </button>
-     </ion-buttons>
- </ion-list>
+        
+        <video-window>
+            <ion-list>
+                <ion-item *ngFor="#c of story.getClues()">
+                    <ion-label class="clue-text">{{c.text}} {{c.found}}</ion-label>
+                    <ion-checkbox dark [(ngModel)]=c.found></ion-checkbox>
+                </ion-item>
+            </ion-list>
 
+        </video-window>
         <video-text *ngIf="isCompleted()">
             <ion-buttons>
                 <button (click)=next()>

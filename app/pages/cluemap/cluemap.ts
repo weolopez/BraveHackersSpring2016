@@ -31,7 +31,7 @@ export class Cluemap {
         this.nav = nav;
         this.story = story;
         this.beacons = beacons;
-        //beacons.start()
+       // beacons.start()
         this.clues = this.story.story.clueTool.clues;
         this.clueTool = this.story.story.clueTool;
         this.story.story.next="clueTool"
@@ -42,6 +42,11 @@ export class Cluemap {
         }, 0);
         if (count >= this.clues.length) return true;
         else return false;
+    }
+    clearClues() {
+      this.clues.forEach(function(clue) {
+         clue.found = false;
+      });                
     }
     stringify(o) {
         return JSON.stringify(o);
