@@ -33,6 +33,7 @@
 		21641BDA5194416687C0A2C0 /* LMLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A8BCD0B9B8AF44668D049090 /* LMLogger.m */; };
 		E65A9F477AE1455EB9EA1E86 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91720E2B59F84C7A9CF863C2 /* CoreBluetooth.framework */; };
 		2CF8D44976CC4E7895927E8E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6EB3F631F464A2CA7D8CF2B /* CoreLocation.framework */; };
+		8F399C7E89FF4D049DACC0BC /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA8BD897AAA43B6BCBB8379 /* CDVInAppBrowser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,8 @@
 		E5AAB965229D4621B9FA79F6 /* LMLogger.h */ = {isa = PBXFileReference; name = "LMLogger.h"; path = "com.unarin.cordova.beacon/LMLogger.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		91720E2B59F84C7A9CF863C2 /* CoreBluetooth.framework */ = {isa = PBXFileReference; name = "CoreBluetooth.framework"; path = "System/Library/Frameworks/CoreBluetooth.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		E6EB3F631F464A2CA7D8CF2B /* CoreLocation.framework */ = {isa = PBXFileReference; name = "CoreLocation.framework"; path = "System/Library/Frameworks/CoreLocation.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		EEA8BD897AAA43B6BCBB8379 /* CDVInAppBrowser.m */ = {isa = PBXFileReference; name = "CDVInAppBrowser.m"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		8DFF617483ED409BAD4382D9 /* CDVInAppBrowser.h */ = {isa = PBXFileReference; name = "CDVInAppBrowser.h"; path = "cordova-plugin-inappbrowser/CDVInAppBrowser.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +245,8 @@
 				8867800678C04BF38A796CC0 /* CDVLocationManager.h */,
 				62ACFE57B40A4D12A45B74AF /* AppDelegate+CDVLocationManager.h */,
 				E5AAB965229D4621B9FA79F6 /* LMLogger.h */,
+				EEA8BD897AAA43B6BCBB8379 /* CDVInAppBrowser.m */,
+				8DFF617483ED409BAD4382D9 /* CDVInAppBrowser.h */,
 			);
 			name = Plugins;
 			path = "V2 Test/Plugins";
@@ -370,6 +375,7 @@
 				179683293A4B4B8D8B939E86 /* CDVLocationManager.m in Sources */,
 				64000F45ECDA41F4BFD487E5 /* AppDelegate+CDVLocationManager.m in Sources */,
 				21641BDA5194416687C0A2C0 /* LMLogger.m in Sources */,
+				8F399C7E89FF4D049DACC0BC /* CDVInAppBrowser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

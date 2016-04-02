@@ -1,9 +1,7 @@
  <svg></svg>
-  
-
- <ion-list>
+  <ion-list>
     <h1> Check out the map to find the secret missions!  </h1>
-    <ion-item *ngFor="#m of beacons.story.getStories().missions">
+    <ion-item *ngFor="#m of story.stories.missions">
        <h2>{{m.name}}</h2>
        <p *ngIf="m.found">Mission Unlocked!</p>
        <p *ngIf="!m.found">Go to Location to Unlock Secret Mission!</p>

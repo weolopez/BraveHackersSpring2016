@@ -20,6 +20,7 @@ var secretmissions_1 = require('./pages/secretmissions/secretmissions');
 var backpack_1 = require('./pages/backpack/backpack');
 var clues_1 = require('./pages/clues/clues');
 var wikipedia_1 = require('./pages/wikipedia/wikipedia');
+var beacons_1 = require('./models/beacons/beacons');
 var story_1 = require('./models/story/story');
 //import {FirebaseUrl, FIREBASE_PROVIDERS, defaultFirebase} from 'angularfire2';
 var MyApp = (function () {
@@ -28,7 +29,7 @@ var MyApp = (function () {
         this.platform = platform;
         this.menu = menu;
         // make HelloIonicPage the root (or first) page 
-        this.rootPage = start_1.Start;
+        this.rootPage = secretmissions_1.Secretmissions;
         this.initializeApp();
         // set our app's pages
         this.pages = [
@@ -60,14 +61,14 @@ var MyApp = (function () {
     MyApp = __decorate([
         ionic_angular_1.App({
             templateUrl: 'build/app.html',
-            providers: [story_1.Story],
+            providers: [story_1.Story, beacons_1.Beacons],
             config: {} //,  http://ionicframework.com/docs/v2/api/config/Config/ 
         }), 
         __metadata('design:paramtypes', [ionic_angular_1.IonicApp, ionic_angular_1.Platform, ionic_angular_1.MenuController])
     ], MyApp);
     return MyApp;
 }());
-},{"./models/story/story":9,"./pages/backpack/backpack":10,"./pages/clues/clues":11,"./pages/messages/messages":13,"./pages/notes/notes":14,"./pages/secretmissions/secretmissions":15,"./pages/start/start":16,"./pages/video/video":17,"./pages/wikipedia/wikipedia":18,"es6-shim":262,"ionic-angular":338,"ionic-native":360}],2:[function(require,module,exports){
+},{"./models/beacons/beacons":8,"./models/story/story":9,"./pages/backpack/backpack":10,"./pages/clues/clues":11,"./pages/messages/messages":13,"./pages/notes/notes":14,"./pages/secretmissions/secretmissions":15,"./pages/start/start":16,"./pages/video/video":17,"./pages/wikipedia/wikipedia":18,"es6-shim":262,"ionic-angular":338,"ionic-native":360}],2:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -215,10 +216,11 @@ var beacons_1 = require('../../models/beacons/beacons');
 var story_1 = require('../../models/story/story');
 //import {User} from '../../models/user/user';
 var Map = (function () {
-    function Map(beacons) {
+    function Map(story, beacons) {
         this.beacons = beacons;
-        //beacons.start()
+        // beacons.start()
         this.displayMap();
+        this.story = story;
     }
     Map.prototype.displayMap = function () {
         queue().defer(d3.json, "appdata/us-states.json")
@@ -271,7 +273,8 @@ var Map = (function () {
                 .style("stroke", "red")
                 .style("stroke-opacity", 1)
                 .style("fill-opacity", .2)
-                .style("fill", "red");
+                .style("fill", "red")
+                .on("click", showPoi);
             function clicked(d) {
                 var x, y, k;
                 if (d && centered !== d) {
@@ -294,6 +297,26 @@ var Map = (function () {
                     .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
                     .style("stroke-width", 1.5 / k + "px");
             } //end clicked
+            function showPoi(d) {
+                d3.selectAll(".labels").remove();
+                g.append("g")
+                    .selectAll(".labels")
+                    .data(pois)
+                    .enter()
+                    .append("text")
+                    .attr("class", "labels")
+                    .attr("transform", function (d) {
+                    return "translate(" + projection([d.lon, d.lat]) + ")";
+                })
+                    .attr("font-family", "handlee")
+                    .attr("font-size", "0.25em") // Old value was 2.5px
+                    .attr("font-weight", "bold")
+                    .attr("fill", "black")
+                    .text(function (e) {
+                    if (e.name === d.name)
+                        return (d.name);
+                });
+            } // end of showPoi
             d3.select(window).on('resize', resize);
             function resize() {
                 // adjust things when the window size changes
@@ -329,13 +352,13 @@ var Map = (function () {
     Map = __decorate([
         core_1.Component({
             selector: 'map',
-            providers: [beacons_1.Beacons, story_1.Story]
+            providers: [beacons_1.Beacons]
         }),
         core_1.View({
             templateUrl: 'build/components/map/map.html',
             directives: [ionic_angular_1.IONIC_DIRECTIVES]
         }), 
-        __metadata('design:paramtypes', [beacons_1.Beacons])
+        __metadata('design:paramtypes', [story_1.Story, beacons_1.Beacons])
     ], Map);
     return Map;
 }());
@@ -418,21 +441,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
 var core_1 = require('angular2/core');
 var ionic_angular_1 = require('ionic-angular');
 var story_1 = require('../../models/story/story');
 var Beacons = (function () {
     function Beacons(platform, story) {
-        //   this.ref = ref;
-        // this.user = User.getInstance();
         this.story = story;
         this.platform = platform;
     }
     Beacons.prototype.start = function () {
         var _this = this;
+        var beacons = this;
         this.platform.ready().then(function () {
             console.log("Beacons.start()");
             var context = {
@@ -449,13 +468,13 @@ var Beacons = (function () {
             var delegate = new cordova.plugins.locationManager.Delegate();
             delegate.didRangeBeaconsInRegion = function (pluginResult) {
                 if (pluginResult.beacons.length > 0) {
-                    console.log("******** didRangeBeaconsInRegion *********");
+                    //console.log("******** didRangeBeaconsInRegion *********");
                     var major;
                     var color;
                     for (var i = 0; i < pluginResult.beacons.length; i++) {
                         major = pluginResult.beacons[i].major;
                         color = context[major];
-                        console.log("Found " + color + " Beacon!!!!");
+                        //console.log("Found " + color + " Beacon!!!!");
                         //ask Weo how to make sure that Story is defined in this event
                         //   this.story.getClues().forEach(function(clue) {
                         //     if (clue.beacon===color && clue.found == false) 
@@ -465,17 +484,22 @@ var Beacons = (function () {
                         //        clue.found = true;
                         //    }         
                         //   }, this); 
-                        this.story.getStories().missions.forEach(function (mission) {
-                            if (mission.beacon === color && mission.found == false) {
+                        beacons.story.stories.missions.forEach(function (mission) {
+                            //console.log("Mission Name: " + mission.name )
+                            if (mission.beacon === color && !mission.found) {
+                                console.log("Found Mission, about to send notification" + mission.name);
                                 //send notification "Secret Mission "
                                 cordova.plugins.notification.local.schedule({
                                     id: 1,
+                                    title: "Congratulations!",
                                     text: "You Have Unlocked a Secret Mission!!!",
-                                    sound: isAndroid ? 'file://sound.mp3' : 'file://beep.caf',
-                                    data: { mission: name }
+                                    data: { name: mission.name }
                                 });
-                                console.log("Found Mission" + mission.name);
-                                mission.found = true;
+                                console.log("About to set timeout");
+                                setTimeout(function () {
+                                    console.log("setting timeout, updating mission");
+                                    mission.found = true;
+                                }, 500);
                             }
                         }, this);
                     }
@@ -490,8 +514,7 @@ var Beacons = (function () {
         });
     }; //end start
     Beacons = __decorate([
-        core_1.Injectable(),
-        __param(1, core_1.Inject(story_1.Story)), 
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [ionic_angular_1.Platform, story_1.Story])
     ], Beacons);
     return Beacons;

@@ -99,6 +99,14 @@ module.exports = [
         "file": "plugins/com.unarin.cordova.beacon/www/model/BeaconRegion.js",
         "id": "com.unarin.cordova.beacon.BeaconRegion",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+        "id": "cordova-plugin-inappbrowser.inappbrowser",
+        "clobbers": [
+            "cordova.InAppBrowser.open",
+            "window.open"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -112,7 +120,8 @@ module.exports.metadata =
     "ionic-plugin-keyboard": "2.0.1",
     "cordova-plugin-android-support-v4": "21.0.1",
     "cordova-plugin-local-notifications-mm": "1.0.1",
-    "com.unarin.cordova.beacon": "3.4.0"
+    "com.unarin.cordova.beacon": "3.4.0",
+    "cordova-plugin-inappbrowser": "1.3.0"
 };
 // BOTTOM OF METADATA
 });

@@ -5,28 +5,28 @@
             "file" : "missions/fishy.json",
             "info" : "AT&T • 2016",
             "beacon" : "none",
-            "found" :  "true"      
+            "found" :  true      
         }, 
+         {
+            "name" : "Georgia Aquarium Loses The Sea Lions?",
+            "file" : "missions/missions.json",
+            "info" : "AT&T • 2016",
+            "beacon" : "mint",
+            "found" :  false  
+        },
         {
             "name" : "missions",
             "file" : "missions/missions.json",
             "info" : "AT&T • 2016",
             "beacon" : "none",
-            "found" :  "true"   
-        },
-        {
-            "name" : "Georgia Aquarium Loses The Sea Lions?",
-            "file" : "missions/missions.json",
-            "info" : "AT&T • 2016",
-            "beacon" : "mint",
-            "found" :  "false"   
+            "found" :  true 
         },
           {
             "name" : "Hello Los Angeles!",
             "file" : "missions/missions.json",
             "info" : "AT&T • 2016",
             "beacon" : "blueberry",
-            "found" :  "false"   
+            "found" :  false  
         }
     ]
 }
