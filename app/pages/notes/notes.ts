@@ -25,9 +25,10 @@ export class Notes {
         this.clues = story.story.clueTool.clues;
         this.clueTool = story.story.clueTool;
     }
-    isAnalysisComplete() {
+    magic() {
         return true;
         //don't know why this is required but it will crash without the following line
-        this.nav.setRoot(Messages);
+        
+       // this.nav.setRoot(Messages);
     }
 }
