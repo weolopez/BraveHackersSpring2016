@@ -1,0 +1,32 @@
+<ion-navbar *navbar>
+
+    <ion-title>
+        {{story.story.name}}
+    </ion-title>
+
+    <ion-buttons end>
+        <button menuToggle style="float: right">
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+</ion-navbar>
+<section id="game">
+    <ion-col id="main">
+        <video-window>
+            <ion-list>
+                <ion-item *ngFor="#c of story.getClues()">
+                    <ion-label class="clue-text">{{c.text}} {{c.found}}</ion-label>
+                    <ion-checkbox dark [(ngModel)]=c.found></ion-checkbox>
+                </ion-item>
+            </ion-list>
+            
+        </video-window>
+        <video-text *ngIf="isCompleted()">
+            <ion-buttons>
+                <button (click)=next()>
+                    <ion-icon></ion-icon>Next
+                </button>
+            </ion-buttons>
+        </video-text>
+    </ion-col>
+</section>

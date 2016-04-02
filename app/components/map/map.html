@@ -1,14 +1,11 @@
-  <ion-card>
-    <ion-card-header>
-       Map of Secret Missions
-    </ion-card-header>
-    <svg></svg>
-    <ion-card-content>
-        <ion-list>
-        <ion-item>
-        <h2>{{beacons.mission.name}} - {{beacons.mission.location}}</h2>
-         <p>{{beacons.mission.description}}</p>
-        </ion-item>
-        </ion-list>
-    </ion-card-content>
-</ion-card>
+ <svg></svg>
+  
+
+ <ion-list>
+    <h1> Check out the map to find the secret missions!  </h1>
+    <ion-item *ngFor="#m of beacons.story.getStories().missions">
+       <h2>{{m.name}}</h2>
+       <p *ngIf="m.found">Mission Unlocked!</p>
+       <p *ngIf="!m.found">Go to Location to Unlock Secret Mission!</p>
+    </ion-item>
+ </ion-list>

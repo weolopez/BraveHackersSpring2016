@@ -1,0 +1,14 @@
+{
+    "missions" : [
+        {
+            "name" : "fishy",
+            "file" : "missions/fishy.json",
+            "info" : "AT&T • 2016"
+        }, 
+        {
+            "name" : "missions",
+            "file" : "missions/missions.json",
+            "info" : "AT&T • 2016"
+        }
+    ]
+}

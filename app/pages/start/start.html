@@ -65,11 +65,11 @@
                             </ion-thumbnail>
                             <h2>{{m.name}}</h2>
                             <p>{{m.info}}</p>
-                            <button clear item-right>View</button>
+                            <button clear item-right *ngIf="m.found">View</button>
                         </ion-item>
                     </ion-card-header>
                     <ion-card-content *ngIf="selected===m">
-                        <ion-buttons>
+                        <ion-buttons *ngIf="m.found">
                             <button (click)=openPage()>
                                 <ion-icon></ion-icon>Play {{story.getStory().name}}
                             </button>
