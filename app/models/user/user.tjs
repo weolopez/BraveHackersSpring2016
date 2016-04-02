@@ -5,6 +5,9 @@ let instance;
 
 @Injectable()
 export class User {
+
+}
+    /*
     online: any;
     ref: String;
     editRefString: String;
@@ -116,7 +119,6 @@ export class User {
                                     }, count);
                                     online = count;
                                 });
-                                */
         }
     }
     setUser(authData) {
@@ -142,3 +144,4 @@ export class User {
                     
     }
 }
+                                */

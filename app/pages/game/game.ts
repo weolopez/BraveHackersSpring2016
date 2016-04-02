@@ -16,6 +16,7 @@ export class Game {
     dialog: any;
     dialogIndex: any = 0;
     background: any;
+    messages: any;
     constructor(nav: NavController, story: Story) {
         this.nav = nav;
         this.story = story;

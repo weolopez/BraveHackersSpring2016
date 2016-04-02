@@ -12,59 +12,71 @@ import {Cluemap} from './pages/cluemap/cluemap'
 import {Wikipedia} from './pages/wikipedia/wikipedia'
 import {Beacons} from './models/beacons/beacons';
 import {Story} from './models/story/story';
-
-
-
-//import {FirebaseUrl, FIREBASE_PROVIDERS, defaultFirebase} from 'angularfire2';
+import {User} from './models/user/user';
+import {FIREBASE_PROVIDERS,
+    defaultFirebase,
+    AngularFire,
+    firebaseAuthConfig,
+    AuthProviders,
+    AuthMethods
+} from 'angularfire2';
 
 @App({
-  templateUrl: 'build/app.html',
-    providers: [ Story, Beacons],
-    config: {} //,  http://ionicframework.com/docs/v2/api/config/Config/ 
-  //  providers: [ 
-    //    FIREBASE_PROVIDERS,
-      //  defaultFirebase('https://yourpicks.firebaseio.com/') 
-  //  ]
+    templateUrl: 'build/app.html',
+    config: {}, // http://ionicframework.com/docs/v2/api/config/Config/ 
+    providers: [
+        Story,
+        User,
+        Beacons,
+        FIREBASE_PROVIDERS,
+        defaultFirebase('https://aofs.firebaseio.com/'),
+        firebaseAuthConfig({
+            provider: AuthProviders.Facebook,
+            method: AuthMethods.Popup,
+            remember: 'default',
+            scope: ['email']
+        })
+    ]
 })
 class MyApp {
-  // make HelloIonicPage the root (or first) page 
-  rootPage: any = Start;
-  pages: Array<{title: string, component: any}>;
+    // make HelloIonicPage the root (or first) page 
+    rootPage: any = Start;
+    pages: Array<{ title: string, component: any }>;
 
-  constructor(
-    private app: IonicApp,
-    private platform: Platform,
-    private menu: MenuController
-  ) {
-    this.initializeApp();
+    constructor(
+        private app: IonicApp,
+        private platform: Platform,
+        private menu: MenuController
+    ) {
+        this.initializeApp();
 
-    // set our app's pages
-    this.pages = [
-      { title: 'Video', component: Video },
-      { title: 'Wikipedia', component: Wikipedia },
-      { title: 'Secretmissions', component: Secretmissions },
-      { title: 'Start', component: Start },
-      { title: 'Notes', component: Notes },
-      { title: 'Clues', component: Clues },
-      { title: 'Messages', component: Messages },
-      { title: 'Backpack', component: Backpack }
-    ]
-  }
+        // set our app's pages
+        this.pages = [
+            { title: 'Video', component: Video },
+            { title: 'Wikipedia', component: Wikipedia },
+            { title: 'Secretmissions', component: Secretmissions },
+            { title: 'Start', component: Start },
+            { title: 'Notes', component: Notes },
+            { title: 'Clues', component: Clues },
+            { title: 'Messages', component: Messages },
+            { title: 'Backpack', component: Backpack }
+        ]
+    }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
-    });
-  }
+    initializeApp() {
+        this.platform.ready().then(() => {
+            // Okay, so the platform is ready and our plugins are available.
+            // Here you can do any higher level native things you might need.
+            StatusBar.styleDefault();
+        });
+    }
 
-  openPage(page) {
-    // close the menu when clicking a link from the menu
-    this.menu.close();
-    // navigate to the new page if it is not the current page
-    let nav = this.app.getComponent('nav');
-    nav.setRoot(page.component);
-    nav.pages=this.pages;
-  }
+    openPage(page) {
+        // close the menu when clicking a link from the menu
+        this.menu.close();
+        // navigate to the new page if it is not the current page
+        let nav = this.app.getComponent('nav');
+        nav.setRoot(page.component);
+        nav.pages = this.pages;
+    }
 }
