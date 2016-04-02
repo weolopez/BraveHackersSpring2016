@@ -1,3 +1,4 @@
+import 'es6-shim';
 import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {Video} from './pages/video/video';
@@ -8,6 +9,7 @@ import {Secretmissions} from './pages/secretmissions/secretmissions';
 import {Backpack} from './pages/backpack/backpack';
 import {Clues} from './pages/clues/clues'
 import {Wikipedia} from './pages/wikipedia/wikipedia'
+import {Beacons} from './models/beacons/beacons';
 import {Story} from './models/story/story';
 import {FIREBASE_PROVIDERS,
         defaultFirebase,
@@ -22,6 +24,7 @@ import {FIREBASE_PROVIDERS,
     config: {}, // http://ionicframework.com/docs/v2/api/config/Config/ 
     providers: [
         Story,
+	Beacons,
         FIREBASE_PROVIDERS,
         defaultFirebase('https://yourpicks.firebaseio.com/'),
         firebaseAuthConfig({
@@ -33,9 +36,9 @@ import {FIREBASE_PROVIDERS,
     ]
 })
 class MyApp {
-    // make HelloIonicPage the root (or first) page 
-    rootPage: any = Start;
-    pages: Array<{ title: string, component: any }>;
+  // make HelloIonicPage the root (or first) page 
+  rootPage: any = Secretmissions;
+  pages: Array<{title: string, component: any}>;
 
     constructor(
         private app: IonicApp,
