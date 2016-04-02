@@ -1,6 +1,8 @@
 import {Component, View, Inject} from 'angular2/core';
 import {IONIC_DIRECTIVES} from 'ionic-angular';
 import {Beacons} from '../../models/beacons/beacons';
+import {Story} from '../../models/story/story';
+
 import {
   Control,
   ControlGroup,
@@ -24,11 +26,13 @@ import {
 })
 export class Map {
     beacons: Beacons;
-
+    story: Story;
     langs;
-    constructor( @Inject(Beacons) beacons: Beacons) {
+    constructor(story:Story, beacons: Beacons) {
         this.beacons = beacons;
+        beacons.start()
         this.displayMap();
+        this.story = story;
     }
      displayMap() {
           
@@ -95,7 +99,8 @@ export class Map {
              .style("stroke", "red") 
              .style("stroke-opacity", 1) 
              .style("fill-opacity", .2)      
-             .style("fill", "red");
+             .style("fill", "red")
+             .on("click",showPoi);
            
             
            function clicked(d) {                                
@@ -125,6 +130,30 @@ export class Map {
                .style("stroke-width", 1.5 / k + "px");
                                        
            } //end clicked
+           
+           function showPoi(d) {
+
+                  d3.selectAll(".labels").remove();
+
+                  g.append("g")
+                  .selectAll(".labels")
+                  .data(pois)
+                  .enter()
+                  .append("text")
+                  .attr("class", "labels")
+                   .attr("transform", function(d) {
+                      return "translate(" + projection([d.lon,d.lat]) + ")";})
+                  .attr("font-family", "handlee")
+                  .attr("font-size", "0.25em") // Old value was 2.5px
+                  .attr("font-weight", "bold")
+                  .attr("fill", "black")       
+                  .text(function(e) {
+                    if (e.name===d.name)
+                      return (d.name);  
+                  });
+
+              } // end of showPoi
+                  
                  
               d3.select(window).on('resize', resize);
 
