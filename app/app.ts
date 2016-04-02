@@ -8,6 +8,7 @@ import {Notes} from './pages/notes/notes';
 import {Secretmissions} from './pages/secretmissions/secretmissions';
 import {Backpack} from './pages/backpack/backpack';
 import {Clues} from './pages/clues/clues'
+import {Cluemap} from './pages/cluemap/cluemap'
 import {Wikipedia} from './pages/wikipedia/wikipedia'
 import {Beacons} from './models/beacons/beacons';
 import {Story} from './models/story/story';
