@@ -1,3 +1,7 @@
+ion-toolbar {
+  padding-bottom: 20px;
+}
+
 #status-bar {
   margin: 0 auto;
   background: #903f98;
@@ -11,16 +15,37 @@
     float: left;
     width: 50%;
     height: 80%;
-    padding: 0 10px;
+    padding: 0 10px 0 85px;
     color: rgba(255, 255, 255, 0.8);
     border-right: 1px solid rgba(255, 255, 255, 0.25);
+    position: relative;
+    font-size: 20px;
 
     &:last-child {
       border: 0;
     }
 
     i {
-      background: url(../../footerSprite.png) no-repeat;
+      background: url(../../img/footerSprite.png) no-repeat;
+      display: block;
+      width: 55px;
+      height: 70px;
+      position: absolute;
+      top: -5px;
+      left: 10px;
+      padding: 18px 20px;
+      font-size: 32px;
+      font-style: normal;
+      line-height: 1;
+      color: #fff;
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+
+      &.badge {
+        background-position: center -440px;
+      }
+      &.coin {
+        background-position: center -550px;
+      }
 
     }
   }
