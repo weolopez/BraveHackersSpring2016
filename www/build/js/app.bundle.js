@@ -822,6 +822,7 @@ var analysis_1 = require('../../components/analysis/analysis');
 var hypothesis_1 = require('../../components/hypothesis/hypothesis');
 var status_1 = require('../../components/status/status');
 var story_1 = require('../../models/story/story');
+var messages_1 = require('../../pages/messages/messages');
 var toolbar_1 = require('../../components/toolbar/toolbar');
 var Notes = (function () {
     function Notes(story, nav) {
@@ -834,7 +835,7 @@ var Notes = (function () {
     Notes.prototype.magic = function () {
         return true;
         //don't know why this is required but it will crash without the following line
-        // this.nav.setRoot(Messages);
+        this.nav.setRoot(messages_1.Messages);
     };
     Notes = __decorate([
         ionic_angular_1.Page({
@@ -847,7 +848,7 @@ var Notes = (function () {
     return Notes;
 }());
 exports.Notes = Notes;
-},{"../../components/analysis/analysis":2,"../../components/hypothesis/hypothesis":3,"../../components/status/status":6,"../../components/toolbar/toolbar":7,"../../models/story/story":9,"angular2/core":21,"ionic-angular":337}],15:[function(require,module,exports){
+},{"../../components/analysis/analysis":2,"../../components/hypothesis/hypothesis":3,"../../components/status/status":6,"../../components/toolbar/toolbar":7,"../../models/story/story":9,"../../pages/messages/messages":13,"angular2/core":21,"ionic-angular":337}],15:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
