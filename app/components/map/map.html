@@ -1,15 +1,11 @@
-  <svg></svg>
-  <ion-card *ngFor="#m of beacons.story.getStories().missions;">
-     <ion-card-header (click)="selected=m;">
-     <ion-item>
-     <h2>{{m.name}}</h2>
-     <button clear item-right>View</button>
-     </ion-item>
-    </ion-card-header>
-     <ion-card-content *ngIf="selected===m">
-        <ion-item>
-         <h2>{{m.info}}</h2>
-         <p>{{m.found}}</p>
-        </ion-item>
-     </ion-card-content>
-</ion-card>
+ <svg></svg>
+  
+
+ <ion-list>
+    <h1> Check out the map to find the secret missions!  </h1>
+    <ion-item *ngFor="#m of beacons.story.getStories().missions">
+       <h2>{{m.name}}</h2>
+       <p *ngIf="m.found">Mission Unlocked!</p>
+       <p *ngIf="!m.found">Go to Location to Unlock Secret Mission!</p>
+    </ion-item>
+ </ion-list>
