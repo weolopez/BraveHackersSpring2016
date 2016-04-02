@@ -27,4 +27,12 @@ export class Start {
     openPage() {
         this.nav.setRoot(Game);
     }
+    getOtherMissions() {
+        var start = this;
+        if (start.user.missions != null) {
+            start.user.missions.forEach(function(mission) {
+                start.story.stories.missions.push(mission);
+            });
+        }
+    }
 }

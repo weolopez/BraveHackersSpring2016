@@ -11,6 +11,7 @@
       "dialog" : [
         {
           "character" : "Chica",
+          "image": "img/female.jpg",
           "text" : "Ella, we just recieved a request for help at the Georgia Aquarium. The majority of the fish in the salt water aquarium are gathering towards the surface of the water. Grab your geer and meet Mr. Yhoshi at the saltwater exibit."
         }
       ],
@@ -22,10 +23,12 @@
       "dialog" : [
         {
           "character" : "Ella",
+          "image": "img/female.jpg",
           "text" : "Hi, you must be Mr. Yoshi. I'm Ella from The Elite Detective Squad."
         }, 
         {
           "character" : "Mr. Yoshi",
+          "image": "img/female.jpg",
           "text" : "Thank you for getting here so quickly. I noticed last night that the fish are gathering at the surface of the water."
         }
       ],

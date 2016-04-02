@@ -632,17 +632,60 @@ var User = (function () {
     function User(auth) {
         this.auth = auth;
         var user = this;
+        user.ref = 'https://aofs.firebaseio.com';
         this.auth.subscribe(function (x) {
             if (!x)
                 return;
             console.log('Next: ' + x.toString());
-            user.profile = x[x.auth.provider].cachedUserProfile;
+            user.setUser(x);
         }, function (err) {
             console.log('Error: ' + err);
         }, function () {
             console.log('Completed');
         });
+        user.getUsers();
+        user.connectedRef = new Firebase(user.ref + '/.info/connected');
+        user.user = { name: 'Anonymous User', profileLocation: 'local',
+            profile: { profileImageURL: 'http://www.psdgraphics.com/file/male-silhouette.jpg' } };
+        user.connectedRef.on('value', user.onConnectedRefChange);
+        user.getMissions();
     }
+    User.prototype.onConnectedRefChange = function (snap) {
+        var user = this;
+        return;
+        if ((snap.val() === true) && (user.userConnectionsRef !== undefined)) {
+            var con = user.userConnectionsRef.push(true);
+            con.onDisconnect().remove();
+            user.userLastOnlineRef.onDisconnect().set(Firebase.ServerValue.TIMESTAMP);
+        }
+    };
+    User.prototype.save = function () {
+        var user = this;
+        user.userRef.set(user.user);
+    };
+    User.prototype.setUser = function (authData) {
+        var user = this;
+        if (!authData) {
+            console.log('AuthData null');
+            return;
+        }
+        var name = authData[authData.auth.provider].displayName.replace(/\s+/g, '');
+        user.userConnectionString = user.ref + '/users/' + name.tobase64url();
+        user.userRef = new Firebase(user.userConnectionString);
+        user.userRef.once('value').then(function (d) {
+            user.user = d.val();
+            if (user.user === null)
+                user.user = {};
+            user.user.name = name;
+            user.user.id = name.tobase64url();
+            user.user.profileProvider = authData.auth.provider;
+            user.user.profile = authData[user.user.profileProvider];
+            user.userConnectionsRef = new Firebase(user.userConnectionString + '/connections');
+            user.userLastOnlineRef = new Firebase(user.userConnectionString + '/lastOnline');
+            user.save();
+            return d;
+        });
+    };
     User.prototype.doLogin = function () {
         var start = this;
         // This will perform popup auth with google oauth and the scope will be email
@@ -656,6 +699,42 @@ var User = (function () {
     };
     User.prototype.doLogout = function () {
         this.auth.logout();
+        this.user = { name: 'Anonymous User', profileLocation: 'local',
+            profile: { profileImageURL: 'http://www.psdgraphics.com/file/male-silhouette.jpg' } };
+    };
+    User.prototype.getLastOnline = function (userName) {
+        var user = this;
+        var returnDate;
+        try {
+            var date = new Date(user.users[userName].lastOnline);
+            returnDate = date.toJSON();
+        }
+        catch (err) {
+            returnDate = 'UNKNOWN';
+        }
+        if (user.users[userName].connections !== undefined)
+            returnDate = 'Is currently online.';
+        return returnDate;
+    };
+    User.prototype.getUsers = function () {
+        var user = this;
+        if ((user.users === undefined) ||
+            (user.userRef !== undefined)) {
+            var usersConnectionString = user.ref + '/users';
+            var us = new Firebase(usersConnectionString);
+            us.once('value').then(function (d) {
+                user.users = d.val();
+                user.online = Object.keys(user.users).length;
+            });
+        }
+    };
+    User.prototype.getMissions = function () {
+        var user = this;
+        var missionsConnectionString = user.ref + '/missions';
+        var us = new Firebase(missionsConnectionString);
+        us.once('value').then(function (d) {
+            user.missions = d.val();
+        });
     };
     User = __decorate([
         core_1.Injectable(),
@@ -666,143 +745,38 @@ var User = (function () {
 }());
 exports.User = User;
 /*
-online: any;
-ref: String;
-editRefString: String;
-userRef: Firebase;
-constructor() {
-    if (!instance) {
-        instance = this;
-    } else return instance;
-    
-    var user=this;
-    user.online = 0;
-    user.ref = 'https://yourpicks.firebaseio.com';
-    user.editRefString = 'users';
-    user.usersRef = new Firebase(user.ref);
-    user.usersRef.onAuth(user.setUser);
-    user.connectedRef = new Firebase(user.ref + '/.info/connected');
-    user.getUsers();
-    user.user = {name: 'Anonymous User', profileLocation: 'local',
-        profile: {profileImageURL:'http://www.psdgraphics.com/file/male-silhouette.jpg'}};
-        
-    user.connectedRef.on('value', user.onConnectedRefChange);
+      
+  setProperty(key, value) {
+      var user = this;
+      user.user[key] = value;
+      user.save();
+  }
+  getProperty(key) {
+      return user.user[key];
+  }
+  setEditLocation(usereditRefString) {
+      user.editLocationConnectionsRef = new Firebase(ref + '/' + editRefString + '/' + user.user.name + '/connections');
+      user.editLocationLastOnlineRef = new Firebase(ref + '/' + editRefString + '/' + user.user.name + '/lastOnline');
+  }
+  getImage(userName, source) {
+      var returnImage = 'assets/images/logo.png',
+          loggedInImage;
+      if (user.user === undefined) return returnImage;
+      try {
+          loggedInImage = user.user.profile.profileImageURL;
+      } catch (err) {
+          console.log(err);
+      }
+      if (source === user.user.profileProvider) {
+          if (loggedInImage !== undefined) returnImage = loggedInImage;
+      }
+      if (source === undefined) {
+          if (loggedInImage !== undefined) returnImage = loggedInImage;
+      }
+      return returnImage;
+  }
 }
-
-static getInstance() {
-    if (!instance) return new User();
-    return instance;
-}
-onConnectedRefChange(snap) {
-    var user = this;
-    if ((snap.val() === true) && (user.userConnectionsRef !== undefined)) {
-            var con = user.userConnectionsRef.push(true);
-            con.onDisconnect().remove();
-            user.userLastOnlineRef.onDisconnect().set(Firebase.ServerValue.TIMESTAMP);
-    }
-}
-authUser() {
-    var user=this;
-    user.usersRef.authWithOAuthPopup('facebook').then(user.setUser);
-}
-logout() {
-    var user=this;
-    user.usersRef.unauth();
-    user.user = {name: 'Anonymous User', profileLocation: 'local',
-        profile: {profileImageURL:'http://www.psdgraphics.com/file/male-silhouette.jpg'}};
-}
-setLocation(location) {
-    user.user.location = location;
-    save();
-    this.ref.child(codedTeam).set(newTeam);
-}
-save() {
-    var user = this;
-    user.userRef.set(user.user);
-}
-setProperty(key, value) {
-    var user = this;
-    user.user[key] = value;
-    user.save();
-}
-getProperty(key) {
-    return user.user[key];
-}
-setEditLocation(usereditRefString) {
-    user.editLocationConnectionsRef = new Firebase(ref + '/' + editRefString + '/' + user.user.name + '/connections');
-    user.editLocationLastOnlineRef = new Firebase(ref + '/' + editRefString + '/' + user.user.name + '/lastOnline');
-}
-getImage(userName, source) {
-    var returnImage = 'assets/images/logo.png',
-        loggedInImage;
-    if (user.user === undefined) return returnImage;
-    try {
-        loggedInImage = user.user.profile.profileImageURL;
-    } catch (err) {
-        console.log(err);
-    }
-    if (source === user.user.profileProvider) {
-        if (loggedInImage !== undefined) returnImage = loggedInImage;
-    }
-    if (source === undefined) {
-        if (loggedInImage !== undefined) returnImage = loggedInImage;
-    }
-    return returnImage;
-}
-getLastOnline(userName) {
-    var returnDate;
-    try {
-        var date = new Date(user.users[userName].lastOnline);
-        returnDate = date.toJSON();
-    } catch (err) {
-        returnDate = 'UNKNOWN';
-    }
-    if (user.users[userName].connections !== undefined) returnDate = 'Is currently online.';
-    return returnDate;
-}
-getUsers() {
-    var user=this;
-    if ((user.users === undefined) ||
-        (user.userRef !== undefined)) {
-        var usersConnectionString = user.ref + '/users';
-        /**
-         * load users list
-        $firebaseObject(new Firebase(usersConnectionString))
-                            .$loaded(function (value) {
-                                user.users = value;
-                                var count = 0;
-                                angular.forEach(user.users, function (value, key) {
-                                    if (value.connections !== undefined)
-                                        count = count + 1;
-                                }, count);
-                                online = count;
-                            });
-    }
-}
-setUser(authData) {
-    var user=User.getInstance();
-    if (!authData) {
-        console.log('AuthData null');
-        return;
-    }
-    var name = authData[authData.provider].displayName.replace(/\s+/g, '');
-    user.userConnectionString = user.ref + '/users/' + name.tobase64url();
-    user.userRef = new Firebase(user.userConnectionString);
-    user.userRef.once('value').then((d) => {
-        user.user = d.val();
-        user.user.name = name;
-        user.user.id = name.tobase64url();
-        user.user.profileProvider = authData.provider;
-        user.user.profile = authData[user.user.profileProvider];
-        user.userConnectionsRef = new Firebase(user.userConnectionString + '/connections');
-        user.userLastOnlineRef = new Firebase(user.userConnectionString + '/lastOnline');
-        user.save();
-        return d;
-    });
-                
-}
-}
-                            */ 
+                              */ 
 },{"angular2/core":22,"angularfire2":263}],11:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1102,6 +1076,14 @@ var Start = (function () {
     }
     Start.prototype.openPage = function () {
         this.nav.setRoot(game_1.Game);
+    };
+    Start.prototype.getOtherMissions = function () {
+        var start = this;
+        if (start.user.missions != null) {
+            start.user.missions.forEach(function (mission) {
+                start.story.stories.missions.push(mission);
+            });
+        }
     };
     Start = __decorate([
         ionic_angular_1.Page({

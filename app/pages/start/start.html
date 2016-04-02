@@ -15,7 +15,7 @@
         <ion-card-content>
             <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!
                 Whoa. This is heavy.</p>
-        </ion-card-content>
+        </ion-card-content> 
 
         <ion-item>
             <button primary clear item-left>
@@ -36,36 +36,40 @@
     <ion-card *ngIf="user.auth | async">
         <ion-item>
             <ion-avatar item-left>
-                <img [src]="user.profile.picture.data.url">
+                <img [src]="user.user.profile.profileImageURL">
             </ion-avatar>
-            <h2>{{user.profile.name}}</h2>
-            <p>{{user.profile.email}}</p>
+            <h2>{{user.user.profile.displayName}}</h2>
+            <p>{{user.user.profile.email}}</p>
             <button (click)="user.doLogout()">Logout of Facebook</button>
         </ion-item>
 
         <status></status>
 
-        <ion-card-content>
+     <ion-card-content>
             <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!
                 Whoa. This is heavy.</p>
         </ion-card-content>
 
 
-        <ion-item *ngIf="tab===''">
-            <button primary clear item-left>
+        <ion-item>
+            <button primary clear item-left (click)="tab=''">
                 <ion-icon name="trophy"></ion-icon>
                 <div>Trophies</div>
             </button>
-            <button primary clear item-left (click)="tab='inprogress'">
+            <button primary clear item-left (click)="tab='inprogress';getOtherMissions()">
                 <ion-icon name="ios-map"></ion-icon>
                 <div>Missions</div>
             </button>
-            <button primary clear item-left>
+            <button primary clear item-left (click)="tab='find'">
+                <ion-icon name="ios-map"></ion-icon>
+                <div>Find</div>
+            </button>
+            <!--button primary clear item-left>
                 <ion-icon name="ios-archive"></ion-icon>
                 <div>Knowledge Locker</div>
-            </button>
+            </button-->
         </ion-item>
-        <ion-item *ngIf="tab!==''">
+        <!--ion-item *ngIf="tab!==''">
             <button primary clear item-left (click)="tab='inprogress'">
                 <ion-icon name="trophy"></ion-icon>
                 <div>Inprogress</div>
@@ -78,7 +82,7 @@
                 <ion-icon name="ios-archive"></ion-icon>
                 <div>Completed</div>
             </button>
-        </ion-item>
+        </ion-item-->
     </ion-card>
     <map *ngIf="tab==='find'"></map>
     <ion-card *ngIf="tab==='inprogress'">
@@ -87,7 +91,7 @@
         </ion-card-header>
         <ion-card-content>
             <ion-list>
-                <ion-card *ngFor="#m of story.getStories().missions">
+                <ion-card *ngFor="#m of story.stories.missions">
                     <ion-card-header (click)="selected=m;story.getStoryFile(m)">
                         <ion-item>
                             <ion-thumbnail item-left>

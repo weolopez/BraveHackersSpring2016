@@ -9,7 +9,7 @@
             <ion-icon name="menu"></ion-icon>
         </button>
     </ion-buttons>
-</ion-navbar-->
+</ion-navbar>
 <status></status>
 <ion-content id="game">
     <ion-col id="main">
@@ -25,5 +25,31 @@
             </ion-buttons>
         </video-text>
     </ion-col>
+</ion-content>
+<gamebar></gamebar-->
+
+<status></status>
+<ion-content id="messages">
+    <div>
+        <style>
+
+        </style>
+        <div *ngFor="#m of dialog; #index=index;#isOdd=odd;#isEven=even" style="background: white;">
+            <div [class]="isOdd?'chatrowl':'chatrow'">
+                <div [class]="isOdd?'usericonl':'usericon-r'"><img [src]="m.image" height="42" width="42" /></div>
+                <div [class]="isOdd?'bubblel':'bubbler'">
+                    <div [class]="isEven?'bubblealt':'bubble'">{{m.text}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+<ion-list>
+  <ion-item>
+    <button outline item-right (click)="next()">
+      <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+      Next
+    </button>
+  </ion-item>
+</ion-list>
 </ion-content>
 <gamebar></gamebar>
