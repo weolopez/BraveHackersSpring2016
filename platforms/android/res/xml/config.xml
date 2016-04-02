@@ -30,7 +30,7 @@
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
     </feature>
     <allow-intent href="market:*" />
-    <name>V2 Test</name>
+    <name>Angels Of Science</name>
     <description>An Ionic Framework and Cordova project.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />

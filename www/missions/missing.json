@@ -1,47 +1,33 @@
 {
   "id" : 1,
-  "name" : "A fishy situation",
+  "name" : "One of These Things Is Not Like the Other",
   "createdby" : "cg085b@att.com",
   "date" : "April 2016",
+  "start" : "missionAccept",
+  "next" : "notes",
   "missionAccept" : {
       "type" : "scene",
-      "background" : "urlToBackgroundImage",
+      "background" : "img/female.jpg",
       "dialog" : [
         {
           "character" : "Chica",
-          "text" : "Ella, we just recieved a request for help at the Georgia Aquarium. The majority of the fish in the saltwatyer aquarium are gathering towards the surface of the water. Grab your geer and meet Mr. Yhoshi at the saltwater exibit."
+          "text" : "Ella, we just recieved a request for help at the Georgia Aquarium. The majority of the fish in the salt water aquarium are gathering towards the surface of the water. Grab your geer and meet Mr. Yhoshi at the saltwater exibit."
         }
       ],
-      "next" : "missionIntroScene"
-  },
-  "missionIntroScene" :{
-      "type" : "scene",
-      "background" : "urlToBackgroundImage",
-      "dialog" : [
-        {
-          "character" : "Ella",
-          "text" : "Hi, you must be Mr. Yoshi. I'm Ella from The Elite Detective Squad."
-        }, 
-        {
-          "character" : "Mr. Yoshi",
-          "text" : "Thank you for getting here so quickly. I noticed last night that the fish are gathering at the surface of the water."
-        }
-      ],
-      "backpack" : [
-          "clueTool"
-      ]
+      "next" : ["backpack","clueTool"]
   },
   "clueTool" : {
       "type" : "clueTool", 
       "clues" : [
-        {
+        { 
           "id" : "1",
           "text" : "The majority of the fish seem to be floating or swimming slowly.",
           "question" : "Why would fish float instead of swim?",
           "x" : "",
           "y" : "",
-          "beacon" : "none",
-          "found" :  true,
+          "beacon": "ice",
+          "found" : false,
+          "location": "Go to the Dolphins!",
           "answers" : [
             {
               "id" : "1",
@@ -65,8 +51,9 @@
           "question" : "What causes saltwater fish to float near the surface of the water?",
           "x" : "",
           "y" : "",
-          "beacon" : "mint",
-          "found" :  false,
+          "beacon": "mint",
+          "found" : false,
+           "location": "Go to the Seals!",
           "answers" : [
             {
               "id" : "1",
@@ -90,8 +77,9 @@
           "question" : "Why are the majority of the fish brightly colored?",
           "x" : "",
           "y" : "",
-          "beacon" : "ice",
-          "found" :  false,
+          "beacon": "blueberry",
+          "found" : false,
+          "location": "Go to the Penguins!",
           "answers" : [
             {
               "id" : "1",
@@ -115,8 +103,8 @@
           "question" : "Why would the fish have jagged or torn fins?",
           "x" : "",
           "y" : "",
-          "beacon" : "blueberry",
-          "found" :  false,
+          "found" : true,
+          "location": "Go to the Whale Sharks!",
           "answers" : [
             {
               "id" : "1",
@@ -134,6 +122,15 @@
           "hint" : "The environment affects the physical attributes of the fish.",
           "answer" : 2
         }
+      ],
+      "dialog" : [
+        {
+          "character" : "Chica",
+          "text" : "Ella, use the seach tool to find clues."
+        }
       ]
+  },
+  "notes" : {
+    "type" : "notes"   
   }
 }

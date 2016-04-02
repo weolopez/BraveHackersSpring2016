@@ -48,17 +48,21 @@ export class Beacons {
                     for(var i = 0; i < pluginResult.beacons.length; i++) {
                        major = pluginResult.beacons[i].major;
                        color = context[major];
-                       //console.log("Found " + color + " Beacon!!!!");
-                     
-                       //ask Weo how to make sure that Story is defined in this event
-                    //   this.story.getClues().forEach(function(clue) {
-                     //     if (clue.beacon===color && clue.found == false) 
-                    //      {
-                     //         //send notification "Secret Clue"
-                     //         console.log("Found Clue" + clue.name);
-                      //        clue.found = true;
-                      //    }         
-                    //   }, this); 
+                       beacons.story.story.clueTool.clues.forEach(function(clue) {
+                          if (clue.beacon===color && clue.found == false) 
+                          {
+                             //send notification "Secret Clue"
+                             console.log("Found Clue, send notification" + clue.name);
+                             cordova.plugins.notification.local.schedule({
+                                    id: 2,
+                                    title: "Congratulations!",
+                                    text: "You Have Unlocked a Secret Clue!!!",
+                                    data: { name: clue.name }
+                             });
+                             clue.found = true;
+                             beacons.ar.tick();
+                          }         
+                       }, this); 
                         beacons.story.stories.missions.forEach(function(mission) {
                            //console.log("Mission Name: " + mission.name )
                               if (mission.beacon===color && !mission.found) 
@@ -72,8 +76,6 @@ export class Beacons {
                                     data: { name: mission.name }
                                  });
                                  
-                               
-                                 console.log("About to set timeout");
                                  mission.found = true;
                                  beacons.ar.tick();
                             
