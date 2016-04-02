@@ -7691,9 +7691,10 @@ body {
 #start {
   background: black;
   color: white; }
-
-#start > header {
-  margin: 10px; }
+  #start header {
+    margin: 10px; }
+  #start #status-bar {
+    border-radius: 10px; }
 
 ion-navbar#game-nav {
   position: absolute;
@@ -7845,11 +7846,16 @@ p {
 #backpack {
   background: url(../../img/tile.png) repeat;
   height: 100%; }
+  #backpack h1 {
+    width: 90%;
+    margin: 10px auto 0;
+    font: 38px 'Handlee'; }
   #backpack ion-row {
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
-    justify-content: center; }
+    justify-content: center;
+    padding: 0; }
     #backpack ion-row ion-col > ion-icon {
       border: 1px solid rgba(255, 255, 255, 0.8);
       box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.1);

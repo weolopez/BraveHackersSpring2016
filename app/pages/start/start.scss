@@ -1,25 +1,30 @@
 #start {
-    background: black;
-    color: white;
-}
-#start > header {
+  background: black;
+  color: white;
+
+  header {
     margin: 10px;
+  }
+
+  #status-bar {
+    border-radius: 10px;
+  }
 }
 ion-navbar#game-nav {
-    position: absolute;
-    bottom: 0;
-    height: 50px;
-    top: initial;
+  position: absolute;
+  bottom: 0;
+  height: 50px;
+  top: initial;
 }
 #game-title {
-    font-size: 7.5vw;
-    margin: auto;
-    text-align: center;
-    padding: 10px;
-    background: darkblue;
+  font-size: 7.5vw;
+  margin: auto;
+  text-align: center;
+  padding: 10px;
+  background: darkblue;
 }
 ion-avatar img {
-    max-width: 8.6rem;
-    max-height: 8.6rem;
-    border-radius: 1.8rem;
+  max-width: 8.6rem;
+  max-height: 8.6rem;
+  border-radius: 1.8rem;
 }
