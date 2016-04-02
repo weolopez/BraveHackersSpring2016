@@ -17,6 +17,7 @@ export class Beacons {
        }
        
        start() {
+            
            var beacons = this;
            this.platform.ready().then(() => {
               console.log("Beacons.start()") 

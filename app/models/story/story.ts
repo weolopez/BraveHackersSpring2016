@@ -3,9 +3,6 @@ import {Http, Response} from 'angular2/http';
 import {Observable}     from 'rxjs/Observable';
 import {Beacons} from '../../models/beacons/beacons';
 import {Platform} from 'ionic-angular';
-//import {Observable} from 'rxjs/Observable';
-//import {Firebase, FirebaseRef, AngularFire} from 'angularfire2';
-//import {User} from '../user/user';
 
 //var instance;
 @Injectable()
@@ -21,22 +18,23 @@ export class Story {
         this.http.get("missions/missions.json")
             .subscribe(data => {
                 story.stories = data.json();
-            }, error=> {
+            }, error => {
                 console.log(error);
-            });            
+            });
     }
+
     getStoryFile(m) {
         var story = this;
         this.http.get(m.file)
             .subscribe(data => {
                 story.story = data.json();
                 story.story.next = this.story.start;
-              //  if (story.story.hasBeacons) {
-                    //ask Weo
+                //  if (story.story.hasBeacons) {
+                //ask Weo
                 //      let beacons = new Beacons(this.platform, this);
-              //        beacons.start();
-               // }
-            }, error=> {
+                //        beacons.start();
+                // }
+            }, error => {
                 console.log(error);
             });
     }
@@ -60,7 +58,7 @@ export class Story {
     getNextApp() {
         return this.story[this.story.next];
     }
-    advanceScene() { 
+    advanceScene() {
         this.story.next = this.story[this.story.next].next;
     }
     getScene() {

@@ -11,22 +11,24 @@ import {Clues} from './pages/clues/clues'
 import {Wikipedia} from './pages/wikipedia/wikipedia'
 import {Beacons} from './models/beacons/beacons';
 import {Story} from './models/story/story';
+import {User} from './models/user/user';
 import {FIREBASE_PROVIDERS,
-        defaultFirebase,
-        AngularFire,
-        firebaseAuthConfig,
-        AuthProviders,
-        AuthMethods
-    } from 'angularfire2';
+    defaultFirebase,
+    AngularFire,
+    firebaseAuthConfig,
+    AuthProviders,
+    AuthMethods
+} from 'angularfire2';
 
 @App({
     templateUrl: 'build/app.html',
     config: {}, // http://ionicframework.com/docs/v2/api/config/Config/ 
     providers: [
         Story,
-	Beacons,
+        User,
+        Beacons,
         FIREBASE_PROVIDERS,
-        defaultFirebase('https://yourpicks.firebaseio.com/'),
+        defaultFirebase('https://aofs.firebaseio.com/'),
         firebaseAuthConfig({
             provider: AuthProviders.Facebook,
             method: AuthMethods.Popup,
@@ -36,9 +38,9 @@ import {FIREBASE_PROVIDERS,
     ]
 })
 class MyApp {
-  // make HelloIonicPage the root (or first) page 
-  rootPage: any = Secretmissions;
-  pages: Array<{title: string, component: any}>;
+    // make HelloIonicPage the root (or first) page 
+    rootPage: any = Start;
+    pages: Array<{ title: string, component: any }>;
 
     constructor(
         private app: IonicApp,
