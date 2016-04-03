@@ -19,6 +19,7 @@ export class Notes {
     clues: any;
     clueTool: any;
     analysisComplete: any;
+    
     constructor(story: Story, @Inject(NavController) nav: NavController) {
         this.nav = nav;
         this.story = story;

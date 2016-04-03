@@ -8915,6 +8915,41 @@ ion-toolbar {
     margin: auto 0px;
     margin: 15px; } }
 
+/* ============================================================
+  COMMON
+============================================================ */
+#wrapper {
+  min-width: 600px; }
+
+.settings {
+  display: table;
+  width: 100%; }
+
+.settings .row {
+  display: table-row; }
+
+.settings .question,
+.settings .switch {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 10px; }
+
+.settings .question {
+  width: 600px;
+  font-family: "Roboto Slab", serif;
+  font-size: 20px; }
+
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 5px;
+  border: 2px solid #555; }
+
+input[type='checkbox']:checked {
+  background: #abd; }
+
 .wrap {
   white-space: normal; }
 

@@ -45,6 +45,7 @@
           "y" : "",
           "beacon": "none",
           "found" : true,
+          "isTestingRequired" : true,
           "answers" : [
             {
               "id" : "1",
@@ -70,6 +71,7 @@
           "y" : "",
           "beacon": "none",
           "found" : true,
+          "isTestingRequired" : true,
           "answers" : [
             {
               "id" : "1",
@@ -95,6 +97,7 @@
           "y" : "",
           "beacon": "none",
           "found" : true,
+          "isTestingRequired" : false,
           "answers" : [
             {
               "id" : "1",
@@ -120,6 +123,7 @@
           "y" : "",
           "beacon": "none",
           "found" : true,
+          "isTestingRequired" : true,
           "answers" : [
             {
               "id" : "1",

@@ -41,7 +41,7 @@ export class Game {
                 this.background = app.background;
             }
         } else {
-            this.nav.setRoot(Cluemap);
+            this.nav.setRoot(Clues);
         }
     }
 }

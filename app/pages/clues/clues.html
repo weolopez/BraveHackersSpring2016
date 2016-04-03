@@ -11,11 +11,14 @@
 
         </video-window>
         <video-text *ngIf="isCompleted()">
-            <ion-buttons>
-                <button (click)=next()>
-                    <ion-icon></ion-icon>Next
-                </button>
-            </ion-buttons>
+            <ion-list>
+                <ion-item>
+                    <button outline item-right (click)="next()">
+                        <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+                        Next
+                    </button>
+                </ion-item>
+            </ion-list>
         </video-text>
     </ion-col>
 
