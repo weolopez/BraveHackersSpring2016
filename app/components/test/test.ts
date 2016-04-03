@@ -4,47 +4,47 @@ import {Story} from '../../models/story/story';
 import {IONIC_DIRECTIVES} from 'ionic-angular';
     
 @Component({ 
-    selector: 'analysis',   
+    selector: 'test',   
  })
-@View({  templateUrl: 'build/components/analysis/analysis.html',
+@View({  templateUrl: 'build/components/test/test.html',
     directives: [IONIC_DIRECTIVES]
  })
-export class Analysis {
+export class Test {
 
     story: Story;
     clues: any;
     clueTool: any;
     numberOfTests: any;
-    completedAnalysis: any;
+    completedTest: any;
     constructor(story:Story) {
-        var analysis = this;
+        var test = this;
         this.story=story;
         this.clues = story.story.clueTool.clues;
         this.clueTool = story.story.clueTool;
         this.clueTool.completedHypothesis=false;
         
-        analysis.numberOfTests = this.clues.reduce(function(n, val) { 
+        test.numberOfTests = this.clues.reduce(function(n, val) { 
             var index = Number(val.id)-1;
-            var itr = analysis.clues[index].isTestingRequired;
+            var itr = test.clues[index].isTestingRequired;
             return n + (itr === true);
         }, 0);
     }
     isDone() {
-        var analysis = this;
+        var test = this;
         var count = this.clues.reduce(function(n, val) {
             var index = Number(val.id)-1;
-            var itr = analysis.clues[index].isTestingRequired;
+            var itr = test.clues[index].isTestingRequired;
             return n + (val.selectedClue === itr);
         }, 0);
-        if (count >= analysis.numberOfTests) {
-           analysis.completedAnalysis = true;
+        if (count >= test.numberOfTests) {
+           test.completedTest = true;
            return true;
         } else false;
         
     }
     next() {
-        var analysis = this;
-        analysis.clueTool.completedAnalysis = analysis.completedAnalysis;
+        var test = this;
+        test.clueTool.completedAnalysis = test.completedTest;
         window.scrollTo(0, 0);
     }
 } 

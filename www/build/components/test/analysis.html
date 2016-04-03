@@ -1,0 +1,26 @@
+<div class="tg-wrap">
+    <table class="tg">
+        <tr>
+            <th class="tg-yw4l">Clue</th>
+            <th class="tg-yw4l">Test to Run</th>
+            <th class="tg-yw4l">Result</th>
+        </tr>
+        <tr *ngFor="#c of clues">
+            <td class="tg-j2zy">{{c.text}}</td>
+            <td class="tg-j2zy">{{c.answers[c.answer-1].text}}</td>
+            <td class="tg-j2zy">
+                <input type="checkbox" [id]="c.id" [(ngModel)]="c.selectedClue" >
+            </td>
+        </tr>
+    </table>
+
+    <ion-list *ngIf="isDone()">
+        <ion-item>
+            <button outline item-right (click)="next()">
+                <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+                Next
+            </button>
+        </ion-item>
+    </ion-list>
+
+</div>
