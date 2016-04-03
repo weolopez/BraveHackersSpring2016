@@ -8802,7 +8802,11 @@ body {
   background: black;
   color: white; }
   #start header {
-    margin: 10px; }
+    background: url(../../img/aosHeader.png) no-repeat #3664ab center 0;
+    padding-top: 57px;
+    height: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); }
   #start #status-bar {
     border-radius: 10px; }
 
@@ -8811,13 +8815,6 @@ ion-navbar#game-nav {
   bottom: 0;
   height: 50px;
   top: initial; }
-
-#game-title {
-  font-size: 7.5vw;
-  margin: auto;
-  text-align: center;
-  padding: 10px;
-  background: darkblue; }
 
 ion-avatar img {
   max-width: 8.6rem;
