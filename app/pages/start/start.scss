@@ -3,25 +3,23 @@
   color: white;
 
   header {
-    margin: 10px;
+    background: url(../../img/aos-header.png) #3664ab no-repeat center 0;
+    height: 0;
+    padding-top: 57px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   #status-bar {
     border-radius: 10px;
   }
 }
+
 ion-navbar#game-nav {
   position: absolute;
   bottom: 0;
   height: 50px;
   top: initial;
-}
-#game-title {
-  font-size: 7.5vw;
-  margin: auto;
-  text-align: center;
-  padding: 10px;
-  background: darkblue;
 }
 ion-avatar img {
   max-width: 8.6rem;
