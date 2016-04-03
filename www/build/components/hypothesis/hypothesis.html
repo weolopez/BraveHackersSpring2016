@@ -1,12 +1,16 @@
 <ion-card *ngFor="#c of story.getClues()">
     <ion-card-header (click)="selected=c">
-        <p>{{c.text}}</p>
+        <ion-item>
+            <ion-label class="wrap"> {{c.text}}</ion-label>
+            <ion-toggle checked="false"></ion-toggle>
+        </ion-item>
     </ion-card-header>
 
     <ion-card-content *ngIf="selected===c">
         <ion-list radio-group [(ngModel)]="c.selectedClue" (change)="c.showHint=false;c.validate=false">
             <ion-list-header>
-                {{c.question}}
+
+                <p class="wrap"> {{c.question}} </p>
             </ion-list-header>
 
             <ion-item *ngFor="#a of c.answers">
