@@ -1,13 +1,15 @@
 <div class="tg-wrap">
     <table class="tg">
         <tr>
-            <th class="tg-yw4l">Clue</th>
+            <th class="tg-yw4l">Concern</th>
             <th class="tg-yw4l">Test to Run</th>
             <th class="tg-yw4l">Result</th>
         </tr>
         <tr *ngFor="#c of clues">
             <td class="tg-j2zy">{{c.text}}</td>
-            <td class="tg-j2zy">{{c.answers[c.answer-1].text}}</td>
+            <td class="tg-j2zy">{{c.answers[c.answer-1].text}}
+                <button>Run Test</button>
+            </td>
             <td class="tg-j2zy">
                 <input type="checkbox" [id]="c.id" [(ngModel)]="c.selectedClue" >
             </td>

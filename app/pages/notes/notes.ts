@@ -1,5 +1,6 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
 import {Inject} from 'angular2/core';
+import {Test} from '../../components/test/test';
 import {Analysis} from '../../components/analysis/analysis';
 import {Hypothesis} from '../../components/hypothesis/hypothesis';
 import {Status} from '../../components/status/status';
@@ -10,7 +11,7 @@ import {Gamebar} from '../../components/toolbar/toolbar';
 
 @Page({
     templateUrl: 'build/pages/notes/notes.html',
-    directives: [Status, Analysis, Hypothesis, Gamebar]
+    directives: [Status, Analysis, Hypothesis, Test, Gamebar]
 })
 export class Notes {
     tab: any = 'hypothesis';
@@ -19,6 +20,7 @@ export class Notes {
     clues: any;
     clueTool: any;
     analysisComplete: any;
+    
     constructor(story: Story, @Inject(NavController) nav: NavController) {
         this.nav = nav;
         this.story = story;

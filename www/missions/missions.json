@@ -15,8 +15,8 @@
             "found" :  false  
         },
         {
-            "name" : "missions",
-            "file" : "missions/missions.json",
+            "name" : "Which Animal Is It?",
+            "file" : "missions/missing.json",
             "info" : "AT&T • 2016",
             "beacon" : "none",
             "found" :  true 

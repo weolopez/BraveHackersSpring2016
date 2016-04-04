@@ -1,6 +1,11 @@
 <status></status>
 <ion-content>
     <ion-col id="main">
+        
+         <div class="item item-avatar">
+         <img src="img/Aquarium.png">
+        </div>
+        
         <video-window>
             <ion-list>
                 <ion-item *ngFor="#c of story.getClues()">
@@ -11,14 +16,11 @@
 
         </video-window>
         <video-text *ngIf="isCompleted()">
-            <ion-list>
-                <ion-item>
-                    <button outline item-right (click)="next()">
-                        <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
-                        Next
-                    </button>
-                </ion-item>
-            </ion-list>
+            <ion-buttons>
+                <button (click)=next()>
+                    <ion-icon></ion-icon>Next
+                </button>
+            </ion-buttons>
         </video-text>
     </ion-col>
 

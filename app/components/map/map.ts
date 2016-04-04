@@ -30,7 +30,7 @@ export class Map {
     langs;
     constructor(story:Story, beacons: Beacons) {
         this.beacons = beacons;
-     //   beacons.start()
+        //beacons.start()
         this.displayMap();
         this.story = story;
     }
@@ -149,7 +149,7 @@ export class Map {
                   .attr("fill", "black")       
                   .text(function(e) {
                     if (e.name===d.name)
-                      return (d.name);  
+                      return (d.name + " in " + d.city + "," + d.state);  
                   });
 
               } // end of showPoi
@@ -158,9 +158,9 @@ export class Map {
               d3.select(window).on('resize', resize);
 
               function resize() {
-              // adjust things when the window size changes
-                 width = window.innerWidth;
-                 height = window.innerHeight;
+                 // adjust things when the window size changes
+                 var width = Math.floor(window.innerWidth);
+                 var height = Math.floor(window.innerHeight * .5);
 
                  // update projection
                                  
@@ -182,6 +182,8 @@ export class Map {
                  // resize the map
                  d3.selectAll('#states-path').attr('d', path);
                  d3.selectAll('#state-borders').attr('d', path);
+                 d3.selectAll(".pois").attr("transform", function(d) { return "translate(" + projection([d.lon,d.lat]) + ")";})
+                 d3.selectAll(".labels").remove();
                  
                  var x = width / 2;
                  var y = height / 2;

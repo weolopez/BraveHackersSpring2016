@@ -43,13 +43,14 @@
           "question" : "Why would fish float instead of swim?",
           "x" : "",
           "y" : "",
-          "beacon": "ice",
-          "found" : false,
+          "beacon": "none",
+          "found" : true,
+          "isTestingRequired" : true,
           "answers" : [
             {
               "id" : "1",
               "text" : "The fish lack energy."
-            },
+            }, 
             {
               "id" : "2",
               "text" : "It is normal for the majority of the fish to display these characteristics."
@@ -68,8 +69,9 @@
           "question" : "What causes saltwater fish to float near the surface of the water?",
           "x" : "",
           "y" : "",
-          "beacon": "mint",
-          "found" : false,
+          "beacon": "none",
+          "found" : true,
+          "isTestingRequired" : true,
           "answers" : [
             {
               "id" : "1",
@@ -93,8 +95,9 @@
           "question" : "Why are the majority of the fish brightly colored?",
           "x" : "",
           "y" : "",
-          "beacon": "blueberry",
-          "found" : false,
+          "beacon": "none",
+          "found" : true,
+          "isTestingRequired" : false,
           "answers" : [
             {
               "id" : "1",
@@ -118,7 +121,9 @@
           "question" : "Why would the fish have jagged or torn fins?",
           "x" : "",
           "y" : "",
+          "beacon": "none",
           "found" : true,
+          "isTestingRequired" : true,
           "answers" : [
             {
               "id" : "1",
