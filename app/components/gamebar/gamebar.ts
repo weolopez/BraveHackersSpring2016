@@ -221,7 +221,7 @@ export class PHMeter {
     checkResult(correct) { 
         var phmeter = this;  
         phmeter.app.complete = correct;
-        this.story.story.testing[phmeter.app.testIndex].complete = true;
+        this.story.story.notes.testing[phmeter.app.testIndex].complete = true;
     }
 }
  
