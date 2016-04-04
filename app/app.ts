@@ -8,8 +8,7 @@ import {Notes} from './pages/notes/notes';
 import {Secretmissions} from './pages/secretmissions/secretmissions';
 import {Backpack} from './pages/backpack/backpack';
 import {Clues} from './pages/clues/clues'
-import {Cluemap} from './pages/cluemap/cluemap'
-import {Wikipedia} from './pages/wikipedia/wikipedia'
+import {Cluemap} from './pages/cluemap/cluemap';
 import {Beacons} from './models/beacons/beacons';
 import {Story} from './models/story/story';
 import {User} from './models/user/user';
@@ -53,7 +52,6 @@ class MyApp {
         // set our app's pages
         this.pages = [
             { title: 'Video', component: Video },
-            { title: 'Wikipedia', component: Wikipedia },
             { title: 'Secretmissions', component: Secretmissions },
             { title: 'Start', component: Start },
             { title: 'Notes', component: Notes },

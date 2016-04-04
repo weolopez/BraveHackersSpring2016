@@ -19,7 +19,6 @@
   },
   "missionIntroScene" :{
       "type" : "scene",
-      "background" : "urlToBackgroundImage",
       "dialog" : [
         {
           "character" : "Ella",
@@ -151,5 +150,47 @@
   },
   "notes" : {
     "type" : "notes"   
+  },
+  "phtest": {
+      "type" : "PHMeter",
+      "background" : "img/phtest.jpg",
+      "test" : [
+          {
+          "id" : "1",
+          "text" : "Many of the fish have torn or jagged fins.",
+          "question" : "What is the PH?",
+          "answers" : [
+            {
+              "id" : "1",
+              "text" : "4"
+            },
+            {
+              "id" : "2",
+              "text" : "5"
+            },
+            {
+              "id" : "3",
+              "text" : "6"
+            },
+            {
+              "id" : "4",
+              "text" : "7"
+            },
+            {
+              "id" : "5",
+              "text" : "8"
+            },
+            {
+              "id" : "6",
+              "text" : "9"
+            },
+            {
+              "id" : "7",
+              "text" : "10"
+            }
+          ],
+          "answer" : 5
+        }
+      ]
   }
 }

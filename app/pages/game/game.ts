@@ -1,6 +1,6 @@
 import {Page, NavController} from 'ionic-angular';
 import {Story} from '../../models/story/story';
-import {Backpack} from '../../pages/backpack/backpack';
+import {PHMeter} from '../../pages/phmeter/phmeter';
 import {Clues} from '../../pages/clues/clues';
 import {Cluemap} from '../../pages/cluemap/cluemap';
 import {Status} from '../../components/status/status';
@@ -41,7 +41,7 @@ export class Game {
                 this.background = app.background;
             }
         } else {
-            this.nav.setRoot(Cluemap);
+            this.nav.setRoot(PHMeter);
         }
     }
 }

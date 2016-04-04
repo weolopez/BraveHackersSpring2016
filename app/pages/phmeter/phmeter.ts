@@ -3,18 +3,19 @@ import {Story} from '../../models/story/story';
 
 
 @Page({
-    templateUrl: 'build/pages/phmeter/phmeter.html',
-    providers: [ Story ]
+    templateUrl: 'build/pages/phmeter/phmeter.html'
 })
 export class PHMeter {
-  static get parameters() {
-    return [[NavController],[Story]];
-  }
-    constructor(nav, story) {
-        this.nav = nav;        
-        this.story=story;
-        this.app=story.getApp('phmeter');
-        this.currentScene=0;
+    app: any;
+    currentScene: any;
+    background:any;
+    constructor(private nav: NavController, private story: Story) {
+        var phmeter = this;
+        phmeter.nav = nav;        
+        phmeter.story=story;
+        phmeter.app=story.getApp('phtest');
+        phmeter.currentScene=0;
+        phmeter.background = phmeter.app.background; 
         /*
         0	10 000 000	battery acid
 1	1 000 000	gastric acid

@@ -61,6 +61,9 @@ export class Story {
     advanceScene() {
         this.story.next = this.story[this.story.next].next;
     }
+    getApp(app) {
+        return this.story[app];
+    }
     getScene() {
         return this.story
     }
