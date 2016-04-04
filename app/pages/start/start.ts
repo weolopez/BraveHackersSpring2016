@@ -1,14 +1,13 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
 import {Status} from '../../components/status/status';
-import {Backpack} from '../../pages/backpack/backpack';
-import {Game} from '../../pages/game/game';
+import {Gamebar} from '../../components/gamebar/gamebar';
 import {Story} from '../../models/story/story';
 import {User} from '../../models/user/user';
 import {Map} from '../../components/map/map';
 
 @Page({
     templateUrl: 'build/pages/start/start.html',
-    directives: [Status, Map]
+    directives: [Status, Map, Gamebar]
 })
 export class Start {
     tab: any = '';
@@ -25,11 +24,11 @@ export class Start {
         this.user = u;
     }
     openPage() {
-        this.nav.setRoot(Game);
+        this.story.next();
     }
     getOtherMissions() {
         var start = this;
-        if (start.user.missions != null) {
+        if (start.user.missions === null) {
             start.user.missions.forEach(function(mission) {
                 start.story.stories.missions.push(mission);
             });

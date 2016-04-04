@@ -36,7 +36,7 @@ export class Analysis {
             var itr = analysis.clues[index].isTestingRequired;
             return n + (val.selectedClue === itr);
         }, 0);
-        if (count >= analysis.numberOfTests) {
+        if (count === analysis.numberOfTests) {
            analysis.completedAnalysis = true;
            return true;
         } else false;
@@ -44,7 +44,7 @@ export class Analysis {
     }
     next() {
         var analysis = this;
-        analysis.clueTool.completedAnalysis = analysis.completedAnalysis;
-        window.scrollTo(0, 0);
+        this.story.story.notes.completedAnalysis = analysis.completedAnalysis;
+        this.story.next();
     }
 } 

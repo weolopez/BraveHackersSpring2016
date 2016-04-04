@@ -1,0 +1,27 @@
+<status></status>
+<ion-content>
+    <ion-col id="main">
+        <video-window>
+            <ion-list>
+                <ion-item *ngFor="#c of clues">
+                    <ion-label class="clue-text">{{c.text}} {{c.found}}</ion-label>
+                    <ion-checkbox dark [(ngModel)]=c.found></ion-checkbox>
+                </ion-item>
+            </ion-list>
+
+        </video-window>
+        <video-text *ngIf="isCompleted()">
+            <ion-list>
+                <ion-item>
+                    <button outline item-right (click)="next()">
+                        <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+                        Next
+                    </button>
+                </ion-item>
+            </ion-list>
+        </video-text>
+    </ion-col>
+
+</ion-content>
+
+<gamebar></gamebar>

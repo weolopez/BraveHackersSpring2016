@@ -9,24 +9,11 @@
         }, 
          {
             "name" : "Georgia Aquarium Loses The Sea Lions?",
-            "file" : "missions/missions.json",
+            "file" : "missions/missing.json",
             "info" : "AT&T • 2016",
             "beacon" : "mint",
             "found" :  false  
-        },
-        {
-            "name" : "Which Animal Is It?",
-            "file" : "missions/missing.json",
-            "info" : "AT&T • 2016",
-            "beacon" : "none",
-            "found" :  true 
-        },
-          {
-            "name" : "Hello Los Angeles!",
-            "file" : "missions/missions.json",
-            "info" : "AT&T • 2016",
-            "beacon" : "blueberry",
-            "found" :  false  
         }
+
     ]
 }

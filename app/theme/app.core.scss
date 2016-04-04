@@ -8,22 +8,24 @@
 // App Shared Sass variables belong in app.variables.scss.
 
 @import url(https://fonts.googleapis.com/css?family=Handlee);
-
+/*
 @import "../pages/sensors/sensors";
 @import "../pages/video/video";
 @import "../pages/wikipedia/wikipedia";
-@import "../pages/start/start";
 @import "../pages/notes/notes";
 @import "../pages/secretmissions/secretmissions";
+@import "../pages/messages/messages";
+@import "../pages/cluemap/cluemap";*/
+@import "../pages/start/start";
 @import "../components/status/status";
 @import "../components/analysis/analysis";
 @import "../components/hypothesis/hypothesis";
 @import "../components/map/map";
-@import "../components/toolbar/toolbar";
-@import "../pages/backpack/backpack";
-@import "../pages/messages/messages";
-@import "../pages/clues/clues";
-@import "../pages/cluemap/cluemap";
+@import "../components/gamebar/gamebar";
+@import "../components/gamebar/backpack";
+@import "../components/gamebar/messages/messages";
+@import "../components/gamebar/clues/clues";
+@import "../components/gamebar/notes/notes";
 
 ion-page {
     background: url(../../img/tile.png) repeat;

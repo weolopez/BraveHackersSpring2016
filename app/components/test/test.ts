@@ -12,24 +12,24 @@ import {IONIC_DIRECTIVES} from 'ionic-angular';
 export class Test {
 
     story: Story;
-    clues: any;
+    testing: any;
     clueTool: any;
     numberOfTests: any;
     completedTest: any;
     constructor(story:Story) {
         var test = this;
         this.story=story;
-        this.clues = story.story.clueTool.clues;
+        this.testing = story.story.notes.testing;
         this.clueTool = story.story.clueTool;
         this.clueTool.completedHypothesis=false;
-        
+        /*
         test.numberOfTests = this.clues.reduce(function(n, val) { 
             var index = Number(val.id)-1;
             var itr = test.clues[index].isTestingRequired;
             return n + (itr === true);
-        }, 0);
+        }, 0);*/
     }
-    isDone() {
+    isDone() {/*
         var test = this;
         var count = this.clues.reduce(function(n, val) {
             var index = Number(val.id)-1;
@@ -40,7 +40,7 @@ export class Test {
            test.completedTest = true;
            return true;
         } else false;
-        
+        */
     }
     next() {
         var test = this;
