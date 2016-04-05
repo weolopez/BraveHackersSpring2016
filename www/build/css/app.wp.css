@@ -8737,6 +8737,14 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); }
   #start #status-bar {
     border-radius: 10px; }
+  #start ion-card-header {
+    font: 24px 'Handlee', cursive; }
+  #start .tg-wrap {
+    margin: 0 auto; }
+    #start .tg-wrap .tg th {
+      font: 16px 'Handlee', cursive; }
+    #start .tg-wrap .tg td, #start .tg-wrap .tg th {
+      border-color: #fff; }
 
 ion-navbar#game-nav {
   position: absolute;
@@ -8961,17 +8969,17 @@ p {
       text-align: center; }
       #backpack ion-row ion-col > ion-icon i {
         display: block;
-        padding-top: 100px;
-        height: 0;
-        overflow: hidden;
+        padding-top: 55px;
+        height: 50px;
         position: relative;
-        color: #903f98; }
+        color: #903f98;
+        font: 14px 'Handlee', cursive; }
         #backpack ion-row ion-col > ion-icon i:before {
           position: absolute;
           top: 10px;
           left: 50%;
-          margin-left: -32px;
-          font: 70px 'icomoon'; }
+          margin-left: -20px;
+          font: 42px 'icomoon'; }
         #backpack ion-row ion-col > ion-icon i.icon-dice:before {
           content: "\e902"; }
         #backpack ion-row ion-col > ion-icon i.icon-magGlass:before {
@@ -9000,7 +9008,7 @@ p {
 
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: 'icomoon';
   speak: none;
   font-style: normal;
   font-weight: normal;

@@ -13,6 +13,22 @@
   #status-bar {
     border-radius: 10px;
   }
+
+  ion-card-header {
+    font: 24px 'Handlee', cursive;
+  }
+
+  .tg-wrap {
+    margin: 0 auto;
+
+    .tg th {
+      font: 16px 'Handlee', cursive;
+    }
+
+    .tg td, .tg th {
+      border-color: #fff;
+    }
+  }
 }
 
 ion-navbar#game-nav {
