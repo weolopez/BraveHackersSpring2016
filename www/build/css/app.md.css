@@ -8886,7 +8886,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); }
   #start #status-bar {
     border-radius: 10px; }
-  #start ion-card-header {
+  #start ion-card-header.heading {
     font: 24px 'Handlee', cursive; }
   #start .tg-wrap {
     margin: 0 auto; }
@@ -8894,6 +8894,10 @@ body {
       font: 16px 'Handlee', cursive; }
     #start .tg-wrap .tg td, #start .tg-wrap .tg th {
       border-color: #fff; }
+  #start ion-card ion-list .item {
+    padding: 0; }
+  #start ion-list .item-inner {
+    border: 0; }
 
 ion-navbar#game-nav {
   position: absolute;

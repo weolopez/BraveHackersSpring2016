@@ -14,7 +14,7 @@
     border-radius: 10px;
   }
 
-  ion-card-header {
+  ion-card-header.heading {
     font: 24px 'Handlee', cursive;
   }
 
@@ -28,6 +28,14 @@
     .tg td, .tg th {
       border-color: #fff;
     }
+  }
+
+  ion-card ion-list .item {
+    padding: 0;
+  }
+
+  ion-list .item-inner {
+    border: 0;
   }
 }
 
