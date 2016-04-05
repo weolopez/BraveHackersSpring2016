@@ -17,7 +17,7 @@
 
     </ion-card>
 
-    <ion-card *ngIf="!(user.auth | async)" class="userDetails">
+    <ion-card *ngIf="user.auth | async" class="userDetails">
         <ion-item>
             <ion-avatar item-left>
                 <img [src]="user.user.profile.profileImageURL">
@@ -84,9 +84,9 @@
                         </ion-item>
                     </ion-card-header>
                     <ion-card-content *ngIf="selected===mystory">
-                        <ion-buttons>
-                            <button (click)=openPageBackpack() full>
-                                <ion-icon></ion-icon>Play {{mystory.name}}
+                        <ion-buttons *ngIf="mystory.found">
+                            <button (click)=openPage() full>
+                                <ion-icon></ion-icon>Play {{m.name}}
                             </button>
                         </ion-buttons>
                     </ion-card-content>
