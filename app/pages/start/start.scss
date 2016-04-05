@@ -3,9 +3,9 @@
   color: white;
 
   header {
-    background: url(../../img/aosHeader.png) no-repeat #3664ab center 0;
-    padding-top: 57px;
+    background: url(../../img/aos-header.png) #3664ab no-repeat center 0;
     height: 0;
+    padding-top: 57px;
     overflow: hidden;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
   }
@@ -13,7 +13,32 @@
   #status-bar {
     border-radius: 10px;
   }
+
+  ion-card-header.heading {
+    font: 24px 'Handlee', cursive;
+  }
+
+  .tg-wrap {
+    margin: 0 auto;
+
+    .tg th {
+      font: 16px 'Handlee', cursive;
+    }
+
+    .tg td, .tg th {
+      border-color: #fff;
+    }
+  }
+
+  ion-card ion-list .item {
+    padding: 0;
+  }
+
+  ion-list .item-inner {
+    border: 0;
+  }
 }
+
 ion-navbar#game-nav {
   position: absolute;
   bottom: 0;
