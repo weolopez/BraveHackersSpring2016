@@ -17,6 +17,7 @@
             {
                 "character": "Chica",
                 "image": "img/chica.png",
+                "audio" : "audio/missionAcceptUSERNAME.wav",
                 "text": "Ella, we just recieved a request for help at the Georgia Aquarium. The majority of the fish in the salt water aquarium are gathering towards the surface of the water. Grab your gear and meet Mr. Yoshi at the saltwater exibit."
             }
         ],

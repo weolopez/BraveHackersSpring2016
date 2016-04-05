@@ -4,7 +4,6 @@
     </header>
 
     <ion-card *ngIf="!(user.auth | async)" class="userDetails">
-
         <ion-item>
             <ion-avatar item-left>
                 <img src="img/female.jpg">
@@ -16,8 +15,7 @@
         </ion-card-content>
 
     </ion-card>
-
-    <ion-card *ngIf="!(user.auth | async)" class="userDetails">
+    <ion-card *ngIf="user.auth | async" class="userDetails">
         <ion-item>
             <ion-avatar item-left>
                 <img [src]="user.user.profile.profileImageURL">

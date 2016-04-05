@@ -154,7 +154,17 @@ class Messages {
         var messages = this;
         messages.app = app;
         messages.dialog = messages.app.dialog;
+        if (messages.app.dialog[0].audio) {
+            if (messages.story.story.userName==='Mauricio') {
+                messages.app.dialog[0].audio=messages.app.dialog[0].audio.replace("USERNAME", '');
+            } else {
+                messages.app.dialog[0].audio=messages.app.dialog[0].audio.replace("USERNAME", messages.story.story.userName);    
+            }
+        }
+        
+        messages.dialog = messages.app.dialog;
         messages.background = messages.app.background;
+        
     }
     getName(m) {
         var messages = this;

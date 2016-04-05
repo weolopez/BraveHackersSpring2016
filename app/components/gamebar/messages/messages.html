@@ -14,6 +14,7 @@
           
         <div [class]="isEven?'bubblealt':'bubble'">{{getName(m)}}</div>
 
+        <audio *ngIf="m.audio" [src]="m.audio" autoplay type="audio/wave"></audio>
         
       </div>
     </div>

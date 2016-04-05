@@ -8,12 +8,15 @@
         "next": "missionAccept"
     },
     "points" : {},
+    "pointsTotal": 0,
+    "userTotal" : 0,
     "missionAccept": {
         "type": "Messages",
         "dialog": [
             {
                 "character": "Chica",
                 "image": "img/female.jpg",
+                "audio": "audio/missionAccept.wav", 
                 "text": "Ella, we just recieved another request for help at the Georgia Aquarium. One of their animals is missing!  I think if you speak with Mrs. Bell, the animal trainer, she can explain the situation."
             }
         ],
