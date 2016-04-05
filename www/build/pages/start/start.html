@@ -12,26 +12,9 @@
             <button (click)="user.doLogin()" class="login"> LOGIN FACEBOOK </button>
         </ion-item>
 
-<<<<<<< HEAD
         <ion-card-content>
         </ion-card-content>
-
-=======
->>>>>>> 2405220c5d33ee45bca255090c980a87a641c0d9
-        <ion-item>
-            <button primary clear item-left>
-                <ion-icon name="thumbs-up"></ion-icon>
-                <div>12 Likes</div>
-            </button>
-            <button primary clear item-left>
-                <ion-icon name="text"></ion-icon>
-                <div>4 Comments</div>
-            </button>
-            <ion-note item-right>
-                11h ago
-            </ion-note>
-        </ion-item>
-
+        
     </ion-card>
 
     <ion-card *ngIf="user.auth | async" class="userDetails">
@@ -179,4 +162,4 @@
     </ion-card>
 </ion-content>
 
-<gamebar></gamebar>
+<gamebar [hidden]="'true'"></gamebar>
