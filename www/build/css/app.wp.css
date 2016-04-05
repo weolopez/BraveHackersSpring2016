@@ -8775,6 +8775,15 @@ body {
     padding: 0; }
   #start ion-list .item-inner {
     border: 0; }
+  #start .missions ion-item-divider {
+    background: none;
+    border-bottom: 1px solid #aaa; }
+  #start .missions ion-card {
+    margin: 0;
+    border-bottom: 1px solid #aaa;
+    background: #fff; }
+    #start .missions ion-card .item {
+      background: none; }
 
 ion-navbar#game-nav {
   position: absolute;

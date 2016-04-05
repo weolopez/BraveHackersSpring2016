@@ -74,14 +74,14 @@
         </ion-item-->
     </ion-card>
     <map *ngIf="tab==='find'"></map>
-    <ion-card *ngIf="tab==='inprogress'">
+    <ion-card *ngIf="tab==='inprogress'" class="missions">
         <ion-card-header class="heading">
             Missions in progress
         </ion-card-header>
         <ion-card-content>
             <ion-list>
 
-            <ion-item-divider light>My Missions In Progress</ion-item-divider>
+            <ion-item-divider>My Missions In Progress</ion-item-divider>
 
                 <ion-card *ngFor="#mystory of story.stories.my" >
                     <ion-card-header (click)="selected=mystory;story.getStoryFile(mystory)">
@@ -96,14 +96,14 @@
                     </ion-card-header>
                     <ion-card-content *ngIf="selected===mystory">
                         <ion-buttons *ngIf="mystory.found">
-                            <button (click)=openPage()>
+                            <button (click)=openPage() full>
                                 <ion-icon></ion-icon>Play {{m.name}}
                             </button>
                         </ion-buttons>
                     </ion-card-content>
                 </ion-card>
 
-      <ion-item-divider light>Local Missions</ion-item-divider>
+      <ion-item-divider>Local Missions</ion-item-divider>
 
                 <ion-card *ngFor="#m of story.stories.missions">
                     <ion-card-header (click)="selected=m;story.getStoryFile(m)">
@@ -141,7 +141,7 @@
                     </ion-card-header>
                     <ion-card-content *ngIf="selected===cloud">
                         <ion-buttons *ngIf="cloud.found">
-                            <button (click)=openPage()>
+                            <button (click)=openPage() full>
                                 <ion-icon></ion-icon>Play {{cloud.name}}
                             </button>
                         </ion-buttons>

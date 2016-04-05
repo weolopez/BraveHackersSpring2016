@@ -77,6 +77,23 @@
   ion-list .item-inner {
     border: 0;
   }
+
+  .missions {
+    ion-item-divider {
+      background: none;
+      border-bottom: 1px solid #aaa;
+    }
+
+    ion-card {
+      margin: 0;
+      border-bottom: 1px solid #aaa;
+      background: #fff;
+
+      .item {
+        background: none;
+      }
+    }
+  }
 }
 
 ion-navbar#game-nav {
