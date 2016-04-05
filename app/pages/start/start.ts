@@ -28,15 +28,30 @@ export class Start {
     }
     getOtherMissions() {
         var start = this;
+        if (start.user.missions !== null) {
+            if (start.user.missions[0] !== null) {
+                if (!start.story.stories.cloud) start.story.stories.cloud = [];
+                
+                for (var key in start.user.missions) {
+                    if (start.user.missions.hasOwnProperty(key)) {
+                        console.log(key + " -> " + start.user.missions[key]);
+                        start.story.stories.cloud.push(start.user.missions[key]); 
+                   }
+                }
+                
+            }
+        } 
+        if (start.user.user && start.user.user.missions) {
+            if (start.user.user.missions[0] !== null) {
+                if (!start.story.stories.my) start.story.stories.my = [];
 
-        if (start.user.missions[0] !== null) {
-            if (!start.story.stories.cloud) start.story.stories.cloud = [];
-            start.story.stories.cloud.push(start.user.missions[0]);
-        }
-        if (start.user.user.missions[0] !== null) {
-            if (!start.story.stories.my) start.story.stories.my = [];
-          //  Object.keys(start.user.user.missions).reduce( ())
-            start.story.stories.my.push(start.user.user.missions);
+                for (var key in start.user.user.missions) {
+                    if (start.user.user.missions.hasOwnProperty(key)) {
+                        console.log(key + " -> " + start.user.user.missions[key]);
+                        start.story.stories.my.push(start.user.user.missions[key]);
+                    }
+                }
+            }
         }
     }
 }

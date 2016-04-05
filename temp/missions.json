@@ -1,0 +1,19 @@
+{
+    "missions" : [
+        {
+            "name" : "fishy",
+            "file" : "missions/fishy.json",
+            "info" : "AT&T • 2016",
+            "beacon" : "none",
+            "found" :  true      
+        }, 
+        {
+            "name" : "Georgia Aquarium Loses An Animal!",
+            "file" : "missions/missinganimal.json",
+            "info" : "AT&T • 2016",
+            "beacon" : "mint",
+            "found" :  true  
+        }
+
+    ]
+}

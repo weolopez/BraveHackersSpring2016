@@ -38,6 +38,7 @@ export class Analysis {
         }, 0);
         if (count === analysis.numberOfTests) {
            analysis.completedAnalysis = true;
+           analysis.story.story.points[analysis.story.story.currentApp] = 250;
            return true;
         } else false;
         

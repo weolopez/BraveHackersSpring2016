@@ -1,0 +1,417 @@
+{
+    "id": 1,
+    "name": "One of These Things Is Not Like the Other",
+    "createdby": "cg085b@att.com",
+    "date": "April 2016",
+    "next": "start",
+    "start": {
+        "next": "missionAccept"
+    },
+    "points" : {},
+    "missionAccept": {
+        "type": "Messages",
+        "dialog": [
+            {
+                "character": "Chica",
+                "image": "img/female.jpg",
+                "text": "Ella, we just recieved another request for help at the Georgia Aquarium. One of their animals is missing!  I think if you speak with Mrs. Bell, the animal trainer, she can explain the situation."
+            }
+        ],
+        "next": "missionIntroScene"
+    }, 
+    "missionIntroScene": {
+        "type": "Messages",
+        "dialog": [
+             {
+                "character": "Mrs. Bell",
+                "image": "img/female.jpg",
+                "text": "Thank goodness! One of animals is missing and I don't know which one!  I am so worried!"
+            },
+            {
+                "character": "Ella",
+                "image": "img/female.jpg",
+                "text": "Hi, you must be Mrs.Bell.  I'm Ella from the Angels of Science. I can help you with that!"
+            }
+        ],
+        "next": "clueTool"
+    },
+    "confirWithChica": {
+        "type": "Messages",
+        "dialog": [
+            {
+                "character": "Ella",
+                "image": "img/female.jpg",
+                "text": "Chica, I believe that the missing animal must be a marine animal given our location.  What do you think?"
+            },
+            {
+                "character": "Chica",
+                "image": "img/female.jpg",
+                "text": "I agree. And also a mammal since we know for a fact that it breathes air."
+            },
+            {
+                "character": "Ella",
+                "image": "img/female.jpg",
+                "text": "It must be a dolphin!  Especially since we know it sings to communicate."
+            },
+            {
+                "character": "Chica",
+                "image": "img/female.jpg",
+                "text": "That is correct Ella. Great Sleuthing!"
+            }
+        ],
+        "next": "end"
+    },
+    "end": {
+        "type": "GenericTest",
+        "background": "img/trophy.png",
+        "testIndex" : 1,
+        "test": [
+            {
+                "id": "1",
+                "text": "",
+                "question": "Congrats you have ",
+                "answers": [
+                ],
+                "answer": 2
+            }
+        ],
+        "next": "start"
+    },
+    "clueTool": {
+        "type": "Cluemap",
+        "next": "notes",
+        "clues" : [
+        {
+          "id" : "1",
+          "text" : "The missing animal breathes air.",
+          "question" : "What kind of animal is it?",
+          "isTestingRequired": false,
+          "x" : "",
+          "y" : "",
+          "beacon": "ice",
+          "found" : true,
+          "location": "Go to the Sea Horses!",
+          "answers" : [
+            {
+              "id" : "1",
+              "text" : "Mammmal"
+            },
+            {
+              "id" : "2",
+              "text" : "Fish"
+            },
+            {
+              "id" : "3",
+              "text" : "Reptiles"
+            }
+          ],
+          "hint" : "This group includes some of the most intelligent animals on earth!",
+          "answer" : 1
+        },
+        {
+          "id" : "2",
+          "text" : "Eats several kinds of fish- yum!",
+          "question" : "Where does this animal live?",
+          "isTestingRequired": false,
+          "x" : "",
+          "y" : "",
+          "beacon": "mint",
+          "found" : true,
+           "location": "Go to the Seals!",
+          "answers" : [
+            {
+              "id" : "1",
+              "text" : "Ocean"
+            },
+            {
+              "id" : "2",
+              "text" : "Tundra"
+            },
+            {
+              "id" : "3",
+              "text" : "Jungle"
+            }
+          ],
+          "hint" : "Are amazing marine mammals, capable of performing amazing acrobatics!",
+          "answer" : 1
+        },
+        {
+          "id" : "3",
+          "text" : "Call to each other through their whistles, the high peeping sound.",
+          "question" : "How does this animal communicate?",
+          "x" : "",
+          "y" : "",
+          "beacon": "blueberry",
+          "found" : true,
+          "location": "Go to the Penguins!",
+          "isTestingRequired": false,
+          "answers" : [
+            {
+              "id" : "1",
+              "text" : "Singing songs"
+            },
+            {
+              "id" : "2",
+              "text" : "Echolcation"
+            },
+            {
+              "id" : "3",
+              "text" : "Both of these"
+            }
+          ],
+          "hint" : "This animal transmits clicking sounds that are echoed by obstacles. ",
+          "answer" : 3
+        },
+        {
+          "id" : "4",
+          "text" : "Has his own special sound that the mother can recognize immediately.",
+          "question" : "How do these animals live?",
+          "x" : "",
+          "y" : "",
+          "beacon": "none",
+          "found" : true,
+          "location": "Go to the Whale Sharks!",
+          "isTestingRequired": false,
+          "answers" : [
+            {
+              "id" : "1",
+              "text" : "They live in social groups of five to several hundred."
+            },
+            {
+              "id" : "2",
+              "text" : "They live long lives."
+            },
+            {
+              "id" : "3",
+              "text" : "Both of these"
+            }
+          ],
+          "hint" : "They often chase fish together",
+          "answer" : 3
+        }
+      ],
+        "dialog": [
+            {
+                "character": "Chica",
+                "text": "Ella, use the seach tool to find clues."
+            }
+        ]
+    },
+    "notes": {
+        "type": "Notes",
+        "next": "confirWithChica",
+          "clues" : [
+        {
+          "id" : "1",
+          "text" : "The missing animal breathes air.",
+          "question" : "What kind of animal is it?",
+          "isTestingRequired": false,
+          "x" : "",
+          "y" : "",
+          "beacon": "ice",
+          "found" : true,
+          "location": "Go to the Sea Horses!",
+          "answers" : [
+            {
+              "id" : "1",
+              "text" : "Mammmal"
+            },
+            {
+              "id" : "2",
+              "text" : "Fish"
+            },
+            {
+              "id" : "3",
+              "text" : "Reptiles"
+            }
+          ],
+          "hint" : "This group includes some of the most intelligent animals on earth!",
+          "answer" : 1
+        },
+        {
+          "id" : "2",
+          "text" : "This animal is well known for their agility and playful behavior",
+          "question" : "Where does this animal live?",
+          "isTestingRequired": false,
+          "x" : "",
+          "y" : "",
+          "beacon": "mint",
+          "found" : true,
+           "location": "Go to the Seals!",
+          "answers" : [
+            {
+              "id" : "1",
+              "text" : "Ocean"
+            },
+            {
+              "id" : "2",
+              "text" : "Tundra"
+            },
+            {
+              "id" : "3",
+              "text" : "Jungle"
+            }
+          ],
+          "hint" : "These animals are amazing marine mammals, capable of performing amazing acrobatics and are known for their friendly, often inviting behavior.",
+          "answer" : 1
+        },
+        {
+          "id" : "3",
+          "text" : "They recognize and call each other through their so-called whistles, the high peeping sound.",
+          "question" : "How does this animal communicate?",
+          "x" : "",
+          "y" : "",
+          "beacon": "blueberry",
+          "found" : true,
+          "location": "Go to the Penguins!",
+          "isTestingRequired": false,
+          "answers" : [
+            {
+              "id" : "1",
+              "text" : "Singing songs"
+            },
+            {
+              "id" : "2",
+              "text" : "Echolcation"
+            },
+            {
+              "id" : "3",
+              "text" : "Both of these"
+            }
+          ],
+          "hint" : "This animal transmits clicking sounds that are echoed by obstacles. ",
+          "answer" : 3
+        },
+        {
+          "id" : "4",
+          "text" : "every animal has his own special sound and the  mother recognizes her baby immediately by his whistle",
+          "question" : "How do these animals live?",
+          "x" : "",
+          "y" : "",
+          "found" : true,
+          "location": "Go to the Whale Sharks!",
+          "isTestingRequired": false,
+          "answers" : [
+            {
+              "id" : "1",
+              "text" : "They live in social groups of five to several hundred."
+            },
+            {
+              "id" : "2",
+              "text" : "They live long lives."
+            },
+            {
+              "id" : "3",
+              "text" : "Both of these"
+            }
+          ],
+          "hint" : "They often chase fish together",
+          "answer" : 2
+        }
+        ],
+        "testing": [
+            {
+                "id": 1,
+                "concern": "Temperature of tank is warmer than 75-77 degrees F",
+                "testText": "Take the temperature of the tank water",
+                "test": "thermometer",
+                "complete": false
+            },
+            {
+                "id": 2,
+                "concern": "The water's PH is not between 7.6-8.4",
+                "testText": "Test PH level of water",
+                "test": "phtest",
+                "complete": false
+            },
+            {
+                "id": 2,
+                "concern": "The water's PH is not between 7.6-8.4",
+                "testText": "Analyze 400 gallon tank 200 1 inch fish 75 two inch fish 30 four inch fish.",
+                "test": "math",
+                "complete": false
+            }
+        ]
+    },
+    "thermometer": {
+        "type": "GenericTest",
+        "background": "img/thermometer.png",
+        "testIndex" : 0, 
+        "test": [
+            {
+                "id": "1",
+                "text": "",
+                "question": "What is the temperature of the water??",
+                "answers": [
+                    {
+                        "id": 1,
+                        "text": "82F"
+                    },
+                    {
+                        "id": 2,
+                        "text": "80F"
+                    },
+                    {
+                        "id": 3,
+                        "text": "60F"
+                    }
+                ],
+                "answer": 1
+            }
+        ]
+    },
+    "phtest": {
+        "type": "GenericTest",
+        "background": "img/phtest.jpg",
+        "testIndex" : 1,
+        "test": [
+            {
+                "id": "1",
+                "text": "",
+                "question": "What is the PH of the water?",
+                "answers": [
+                    {
+                        "id": 1,
+                        "text": "7"
+                    },
+                    {
+                        "id": 2,
+                        "text": "8"
+                    },
+                    {
+                        "id": 3,
+                        "text": "9"
+                    }
+                ],
+                "answer": 2
+            }
+        ]
+    },
+    "math": {
+        "type": "GenericTest",
+        "background": "img/phtest.jpg",
+        "testIndex" : 1,
+        "test": [
+            {
+                "id": "1",
+                "text": "",
+                "question": "What is the PH of the water?",
+                "answers": [
+                    {
+                        "id": 1,
+                        "text": "7"
+                    },
+                    {
+                        "id": 2,
+                        "text": "8"
+                    },
+                    {
+                        "id": 3,
+                        "text": "9"
+                    }
+                ],
+                "answer": 2
+            }
+        ]
+    }
+}

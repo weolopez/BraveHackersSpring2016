@@ -1,9 +1,18 @@
- <svg></svg>
-  <ion-list>
-    <h1> Check out the map to find the secret missions!  </h1>
-    <ion-item *ngFor="#m of story.stories.missions">
-       <h2>{{m.name}}</h2>
-       <p *ngIf="m.found">Mission Unlocked!</p>
-       <p *ngIf="!m.found">Go to Location to Unlock Secret Mission!</p>
-    </ion-item>
- </ion-list>
+<ion-card>
+
+    <ion-card-header>
+        <h1 id="map-title" class="wrap"> Check out the map to find the secret missions!  </h1>
+    </ion-card-header>
+
+    <ion-card-content>
+        <svg></svg>
+        <ion-list>
+            <ion-item *ngFor="#m of story.stories.missions">
+                <h2>{{m.name}}</h2>
+                <p *ngIf="m.found">Mission Unlocked!</p>
+                <p *ngIf="!m.found">Go to Location to Unlock Secret Mission!</p>
+            </ion-item>
+        </ion-list>
+    </ion-card-content>
+
+</ion-card>

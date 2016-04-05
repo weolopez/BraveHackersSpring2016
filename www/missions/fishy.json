@@ -8,6 +8,7 @@
     "start": {
         "next": "missionAccept"
     },
+    "points" : {},
     "missionAccept": {
         "type": "Messages",
         "dialog": [
@@ -72,7 +73,7 @@
                 "x": "",
                 "y": "",
                 "beacon": "none",
-                "found": true,
+                "found": false,
                 "isTestingRequired": true,
                 "answers": [
                     {
@@ -98,7 +99,7 @@
                 "x": "",
                 "y": "",
                 "beacon": "none",
-                "found": true,
+                "found": false,
                 "isTestingRequired": true,
                 "answers": [
                     {
@@ -124,7 +125,7 @@
                 "x": "",
                 "y": "",
                 "beacon": "none",
-                "found": true,
+                "found": false,
                 "isTestingRequired": false,
                 "answers": [
                     {
@@ -150,7 +151,7 @@
                 "x": "",
                 "y": "",
                 "beacon": "none",
-                "found": true,
+                "found": false,
                 "isTestingRequired": true,
                 "answers": [
                     {

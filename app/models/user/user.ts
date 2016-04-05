@@ -14,12 +14,15 @@ export class User {
     users: any;
     missions: any;
     online: any;
+    leaderboard: any;
+    leaderboardBase: any;
     constructor(
         @Inject(FirebaseAuth) public auth: FirebaseAuth
         ) {
         var user = this;    
         user.ref = 'https://aofs.firebaseio.com';
-        
+        var leaderboardRef = user.ref + '/leaderboard';
+        user.leaderboardBase = new Firebase(leaderboardRef);
         this.auth.subscribe(
             function(x) {
                 if (!x) return; 
@@ -41,6 +44,7 @@ export class User {
             
         user.connectedRef.on('value', user.onConnectedRefChange);
         user.getMissions();
+        user.getLeaderboard();
     }
     
     onConnectedRefChange(snap) {
@@ -54,7 +58,6 @@ export class User {
     }
     saveStory(story) {
         var user = this;
-        console.log("Saving: "+ JSON.stringify(story));
         
         if (story.firebase === undefined) {
             // Generate a reference to a new location and add some data using push()
@@ -64,8 +67,32 @@ export class User {
             story.firebase = postID;
             user.saveStory(story);
         }
-        else 
+        else {            
             user.userRef.child('missions').child(story.firebase).set(story);
+            
+            var count = 0; 
+            for (var key in story.points) {
+                if (story.points.hasOwnProperty(key)) {
+                    console.log(key + " -> " + story.points[key]);
+                    count = count + story.points[key];
+                   }
+                }
+            console.log("Saving Points: "+ story.id +" of " + count);
+         //   user.userRef.child('points').child(story.id).set(count);
+            user.user.points[story.id]=count;
+            user.save();
+            
+            var count = 0;
+            for (var key in user.user.points) {
+                if (user.user.points.hasOwnProperty(key)) {
+                    console.log(key + " -> " + user.user.points[key]);
+                    count = count + user.user.points[key];
+                   }
+                }
+            console.log("Saving Points: "+ user.user.name +" of " + count);
+            user.userRef.child('points').child(story.id).set(count);
+            user.leaderboardBase.child(user.user.name).set(count);
+        }
     }
     save() {
         var user = this;
@@ -135,6 +162,20 @@ export class User {
         }
     }
     
+    getLeaderboard() {
+        var user = this;
+        user.leaderboardBase.once('value').then((d) => {
+           if (!user.leaderboard) user.leaderboard=[]; 
+           var leaderboard = d.val();
+                for (var key in leaderboard) {
+                    if (leaderboard.hasOwnProperty(key)) {
+                        console.log(key + " -> " + leaderboard[key]);
+                        var o = {name:key,points:leaderboard[key]}
+                        user.leaderboard.push(o); 
+                   }
+                }
+        });
+    }
     getMissions() {
         var user = this;
         var missionsConnectionString = user.ref + '/missions';

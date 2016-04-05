@@ -14,7 +14,6 @@ import {Story} from '../../models/story/story';
 import {Status} from '../../components/status/status';
 import {Beacons} from '../../models/beacons/beacons';
 
-
 let gamebar;
 @Component({ selector: 'gamebar' })
 @View({
@@ -100,28 +99,25 @@ class Messages {
         public viewCtrl: ViewController,
         private story: Story
     ) {
-        var messages = this;
         if (!story.story.name) return;
-        messages.init(story.getNextApp());
+        this.init(story.getNextApp());
     }
     init(app) {
-        var messages = this;
-        messages.app = app;
-        messages.dialog = messages.app.dialog;
-        messages.background = messages.app.background;
+        this.app = app;
+        this.dialog = this.app.dialog;
+        this.background = this.app.background;
     }
     stringify(o) {
         return JSON.stringify(o);
     }
     next() {
-        var messages = this;
-        let next = messages .app.next;
-        let type = messages .story.story[next].type;
+        let next = this.app.next;
+        let type = this.story.story[next].type;
         if (type === "Messages") {
-            messages .story.story.next = messages .story.getNextApp().next;
-            messages .init(messages .story.getNextApp());
+            this.story.story.next = this.story.getNextApp().next;
+            this.init(this.story.getNextApp());
         }
-        else messages .story.next();
+        else this.story.next();
     }
 }
 
@@ -139,7 +135,7 @@ class Clues {
         public viewCtrl: ViewController,
         private story: Story
     ) {
-        this.init(story.story[story.story.currentApp]);
+        this.init(story.getNextApp());
 
     }
     init(app) {
@@ -157,14 +153,10 @@ class Clues {
         this.clues = app.clues;
     }
     isCompleted() {
-        var clue = this;
-        var count = clue.clues.reduce(function(n, val) {
+        var count = this.clues.reduce(function(n, val) {
             return n + (val.found === true);
         }, 0);
-        if (count >= clue.clues.length) {
-            clue.story.story.points[clue.story.story.currentApp] = 250;
-            return true;   
-        }
+        if (count >= this.clues.length) return true;
         else return false;
     }
     stringify(o) {
@@ -190,7 +182,7 @@ class Cluemap {
         private beacons: Beacons,
         private story: Story
     ) {
-        this.init(story.story[story.story.currentApp]);
+        this.init(story.getNextApp());
       //  this.beacons.start();
 
     }
@@ -209,22 +201,11 @@ class Cluemap {
         this.clues = app.clues;
     }
     isCompleted() {
-        var cluemap=this;
-        var count = cluemap.clues.reduce(function(n, val) {
+        var count = this.clues.reduce(function(n, val) {
             return n + (val.found === true);
         }, 0);
-        if (count >= cluemap.clues.length) {
-            cluemap.story.story.points[cluemap.story.story.currentApp] = 250;
-            return true;
-        }
+        if (count >= this.clues.length) return true;
         else return false;
-    }
-    cheat() {
-      this.clues.forEach(function(clue) {
-         if (clue.beacon != "none" ) {
-             clue.found = true;
-         }
-      });           
     }
     clearClues() {
       this.clues.forEach(function(clue) {
@@ -256,7 +237,7 @@ export class Notes {
     constructor(
         private story: Story
         ) {
-        this.init(story.story[story.story.currentApp]);
+        this.init(story.getNextApp());
 
     }
     init(app) {
@@ -301,11 +282,8 @@ export class GenericTest {
     }
     checkResult(correct) { 
         var phmeter = this;  
-        if (!correct) return;
-        
         phmeter.app.complete = correct;
         this.story.story.notes.testing[phmeter.app.testIndex].complete = true;
-        phmeter.story.story.points[phmeter.story.story.currentApp] = 250;
         this.story.alertNotes(true);
     }
 }

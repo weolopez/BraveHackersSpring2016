@@ -2,11 +2,10 @@
     <ion-card-header (click)="selected=c">
         <ion-item>
             <ion-label class="wrap"> {{c.text}}</ion-label>
-            <ion-toggle checked="false"></ion-toggle>
         </ion-item>
     </ion-card-header>
 
-    <ion-card-content *ngIf="selected===c">
+    <ion-card-content>
         <ion-list radio-group [(ngModel)]="c.selectedClue" (change)="c.showHint=false;c.validate=false">
             <ion-list-header>
 

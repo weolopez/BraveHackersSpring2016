@@ -39,10 +39,14 @@ export class Hypothesis {
        this.story.story.notes.completedHypothesis = this.isCompleted();
     }
     isCompleted() {
-        var count = this.clues.reduce(function(n, val) {
+        var hypothesis=this;
+        var count = hypothesis.clues.reduce(function(n, val) {
             return n + (val.isCorrect === true);
         }, 0);
-        if (count >= this.clues.length) return true;
+        if (count >= hypothesis.clues.length) {
+             hypothesis.story.story.points[hypothesis.story.story.currentApp] = 250;
+              return true;
+        }
         else return false;
     }
 } 

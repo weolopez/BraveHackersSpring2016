@@ -7801,6 +7801,13 @@ p {
   stroke-linecap: round;
   pointer-events: none; }
 
+#map-title {
+  font-family: handlee;
+  font-size: 2.25em;
+  font-weight: bold;
+  fill: black;
+  color: black; }
+
 .toolbar {
   min-height: 120px; }
 

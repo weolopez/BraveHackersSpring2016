@@ -6,14 +6,6 @@
             "info" : "AT&T • 2016",
             "beacon" : "none",
             "found" :  true      
-        }, 
-         {
-            "name" : "Georgia Aquarium Loses The Sea Lions?",
-            "file" : "missions/missing.json",
-            "info" : "AT&T • 2016",
-            "beacon" : "mint",
-            "found" :  false  
         }
-
     ]
 }

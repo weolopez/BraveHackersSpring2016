@@ -35,7 +35,9 @@ export class Story {
     }
     next() {
         var story = this;
-        story.story.next = story.story[story.story.next].next;
+        
+        story.story.currentApp = story.story[story.story.next].next;
+        story.story.next = story.story.currentApp;
         var type = story.story[story.story.next].type;
         console.log("Opening: " + type);
         Gamebar.getGamebar().open(type);
@@ -67,7 +69,7 @@ export class Story {
         }
         else if (m.type === 'mission') {
             story.story = m;
-            story.next();
+            Gamebar.getGamebar().open("Backpack");
         }
     }
     getStories() {
