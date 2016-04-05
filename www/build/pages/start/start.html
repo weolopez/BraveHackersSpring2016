@@ -84,9 +84,9 @@
                         </ion-item>
                     </ion-card-header>
                     <ion-card-content *ngIf="selected===mystory">
-                        <ion-buttons *ngIf="mystory.found">
-                            <button (click)=openPage() full>
-                                <ion-icon></ion-icon>Play {{m.name}}
+                        <ion-buttons>
+                            <button (click)=openPageBackpack() full>
+                                <ion-icon></ion-icon>Play {{mystory.name}}
                             </button>
                         </ion-buttons>
                     </ion-card-content>

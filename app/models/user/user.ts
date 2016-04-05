@@ -58,7 +58,7 @@ export class User {
     }
     saveStory(story) {
         var user = this;
-        
+        /*
         if (story.firebase === undefined) {
             // Generate a reference to a new location and add some data using push()
             var newPostRef = user.userRef.child('missions').push(story);
@@ -69,15 +69,17 @@ export class User {
             story.firebase = postID;
             user.saveStory(story);
         }
-        else {            
+        else {       
             user.userRef.child('missions').child(story.firebase).set(story);
+            */     
+            if (user.user.missions === undefined) user.user.missions=[];
+            user.user.missions[story.id]=story; 
             
             var count = user.getPointsTotal(story.points);
             console.log("Saving Points: "+ story.id +" of " + count);
          //   user.userRef.child('points').child(story.id).set(count);
             story.pointsTotal=count;
             user.user.points[story.id]=count;
-            user.user.missions.push(story);
             user.save();
             
             count = user.getPointsTotal(user.user.points);
@@ -86,7 +88,7 @@ export class User {
             user.leaderboardBase.child(user.user.name).set(count);
             story.userTotal=count;
             return story;
-        }
+      //  }
     }
     getPointsTotal(pointsList) {
         var count = 0;

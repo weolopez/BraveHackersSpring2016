@@ -8,13 +8,13 @@
         <tr *ngFor="#c of clues">
             <td class="tg-j2zy">{{c.text}}</td>
             <td class="tg-j2zy">{{c.answers[c.answer-1].text}}</td>
-            <td class="tg-j2zy">
+            <td class="tg-j2zy" (click)="isDone()">
                 <input type="checkbox" [id]="c.id" [(ngModel)]="c.selectedClue" >
             </td>
         </tr>
     </table>
 
-    <ion-list *ngIf="isDone()">
+    <ion-list *ngIf="completedAnalysis">
         <ion-item>
             <button outline item-right (click)="next()">
                 <ion-icon name="ios-arrow-dropright-circle"></ion-icon>

@@ -26,6 +26,9 @@ export class Start {
     openPage() {
         this.story.next();
     }
+    openPageBackpack() {
+        Gamebar.getGamebar().open("Backpack");
+    }
     getOtherMissions() {
         var start = this;
         if (start.user.missions !== null) {
