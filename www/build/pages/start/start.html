@@ -1,20 +1,23 @@
 <ion-content id="start">
     <header>
-        <h1 id="game-title">Angels 0f Science</h1>
+        <h1>Angels of Science</h1>
     </header>
 
-    <ion-card *ngIf="!(user.auth | async)">
+    <ion-card *ngIf="!(user.auth | async)" class="userDetails">
 
         <ion-item>
             <ion-avatar item-left>
                 <img src="img/female.jpg">
             </ion-avatar>
-            <button (click)="user.doLogin()"> LOGIN FACEBOOK </button>
+            <button (click)="user.doLogin()" class="login"> LOGIN FACEBOOK </button>
         </ion-item>
 
+<<<<<<< HEAD
         <ion-card-content>
         </ion-card-content>
 
+=======
+>>>>>>> 2405220c5d33ee45bca255090c980a87a641c0d9
         <ion-item>
             <button primary clear item-left>
                 <ion-icon name="thumbs-up"></ion-icon>
@@ -31,23 +34,17 @@
 
     </ion-card>
 
-    <ion-card *ngIf="user.auth | async">
+    <ion-card *ngIf="user.auth | async" class="userDetails">
         <ion-item>
             <ion-avatar item-left>
                 <img [src]="user.user.profile.profileImageURL">
             </ion-avatar>
             <h2>{{user.user.profile.displayName}}</h2>
             <p>{{user.user.profile.email}}</p>
-            <button (click)="user.doLogout()">Logout of Facebook</button>
+            <button (click)="user.doLogout()" class="login">Logout of Facebook</button>
         </ion-item>
 
         <status [userTotal]="user.user.pointsTotal" pointsTotal=""></status>
-
-        <ion-card-content>
-            <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!
-                Whoa. This is heavy.</p>
-        </ion-card-content>
-
 
         <ion-item>
             <button primary clear item-left (click)="tab=''">
@@ -83,15 +80,15 @@
         </ion-item-->
     </ion-card>
     <map *ngIf="tab==='find'"></map>
-    <ion-card *ngIf="tab==='inprogress'">
+    <ion-card *ngIf="tab==='inprogress'" class="missions">
         <ion-card-header class="heading">
             Missions in progress
         </ion-card-header>
         <ion-card-content>
             <ion-list>
-                
-            <ion-item-divider light>My Missions In Progress</ion-item-divider>
-      
+
+            <ion-item-divider>My Missions In Progress</ion-item-divider>
+
                 <ion-card *ngFor="#mystory of story.stories.my" >
                     <ion-card-header (click)="selected=mystory;story.getStoryFile(mystory)">
                         <ion-item>
@@ -105,15 +102,15 @@
                     </ion-card-header>
                     <ion-card-content *ngIf="selected===mystory">
                         <ion-buttons *ngIf="mystory.found">
-                            <button (click)=openPage()>
+                            <button (click)=openPage() full>
                                 <ion-icon></ion-icon>Play {{m.name}}
                             </button>
                         </ion-buttons>
                     </ion-card-content>
                 </ion-card>
-                
-      <ion-item-divider light>Local Missions</ion-item-divider>
-      
+
+      <ion-item-divider>Local Missions</ion-item-divider>
+
                 <ion-card *ngFor="#m of story.stories.missions">
                     <ion-card-header (click)="selected=m;story.getStoryFile(m)">
                         <ion-item>
@@ -133,7 +130,7 @@
                         </ion-buttons>
                     </ion-card-content>
                 </ion-card>
-                
+
       <ion-item-divider light>Cloud Missions</ion-item-divider>
                 <ion-card *ngFor="#cloud of story.stories.cloud" >
                     <ion-card-header (click)="selected=cloud;story.getStoryFile(cloud)">
@@ -142,7 +139,7 @@
                                 <img src="img/appicon.png">
                             </ion-thumbnail>
                             <h2>{{cloud.name}}</h2>
-                            <p>{{cloud.info}}</p>  
+                            <p>{{cloud.info}}</p>
                             <h3 *ngIf="cloud.found"> Mission Unlocked </h3>
                             <h3 *ngIf="!cloud.found"> Mission Locked </h3>
                             <button clear item-right *ngIf="cloud.found">View</button>
@@ -150,7 +147,7 @@
                     </ion-card-header>
                     <ion-card-content *ngIf="selected===cloud">
                         <ion-buttons *ngIf="cloud.found">
-                            <button (click)=openPage()>
+                            <button (click)=openPage() full>
                                 <ion-icon></ion-icon>Play {{cloud.name}}
                             </button>
                         </ion-buttons>
@@ -170,7 +167,7 @@
                         <th class="tg-yw4l">Rank</th>
                         <th class="tg-yw4l">Name</th>
                         <th class="tg-yw4l">Score</th>
-                    </tr> 
+                    </tr>
                     <tr *ngFor="#u of user.leaderboard">
                         <td class="tg-j2zy">1</td>
                         <td class="tg-j2zy">{{u.name}}</td>

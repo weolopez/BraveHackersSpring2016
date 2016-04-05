@@ -3,19 +3,48 @@
   color: white;
 
   header {
-    background: url(../../img/aos-header.png) #3664ab no-repeat center 0;
-    height: 0;
-    padding-top: 57px;
-    overflow: hidden;
+    background: #a15a97;
+    height: 50px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+
+    &:after {
+      content: '';
+      background: url(../../img/AoSBadge.png) no-repeat 0 0;
+      height: 119px;
+      width: 109px;
+      position: absolute;
+      right: -5px;
+      top: 5px;
+      z-index: 9999;
+    }
+
+    h1 {
+      margin: 0;
+      padding: 8px 15px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 1);
+    }
   }
 
   #status-bar {
     border-radius: 10px;
   }
 
-  ion-card-header.heading {
-    font: 24px 'Handlee', cursive;
+  .userDetails {
+    background: none;
+    box-shadow: none;
+
+    .item {
+      background: none;
+
+      .item-button {
+        background: none;
+
+        &.login {
+          background: #387ef5;
+        }
+      }
+    }
   }
 
   .tg-wrap {
@@ -23,11 +52,22 @@
 
     .tg th {
       font: 16px 'Handlee', cursive;
+      background: #b9dad8;
     }
 
     .tg td, .tg th {
       border-color: #fff;
+      color: #333;
     }
+  }
+
+  ion-card-header.heading {
+    font: 24px 'Handlee', cursive;
+  }
+
+  ion-card {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+    background: #fff5b5;
   }
 
   ion-card ion-list .item {
@@ -36,6 +76,23 @@
 
   ion-list .item-inner {
     border: 0;
+  }
+
+  .missions {
+    ion-item-divider {
+      background: none;
+      border-bottom: 1px solid #aaa;
+    }
+
+    ion-card {
+      margin: 0;
+      border-bottom: 1px solid #aaa;
+      background: #fff;
+
+      .item {
+        background: none;
+      }
+    }
   }
 }
 
