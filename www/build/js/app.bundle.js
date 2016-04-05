@@ -135,17 +135,19 @@ var story_1 = require('../../models/story/story');
 var status_1 = require('../../components/status/status');
 var gamebar;
 var Gamebar = (function () {
-    function Gamebar(nav, viewCtrl) {
+    function Gamebar(nav, viewCtrl, story) {
         this.nav = nav;
         this.viewCtrl = viewCtrl;
+        this.story = story;
         this.pages = {
             "Backpack": Backpack,
             "Clues": Clues,
             "Notes": Notes,
             "Messages": Messages,
-            "PHMeter": PHMeter
+            "GenericTest": GenericTest
         };
         this.currentApp = "";
+        this.alertNotes = "none";
         var g = this;
         if (gamebar === undefined)
             gamebar = g;
@@ -154,6 +156,9 @@ var Gamebar = (function () {
     }
     Gamebar.getGamebar = function () {
         return gamebar;
+    };
+    Gamebar.prototype.alertNote = function (color) {
+        this.alertNotes = color;
     };
     Gamebar.prototype.open = function (page) {
         var g = this;
@@ -178,7 +183,7 @@ var Gamebar = (function () {
             templateUrl: 'build/components/gamebar/gamebar.html',
             directives: [ionic_angular_2.IONIC_DIRECTIVES]
         }), 
-        __metadata('design:paramtypes', [ionic_angular_1.NavController, ionic_angular_1.ViewController])
+        __metadata('design:paramtypes', [ionic_angular_1.NavController, ionic_angular_1.ViewController, story_1.Story])
     ], Gamebar);
     return Gamebar;
 }());
@@ -314,8 +319,8 @@ var Notes = (function () {
     return Notes;
 }());
 exports.Notes = Notes;
-var PHMeter = (function () {
-    function PHMeter(story) {
+var GenericTest = (function () {
+    function GenericTest(story) {
         this.story = story;
         var phmeter = this;
         phmeter.story = story;
@@ -326,24 +331,25 @@ var PHMeter = (function () {
         phmeter.answers = phmeter.app.test[0].answers;
         phmeter.answer = phmeter.app.test[0].answer;
     }
-    PHMeter.prototype.advanceScene = function () {
+    GenericTest.prototype.advanceScene = function () {
         this.currentScene++;
     };
-    PHMeter.prototype.checkResult = function (correct) {
+    GenericTest.prototype.checkResult = function (correct) {
         var phmeter = this;
         phmeter.app.complete = correct;
-        this.story.story.testing[phmeter.app.testIndex].complete = true;
+        this.story.story.notes.testing[phmeter.app.testIndex].complete = true;
+        this.story.alertNotes(true);
     };
-    PHMeter = __decorate([
+    GenericTest = __decorate([
         ionic_angular_1.Page({
-            templateUrl: 'build/components/gamebar/phmeter/phmeter.html',
+            templateUrl: 'build/components/gamebar/genericTest/genericTest.html',
             directives: [status_1.Status, Gamebar, quiz_1.Quiz]
         }), 
         __metadata('design:paramtypes', [story_1.Story])
-    ], PHMeter);
-    return PHMeter;
+    ], GenericTest);
+    return GenericTest;
 }());
-exports.PHMeter = PHMeter;
+exports.GenericTest = GenericTest;
 },{"../../components/analysis/analysis":2,"../../components/hypothesis/hypothesis":4,"../../components/quiz/quiz":6,"../../components/status/status":7,"../../components/test/test":8,"../../models/story/story":10,"angular2/core":15,"ionic-angular":343}],4:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -673,6 +679,8 @@ var Test = (function () {
         test.clueTool.completedAnalysis = test.completedTest;
         window.scrollTo(0, 0);
     };
+    Test.prototype.noop = function () {
+    };
     Test = __decorate([
         core_1.Component({
             selector: 'test',
@@ -817,6 +825,12 @@ var Story = (function () {
         var type = this.story[this.story.next].type;
         console.log("Opening: " + type);
         gamebar_1.Gamebar.getGamebar().open(type);
+    };
+    Story.prototype.alertNotes = function (alert) {
+        if (alert)
+            gamebar_1.Gamebar.getGamebar().alertNote("silver");
+        else
+            gamebar_1.Gamebar.getGamebar().alertNote("none");
     };
     Story.prototype.getStoryFile = function (m) {
         var story = this;

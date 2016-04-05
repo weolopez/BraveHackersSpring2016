@@ -14,7 +14,6 @@ import {Story} from '../../models/story/story';
 import {Status} from '../../components/status/status';
 
 let gamebar;
-
 @Component({ selector: 'gamebar' })
 @View({
     templateUrl: 'build/components/gamebar/gamebar.html',
@@ -26,12 +25,14 @@ export class Gamebar {
         "Clues": Clues,
         "Notes": Notes,
         "Messages": Messages,
-        "PHMeter": PHMeter
+        "GenericTest": GenericTest
     }
     currentApp: any = "";
+    alertNotes: any = "none";
     constructor(
         private nav: NavController,
-        private viewCtrl: ViewController
+        private viewCtrl: ViewController,
+        private story: Story
     ) { 
         var g = this;
         if (gamebar === undefined)
@@ -41,6 +42,9 @@ export class Gamebar {
     }
     static getGamebar() {
         return gamebar;
+    }
+    alertNote(color) {
+        this.alertNotes = color;
     }
     open(page) {
         var g = this;
@@ -105,8 +109,8 @@ class Messages {
         return JSON.stringify(o);
     }
     next() {
-        var next = this.app.next;
-        var type = this.story.story[next].type;
+        let next = this.app.next;
+        let type = this.story.story[next].type;
         if (type === "Messages") {
             this.story.story.next = this.story.getNextApp().next;
             this.init(this.story.getNextApp());
@@ -192,12 +196,11 @@ export class Notes {
         this.clues = app.clues;
     }
 }
-
 @Page({
-    templateUrl: 'build/components/gamebar/phmeter/phmeter.html',
+    templateUrl: 'build/components/gamebar/genericTest/genericTest.html',
     directives: [Status, Gamebar, Quiz]
 })
-export class PHMeter {
+export class GenericTest {
     app: any;
     currentScene: any;
     background:any;
@@ -222,6 +225,7 @@ export class PHMeter {
         var phmeter = this;  
         phmeter.app.complete = correct;
         this.story.story.notes.testing[phmeter.app.testIndex].complete = true;
+        this.story.alertNotes(true);
     }
 }
  

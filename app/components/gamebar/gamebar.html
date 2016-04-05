@@ -7,7 +7,7 @@
             <button clear class="backpack" (click)="open('Backpack')">
                 Backpack
             </button>
-            <button clear class="notes" (click)="open('Notes')">
+            <button clear class="notes" [style.background-color]="alertNotes" (click)="open('Notes')">
                 Notes
             </button>
             <button clear class="help" (click)="open('Help')">

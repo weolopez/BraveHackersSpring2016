@@ -10,8 +10,8 @@
             <td class="tg-j2zy">{{c.testText}}
                 <button (click)="story.open(c.test)" >Run Test</button>
             </td>
-            <td class="tg-j2zy">
-                <input type="checkbox" [id]="c.id" [(ngModel)]="c.selectedClue" >
+            <td class="tg-j2zy" (click)=noop()>
+                <input type="checkbox" [id]="c.id" [(ngModel)]="c.complete" >
             </td>
         </tr>
     </table>

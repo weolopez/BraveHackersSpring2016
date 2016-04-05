@@ -30,6 +30,12 @@ export class Story {
         console.log("Opening: "+type);
         Gamebar.getGamebar().open(type);
     }
+    alertNotes(alert) {
+        if (alert)
+            Gamebar.getGamebar().alertNote("silver");
+        else
+            Gamebar.getGamebar().alertNote("none");
+    }
     getStoryFile(m) {
         var story = this;
         this.http.get(m.file)
