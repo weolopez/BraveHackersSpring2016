@@ -2,33 +2,41 @@ import {Injectable, Inject} from 'angular2/core';
 import {Http, Response} from 'angular2/http';
 import {Observable}     from 'rxjs/Observable';
 import {Beacons} from '../../models/beacons/beacons';
-import {Platform} from 'ionic-angular';
+import {Gamebar} from '../../components/gamebar/gamebar';
 
 //var instance;
 @Injectable()
 export class Story {
     story: any = {};
     stories: any = {};
-    platform: Platform;
     currentStory: any;
-    constructor(private http: Http, platform: Platform) {
+    constructor(private http: Http) {
         var story = this;
         this.http = http;
-        this.platform = platform;
         this.http.get("missions/missions.json")
             .subscribe(data => {
                 story.stories = data.json();
             }, error => {
-                console.log(error);
+                console.log(error); 
             });
     }
-
+    open(page){
+        this.story.currentApp=page;
+        Gamebar.getGamebar().open(this.story[this.story.currentApp].type); 
+    }
+    next() { 
+        this.story.next = this.story[this.story.next].next;
+        var type = this.story[this.story.next].type;
+        console.log("Opening: "+type);
+        Gamebar.getGamebar().open(type);
+    }
     getStoryFile(m) {
         var story = this;
         this.http.get(m.file)
             .subscribe(data => {
+              //  new Game(data.json());
+                
                 story.story = data.json();
-                story.story.next = this.story.start;
                 //  if (story.story.hasBeacons) {
                 //ask Weo
                 //      let beacons = new Beacons(this.platform, this);
@@ -61,6 +69,9 @@ export class Story {
     advanceScene() {
         this.story.next = this.story[this.story.next].next;
     }
+    getApp(app) {
+        return this.story[app];
+    }
     getScene() {
         return this.story
     }
@@ -68,3 +79,18 @@ export class Story {
         return this.story.clueTool.clues;
     }
 }
+    /*    ,
+        {
+            "name" : "Which Animal Is It?",
+            "file" : "missions/missing.json",
+            "info" : "AT&T • 2016",
+            "beacon" : "none",
+            "found" :  true 
+        },
+          {
+            "name" : "Hello Los Angeles!",
+            "file" : "missions/missions.json",
+            "info" : "AT&T • 2016",
+            "beacon" : "blueberry",
+            "found" :  false  
+        }*/

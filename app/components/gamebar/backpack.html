@@ -1,0 +1,40 @@
+<ion-content id="backpack">
+  <h1>Ella's Backpack</h1>
+  <ion-row>
+    <ion-col (click)="openTool('clueTool')">
+      <ion-icon><i class="icon-magGlass">Magnifying Lens</i></ion-icon>
+    </ion-col>
+    <ion-col>
+      <ion-icon><i class="icon-rock">Rock</i></ion-icon>
+    </ion-col>
+    <ion-col>
+      <ion-icon  (click)="openTool('thermometer')"><i class="icon-thermometer">Thermometer</i></ion-icon>
+    </ion-col>
+  </ion-row>
+
+  <ion-row> 
+    <ion-col (click)="openTool('phtest')">
+      <ion-icon><i class="icon-phTestingKit">PH Kit</i></ion-icon> 
+    </ion-col>
+    <ion-col>
+      <ion-icon><i class="icon-dice">Dice</i></ion-icon>
+    </ion-col>
+    <ion-col>
+      <ion-icon><i class="icon-map">Map</i></ion-icon>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-icon><i class="icon-vial">Test Tube</i></ion-icon>
+</ion-col>
+    <ion-col>
+      <ion-icon></ion-icon>
+    </ion-col>
+    <ion-col>
+      <ion-icon></ion-icon>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
+<gamebar></gamebar>

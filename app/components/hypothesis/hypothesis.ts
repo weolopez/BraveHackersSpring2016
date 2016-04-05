@@ -36,7 +36,7 @@ export class Hypothesis {
        c.showHint=false;
        c.validate=true
        c.isCorrect=(c.selectedClue===c.answer.toString());    
-       this.clueTool.completedHypothesis = this.isCompleted();
+       this.story.story.notes.completedHypothesis = this.isCompleted();
     }
     isCompleted() {
         var count = this.clues.reduce(function(n, val) {

@@ -8867,86 +8867,14 @@ body {
   font-size: 1.4rem;
   background-color: #fff; }
 
-.stage {
-  width: 47%;
-  height: 100px;
-  background: #efefef;
-  margin: 0 1%;
-  border: 1px solid #111;
-  float: left;
-  box-sizing: border-box;
-  position: relative;
-  overflow: hidden; }
-  .stage div {
-    width: 50px;
-    height: 100px;
-    background: #7a3;
-    position: absolute; }
-    .stage div.obj01 {
-      left: 50%;
-      margin-left: -25px;
-      -webkit-animation: fade-in 5s 2s infinite;
-      animation: fade-in 5s 2s infinite; }
-    .stage div.obj02 {
-      -webkit-animation: walk-in ease-in-out 5s infinite;
-      animation: walk-in ease-in-out 5s infinite; }
-
-@-webkit-keyframes fade-in {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
-
-@keyframes fade-in {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
-
-@-webkit-keyframes walk-in {
-  from {
-    left: -100px; }
-  to {
-    left: calc(100%); } }
-
-@keyframes walk-in {
-  from {
-    left: -100px; }
-  to {
-    left: calc(100%); } }
-
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  padding-top: 3 0px;
-  height: 0;
-  overflow: hidden; }
-
-.video-container iframe,
-.video-container object,
-.video-container embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; }
-
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  padding-top: 3 0px;
-  height: 0;
-  overflow: hidden; }
-
-.video-container iframe,
-.video-container object,
-.video-container embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; }
-
+/*
+@import "../pages/sensors/sensors";
+@import "../pages/video/video";
+@import "../pages/wikipedia/wikipedia";
+@import "../pages/notes/notes";
+@import "../pages/secretmissions/secretmissions";
+@import "../pages/messages/messages";
+@import "../pages/cluemap/cluemap";*/
 #start {
   background: black;
   color: white; }
@@ -9123,7 +9051,7 @@ p {
 .toolbar {
   min-height: 120px; }
 
-#tool-bar {
+#game-bar {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -9140,21 +9068,21 @@ p {
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center; }
-  #tool-bar bar {
+  #game-bar bar {
     display: block; }
-  #tool-bar button {
+  #game-bar button {
     padding-top: 80px;
     height: 100px;
     width: 23%;
     background: url(../../img/footerSprite.png) no-repeat;
     color: #333; }
-    #tool-bar button.messages {
+    #game-bar button.messages {
       background-position: center 10px; }
-    #tool-bar button.backpack {
+    #game-bar button.backpack {
       background-position: center -100px; }
-    #tool-bar button.notes {
+    #game-bar button.notes {
       background-position: center -215px; }
-    #tool-bar button.help {
+    #game-bar button.help {
       background-position: center -330px; }
 
 #backpack {
@@ -9392,9 +9320,6 @@ img {
   display: inline-block;
   width: 200px;
   float: right; }
-
-.clue-text {
-  white-space: normal; }
 
 .clue-text {
   white-space: normal; }

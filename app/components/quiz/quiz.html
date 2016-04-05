@@ -1,0 +1,32 @@
+<ion-card>
+    <ion-card-header>
+        <ion-item>
+            <ion-label class="wrap"> {{question}}</ion-label>
+        </ion-item>
+    </ion-card-header>
+
+    <ion-card-content>
+        <ion-list radio-group [(ngModel)]="selectedAnswer" (change)="showHint=false">
+            <ion-item *ngFor="#a of answers">
+                <ion-label class="wrap">
+                    {{a.text}}
+                </ion-label>
+                <ion-radio value="{{a.id}}">
+                </ion-radio>
+            </ion-item>
+
+            <ion-item>
+                <p class="wrap" *ngIf="showHint">{{hint}}</p>
+                <p class="wrap" *ngIf="!showHint">{{validate? 'Correct' : 'Not Correct. Try Again'}}</p>
+                <button outline item-right (click)="showHint=!showHint;">
+                    <ion-icon name="ios-help-circle"></ion-icon>
+                    Help
+                </button>
+                <button outline item-right (click)="validateClue()">
+                    <ion-icon name="ios-arrow-dropright-circle"></ion-icon>
+                    Validate
+                </button>
+            </ion-item>
+        </ion-list>
+    </ion-card-content>
+</ion-card>

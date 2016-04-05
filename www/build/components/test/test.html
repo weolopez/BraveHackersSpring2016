@@ -5,10 +5,10 @@
             <th class="tg-yw4l">Test to Run</th>
             <th class="tg-yw4l">Result</th>
         </tr>
-        <tr *ngFor="#c of clues">
-            <td class="tg-j2zy">{{c.text}}</td>
-            <td class="tg-j2zy">{{c.answers[c.answer-1].text}}
-                <button>Run Test</button>
+        <tr *ngFor="#c of testing">
+            <td class="tg-j2zy">{{c.concern}}#{{c}}</td>
+            <td class="tg-j2zy">{{c.testText}}
+                <button (click)="story.open(c.test)" >Run Test</button>
             </td>
             <td class="tg-j2zy">
                 <input type="checkbox" [id]="c.id" [(ngModel)]="c.selectedClue" >
@@ -24,5 +24,4 @@
             </button>
         </ion-item>
     </ion-list>
-
 </div>

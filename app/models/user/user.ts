@@ -46,11 +46,11 @@ export class User {
     onConnectedRefChange(snap) {
         var user = this;
         return;
-        if ((snap.val() === true) && (user.userConnectionsRef !== undefined)) {
+       /* if ((snap.val() === true) && (user.userConnectionsRef !== undefined)) {
                 var con = user.userConnectionsRef.push(true);
                 con.onDisconnect().remove();
                 user.userLastOnlineRef.onDisconnect().set(Firebase.ServerValue.TIMESTAMP);
-        }
+        }*/
     }
     save() {
         var user = this;
@@ -126,7 +126,6 @@ export class User {
             var us = new Firebase(missionsConnectionString);
             us.once('value').then((d) => {
                 user.missions = d.val();
-                
              });
     }
 }

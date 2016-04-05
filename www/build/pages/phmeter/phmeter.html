@@ -1,29 +1,32 @@
-<ion-navbar *navbar>
-
-    <ion-title>
-        pH Meter
-    </ion-title>
-
-    <ion-buttons end>
-        <button menuToggle style="float: right">
-            <ion-icon name="menu"></ion-icon>
-        </button>
-    </ion-buttons>
-</ion-navbar>
-
 <section id="game">
     <ion-col id="main">
         <video-window>
-            <img src="{{app.avatar}}">
-        User Interaction and general sensor info value of: {{app.ph}}
+            <img [src]="background">
         </video-window>
         <video-text>
-            {{app.scenes[currentScene].text}}
         </video-text>
         <toolbar>
-            <button *ngFor="#q of app.scenes[currentScene].question" *ngIf=app.scenes[currentScene].question>{{q}}</button>
-           
             <button (click)="advanceScene()">Next</button>
         </toolbar>
     </ion-col>
 </section>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>{{app.test.question}}</ion-label>
+      <ion-select [(ngModel)]="month">
+        <ion-option *ngFor="#test of app.test.answers" [value]="test.text">{{test.text}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<!--ion-content>
+    <ion-list>
+        <ion-label></ion-label>
+        <ion-select [(ngModel)]="app.test.selectedAnswer">
+            <ion-option *ngFor="#test of app.test.answers" [value]="test.text">{{test.text}}</ion-option>
+        </ion-select>
+    </ion-list>
+
+</ion-content-->
