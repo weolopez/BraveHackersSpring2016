@@ -7995,6 +7995,14 @@ p {
 .clue-text {
   white-space: normal; }
 
+.notebook .btnRow {
+  margin-left: 10px; }
+
+.notebook ion-label {
+  overflow: visible;
+  text-overflow: inherit;
+  white-space: normal; }
+
 ion-page {
   background: url(../../img/tile.png) repeat; }
 
