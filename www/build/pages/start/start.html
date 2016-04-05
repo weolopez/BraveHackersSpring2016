@@ -3,7 +3,7 @@
         <h1 id="game-title">Angels 0f Science</h1>
     </header>
 
-    <ion-card *ngIf="!(user.auth | async)">
+    <ion-card *ngIf="(user.auth | async)">
 
         <ion-item>
             <ion-avatar item-left>
@@ -33,7 +33,7 @@
 
     </ion-card>
 
-    <ion-card *ngIf="user.auth | async">
+    <ion-card *ngIf="!(user.auth | async)">
         <ion-item>
             <ion-avatar item-left>
                 <img [src]="user.user.profile.profileImageURL">
