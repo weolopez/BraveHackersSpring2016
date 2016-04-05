@@ -1,10 +1,22 @@
-<status></status>
+<status [userTotal]="story.story.userTotal" [pointsTotal]="story.story.pointsTotal"></status>
+
 <ion-content id="messages">
   <div *ngFor="#m of dialog; #index=index;#isOdd=odd;#isEven=even">
     <div [class]="isOdd?'chatrowl':'chatrow'">
-      <div [class]="isOdd?'usericonl':'usericon-r'"><img [src]="m.image" height="42" width="42" /></div>
+      <div [class]="isOdd?'usericonl':'usericon-r'">
+          <img *ngIf="m.character==='Ella'" 
+                [src]="story.story.userPicture" height="42" width="42" />
+          
+          <img *ngIf="m.character!=='Ella'" 
+                [src]="m.image" height="42" width="42" />
+      </div>
       <div [class]="isOdd?'bubblel':'bubbler'">
-        <div [class]="isEven?'bubblealt':'bubble'">{{m.text}}</div>
+          
+        <div *ngIf="m.character==='Ella'" 
+            [class]="isEven?'bubblealt':'bubble'">{{getName(m)}}</div>
+        <div *ngIf="m.character!=='Ella'" 
+            [class]="isEven?'bubblealt':'bubble'">{{m.text}}</div>
+        
       </div>
     </div>
   </div>

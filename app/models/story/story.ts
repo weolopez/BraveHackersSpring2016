@@ -25,7 +25,9 @@ export class Story {
     }
     save() { 
         var story = this;
-        story.user.saveStory(story.story);
+        var s = story.user.saveStory(story.story);
+        if (s !== undefined)
+            story.story.pointsTotal = s.pointsTotal;
     }
     open(page) {
         var story = this;
@@ -58,6 +60,8 @@ export class Story {
                     //  new Game(data.json());
 
                     story.story = data.json();
+                    story.story.userName = story.user.user.profile.cachedUserProfile.first_name;
+                    story.story.userPicture = story.user.user.profile.profileImageURL;
                     //  if (story.story.hasBeacons) {
                     //ask Weo
                     //      let beacons = new Beacons(this.platform, this);
@@ -69,6 +73,8 @@ export class Story {
         }
         else if (m.type === 'mission') {
             story.story = m;
+            story.story.pointsTotal = story.user.user.point[story.story.id];
+            story.story.userTotal = story.user.user.pointsTotal; 
             Gamebar.getGamebar().open("Backpack");
         }
     }

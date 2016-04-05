@@ -13,8 +13,6 @@
         </ion-item>
 
         <ion-card-content>
-            <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!
-                Whoa. This is heavy.</p>
         </ion-card-content>
 
         <ion-item>
@@ -43,7 +41,7 @@
             <button (click)="user.doLogout()">Logout of Facebook</button>
         </ion-item>
 
-        <status></status>
+        <status [userTotal]="user.user.pointsTotal" pointsTotal=""></status>
 
         <ion-card-content>
             <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!

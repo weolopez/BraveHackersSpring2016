@@ -110,6 +110,10 @@ class Messages {
         messages.dialog = messages.app.dialog;
         messages.background = messages.app.background;
     }
+    getName(m) {
+        var messages = this;
+        return m.text.replace(/Ella/g, messages.story.story.userName);
+    }
     stringify(o) {
         return JSON.stringify(o);
     }

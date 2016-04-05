@@ -70,29 +70,30 @@ export class User {
         else {            
             user.userRef.child('missions').child(story.firebase).set(story);
             
-            var count = 0; 
-            for (var key in story.points) {
-                if (story.points.hasOwnProperty(key)) {
-                    console.log(key + " -> " + story.points[key]);
-                    count = count + story.points[key];
-                   }
-                }
+            var count = user.getPointsTotal(story.points);
             console.log("Saving Points: "+ story.id +" of " + count);
          //   user.userRef.child('points').child(story.id).set(count);
+            story.pointsTotal=count;
             user.user.points[story.id]=count;
             user.save();
             
-            var count = 0;
-            for (var key in user.user.points) {
-                if (user.user.points.hasOwnProperty(key)) {
-                    console.log(key + " -> " + user.user.points[key]);
-                    count = count + user.user.points[key];
-                   }
-                }
+            count = user.getPointsTotal(user.user.points);
             console.log("Saving Points: "+ user.user.name +" of " + count);
             user.userRef.child('points').child(story.id).set(count);
             user.leaderboardBase.child(user.user.name).set(count);
+            story.userTotal=count;
+            return story;
         }
+    }
+    getPointsTotal(pointsList) {
+        var count = 0;
+            for (var key in pointsList) {
+                if (pointsList.hasOwnProperty(key)) {
+                    console.log(key + " -> " + pointsList[key]);
+                    count = count + pointsList[key];
+                   } 
+                }
+                return count
     }
     save() {
         var user = this;
@@ -111,6 +112,7 @@ export class User {
             user.user = d.val();
             if (user.user === null) user.user = {};
             user.user.name = name;
+            user.user.pointsTotal = user.getPointsTotal(user.user.points);
             user.user.id = name.tobase64url();
             user.user.profileProvider = authData.auth.provider;
             user.user.profile = authData[user.user.profileProvider];

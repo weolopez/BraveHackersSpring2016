@@ -3,12 +3,13 @@
         <bar>
             <section class="XP">
                 <i class="badge">1</i>
-                50 XP
+                {{userTotal}}
             </section>
-            <section class="points">
+            <section class="points" *ngIf="pointsTotal">
                 <i class="coin"></i>
-                5000
+                {{pointsTotal}}XP
             </section>
         </bar>
     </ion-buttons>
 </ion-toolbar>
+ 
