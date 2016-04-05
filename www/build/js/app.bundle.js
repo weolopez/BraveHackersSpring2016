@@ -1096,7 +1096,7 @@ var Start = (function () {
     };
     Start.prototype.getOtherMissions = function () {
         var start = this;
-        if (start.user.missions === null) {
+        if (start.user.missions !== null) {
             start.user.missions.forEach(function (mission) {
                 start.story.stories.missions.push(mission);
             });
