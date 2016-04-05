@@ -296,7 +296,7 @@
                 "id": 2,
                 "concern": "The water's PH is not between 7.6-8.4",
                 "testText": "Analyze 400 gallon tank 200 1 inch fish 75 two inch fish 30 four inch fish.",
-                "test": "math",
+                "test": "Quiz",
                 "complete": false
             }
         ]
@@ -314,7 +314,7 @@
                     {
                         "id": 1,
                         "text": "82F"
-                    },
+                    }, 
                     {
                         "id": 2,
                         "text": "80F"
@@ -355,27 +355,27 @@
             }
         ]
     },
-    "math": {
+    "Quiz": {
         "type": "GenericTest",
-        "background": "img/phtest.jpg",
+        "background": "img/math.png",
         "testIndex" : 1,
         "test": [
             {
                 "id": "1",
                 "text": "",
-                "question": "What is the PH of the water?",
+                "question": "The current capacity of the tank is?",
                 "answers": [
                     {
                         "id": 1,
-                        "text": "7"
+                        "text": "Under Stocked"
                     },
                     {
                         "id": 2,
-                        "text": "8"
+                        "text": "Over Stocked"
                     },
                     {
                         "id": 3,
-                        "text": "9"
+                        "text": "Correctly Stocked"
                     }
                 ],
                 "answer": 2

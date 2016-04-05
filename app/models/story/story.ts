@@ -73,9 +73,9 @@ export class Story {
         }
         else if (m.type === 'mission') {
             story.story = m;
-            story.story.pointsTotal = story.user.user.point[story.story.id];
+            
+            story.story.pointsTotal = story.user.user.points[story.story.id];
             story.story.userTotal = story.user.user.pointsTotal; 
-            Gamebar.getGamebar().open("Backpack");
         }
     }
     getStories() {

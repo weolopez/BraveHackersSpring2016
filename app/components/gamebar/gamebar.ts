@@ -28,6 +28,7 @@ export class Gamebar {
         "Cluemap": Cluemap,
         "Notes": Notes,
         "Messages": Messages,
+        "Help": Help,
         "GenericTest": GenericTest
     }
     currentApp: any = "";
@@ -84,6 +85,51 @@ class Backpack {
         this.story.open(tool);
     }
 } 
+
+@Page({
+    templateUrl: 'build/components/gamebar/messages/messages.html',
+    directives: [Status, Gamebar]
+})
+class Help {
+    dialog: any;
+    dialogIndex: any = 0;
+    background: any;
+    messages: any;
+    app: any;
+    constructor(
+        public platform: Platform,
+        public params: NavParams,
+        public viewCtrl: ViewController,
+        private story: Story
+    ) {
+        var messages = this;
+        if (!story.story.name) return;
+        
+        messages.init(story.story.currentApp);//story.getNextApp());
+        messages. story.story.currentApp;
+    }
+    init(app) {
+        var messages = this;
+        messages.app = app;
+        messages.dialog =  [
+            {
+                "character": "Chica",
+                "image": "img/chica.png",
+                "text": "Ella, you should open "+app+"."
+            }
+        ]
+    }
+    getName(m) {
+        var messages = this;
+        return m.text.replace(/Ella/g, messages.story.story.userName);
+    }
+    next() {
+        this.story.open('Backpack');
+    }
+}
+
+
+
 @Page({
     templateUrl: 'build/components/gamebar/messages/messages.html',
     directives: [Status, Gamebar]
@@ -102,7 +148,7 @@ class Messages {
     ) {
         var messages = this;
         if (!story.story.name) return;
-        messages.init(story.getNextApp());
+        messages.init(story.story[story.story.currentApp]);//story.getNextApp());
     }
     init(app) {
         var messages = this;
@@ -122,10 +168,10 @@ class Messages {
         let next = messages .app.next;
         let type = messages .story.story[next].type;
         if (type === "Messages") {
-            messages .story.story.next = messages .story.getNextApp().next;
-            messages .init(messages .story.getNextApp());
+            messages.story.story.next = messages.story.getNextApp().next;
+            messages.init(messages.story.getNextApp());
         }
-        else messages .story.next();
+        else messages.story.next();
     }
 }
 
@@ -166,6 +212,7 @@ class Clues {
             return n + (val.found === true);
         }, 0);
         if (count >= clue.clues.length) {
+            if (clue.story.story.points===undefined) clue.story.story.points={};
             clue.story.story.points[clue.story.story.currentApp] = 250;
             return true;   
         }
@@ -218,6 +265,7 @@ class Cluemap {
             return n + (val.found === true);
         }, 0);
         if (count >= cluemap.clues.length) {
+            if (cluemap.story.story.points===undefined) cluemap.story.story.points={};
             cluemap.story.story.points[cluemap.story.story.currentApp] = 250;
             return true;
         }

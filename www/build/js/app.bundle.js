@@ -115,6 +115,7 @@ var Analysis = (function () {
 exports.Analysis = Analysis;
 
 },{"../../models/story/story":10,"angular2/core":15,"ionic-angular":343}],3:[function(require,module,exports){
+<<<<<<< HEAD
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -433,6 +434,370 @@ var GenericTest = (function () {
 }());
 exports.GenericTest = GenericTest;
 
+=======
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require('angular2/core');
+//import {Status} from '../../components/status/status';
+var ionic_angular_1 = require('ionic-angular');
+var quiz_1 = require('../../components/quiz/quiz');
+var analysis_1 = require('../../components/analysis/analysis');
+var hypothesis_1 = require('../../components/hypothesis/hypothesis');
+var test_1 = require('../../components/test/test');
+var ionic_angular_2 = require('ionic-angular');
+//import {User} from '../../models/user/user';
+var story_1 = require('../../models/story/story');
+var status_1 = require('../../components/status/status');
+var beacons_1 = require('../../models/beacons/beacons');
+var gamebar;
+var Gamebar = (function () {
+    function Gamebar(nav, viewCtrl, story) {
+        this.nav = nav;
+        this.viewCtrl = viewCtrl;
+        this.story = story;
+        this.pages = {
+            "Backpack": Backpack,
+            "Clues": Clues,
+            "Cluemap": Cluemap,
+            "Notes": Notes,
+            "Messages": Messages,
+            "Help": Help,
+            "GenericTest": GenericTest
+        };
+        this.currentApp = "";
+        this.alertNotes = "none";
+        var g = this;
+        if (gamebar === undefined)
+            gamebar = g;
+        else
+            return;
+    }
+    Gamebar.getGamebar = function () {
+        return gamebar;
+    };
+    Gamebar.prototype.alertNote = function (color) {
+        this.alertNotes = color;
+    };
+    Gamebar.prototype.open = function (page) {
+        var g = this;
+        if (Gamebar.getGamebar().currentApp !== page) {
+            if (Gamebar.getGamebar().currentApp !== "") {
+                g.viewCtrl.dismiss();
+            }
+            setTimeout(function () {
+                Gamebar.getGamebar().currentApp = page;
+                var modal = ionic_angular_1.Modal.create(g.pages[page]);
+                g.nav.present(modal);
+            }, 500);
+        }
+        else {
+            Gamebar.getGamebar().currentApp = "";
+            g.viewCtrl.dismiss();
+        }
+    };
+    Gamebar = __decorate([
+        core_1.Component({ selector: 'gamebar' }),
+        core_1.View({
+            templateUrl: 'build/components/gamebar/gamebar.html',
+            directives: [ionic_angular_2.IONIC_DIRECTIVES]
+        }), 
+        __metadata('design:paramtypes', [ionic_angular_1.NavController, ionic_angular_1.ViewController, story_1.Story])
+    ], Gamebar);
+    return Gamebar;
+}());
+exports.Gamebar = Gamebar;
+var Backpack = (function () {
+    function Backpack(platform, params, viewCtrl, story) {
+        this.platform = platform;
+        this.params = params;
+        this.viewCtrl = viewCtrl;
+        this.story = story;
+    }
+    Backpack.prototype.openTool = function (tool) {
+        this.story.open(tool);
+    };
+    Backpack = __decorate([
+        ionic_angular_1.Page({
+            templateUrl: 'build/components/gamebar/backpack.html',
+            directives: [Gamebar]
+        }), 
+        __metadata('design:paramtypes', [ionic_angular_1.Platform, ionic_angular_1.NavParams, ionic_angular_1.ViewController, story_1.Story])
+    ], Backpack);
+    return Backpack;
+}());
+var Help = (function () {
+    function Help(platform, params, viewCtrl, story) {
+        this.platform = platform;
+        this.params = params;
+        this.viewCtrl = viewCtrl;
+        this.story = story;
+        this.dialogIndex = 0;
+        var messages = this;
+        if (!story.story.name)
+            return;
+        messages.init(story.story.currentApp); //story.getNextApp());
+        messages.story.story.currentApp;
+    }
+    Help.prototype.init = function (app) {
+        var messages = this;
+        messages.app = app;
+        messages.dialog = [
+            {
+                "character": "Chica",
+                "image": "img/chica.png",
+                "text": "Ella, you should open " + app + "."
+            }
+        ];
+    };
+    Help.prototype.getName = function (m) {
+        var messages = this;
+        return m.text.replace(/Ella/g, messages.story.story.userName);
+    };
+    Help.prototype.next = function () {
+        this.story.open('Backpack');
+    };
+    Help = __decorate([
+        ionic_angular_1.Page({
+            templateUrl: 'build/components/gamebar/messages/messages.html',
+            directives: [status_1.Status, Gamebar]
+        }), 
+        __metadata('design:paramtypes', [ionic_angular_1.Platform, ionic_angular_1.NavParams, ionic_angular_1.ViewController, story_1.Story])
+    ], Help);
+    return Help;
+}());
+var Messages = (function () {
+    function Messages(platform, params, viewCtrl, story) {
+        this.platform = platform;
+        this.params = params;
+        this.viewCtrl = viewCtrl;
+        this.story = story;
+        this.dialogIndex = 0;
+        var messages = this;
+        if (!story.story.name)
+            return;
+        messages.init(story.story[story.story.currentApp]); //story.getNextApp());
+    }
+    Messages.prototype.init = function (app) {
+        var messages = this;
+        messages.app = app;
+        messages.dialog = messages.app.dialog;
+        messages.background = messages.app.background;
+    };
+    Messages.prototype.getName = function (m) {
+        var messages = this;
+        return m.text.replace(/Ella/g, messages.story.story.userName);
+    };
+    Messages.prototype.stringify = function (o) {
+        return JSON.stringify(o);
+    };
+    Messages.prototype.next = function () {
+        var messages = this;
+        var next = messages.app.next;
+        var type = messages.story.story[next].type;
+        if (type === "Messages") {
+            messages.story.story.next = messages.story.getNextApp().next;
+            messages.init(messages.story.getNextApp());
+        }
+        else
+            messages.story.next();
+    };
+    Messages = __decorate([
+        ionic_angular_1.Page({
+            templateUrl: 'build/components/gamebar/messages/messages.html',
+            directives: [status_1.Status, Gamebar]
+        }), 
+        __metadata('design:paramtypes', [ionic_angular_1.Platform, ionic_angular_1.NavParams, ionic_angular_1.ViewController, story_1.Story])
+    ], Messages);
+    return Messages;
+}());
+var Clues = (function () {
+    function Clues(platform, params, viewCtrl, story) {
+        this.platform = platform;
+        this.params = params;
+        this.viewCtrl = viewCtrl;
+        this.story = story;
+        this.init(story.story[story.story.currentApp]);
+    }
+    Clues.prototype.init = function (app) {
+        if (!app) {
+            this.clues = [
+                {
+                    "id": "1",
+                    "text": "No clues yet."
+                }
+            ];
+            return;
+        }
+        this.app = app;
+        this.clues = app.clues;
+    };
+    Clues.prototype.isCompleted = function () {
+        var clue = this;
+        var count = clue.clues.reduce(function (n, val) {
+            return n + (val.found === true);
+        }, 0);
+        if (count >= clue.clues.length) {
+            if (clue.story.story.points === undefined)
+                clue.story.story.points = {};
+            clue.story.story.points[clue.story.story.currentApp] = 250;
+            return true;
+        }
+        else
+            return false;
+    };
+    Clues.prototype.stringify = function (o) {
+        return JSON.stringify(o);
+    };
+    Clues.prototype.next = function () {
+        this.story.next();
+    };
+    Clues = __decorate([
+        ionic_angular_1.Page({
+            templateUrl: 'build/components/gamebar/clues/clues.html',
+            directives: [status_1.Status, Gamebar]
+        }), 
+        __metadata('design:paramtypes', [ionic_angular_1.Platform, ionic_angular_1.NavParams, ionic_angular_1.ViewController, story_1.Story])
+    ], Clues);
+    return Clues;
+}());
+var Cluemap = (function () {
+    function Cluemap(platform, params, viewCtrl, beacons, story) {
+        this.platform = platform;
+        this.params = params;
+        this.viewCtrl = viewCtrl;
+        this.beacons = beacons;
+        this.story = story;
+        this.init(story.story[story.story.currentApp]);
+        //  this.beacons.start();
+    }
+    Cluemap.prototype.init = function (app) {
+        if (!app) {
+            this.clues = [
+                {
+                    "id": "1",
+                    "text": "No clues yet."
+                }
+            ];
+            return;
+        }
+        this.app = app;
+        this.clues = app.clues;
+    };
+    Cluemap.prototype.isCompleted = function () {
+        var cluemap = this;
+        var count = cluemap.clues.reduce(function (n, val) {
+            return n + (val.found === true);
+        }, 0);
+        if (count >= cluemap.clues.length) {
+            if (cluemap.story.story.points === undefined)
+                cluemap.story.story.points = {};
+            cluemap.story.story.points[cluemap.story.story.currentApp] = 250;
+            return true;
+        }
+        else
+            return false;
+    };
+    Cluemap.prototype.cheat = function () {
+        this.clues.forEach(function (clue) {
+            if (clue.beacon != "none") {
+                clue.found = true;
+            }
+        });
+    };
+    Cluemap.prototype.clearClues = function () {
+        this.clues.forEach(function (clue) {
+            if (clue.beacon != "none") {
+                clue.found = false;
+            }
+        });
+    };
+    Cluemap.prototype.stringify = function (o) {
+        return JSON.stringify(o);
+    };
+    Cluemap.prototype.next = function () {
+        this.story.next();
+    };
+    Cluemap = __decorate([
+        ionic_angular_1.Page({
+            templateUrl: 'build/components/gamebar/cluemap/cluemap.html',
+            directives: [status_1.Status, Gamebar]
+        }), 
+        __metadata('design:paramtypes', [ionic_angular_1.Platform, ionic_angular_1.NavParams, ionic_angular_1.ViewController, beacons_1.Beacons, story_1.Story])
+    ], Cluemap);
+    return Cluemap;
+}());
+var Notes = (function () {
+    function Notes(story) {
+        this.story = story;
+        this.tab = 'hypothesis';
+        this.init(story.story[story.story.currentApp]);
+    }
+    Notes.prototype.init = function (app) {
+        if (!app) {
+            this.clues = [
+                {
+                    "id": "1",
+                    "text": "No clues yet."
+                }
+            ];
+            return;
+        }
+        this.app = app;
+        this.clues = app.clues;
+    };
+    Notes = __decorate([
+        ionic_angular_1.Page({
+            templateUrl: 'build/components/gamebar/notes/notes.html',
+            directives: [status_1.Status, analysis_1.Analysis, hypothesis_1.Hypothesis, test_1.Test, Gamebar]
+        }), 
+        __metadata('design:paramtypes', [story_1.Story])
+    ], Notes);
+    return Notes;
+}());
+exports.Notes = Notes;
+var GenericTest = (function () {
+    function GenericTest(story) {
+        this.story = story;
+        var phmeter = this;
+        phmeter.story = story;
+        phmeter.app = story.getApp(story.story.currentApp);
+        phmeter.currentScene = 0;
+        phmeter.background = phmeter.app.background;
+        phmeter.question = phmeter.app.test[0].question;
+        phmeter.answers = phmeter.app.test[0].answers;
+        phmeter.answer = phmeter.app.test[0].answer;
+    }
+    GenericTest.prototype.advanceScene = function () {
+        this.currentScene++;
+    };
+    GenericTest.prototype.checkResult = function (correct) {
+        var phmeter = this;
+        if (!correct)
+            return;
+        phmeter.app.complete = correct;
+        this.story.story.notes.testing[phmeter.app.testIndex].complete = true;
+        phmeter.story.story.points[phmeter.story.story.currentApp] = 250;
+        this.story.alertNotes(true);
+    };
+    GenericTest = __decorate([
+        ionic_angular_1.Page({
+            templateUrl: 'build/components/gamebar/genericTest/genericTest.html',
+            directives: [status_1.Status, Gamebar, quiz_1.Quiz]
+        }), 
+        __metadata('design:paramtypes', [story_1.Story])
+    ], GenericTest);
+    return GenericTest;
+}());
+exports.GenericTest = GenericTest;
+>>>>>>> da500fb989d806985ec600eaf690aee58161ecb8
 },{"../../components/analysis/analysis":2,"../../components/hypothesis/hypothesis":4,"../../components/quiz/quiz":6,"../../components/status/status":7,"../../components/test/test":8,"../../models/beacons/beacons":9,"../../models/story/story":10,"angular2/core":15,"ionic-angular":343}],4:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -892,6 +1257,7 @@ var Beacons = (function () {
 exports.Beacons = Beacons;
 
 },{"../../models/story/story":10,"angular2/core":15,"angular2/src/core/application_ref":98,"ionic-angular":343}],10:[function(require,module,exports){
+<<<<<<< HEAD
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1321,6 +1687,439 @@ var Start = (function () {
 }());
 exports.Start = Start;
 
+=======
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require('angular2/core');
+var http_1 = require('angular2/http');
+var Observable_1 = require('rxjs/Observable');
+var user_1 = require('../../models/user/user');
+var gamebar_1 = require('../../components/gamebar/gamebar');
+//var instance;
+var Story = (function () {
+    function Story(http, user) {
+        this.http = http;
+        this.user = user;
+        this.story = {};
+        this.stories = {};
+        var story = this;
+        story.http = http;
+        story.http.get("missions/missions.json")
+            .subscribe(function (data) {
+            story.stories = data.json();
+        }, function (error) {
+            console.log(error);
+        });
+    }
+    Story.prototype.save = function () {
+        var story = this;
+        var s = story.user.saveStory(story.story);
+        if (s !== undefined)
+            story.story.pointsTotal = s.pointsTotal;
+    };
+    Story.prototype.open = function (page) {
+        var story = this;
+        story.story.currentApp = page;
+        gamebar_1.Gamebar.getGamebar().open(story.story[story.story.currentApp].type);
+        story.save();
+    };
+    Story.prototype.next = function () {
+        var story = this;
+        story.story.currentApp = story.story[story.story.next].next;
+        story.story.next = story.story.currentApp;
+        var type = story.story[story.story.next].type;
+        console.log("Opening: " + type);
+        gamebar_1.Gamebar.getGamebar().open(type);
+        story.save();
+    };
+    Story.prototype.alertNotes = function (alert) {
+        if (alert)
+            gamebar_1.Gamebar.getGamebar().alertNote("silver");
+        else
+            gamebar_1.Gamebar.getGamebar().alertNote("none");
+    };
+    Story.prototype.getStoryFile = function (m) {
+        var story = this;
+        if (m.file !== undefined) {
+            this.http.get(m.file)
+                .subscribe(function (data) {
+                //  new Game(data.json());
+                story.story = data.json();
+                story.story.userName = story.user.user.profile.cachedUserProfile.first_name;
+                story.story.userPicture = story.user.user.profile.profileImageURL;
+                //  if (story.story.hasBeacons) {
+                //ask Weo
+                //      let beacons = new Beacons(this.platform, this);
+                //        beacons.start();
+                // }
+            }, function (error) {
+                console.log(error);
+            });
+        }
+        else if (m.type === 'mission') {
+            story.story = m;
+            story.story.pointsTotal = story.user.user.points[story.story.id];
+            story.story.userTotal = story.user.user.pointsTotal;
+        }
+    };
+    Story.prototype.getStories = function () {
+        // can we only display missions that are "found"?
+        return this.stories;
+    };
+    Story.prototype.getStory = function () {
+        return this.story;
+    };
+    Story.prototype.setCurrentStory = function (m) {
+        this.currentStory = m.name;
+        this.getStoryFile(m);
+    };
+    Story.prototype.handleError = function (error) {
+        // in a real world app, we may send the error to some remote logging infrastructure
+        // instead of just logging it to the console
+        console.error(error);
+        return Observable_1.Observable.throw(error.json().error || 'Server error');
+    };
+    Story.prototype.getNextApp = function () {
+        return this.story[this.story.next];
+    };
+    Story.prototype.advanceScene = function () {
+        this.story.next = this.story[this.story.next].next;
+    };
+    Story.prototype.getApp = function (app) {
+        return this.story[app];
+    };
+    Story.prototype.getScene = function () {
+        return this.story;
+    };
+    Story.prototype.getClues = function () {
+        return this.story.clueTool.clues;
+    };
+    Story = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [http_1.Http, user_1.User])
+    ], Story);
+    return Story;
+}());
+exports.Story = Story;
+/*    ,
+    {
+        "name" : "Which Animal Is It?",
+        "file" : "missions/missing.json",
+        "info" : "AT&T • 2016",
+        "beacon" : "none",
+        "found" :  true
+    },
+      {
+        "name" : "Hello Los Angeles!",
+        "file" : "missions/missions.json",
+        "info" : "AT&T • 2016",
+        "beacon" : "blueberry",
+        "found" :  false
+    }*/ 
+},{"../../components/gamebar/gamebar":3,"../../models/user/user":11,"angular2/core":15,"angular2/http":16,"rxjs/Observable":405}],11:[function(require,module,exports){
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var core_1 = require('angular2/core');
+var angularfire2_1 = require('angularfire2');
+var User = (function () {
+    function User(auth) {
+        this.auth = auth;
+        var user = this;
+        user.ref = 'https://aofs.firebaseio.com';
+        var leaderboardRef = user.ref + '/leaderboard';
+        user.leaderboardBase = new Firebase(leaderboardRef);
+        this.auth.subscribe(function (x) {
+            if (!x)
+                return;
+            console.log('Next: ' + x.toString());
+            user.setUser(x);
+        }, function (err) {
+            console.log('Error: ' + err);
+        }, function () {
+            console.log('Completed');
+        });
+        user.getUsers();
+        user.connectedRef = new Firebase(user.ref + '/.info/connected');
+        user.user = { name: 'Anonymous User', profileLocation: 'local',
+            profile: { profileImageURL: 'http://www.psdgraphics.com/file/male-silhouette.jpg' } };
+        user.connectedRef.on('value', user.onConnectedRefChange);
+        user.getMissions();
+        user.getLeaderboard();
+    }
+    User.prototype.onConnectedRefChange = function (snap) {
+        var user = this;
+        return;
+        /* if ((snap.val() === true) && (user.userConnectionsRef !== undefined)) {
+                 var con = user.userConnectionsRef.push(true);
+                 con.onDisconnect().remove();
+                 user.userLastOnlineRef.onDisconnect().set(Firebase.ServerValue.TIMESTAMP);
+         }*/
+    };
+    User.prototype.saveStory = function (story) {
+        var user = this;
+        /*
+        if (story.firebase === undefined) {
+            // Generate a reference to a new location and add some data using push()
+            var newPostRef = user.userRef.child('missions').push(story);
+            if (user.user.missions === undefined) user.user.missions=[];
+            user.user.missions.push(story);
+            // Get the unique ID generated by push()
+            var postID = newPostRef.key();
+            story.firebase = postID;
+            user.saveStory(story);
+        }
+        else {
+            user.userRef.child('missions').child(story.firebase).set(story);
+            */
+        if (user.user.missions === undefined)
+            user.user.missions = [];
+        user.user.missions[story.id] = story;
+        var count = user.getPointsTotal(story.points);
+        console.log("Saving Points: " + story.id + " of " + count);
+        //   user.userRef.child('points').child(story.id).set(count);
+        story.pointsTotal = count;
+        user.user.points[story.id] = count;
+        user.save();
+        count = user.getPointsTotal(user.user.points);
+        console.log("Saving Points: " + user.user.name + " of " + count);
+        user.userRef.child('points').child(story.id).set(count);
+        user.leaderboardBase.child(user.user.name).set(count);
+        story.userTotal = count;
+        return story;
+        //  }
+    };
+    User.prototype.getPointsTotal = function (pointsList) {
+        var count = 0;
+        for (var key in pointsList) {
+            if (pointsList.hasOwnProperty(key)) {
+                console.log(key + " -> " + pointsList[key]);
+                count = count + pointsList[key];
+            }
+        }
+        return count;
+    };
+    User.prototype.save = function () {
+        var user = this;
+        user.userRef.set(user.user);
+    };
+    User.prototype.setUser = function (authData) {
+        var user = this;
+        if (!authData) {
+            console.log('AuthData null');
+            return;
+        }
+        var name = authData[authData.auth.provider].displayName.replace(/\s+/g, '');
+        user.userConnectionString = user.ref + '/users/' + name.tobase64url();
+        user.userRef = new Firebase(user.userConnectionString);
+        user.userRef.once('value').then(function (d) {
+            user.user = d.val();
+            if (user.user === null)
+                user.user = {};
+            user.user.name = name;
+            user.user.pointsTotal = user.getPointsTotal(user.user.points);
+            user.user.id = name.tobase64url();
+            user.user.profileProvider = authData.auth.provider;
+            user.user.profile = authData[user.user.profileProvider];
+            user.userConnectionsRef = new Firebase(user.userConnectionString + '/connections');
+            user.userLastOnlineRef = new Firebase(user.userConnectionString + '/lastOnline');
+            user.save();
+            return d;
+        });
+    };
+    User.prototype.doLogin = function () {
+        var start = this;
+        // This will perform popup auth with google oauth and the scope will be email
+        // Because those options were provided through bootstrap to DI, and we're overriding the provider.
+        this.auth.login({
+            provider: angularfire2_1.AuthProviders.Facebook
+        }).then(function (value) {
+            start.firebaseAuthState = value;
+        });
+        ;
+    };
+    User.prototype.doLogout = function () {
+        this.auth.logout();
+        this.user = { name: 'Anonymous User', profileLocation: 'local',
+            profile: { profileImageURL: 'http://www.psdgraphics.com/file/male-silhouette.jpg' } };
+    };
+    User.prototype.getLastOnline = function (userName) {
+        var user = this;
+        var returnDate;
+        try {
+            var date = new Date(user.users[userName].lastOnline);
+            returnDate = date.toJSON();
+        }
+        catch (err) {
+            returnDate = 'UNKNOWN';
+        }
+        if (user.users[userName].connections !== undefined)
+            returnDate = 'Is currently online.';
+        return returnDate;
+    };
+    User.prototype.getUsers = function () {
+        var user = this;
+        if ((user.users === undefined) ||
+            (user.userRef !== undefined)) {
+            var usersConnectionString = user.ref + '/users';
+            var us = new Firebase(usersConnectionString);
+            us.once('value').then(function (d) {
+                user.users = d.val();
+                user.online = Object.keys(user.users).length;
+            });
+        }
+    };
+    User.prototype.getLeaderboard = function () {
+        var user = this;
+        user.leaderboardBase.once('value').then(function (d) {
+            if (!user.leaderboard)
+                user.leaderboard = [];
+            var leaderboard = d.val();
+            for (var key in leaderboard) {
+                if (leaderboard.hasOwnProperty(key)) {
+                    console.log(key + " -> " + leaderboard[key]);
+                    var o = { name: key, points: leaderboard[key] };
+                    user.leaderboard.push(o);
+                }
+            }
+        });
+    };
+    User.prototype.getMissions = function () {
+        var user = this;
+        var missionsConnectionString = user.ref + '/missions';
+        var us = new Firebase(missionsConnectionString);
+        us.once('value').then(function (d) {
+            user.missions = d.val();
+        });
+    };
+    User = __decorate([
+        core_1.Injectable(),
+        __param(0, core_1.Inject(angularfire2_1.FirebaseAuth)), 
+        __metadata('design:paramtypes', [angularfire2_1.FirebaseAuth])
+    ], User);
+    return User;
+}());
+exports.User = User;
+/*
+      
+  setProperty(key, value) {
+      var user = this;
+      user.user[key] = value;
+      user.save();
+  }
+  getProperty(key) {
+      return user.user[key];
+  }
+  setEditLocation(usereditRefString) {
+      user.editLocationConnectionsRef = new Firebase(ref + '/' + editRefString + '/' + user.user.name + '/connections');
+      user.editLocationLastOnlineRef = new Firebase(ref + '/' + editRefString + '/' + user.user.name + '/lastOnline');
+  }
+  getImage(userName, source) {
+      var returnImage = 'assets/images/logo.png',
+          loggedInImage;
+      if (user.user === undefined) return returnImage;
+      try {
+          loggedInImage = user.user.profile.profileImageURL;
+      } catch (err) {
+          console.log(err);
+      }
+      if (source === user.user.profileProvider) {
+          if (loggedInImage !== undefined) returnImage = loggedInImage;
+      }
+      if (source === undefined) {
+          if (loggedInImage !== undefined) returnImage = loggedInImage;
+      }
+      return returnImage;
+  }
+}
+                              */ 
+},{"angular2/core":15,"angularfire2":256}],12:[function(require,module,exports){
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var ionic_angular_1 = require('ionic-angular');
+var status_1 = require('../../components/status/status');
+var gamebar_1 = require('../../components/gamebar/gamebar');
+var story_1 = require('../../models/story/story');
+var user_1 = require('../../models/user/user');
+var map_1 = require('../../components/map/map');
+var Start = (function () {
+    function Start(nav, s, u) {
+        this.s = s;
+        this.tab = '';
+        this.nav = nav;
+        this.story = s;
+        this.user = u;
+    }
+    Start.prototype.openPage = function () {
+        this.story.next();
+    };
+    Start.prototype.openPageBackpack = function () {
+        gamebar_1.Gamebar.getGamebar().open("Backpack");
+    };
+    Start.prototype.getOtherMissions = function () {
+        var start = this;
+        if (start.user.missions !== null) {
+            if (start.user.missions[0] !== null) {
+                if (!start.story.stories.cloud)
+                    start.story.stories.cloud = [];
+                for (var key in start.user.missions) {
+                    if (start.user.missions.hasOwnProperty(key)) {
+                        console.log(key + " -> " + start.user.missions[key]);
+                        start.story.stories.cloud.push(start.user.missions[key]);
+                    }
+                }
+            }
+        }
+        if (start.user.user && start.user.user.missions) {
+            if (start.user.user.missions[0] !== null) {
+                if (!start.story.stories.my)
+                    start.story.stories.my = [];
+                for (var key in start.user.user.missions) {
+                    if (start.user.user.missions.hasOwnProperty(key)) {
+                        console.log(key + " -> " + start.user.user.missions[key]);
+                        start.story.stories.my.push(start.user.user.missions[key]);
+                    }
+                }
+            }
+        }
+    };
+    Start = __decorate([
+        ionic_angular_1.Page({
+            templateUrl: 'build/pages/start/start.html',
+            directives: [status_1.Status, map_1.Map, gamebar_1.Gamebar]
+        }), 
+        __metadata('design:paramtypes', [ionic_angular_1.NavController, story_1.Story, user_1.User])
+    ], Start);
+    return Start;
+}());
+exports.Start = Start;
+>>>>>>> da500fb989d806985ec600eaf690aee58161ecb8
 },{"../../components/gamebar/gamebar":3,"../../components/map/map":5,"../../components/status/status":7,"../../models/story/story":10,"../../models/user/user":11,"ionic-angular":343}],13:[function(require,module,exports){
 'use strict';function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];

@@ -12,10 +12,8 @@
       </div>
       <div [class]="isOdd?'bubblel':'bubbler'">
           
-        <div *ngIf="m.character==='Ella'" 
-            [class]="isEven?'bubblealt':'bubble'">{{getName(m)}}</div>
-        <div *ngIf="m.character!=='Ella'" 
-            [class]="isEven?'bubblealt':'bubble'">{{m.text}}</div>
+        <div [class]="isEven?'bubblealt':'bubble'">{{getName(m)}}</div>
+
         
       </div>
     </div>
