@@ -14,7 +14,7 @@
             {
                 "character": "Chica",
                 "image": "img/female.jpg",
-                "text": "Ella, we just recieved a request for help at the Georgia Aquarium. The majority of the fish in the salt water aquarium are gathering towards the surface of the water. Grab your geer and meet Mr. Yhoshi at the saltwater exibit."
+                "text": "Ella, we just recieved a request for help at the Georgia Aquarium. The majority of the fish in the salt water aquarium are gathering towards the surface of the water. Grab your gear and meet Mr. Yoshi at the saltwater exibit."
             }
         ],
         "next": "missionIntroScene"
@@ -25,7 +25,7 @@
             {
                 "character": "Ella",
                 "image": "img/female.jpg",
-                "text": "Hi, you must be Mr. Yoshi. I'm Ella from The Elite Detective Squad."
+                "text": "Hi, you must be Mr. Yoshi. I'm Ella from the Elite Detective Squad."
             },
             {
                 "character": "Mr. Yoshi",
@@ -41,7 +41,7 @@
             {
                 "character": "Ella",
                 "image": "img/female.jpg",
-                "text": "Chica, I believe that the fish are swinvning slowly and floating toward the surface because thay lock energy and are looking for oxygen. Tho tom ond jagged fins are the physical result of poor tank conditions. I belive testing is needed. What do you think?"
+                "text": "Chica, I believe that the fish are swimming slowly and floating toward the surface because thay lack energy and are looking for oxygen. The torn and jagged fins are the physical result of poor tank conditions. I believe testing is needed. What do you think?"
             },
             {
                 "character": "Chica",
@@ -51,12 +51,12 @@
             {
                 "character": "Ella",
                 "image": "img/female.jpg",
-                "text": "If it is an oxygen problem, then I need to make sure. there are more fish in the tank then there is supposed to be. Also, I need to make sure the water temperature Is accurate. A higher water temperature would require higher levels of oxygen."
+                "text": "If it is an oxygen problem, then I need to make sure. There are more fish in the tank than there is supposed to be. Also, I need to make sure the water temperature is accurate. A higher water temperature would require higher levels of oxygen."
             },
             {
                 "character": "Chica",
                 "image": "img/female.jpg",
-                "text": "That is correct Ella. That exhibt has only tropical fish, so the temperature should be betw.en 75-77 degrees F. The corrnd capacity for the tank Is 1 Inch for every 5 gallons. That uhibtt has 1 400 gallon tank and 200 one inch fish, 75 two inch fish and 30 four inch fish. One more thing to check is the PH level of the water. For a salt water tank, it should between 7.6-8.4."
+                "text": "That is correct Ella. That exhibit has only tropical fish, so the temperature should be between 75-77 degrees F. The current capacity for the tank is 1-inch for every 5 gallons. That exhibit has a 400 gallon tank and 200 one inch fish, 75 two inch fish and 30 four inch fish. One more thing to check is the PH level of the water. For a salt water tank, it should between 7.6-8.4."
             }
         ],
         "next": "notes"
@@ -93,7 +93,7 @@
             },
             {
                 "id": "2",
-                "text": "The majority of the fish are near the surface of the water, some with their mouths open",
+                "text": "The majority of the fish are near the surface of the water, some with their mouths open.",
                 "question": "What causes saltwater fish to float near the surface of the water?",
                 "x": "",
                 "y": "",
@@ -297,7 +297,7 @@
     "thermometer": {
         "type": "GenericTest",
         "background": "img/thermometer.png",
-        "testIndex" : 0, 
+        "testIndex" : 0,
         "test": [
             {
                 "id": "1",

@@ -86,8 +86,13 @@
     </ion-card>
     <map *ngIf="tab==='find'"></map>
     <ion-card *ngIf="tab==='inprogress'">
+<<<<<<< HEAD
         <ion-card-header>
             Missions
+=======
+        <ion-card-header class="heading">
+            Missions in progress
+>>>>>>> 5e34999f9a861713c81fb5086a9aee0e561cb4a8
         </ion-card-header>
         <ion-card-content>
             <ion-list>
@@ -129,7 +134,7 @@
                     </ion-card-header>
                     <ion-card-content *ngIf="selected===m">
                         <ion-buttons *ngIf="m.found">
-                            <button (click)=openPage()>
+                            <button (click)=openPage() full>
                                 <ion-icon></ion-icon>Play {{story.getStory().name}}
                             </button>
                         </ion-buttons>
@@ -160,14 +165,14 @@
         </ion-card-content>
     </ion-card>
     <ion-card *ngIf="tab===''">
-        <ion-card-header>
+        <ion-card-header class="heading">
             Leader Board
         </ion-card-header>
         <ion-card-content>
             <div class="tg-wrap">
                 <table class="tg">
                     <tr>
-                        <th class="tg-yw4l">Place</th>
+                        <th class="tg-yw4l">Rank</th>
                         <th class="tg-yw4l">Name</th>
                         <th class="tg-yw4l">Score</th>
                     </tr>

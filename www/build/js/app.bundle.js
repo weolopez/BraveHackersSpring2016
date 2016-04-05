@@ -89,6 +89,7 @@ var Analysis = (function () {
         }, 0);
         if (count === analysis.numberOfTests) {
             analysis.completedAnalysis = true;
+            analysis.story.story.points[analysis.story.story.currentApp] = 250;
             return true;
         }
         else
@@ -133,6 +134,7 @@ var ionic_angular_2 = require('ionic-angular');
 //import {User} from '../../models/user/user';
 var story_1 = require('../../models/story/story');
 var status_1 = require('../../components/status/status');
+var beacons_1 = require('../../models/beacons/beacons');
 var gamebar;
 var Gamebar = (function () {
     function Gamebar(nav, viewCtrl, story) {
@@ -142,6 +144,7 @@ var Gamebar = (function () {
         this.pages = {
             "Backpack": Backpack,
             "Clues": Clues,
+            "Cluemap": Cluemap,
             "Notes": Notes,
             "Messages": Messages,
             "GenericTest": GenericTest
@@ -214,27 +217,30 @@ var Messages = (function () {
         this.viewCtrl = viewCtrl;
         this.story = story;
         this.dialogIndex = 0;
+        var messages = this;
         if (!story.story.name)
             return;
-        this.init(story.getNextApp());
+        messages.init(story.getNextApp());
     }
     Messages.prototype.init = function (app) {
-        this.app = app;
-        this.dialog = this.app.dialog;
-        this.background = this.app.background;
+        var messages = this;
+        messages.app = app;
+        messages.dialog = messages.app.dialog;
+        messages.background = messages.app.background;
     };
     Messages.prototype.stringify = function (o) {
         return JSON.stringify(o);
     };
     Messages.prototype.next = function () {
-        var next = this.app.next;
-        var type = this.story.story[next].type;
+        var messages = this;
+        var next = messages.app.next;
+        var type = messages.story.story[next].type;
         if (type === "Messages") {
-            this.story.story.next = this.story.getNextApp().next;
-            this.init(this.story.getNextApp());
+            messages.story.story.next = messages.story.getNextApp().next;
+            messages.init(messages.story.getNextApp());
         }
         else
-            this.story.next();
+            messages.story.next();
     };
     Messages = __decorate([
         ionic_angular_1.Page({
@@ -251,7 +257,7 @@ var Clues = (function () {
         this.params = params;
         this.viewCtrl = viewCtrl;
         this.story = story;
-        this.init(story.getNextApp());
+        this.init(story.story[story.story.currentApp]);
     }
     Clues.prototype.init = function (app) {
         if (!app) {
@@ -267,11 +273,14 @@ var Clues = (function () {
         this.clues = app.clues;
     };
     Clues.prototype.isCompleted = function () {
-        var count = this.clues.reduce(function (n, val) {
+        var clue = this;
+        var count = clue.clues.reduce(function (n, val) {
             return n + (val.found === true);
         }, 0);
-        if (count >= this.clues.length)
+        if (count >= clue.clues.length) {
+            clue.story.story.points[clue.story.story.currentApp] = 250;
             return true;
+        }
         else
             return false;
     };
@@ -290,11 +299,75 @@ var Clues = (function () {
     ], Clues);
     return Clues;
 }());
+var Cluemap = (function () {
+    function Cluemap(platform, params, viewCtrl, beacons, story) {
+        this.platform = platform;
+        this.params = params;
+        this.viewCtrl = viewCtrl;
+        this.beacons = beacons;
+        this.story = story;
+        this.init(story.story[story.story.currentApp]);
+        //  this.beacons.start();
+    }
+    Cluemap.prototype.init = function (app) {
+        if (!app) {
+            this.clues = [
+                {
+                    "id": "1",
+                    "text": "No clues yet."
+                }
+            ];
+            return;
+        }
+        this.app = app;
+        this.clues = app.clues;
+    };
+    Cluemap.prototype.isCompleted = function () {
+        var cluemap = this;
+        var count = cluemap.clues.reduce(function (n, val) {
+            return n + (val.found === true);
+        }, 0);
+        if (count >= cluemap.clues.length) {
+            cluemap.story.story.points[cluemap.story.story.currentApp] = 250;
+            return true;
+        }
+        else
+            return false;
+    };
+    Cluemap.prototype.cheat = function () {
+        this.clues.forEach(function (clue) {
+            if (clue.beacon != "none") {
+                clue.found = true;
+            }
+        });
+    };
+    Cluemap.prototype.clearClues = function () {
+        this.clues.forEach(function (clue) {
+            if (clue.beacon != "none") {
+                clue.found = false;
+            }
+        });
+    };
+    Cluemap.prototype.stringify = function (o) {
+        return JSON.stringify(o);
+    };
+    Cluemap.prototype.next = function () {
+        this.story.next();
+    };
+    Cluemap = __decorate([
+        ionic_angular_1.Page({
+            templateUrl: 'build/components/gamebar/cluemap/cluemap.html',
+            directives: [status_1.Status, Gamebar]
+        }), 
+        __metadata('design:paramtypes', [ionic_angular_1.Platform, ionic_angular_1.NavParams, ionic_angular_1.ViewController, beacons_1.Beacons, story_1.Story])
+    ], Cluemap);
+    return Cluemap;
+}());
 var Notes = (function () {
     function Notes(story) {
         this.story = story;
         this.tab = 'hypothesis';
-        this.init(story.getNextApp());
+        this.init(story.story[story.story.currentApp]);
     }
     Notes.prototype.init = function (app) {
         if (!app) {
@@ -336,8 +409,11 @@ var GenericTest = (function () {
     };
     GenericTest.prototype.checkResult = function (correct) {
         var phmeter = this;
+        if (!correct)
+            return;
         phmeter.app.complete = correct;
         this.story.story.notes.testing[phmeter.app.testIndex].complete = true;
+        phmeter.story.story.points[phmeter.story.story.currentApp] = 250;
         this.story.alertNotes(true);
     };
     GenericTest = __decorate([
@@ -350,7 +426,7 @@ var GenericTest = (function () {
     return GenericTest;
 }());
 exports.GenericTest = GenericTest;
-},{"../../components/analysis/analysis":2,"../../components/hypothesis/hypothesis":4,"../../components/quiz/quiz":6,"../../components/status/status":7,"../../components/test/test":8,"../../models/story/story":10,"angular2/core":15,"ionic-angular":343}],4:[function(require,module,exports){
+},{"../../components/analysis/analysis":2,"../../components/hypothesis/hypothesis":4,"../../components/quiz/quiz":6,"../../components/status/status":7,"../../components/test/test":8,"../../models/beacons/beacons":9,"../../models/story/story":10,"angular2/core":15,"ionic-angular":343}],4:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -379,11 +455,14 @@ var Hypothesis = (function () {
         this.story.story.notes.completedHypothesis = this.isCompleted();
     };
     Hypothesis.prototype.isCompleted = function () {
-        var count = this.clues.reduce(function (n, val) {
+        var hypothesis = this;
+        var count = hypothesis.clues.reduce(function (n, val) {
             return n + (val.isCorrect === true);
         }, 0);
-        if (count >= this.clues.length)
+        if (count >= hypothesis.clues.length) {
+            hypothesis.story.story.points[hypothesis.story.story.currentApp] = 250;
             return true;
+        }
         else
             return false;
     };
@@ -739,35 +818,39 @@ var Beacons = (function () {
                     for (var i = 0; i < pluginResult.beacons.length; i++) {
                         major = pluginResult.beacons[i].major;
                         color = context[major];
-                        beacons.story.story.clueTool.clues.forEach(function (clue) {
-                            if (clue.beacon === color && clue.found == false) {
-                                //send notification "Secret Clue"
-                                console.log("Found Clue, send notification" + clue.name);
-                                cordova.plugins.notification.local.schedule({
-                                    id: 2,
-                                    title: "Congratulations!",
-                                    text: "You Have Unlocked a Secret Clue!!!",
-                                    data: { name: clue.name }
-                                });
-                                clue.found = true;
-                                beacons.ar.tick();
-                            }
-                        }, this);
-                        beacons.story.stories.missions.forEach(function (mission) {
-                            //console.log("Mission Name: " + mission.name )
-                            if (mission.beacon === color && !mission.found) {
-                                console.log("Found Mission, about to send notification" + mission.name);
-                                //send notification "Secret Mission "
-                                cordova.plugins.notification.local.schedule({
-                                    id: 1,
-                                    title: "Congratulations!",
-                                    text: "You Have Unlocked a Secret Mission!!!",
-                                    data: { name: mission.name }
-                                });
-                                mission.found = true;
-                                beacons.ar.tick();
-                            }
-                        }, this);
+                        if (beacons.story.story.clueTool && beacons.story.story.clueTool.clues) {
+                            beacons.story.story.clueTool.clues.forEach(function (clue) {
+                                if (clue.beacon === color && clue.found == false) {
+                                    //send notification "Secret Clue"
+                                    console.log("Found Clue, send notification" + clue.name);
+                                    cordova.plugins.notification.local.schedule({
+                                        id: 2,
+                                        title: "Congratulations!",
+                                        text: "You Have Unlocked a Secret Clue!!!",
+                                        data: { name: clue.name }
+                                    });
+                                    clue.found = true;
+                                    beacons.ar.tick();
+                                }
+                            }, this);
+                        }
+                        if (beacons.story.stories.missions) {
+                            beacons.story.stories.missions.forEach(function (mission) {
+                                //console.log("Mission Name: " + mission.name )
+                                if (mission.beacon === color && !mission.found) {
+                                    console.log("Found Mission, about to send notification" + mission.name);
+                                    //send notification "Secret Mission "
+                                    cordova.plugins.notification.local.schedule({
+                                        id: 1,
+                                        title: "Congratulations!",
+                                        text: "You Have Unlocked a Secret Mission!!!",
+                                        data: { name: mission.name }
+                                    });
+                                    mission.found = true;
+                                    beacons.ar.tick();
+                                }
+                            }, this);
+                        }
                     }
                 }
             };
@@ -830,7 +913,8 @@ var Story = (function () {
     };
     Story.prototype.next = function () {
         var story = this;
-        story.story.next = story.story[story.story.next].next;
+        story.story.currentApp = story.story[story.story.next].next;
+        story.story.next = story.story.currentApp;
         var type = story.story[story.story.next].type;
         console.log("Opening: " + type);
         gamebar_1.Gamebar.getGamebar().open(type);
@@ -860,7 +944,7 @@ var Story = (function () {
         }
         else if (m.type === 'mission') {
             story.story = m;
-            story.next();
+            gamebar_1.Gamebar.getGamebar().open("Backpack");
         }
     };
     Story.prototype.getStories = function () {
@@ -938,6 +1022,8 @@ var User = (function () {
         this.auth = auth;
         var user = this;
         user.ref = 'https://aofs.firebaseio.com';
+        var leaderboardRef = user.ref + '/leaderboard';
+        user.leaderboardBase = new Firebase(leaderboardRef);
         this.auth.subscribe(function (x) {
             if (!x)
                 return;
@@ -954,6 +1040,7 @@ var User = (function () {
             profile: { profileImageURL: 'http://www.psdgraphics.com/file/male-silhouette.jpg' } };
         user.connectedRef.on('value', user.onConnectedRefChange);
         user.getMissions();
+        user.getLeaderboard();
     }
     User.prototype.onConnectedRefChange = function (snap) {
         var user = this;
@@ -966,7 +1053,6 @@ var User = (function () {
     };
     User.prototype.saveStory = function (story) {
         var user = this;
-        console.log("Saving: " + JSON.stringify(story));
         if (story.firebase === undefined) {
             // Generate a reference to a new location and add some data using push()
             var newPostRef = user.userRef.child('missions').push(story);
@@ -975,8 +1061,30 @@ var User = (function () {
             story.firebase = postID;
             user.saveStory(story);
         }
-        else
+        else {
             user.userRef.child('missions').child(story.firebase).set(story);
+            var count = 0;
+            for (var key in story.points) {
+                if (story.points.hasOwnProperty(key)) {
+                    console.log(key + " -> " + story.points[key]);
+                    count = count + story.points[key];
+                }
+            }
+            console.log("Saving Points: " + story.id + " of " + count);
+            //   user.userRef.child('points').child(story.id).set(count);
+            user.user.points[story.id] = count;
+            user.save();
+            var count = 0;
+            for (var key in user.user.points) {
+                if (user.user.points.hasOwnProperty(key)) {
+                    console.log(key + " -> " + user.user.points[key]);
+                    count = count + user.user.points[key];
+                }
+            }
+            console.log("Saving Points: " + user.user.name + " of " + count);
+            user.userRef.child('points').child(story.id).set(count);
+            user.leaderboardBase.child(user.user.name).set(count);
+        }
     };
     User.prototype.save = function () {
         var user = this;
@@ -1046,6 +1154,21 @@ var User = (function () {
                 user.online = Object.keys(user.users).length;
             });
         }
+    };
+    User.prototype.getLeaderboard = function () {
+        var user = this;
+        user.leaderboardBase.once('value').then(function (d) {
+            if (!user.leaderboard)
+                user.leaderboard = [];
+            var leaderboard = d.val();
+            for (var key in leaderboard) {
+                if (leaderboard.hasOwnProperty(key)) {
+                    console.log(key + " -> " + leaderboard[key]);
+                    var o = { name: key, points: leaderboard[key] };
+                    user.leaderboard.push(o);
+                }
+            }
+        });
     };
     User.prototype.getMissions = function () {
         var user = this;
@@ -1126,15 +1249,29 @@ var Start = (function () {
     };
     Start.prototype.getOtherMissions = function () {
         var start = this;
-        if (start.user.missions[0] !== null) {
-            if (!start.story.stories.cloud)
-                start.story.stories.cloud = [];
-            start.story.stories.cloud.push(start.user.missions[0]);
+        if (start.user.missions !== null) {
+            if (start.user.missions[0] !== null) {
+                if (!start.story.stories.cloud)
+                    start.story.stories.cloud = [];
+                for (var key in start.user.missions) {
+                    if (start.user.missions.hasOwnProperty(key)) {
+                        console.log(key + " -> " + start.user.missions[key]);
+                        start.story.stories.cloud.push(start.user.missions[key]);
+                    }
+                }
+            }
         }
-        if (start.user.user.missions[0] !== null) {
-            if (!start.story.stories.my)
-                start.story.stories.my = [];
-            start.story.stories.my.push(start.user.user.missions);
+        if (start.user.user && start.user.user.missions) {
+            if (start.user.user.missions[0] !== null) {
+                if (!start.story.stories.my)
+                    start.story.stories.my = [];
+                for (var key in start.user.user.missions) {
+                    if (start.user.user.missions.hasOwnProperty(key)) {
+                        console.log(key + " -> " + start.user.user.missions[key]);
+                        start.story.stories.my.push(start.user.user.missions[key]);
+                    }
+                }
+            }
         }
     };
     Start = __decorate([

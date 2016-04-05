@@ -86,29 +86,29 @@
     </ion-card>
     <map *ngIf="tab==='find'"></map>
     <ion-card *ngIf="tab==='inprogress'">
-        <ion-card-header>
-            Missions
+        <ion-card-header class="heading">
+            Missions in progress
         </ion-card-header>
         <ion-card-content>
             <ion-list>
                 
-      <ion-item-divider light>My Missions In Progress</ion-item-divider>
+            <ion-item-divider light>My Missions In Progress</ion-item-divider>
       
-                <ion-card *ngFor="#m of story.stories.my">
-                    <ion-card-header (click)="selected=m;story.getStoryFile(m)">
+                <ion-card *ngFor="#mystory of story.stories.my" >
+                    <ion-card-header (click)="selected=mystory;story.getStoryFile(mystory)">
                         <ion-item>
                             <ion-thumbnail item-left>
                                 <img src="img/appicon.png">
                             </ion-thumbnail>
-                            <h2>{{m.name}}</h2>
-                            <p>{{m.info}}</p>
-                            <button clear item-right *ngIf="m.found">View</button>
+                            <h2>{{mystory.name}}</h2>
+                            <p>{{mystory.info}}</p>
+                            <button clear item-right *ngIf="mystory.found">View</button>
                         </ion-item>
                     </ion-card-header>
-                    <ion-card-content *ngIf="selected===m">
-                        <ion-buttons *ngIf="m.found">
+                    <ion-card-content *ngIf="selected===mystory">
+                        <ion-buttons *ngIf="mystory.found">
                             <button (click)=openPage()>
-                                <ion-icon></ion-icon>Play {{story.getStory().name}}
+                                <ion-icon></ion-icon>Play {{m.name}}
                             </button>
                         </ion-buttons>
                     </ion-card-content>
@@ -129,7 +129,7 @@
                     </ion-card-header>
                     <ion-card-content *ngIf="selected===m">
                         <ion-buttons *ngIf="m.found">
-                            <button (click)=openPage()>
+                            <button (click)=openPage() full>
                                 <ion-icon></ion-icon>Play {{story.getStory().name}}
                             </button>
                         </ion-buttons>
@@ -137,21 +137,23 @@
                 </ion-card>
                 
       <ion-item-divider light>Cloud Missions</ion-item-divider>
-                <ion-card *ngFor="#m of story.stories.cloud">
-                    <ion-card-header (click)="selected=m;story.getStoryFile(m)">
+                <ion-card *ngFor="#cloud of story.stories.cloud" >
+                    <ion-card-header (click)="selected=cloud;story.getStoryFile(cloud)">
                         <ion-item>
                             <ion-thumbnail item-left>
                                 <img src="img/appicon.png">
                             </ion-thumbnail>
-                            <h2>{{m.name}}</h2>
-                            <p>{{m.info}}</p>
-                            <button clear item-right *ngIf="m.found">View</button>
+                            <h2>{{cloud.name}}</h2>
+                            <p>{{cloud.info}}</p>  
+                            <h3 *ngIf="cloud.found"> Mission Unlocked </h3>
+                            <h3 *ngIf="!cloud.found"> Mission Locked </h3>
+                            <button clear item-right *ngIf="cloud.found">View</button>
                         </ion-item>
                     </ion-card-header>
-                    <ion-card-content *ngIf="selected===m">
-                        <ion-buttons *ngIf="m.found">
+                    <ion-card-content *ngIf="selected===cloud">
+                        <ion-buttons *ngIf="cloud.found">
                             <button (click)=openPage()>
-                                <ion-icon></ion-icon>Play {{story.getStory().name}}
+                                <ion-icon></ion-icon>Play {{cloud.name}}
                             </button>
                         </ion-buttons>
                     </ion-card-content>
@@ -160,36 +162,21 @@
         </ion-card-content>
     </ion-card>
     <ion-card *ngIf="tab===''">
-        <ion-card-header>
+        <ion-card-header class="heading">
             Leader Board
         </ion-card-header>
         <ion-card-content>
             <div class="tg-wrap">
                 <table class="tg">
                     <tr>
-                        <th class="tg-yw4l">Place</th>
+                        <th class="tg-yw4l">Rank</th>
                         <th class="tg-yw4l">Name</th>
                         <th class="tg-yw4l">Score</th>
-                    </tr>
-                    <tr>
+                    </tr> 
+                    <tr *ngFor="#u of user.leaderboard">
                         <td class="tg-j2zy">1</td>
-                        <td class="tg-j2zy">Ella</td>
-                        <td class="tg-j2zy">5000</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-yw4l">2</td>
-                        <td class="tg-yw4l">Kelley</td>
-                        <td class="tg-yw4l">4800</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-j2zy">3</td>
-                        <td class="tg-j2zy">Zaniah</td>
-                        <td class="tg-j2zy">4700</td>
-                    </tr>
-                    <tr>
-                        <td class="tg-yw4l">4</td>
-                        <td class="tg-yw4l">Christina</td>
-                        <td class="tg-yw4l">4500</td>
+                        <td class="tg-j2zy">{{u.name}}</td>
+                        <td class="tg-j2zy">{{u.points}}</td>
                     </tr>
                 </table>
             </div>
