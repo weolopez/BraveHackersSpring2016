@@ -7620,21 +7620,47 @@ body {
   background: black;
   color: white; }
   #start header {
-    background: url(../../img/aos-header.png) #3664ab no-repeat center 0;
-    height: 0;
-    padding-top: 57px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); }
+    background: #a15a97;
+    height: 50px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative; }
+    #start header:after {
+      content: '';
+      background: url(../../img/AoSBadge.png) no-repeat 0 0;
+      height: 119px;
+      width: 109px;
+      position: absolute;
+      right: -5px;
+      top: 5px;
+      z-index: 9999; }
+    #start header h1 {
+      margin: 0;
+      padding: 8px 15px;
+      text-shadow: 2px 2px 5px black; }
   #start #status-bar {
     border-radius: 10px; }
-  #start ion-card-header.heading {
-    font: 24px 'Handlee', cursive; }
+  #start .userDetails {
+    background: none;
+    box-shadow: none; }
+    #start .userDetails .item {
+      background: none; }
+      #start .userDetails .item .item-button {
+        background: none; }
+        #start .userDetails .item .item-button.login {
+          background: #387ef5; }
   #start .tg-wrap {
     margin: 0 auto; }
     #start .tg-wrap .tg th {
-      font: 16px 'Handlee', cursive; }
+      font: 16px 'Handlee', cursive;
+      background: #b9dad8; }
     #start .tg-wrap .tg td, #start .tg-wrap .tg th {
-      border-color: #fff; }
+      border-color: #fff;
+      color: #333; }
+  #start ion-card-header.heading {
+    font: 24px 'Handlee', cursive; }
+  #start ion-card {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+    background: #fff5b5; }
   #start ion-card ion-list .item {
     padding: 0; }
   #start ion-list .item-inner {
