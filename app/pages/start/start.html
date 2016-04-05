@@ -87,11 +87,57 @@
     <map *ngIf="tab==='find'"></map>
     <ion-card *ngIf="tab==='inprogress'">
         <ion-card-header>
-            Missions in progress
+            Missions
         </ion-card-header>
         <ion-card-content>
             <ion-list>
+                
+      <ion-item-divider light>My Missions In Progress</ion-item-divider>
+      
+                <ion-card *ngFor="#m of story.stories.my">
+                    <ion-card-header (click)="selected=m;story.getStoryFile(m)">
+                        <ion-item>
+                            <ion-thumbnail item-left>
+                                <img src="img/appicon.png">
+                            </ion-thumbnail>
+                            <h2>{{m.name}}</h2>
+                            <p>{{m.info}}</p>
+                            <button clear item-right *ngIf="m.found">View</button>
+                        </ion-item>
+                    </ion-card-header>
+                    <ion-card-content *ngIf="selected===m">
+                        <ion-buttons *ngIf="m.found">
+                            <button (click)=openPage()>
+                                <ion-icon></ion-icon>Play {{story.getStory().name}}
+                            </button>
+                        </ion-buttons>
+                    </ion-card-content>
+                </ion-card>
+                
+      <ion-item-divider light>Local Missions</ion-item-divider>
+      
                 <ion-card *ngFor="#m of story.stories.missions">
+                    <ion-card-header (click)="selected=m;story.getStoryFile(m)">
+                        <ion-item>
+                            <ion-thumbnail item-left>
+                                <img src="img/appicon.png">
+                            </ion-thumbnail>
+                            <h2>{{m.name}}</h2>
+                            <p>{{m.info}}</p>
+                            <button clear item-right *ngIf="m.found">View</button>
+                        </ion-item>
+                    </ion-card-header>
+                    <ion-card-content *ngIf="selected===m">
+                        <ion-buttons *ngIf="m.found">
+                            <button (click)=openPage()>
+                                <ion-icon></ion-icon>Play {{story.getStory().name}}
+                            </button>
+                        </ion-buttons>
+                    </ion-card-content>
+                </ion-card>
+                
+      <ion-item-divider light>Cloud Missions</ion-item-divider>
+                <ion-card *ngFor="#m of story.stories.cloud">
                     <ion-card-header (click)="selected=m;story.getStoryFile(m)">
                         <ion-item>
                             <ion-thumbnail item-left>

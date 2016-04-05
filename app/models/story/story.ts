@@ -1,6 +1,7 @@
 import {Injectable, Inject} from 'angular2/core';
 import {Http, Response} from 'angular2/http';
 import {Observable}     from 'rxjs/Observable';
+import {User} from '../../models/user/user';
 import {Beacons} from '../../models/beacons/beacons';
 import {Gamebar} from '../../components/gamebar/gamebar';
 
@@ -10,25 +11,35 @@ export class Story {
     story: any = {};
     stories: any = {};
     currentStory: any;
-    constructor(private http: Http) {
+    constructor(private http: Http,
+        private user: User
+    ) {
         var story = this;
-        this.http = http;
-        this.http.get("missions/missions.json")
+        story.http = http; 
+        story.http.get("missions/missions.json")
             .subscribe(data => {
                 story.stories = data.json();
             }, error => {
-                console.log(error); 
+                console.log(error);
             });
     }
-    open(page){
-        this.story.currentApp=page;
-        Gamebar.getGamebar().open(this.story[this.story.currentApp].type); 
+    save() { 
+        var story = this;
+        story.user.saveStory(story.story);
     }
-    next() { 
-        this.story.next = this.story[this.story.next].next;
-        var type = this.story[this.story.next].type;
-        console.log("Opening: "+type);
+    open(page) {
+        var story = this;
+        story.story.currentApp = page;
+        Gamebar.getGamebar().open(story.story[story.story.currentApp].type);
+        story.save();
+    }
+    next() {
+        var story = this;
+        story.story.next = story.story[story.story.next].next;
+        var type = story.story[story.story.next].type;
+        console.log("Opening: " + type);
         Gamebar.getGamebar().open(type);
+        story.save();
     }
     alertNotes(alert) {
         if (alert)
@@ -38,19 +49,26 @@ export class Story {
     }
     getStoryFile(m) {
         var story = this;
-        this.http.get(m.file)
-            .subscribe(data => {
-              //  new Game(data.json());
-                
-                story.story = data.json();
-                //  if (story.story.hasBeacons) {
-                //ask Weo
-                //      let beacons = new Beacons(this.platform, this);
-                //        beacons.start();
-                // }
-            }, error => {
-                console.log(error);
-            });
+
+        if (m.file !== undefined) {
+            this.http.get(m.file)
+                .subscribe(data => {
+                    //  new Game(data.json());
+
+                    story.story = data.json();
+                    //  if (story.story.hasBeacons) {
+                    //ask Weo
+                    //      let beacons = new Beacons(this.platform, this);
+                    //        beacons.start();
+                    // }
+                }, error => {
+                    console.log(error);
+                }); 
+        }
+        else if (m.type === 'mission') {
+            story.story = m;
+            story.next();
+        }
     }
     getStories() {
         // can we only display missions that are "found"?

@@ -1,5 +1,6 @@
 {
     "id": 1,
+    "type" : "mission",
     "name": "A fishy situation",
     "createdby": "cg085b@att.com",
     "date": "April 2016",
