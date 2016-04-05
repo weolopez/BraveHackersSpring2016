@@ -11,23 +11,13 @@
         </ion-col>
     </section>
 
-    <ion-list>
-        <!--ion-item>
-            <ion-label>{{app.test.question}}</ion-label>
-            <ion-select [(ngModel)]="month">
-                <ion-option *ngFor="#test of app.test.answers" [value]="test.text">{{test.text}}</ion-option>
-            </ion-select>
-        </ion-item-->
-        
+    <ion-list>        
         <quiz [question]="question" 
               [answers] ="answers"
               [answer] = "answer" 
               (result) = "checkResult()"
         > </quiz>
-
-        <toolbar>
-            <button (click)="advanceScene()">Valudate</button>
-        </toolbar>
     </ion-list>
 </ion-content>
  
+ <gamebar></gamebar>

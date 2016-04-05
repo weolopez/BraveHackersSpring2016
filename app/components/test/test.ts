@@ -47,4 +47,7 @@ export class Test {
         test.clueTool.completedAnalysis = test.completedTest;
         window.scrollTo(0, 0);
     }
+    noop() {
+        
+    }
 } 

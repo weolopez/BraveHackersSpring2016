@@ -9,7 +9,6 @@
     },
     "missionAccept": {
         "type": "Messages",
-        "background": "img/female.jpg",
         "dialog": [
             {
                 "character": "Chica",
@@ -275,57 +274,61 @@
                 "id": 1,
                 "concern": "Temperature of tank is warmer than 75-77 degrees F",
                 "testText": "Take the temperature of the tank water",
-                "test": "thermometer"
+                "test": "thermometer",
+                "complete": false
             },
             {
                 "id": 2,
                 "concern": "The water's PH is not between 7.6-8.4",
                 "testText": "Test PH level of water",
-                "test": "PHMeter"
+                "test": "phtest",
+                "complete": false
             },
             {
                 "id": 2,
                 "concern": "The water's PH is not between 7.6-8.4",
-                "testText": "Analyze 400 gallon tank 200 1 inch fish <br>• 75 two inch fish <br>• 30 four inch fish.",
-                "test": "math"
+                "testText": "Analyze 400 gallon tank 200 1 inch fish 75 two inch fish 30 four inch fish.",
+                "test": "math",
+                "complete": false
             }
         ]
     },
     "thermometer": {
-        "type": "PHMeter",
+        "type": "GenericTest",
         "background": "img/thermometer.png",
+        "testIndex" : 0, 
         "test": [
             {
                 "id": "1",
-                "text": "Many of the fish have torn or jagged fins.",
-                "question": "What is the PH?",
+                "text": "",
+                "question": "What is the temperature of the water??",
                 "answers": [
                     {
-                        "id": "1",
-                        "text": "7"
+                        "id": 1,
+                        "text": "82F"
                     },
                     {
-                        "id": "2",
-                        "text": "7.5"
+                        "id": 2,
+                        "text": "80F"
                     },
                     {
-                        "id": "3",
-                        "text": "8"
+                        "id": 3,
+                        "text": "60F"
                     }
                 ],
-                "answer": 2
+                "answer": 1
             }
         ]
     },
     "phtest": {
-        "type": "PHMeter",
+        "type": "GenericTest",
         "background": "img/phtest.jpg",
-        "testIndex" : 2,
+        "testIndex" : 1,
         "test": [
             {
                 "id": "1",
-                "text": "Many of the fish have torn or jagged fins.",
-                "question": "What is the PH?",
+                "text": "",
+                "question": "What is the PH of the water?",
                 "answers": [
                     {
                         "id": 1,
@@ -333,11 +336,38 @@
                     },
                     {
                         "id": 2,
-                        "text": "7.5"
+                        "text": "8"
                     },
                     {
                         "id": 3,
+                        "text": "9"
+                    }
+                ],
+                "answer": 2
+            }
+        ]
+    },
+    "math": {
+        "type": "GenericTest",
+        "background": "img/phtest.jpg",
+        "testIndex" : 1,
+        "test": [
+            {
+                "id": "1",
+                "text": "",
+                "question": "What is the PH of the water?",
+                "answers": [
+                    {
+                        "id": 1,
+                        "text": "7"
+                    },
+                    {
+                        "id": 2,
                         "text": "8"
+                    },
+                    {
+                        "id": 3,
+                        "text": "9"
                     }
                 ],
                 "answer": 2
