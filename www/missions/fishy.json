@@ -1,6 +1,6 @@
 {
     "id": 1,
-    "type" : "mission",
+    "type": "mission",
     "name": "A fishy situation",
     "createdby": "cg085b@att.com",
     "date": "April 2016",
@@ -8,16 +8,16 @@
     "start": {
         "next": "missionAccept"
     },
-    "points" : {},
+    "points": {},
     "pointsTotal": 0,
-    "userTotal" : 0,
+    "userTotal": 0,
     "missionAccept": {
         "type": "Messages",
         "dialog": [
             {
                 "character": "Chica",
                 "image": "img/chica.png",
-                "audio" : "audio/missionAcceptUSERNAME.wav",
+                "audio": "audio/missionAcceptUSERNAME.wav",
                 "text": "Ella, we just recieved a request for help at the Georgia Aquarium. The majority of the fish in the salt water aquarium are gathering towards the surface of the water. Grab your gear and meet Mr. Yoshi at the saltwater exibit."
             }
         ],
@@ -305,7 +305,7 @@
     "thermometer": {
         "type": "GenericTest",
         "background": "img/thermometer.png",
-        "testIndex" : 0,
+        "testIndex": 0,
         "test": [
             {
                 "id": "1",
@@ -315,7 +315,7 @@
                     {
                         "id": 1,
                         "text": "82F"
-                    }, 
+                    },
                     {
                         "id": 2,
                         "text": "80F"
@@ -332,7 +332,7 @@
     "phtest": {
         "type": "GenericTest",
         "background": "img/phtest.jpg",
-        "testIndex" : 1,
+        "testIndex": 1,
         "test": [
             {
                 "id": "1",
@@ -359,7 +359,7 @@
     "Quiz": {
         "type": "GenericTest",
         "background": "img/math.png",
-        "testIndex" : 1,
+        "testIndex": 1,
         "test": [
             {
                 "id": "1",
@@ -380,6 +380,39 @@
                     }
                 ],
                 "answer": 2
+            }
+        ]
+    },
+    "Video": {
+        "type": "Video",
+        "videos": [
+            {
+                "icon": "logo-youtube",
+                "title": "Acid and Bases",
+                "youtube" : "ANi709MYnWg"
+            },
+            
+            {
+                "icon": "logo-youtube",
+                "title": "Litmus test",
+                "youtube" : "WRBcKEkBj_8"
+            }
+            
+            
+        ]
+    },
+    "Wikipedia": {
+        "type": "Wikipedia",
+        "articles": [
+            {
+                "icon": "ios-document",
+                "title": "Litmus_paper",
+                "wikipedia" : "Litmus_paper"
+            },
+            {
+                "icon": "ios-document",
+                "title": "Acid–base_reaction",
+                "wikipedia" : "Acid–base_reaction"
             }
         ]
     }

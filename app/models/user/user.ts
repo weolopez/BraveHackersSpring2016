@@ -78,8 +78,14 @@ export class User {
             var count = user.getPointsTotal(story.points);
             console.log("Saving Points: "+ story.id +" of " + count);
          //   user.userRef.child('points').child(story.id).set(count);
-            story.pointsTotal=count;
-            user.user.points[story.id]=count;
+            if ( story.pointsTotal < count ) story.pointsTotal = count;
+            else  count = story.pointsTotal;
+           
+            if (user.user.point===undefined)user.user.point=[];
+            if (user.user.point[story.id] < count ) user.user.point[story.id] = count;
+            else {
+                count = user.user.point[story.id];
+            }
             user.save();
             
             count = user.getPointsTotal(user.user.points);

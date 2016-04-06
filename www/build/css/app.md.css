@@ -9139,6 +9139,50 @@ p {
     #game-bar button.help {
       background-position: center -330px; }
 
+#game {
+  height: 100%; }
+
+#main {
+  padding: 0;
+  height: 100%; }
+
+#menu {
+  right: 0;
+  position: absolute;
+  top: 44px;
+  height: 100%; }
+
+video-window {
+  height: 66%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+video-text {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 3 0px;
+  height: 0;
+  overflow: hidden; }
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }
+
 #backpack {
   background: url(../../img/tile.png) repeat;
   height: 100%; }

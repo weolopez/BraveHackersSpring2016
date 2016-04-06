@@ -148,6 +148,8 @@ var Gamebar = (function () {
             "Notes": Notes,
             "Messages": Messages,
             "Help": Help,
+            "Video": Video,
+            "Wikipedia": Wikipedia,
             "GenericTest": GenericTest
         };
         this.currentApp = "";
@@ -267,12 +269,13 @@ var Messages = (function () {
         var messages = this;
         messages.app = app;
         messages.dialog = messages.app.dialog;
+        var username = messages.story.story.userName.toLowerCase();
         if (messages.app.dialog[0].audio) {
-            if (messages.story.story.userName === 'Mauricio') {
+            if (username === 'mauricio') {
                 messages.app.dialog[0].audio = messages.app.dialog[0].audio.replace("USERNAME", '');
             }
             else {
-                messages.app.dialog[0].audio = messages.app.dialog[0].audio.replace("USERNAME", messages.story.story.userName);
+                messages.app.dialog[0].audio = messages.app.dialog[0].audio.replace("USERNAME", username);
             }
         }
         messages.dialog = messages.app.dialog;
@@ -484,6 +487,54 @@ var GenericTest = (function () {
     return GenericTest;
 }());
 exports.GenericTest = GenericTest;
+var Video = (function () {
+    function Video(story) {
+        this.story = story;
+        var video = this;
+        video.app = story.getApp('Video');
+        video.currentScene = 0;
+        video.selectedVideo = video.app.videos[0].youtube;
+    }
+    Video.prototype.advanceScene = function () {
+        this.currentScene++;
+    };
+    Video.prototype.openVideo = function (v) {
+        this.selectedVideo = v.youtube;
+    };
+    Video = __decorate([
+        ionic_angular_1.Page({
+            templateUrl: 'build/components/gamebar/video/video.html',
+            directives: [Gamebar]
+        }), 
+        __metadata('design:paramtypes', [story_1.Story])
+    ], Video);
+    return Video;
+}());
+exports.Video = Video;
+var Wikipedia = (function () {
+    function Wikipedia(story) {
+        this.story = story;
+        var wikipedia = this;
+        wikipedia.app = story.getApp('Wikipedia');
+        wikipedia.currentScene = 0;
+        wikipedia.selectedArticle = wikipedia.app.articles[0].wikipedia;
+    }
+    Wikipedia.prototype.advanceScene = function () {
+        this.currentScene++;
+    };
+    Wikipedia.prototype.openArticle = function (v) {
+        this.selectedArticle = v.wikipedia;
+    };
+    Wikipedia = __decorate([
+        ionic_angular_1.Page({
+            templateUrl: 'build/components/gamebar/wikipedia/wikipedia.html',
+            directives: [Gamebar]
+        }), 
+        __metadata('design:paramtypes', [story_1.Story])
+    ], Wikipedia);
+    return Wikipedia;
+}());
+exports.Wikipedia = Wikipedia;
 },{"../../components/analysis/analysis":2,"../../components/hypothesis/hypothesis":4,"../../components/quiz/quiz":6,"../../components/status/status":7,"../../components/test/test":8,"../../models/beacons/beacons":9,"../../models/story/story":10,"angular2/core":15,"ionic-angular":343}],4:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1145,8 +1196,17 @@ var User = (function () {
         var count = user.getPointsTotal(story.points);
         console.log("Saving Points: " + story.id + " of " + count);
         //   user.userRef.child('points').child(story.id).set(count);
-        story.pointsTotal = count;
-        user.user.points[story.id] = count;
+        if (story.pointsTotal < count)
+            story.pointsTotal = count;
+        else
+            count = story.pointsTotal;
+        if (user.user.point === undefined)
+            user.user.point = [];
+        if (user.user.point[story.id] < count)
+            user.user.point[story.id] = count;
+        else {
+            count = user.user.point[story.id];
+        }
         user.save();
         count = user.getPointsTotal(user.user.points);
         console.log("Saving Points: " + user.user.name + " of " + count);

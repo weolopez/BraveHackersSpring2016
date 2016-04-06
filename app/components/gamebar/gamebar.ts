@@ -29,6 +29,8 @@ export class Gamebar {
         "Notes": Notes,
         "Messages": Messages,
         "Help": Help,
+        "Video": Video,
+        "Wikipedia": Wikipedia,
         "GenericTest": GenericTest
     }
     currentApp: any = "";
@@ -372,4 +374,47 @@ export class GenericTest {
         this.story.alertNotes(true);
     }
 }
- 
+
+@Page({
+    templateUrl: 'build/components/gamebar/video/video.html',
+    directives: [Gamebar]
+})
+export class Video {
+    app: any;
+    currentScene: any;
+    selectedVideo: any;
+    constructor(private story: Story) {
+        var video = this;
+        video.app=story.getApp('Video');
+        video.currentScene=0;
+        video.selectedVideo = video.app.videos[0].youtube;
+    }
+    advanceScene() {
+        this.currentScene++;
+    }
+    openVideo(v) {
+        this.selectedVideo = v.youtube;
+    }
+}
+
+@Page({
+    templateUrl: 'build/components/gamebar/wikipedia/wikipedia.html',
+    directives: [Gamebar]
+})
+export class Wikipedia {
+    app: any;
+    currentScene: any;
+    selectedArticle: any;
+    constructor(private story: Story) {
+        var wikipedia = this;
+        wikipedia.app=story.getApp('Wikipedia');
+        wikipedia.currentScene=0;
+        wikipedia.selectedArticle = wikipedia.app.articles[0].wikipedia;
+    }
+    advanceScene() {
+        this.currentScene++;
+    }
+    openArticle(v) {
+        this.selectedArticle = v.wikipedia;
+    }
+}
